@@ -1,33 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../../domain/utils_and_services/helpers.dart';
 
 /// 🎨 **[TextStyles4ThisAppThemes]** - Defines typography styles for the application.
 abstract class TextStyles4ThisAppThemes {
-  /// 📌 **Google Montserrat Text Theme**
+  /// 📌 **SF Pro Text Theme**
   static TextTheme kTextThemeData(bool isDarkTheme) {
-    return GoogleFonts.montserratTextTheme().copyWith(
-      /// 🎯 **Titles**
+    return TextTheme(
       titleLarge: _getTextStyle(isDarkTheme, FontWeight.w600, 22),
       titleMedium: _getTextStyle(isDarkTheme, FontWeight.w500, 19),
       titleSmall: _getTextStyle(isDarkTheme, FontWeight.w400, 16),
-
-      /// 📝 **Body Text**
-      bodyLarge: _getTextStyle(isDarkTheme, FontWeight.w400, 16),
-      bodyMedium: _getTextStyle(isDarkTheme, FontWeight.w400, 14),
-      bodySmall: _getTextStyle(isDarkTheme, FontWeight.w400, 12),
-
-      /// 🏷 **Labels**
-      labelLarge: _getTextStyle(isDarkTheme, FontWeight.w500, 14),
-      labelMedium: _getTextStyle(isDarkTheme, FontWeight.w400, 12),
+      bodyLarge: _getTextStyle(isDarkTheme, FontWeight.w400, 17),
+      bodyMedium: _getTextStyle(isDarkTheme, FontWeight.w400, 15),
+      bodySmall: _getTextStyle(isDarkTheme, FontWeight.w400, 13),
+      labelLarge: _getTextStyle(isDarkTheme, FontWeight.w500, 15),
+      labelMedium: _getTextStyle(isDarkTheme, FontWeight.w400, 13),
       labelSmall: _getTextStyle(isDarkTheme, FontWeight.w400, 11),
-
-      /// 📢 **Display**
-      displayLarge: _getTextStyle(isDarkTheme, FontWeight.w700, 25),
-      displayMedium: _getTextStyle(isDarkTheme, FontWeight.w600, 22),
-      displaySmall: _getTextStyle(isDarkTheme, FontWeight.w500, 19),
     );
   }
 
@@ -35,6 +22,7 @@ abstract class TextStyles4ThisAppThemes {
   static TextStyle _getTextStyle(
       bool isDarkTheme, FontWeight fontWeight, double fontSize) {
     return TextStyle(
+      fontFamily: 'SFProText',
       fontWeight: fontWeight,
       fontSize: fontSize,
       color: isDarkTheme ? Colors.white : Colors.black,
@@ -43,13 +31,13 @@ abstract class TextStyles4ThisAppThemes {
 
   /// 🍏 **Cupertino Text Theme for iOS styling**
   static CupertinoTextThemeData getCupertinoTextStyle(BuildContext context) {
-    final colorScheme = Helpers.getColorScheme(context);
-    return CupertinoTextThemeData(
-      primaryColor: colorScheme.onSurface,
-      navTitleTextStyle: TextStyle(
-        color: colorScheme.onSurface,
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
+    return const CupertinoTextThemeData(
+      primaryColor: CupertinoColors.label,
+      textStyle: TextStyle(
+        fontFamily: 'SFProText',
+        fontSize: 17,
+        fontWeight: FontWeight.w400,
+        color: CupertinoColors.label,
       ),
     );
   }

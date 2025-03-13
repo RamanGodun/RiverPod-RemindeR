@@ -1,61 +1,39 @@
 import 'package:flutter/material.dart';
 
-/// 🌈 **[AppConstants]** - Holds static UI-related constants and theme configurations.
+/// 🌈 **[AppConstants]** - Holds static UI-related constants with modern macOS/iOS aesthetics.
 abstract class AppConstants {
+  static const double appBarElevation = 0.0;
+  static const BorderRadius commonBorderRadius =
+      BorderRadius.all(Radius.circular(12));
+
   // ────────────────────────────────────────────────────────────────────
-  // 🎨 **Colors**
+  // 🎨 **Colors** (Based on macOS/iOS system)
   // ────────────────────────────────────────────────────────────────────
 
   /// 🌙 **Dark Theme Colors**
-  static const Color darkPrimaryColor = Color.fromARGB(255, 1, 98, 70);
-  
+  static const Color darkPrimaryColor = Color(0xFF0A84FF); // macOS system blue
+  static const Color darkAccentColor = Color(0xFF5E5CE6); // Secondary accent
+  static const Color darkBackgroundColor = Color(0xFF1C1C1E);
+  static const Color darkSurface = Color(0xFF2C2C2E);
+  static const Color darkOverlay = Color(0xBF1C1C1E); // 75% opacity
+  static const Color darkBorder = Color(0xFF3A3A3C);
 
   /// ☀️ **Light Theme Colors**
-  static const Color lightPrimaryColor = Color.fromARGB(255, 63, 140, 181);
-
+  static const Color lightPrimaryColor = Color(0xFF007AFF);
+  static const Color lightAccentColor = Color(0xFF34C759);
+  static const Color lightBackgroundColor = Color(0xFFF2F2F7);
+  static const Color lightSurface = Color(0xFFFFFFFF);
+  static const Color lightOverlay = Color(0xBFFFFFFF); // 75% opacity
+  static const Color lightBorder = Color(0xFFD6D6D6);
 
   /// 🚨 **Error Colors**
   static const Color errorColor = Colors.redAccent;
 
-  /// 🌈 **Overlay Colors**
-  static const Color overlayDarkBackground = Color(0xFF2E2E2E);
-  static const Color overlayLightBackground = Color(0xFFEFEFEF);
+  /// 🌈 **Overlay & Transparency**
+  static const Color overlayDarkBackground = darkOverlay;
+  static const Color overlayLightBackground = lightOverlay;
   static const Color overlayDarkTextColor = Colors.white;
   static const Color overlayLightTextColor = Colors.black;
-  static const Color overlayDarkBorder = Color(0xFF474747);
+  static const Color overlayDarkBorder = Color(0xFF2C2C2E);
   static const Color overlayLightBorder = Color(0xFFD6D6D6);
-// 
- 
-  // ────────────────────────────────────────────────────────────────────
-  // 🛠️ **Icons**
-  // ────────────────────────────────────────────────────────────────────
-
-  static const IconData sunIcon = Icons.sunny;
-  static const IconData addIcon = Icons.add;
-  static const IconData removeIcon = Icons.remove;
-  static const IconData deleteIcon = Icons.delete_forever;
-  static const IconData lightModeIcon = Icons.light_mode;
-  static const IconData darkModeIcon = Icons.dark_mode;
-  static const IconData syncIcon = Icons.sync;
-  static const IconData changeCircleIcon = Icons.change_circle;
-
-  // ────────────────────────────────────────────────────────────────────
-  // 📏 **Spacing & Sizes**
-  // ────────────────────────────────────────────────────────────────────
-
-  /// 🔳 **Common Paddings**
-  static const double smallPadding = 5.0;
-  static const double mediumPadding = 12.0;
-  static const double largePadding = 17.0;
-  static const double greatPadding = 22.0;
-
-  /// 📏 **App Bar Settings**
-  static const double appBarElevation = 0.0;
-
-  /// 🆙 **Border Radius**
-  static const BorderRadius commonBorderRadius =
-      BorderRadius.all(Radius.circular(8));
-
-  /// 📏 **Maximum Dialog Height Ratio** (40% of screen height)
-  static const double dialogMaxHeightRatio = 0.4;
 }
