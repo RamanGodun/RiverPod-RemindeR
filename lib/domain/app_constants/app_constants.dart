@@ -26,8 +26,9 @@ abstract class AppConstants {
   static const Color lightOverlay = Color(0xBFFFFFFF); // 75% opacity
   static const Color lightBorder = Color(0xFFD6D6D6);
 
-  /// 🚨 **Error Colors**
+  /// 🚨 **Common Colors**
   static const Color errorColor = Colors.redAccent;
+  static const Color white = Color.fromARGB(255, 255, 255, 255);
 
   /// 🌈 **Overlay & Transparency**
   static const Color overlayDarkBackground = darkOverlay;

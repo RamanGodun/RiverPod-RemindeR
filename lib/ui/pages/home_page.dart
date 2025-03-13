@@ -28,7 +28,7 @@ class MyHomePage extends ConsumerWidget {
           spacing: 30,
           children: [
             TextWidget('Welcome to Riverpod Reminder!', TextType.bodyLarge),
-            CustomButton(title: 'Button', child: OtherPage()),
+            CustomButton(title: 'Press Button', child: OtherPage()),
           ],
         ),
       ),

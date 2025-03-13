@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'domain/app_constants/app_strings.dart';
-import 'domain/config/observer/_observer_logger.dart';
+import 'domain/config/observer/observer_logger.dart';
 import 'ui/_theming/app_theme.dart';
 import 'ui/_theming/theme_provider.dart';
 import 'ui/pages/home_page.dart';
