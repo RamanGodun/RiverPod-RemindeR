@@ -10,16 +10,11 @@ class OverlayNotificationService {
   static OverlayEntry? _overlayEntry;
 
   /// 📌 **Displays an overlay notification with an icon and message.**
-  ///
-  /// - Removes any existing overlay before inserting a new one.
-  /// - Automatically disappears after **2 seconds**.
-  /// - Animates using **fade-in** and **scale effects**.
   static void showOverlay(BuildContext context,
       {required String message, required IconData icon}) {
     _removeOverlay();
 
     final overlay = Overlay.of(context, rootOverlay: true);
-
     _overlayEntry = OverlayEntry(
       builder: (context) =>
           _AnimatedOverlayWidget(message: message, icon: icon),
@@ -30,7 +25,6 @@ class OverlayNotificationService {
   }
 
   /// 🛑 **Removes any existing overlay.**
-  /// - Ensures that only **one overlay is displayed** at a time.
   static void _removeOverlay() {
     _overlayEntry?.remove();
     _overlayEntry = null;
@@ -38,9 +32,6 @@ class OverlayNotificationService {
 }
 
 /// 🎭 **[_AnimatedOverlayWidget] - The animated UI widget for overlay notifications.**
-/// - Uses **flutter_hooks** for animation control.
-/// - Applies **fade and elastic scale animations**.
-/// - Dynamically adapts **theme colors** (dark/light mode).
 class _AnimatedOverlayWidget extends HookWidget {
   final String message;
   final IconData icon;
@@ -49,9 +40,8 @@ class _AnimatedOverlayWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// 🎬 **Animation controller for fade-in and scale effects.**
     final animationController = useAnimationController(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 500),
     )..forward();
 
     final opacity = animationController.drive(
@@ -59,29 +49,17 @@ class _AnimatedOverlayWidget extends HookWidget {
     );
 
     final scale = animationController.drive(
-      Tween<double>(begin: 0.8, end: 1)
-          .chain(CurveTween(curve: Curves.elasticOut)),
+      Tween<double>(begin: 0.9, end: 1)
+          .chain(CurveTween(curve: Curves.easeOutBack)),
     );
 
-    // 🎨 **Dynamic theme-aware colors**
     final colorScheme = Helpers.getColorScheme(context);
     final isDarkMode = colorScheme.brightness == Brightness.dark;
-    final backgroundColor = isDarkMode
-        ? AppConstants.overlayDarkBackground
-        : AppConstants.overlayLightBackground;
-    final textColor = isDarkMode
-        ? AppConstants.overlayDarkTextColor
-        : AppConstants.overlayLightTextColor;
-    final borderColor = isDarkMode
-        ? AppConstants.overlayDarkBorder
-        : AppConstants.overlayLightBorder;
-    final shadowColor = Colors.black.withOpacity(0.3);
 
     return Stack(
       children: [
         Positioned(
-          /// 🔽 **Centers the overlay message on the screen.**
-          top: MediaQuery.of(context).size.height * 0.4,
+          top: MediaQuery.of(context).size.height * 0.15,
           left: MediaQuery.of(context).size.width * 0.1,
           right: MediaQuery.of(context).size.width * 0.1,
           child: FadeTransition(
@@ -92,15 +70,20 @@ class _AnimatedOverlayWidget extends HookWidget {
                 color: Colors.transparent,
                 child: Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                   decoration: BoxDecoration(
-                    color: backgroundColor,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: borderColor, width: 1.5),
+                    color: isDarkMode
+                        ? AppConstants.black.withOpacity(0.7)
+                        : AppConstants.white.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: isDarkMode ? Colors.white38 : Colors.black26,
+                      width: 1.5,
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: shadowColor,
-                        blurRadius: 12,
+                        color: AppConstants.black.withOpacity(0.2),
+                        blurRadius: 10,
                         spreadRadius: 1,
                         offset: const Offset(0, 4),
                       ),
@@ -109,10 +92,20 @@ class _AnimatedOverlayWidget extends HookWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(icon, color: textColor, size: 24),
+                      Icon(icon,
+                          color: isDarkMode
+                              ? AppConstants.white
+                              : AppConstants.black,
+                          size: 24),
                       const SizedBox(width: 12),
                       Expanded(
-                        child: TextWidget(message, TextType.titleMedium),
+                        child: TextWidget(
+                          message,
+                          TextType.titleSmall,
+                          color: isDarkMode
+                              ? AppConstants.white
+                              : AppConstants.black,
+                        ),
                       ),
                     ],
                   ),

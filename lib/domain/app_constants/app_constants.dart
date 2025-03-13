@@ -29,6 +29,7 @@ abstract class AppConstants {
   /// 🚨 **Common Colors**
   static const Color errorColor = Colors.redAccent;
   static const Color white = Color.fromARGB(255, 255, 255, 255);
+  static const Color black = Colors.black;
 
   /// 🌈 **Overlay & Transparency**
   static const Color overlayDarkBackground = darkOverlay;
