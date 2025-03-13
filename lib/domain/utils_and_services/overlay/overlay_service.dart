@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../../ui/widgets/text_widget.dart';
-import '../app_constants/app_constants.dart';
-import 'helpers.dart';
+import '../../../ui/widgets/text_widget.dart';
+import '../../app_constants/app_constants.dart';
+import '../helpers.dart';
 
 /// 🌟 **[OverlayNotificationService] - A service for displaying animated overlay notifications.**
 class OverlayNotificationService {

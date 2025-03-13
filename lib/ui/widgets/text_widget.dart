@@ -13,7 +13,8 @@ class TextWidget extends StatelessWidget {
   final double? height;
   final TextOverflow? overflow;
   final int? maxLines;
-  final bool enableShadow; // Додає м'яку тінь до тексту
+  final bool enableShadow;
+  final bool? isTextOnFewStrings; 
 
   const TextWidget(
     this.text,
@@ -28,6 +29,7 @@ class TextWidget extends StatelessWidget {
     this.overflow,
     this.maxLines,
     this.enableShadow = false,
+    this.isTextOnFewStrings, // Якщо true, текст переноситься автоматично
   });
 
   @override
@@ -39,8 +41,11 @@ class TextWidget extends StatelessWidget {
       return Text(
         text ?? 'No text provided',
         textAlign: alignment ?? TextAlign.center,
-        maxLines: maxLines,
-        overflow: overflow ?? TextOverflow.ellipsis,
+        maxLines: isTextOnFewStrings == true ? null : maxLines,
+        softWrap: isTextOnFewStrings == true ? true : null,
+        overflow: isTextOnFewStrings == true
+            ? TextOverflow.visible
+            : (overflow ?? TextOverflow.ellipsis),
         style: baseStyle?.copyWith(
           color: color ?? Theme.of(context).colorScheme.onSurface,
           fontWeight: fontWeight ?? baseStyle.fontWeight,
@@ -105,7 +110,7 @@ class TextWidget extends StatelessWidget {
   }
 }
 
-/// 📑 **[TextType]** - Розширений перелік стилів для [TextWidget].
+/// 📑 **[TextType]** - перелік стилів для [TextWidget].
 enum TextType {
   displayLarge,
   displayMedium,

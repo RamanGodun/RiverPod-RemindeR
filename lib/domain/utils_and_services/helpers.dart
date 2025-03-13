@@ -1,10 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../ui/_theming/theme_provider.dart';
+import '../models/enums.dart';
+import 'overlay/overlay_service.dart';
 
 /// 🛠️ **[Helpers]** - Utility class for common navigation & theme operations.
 
 /// Provides static methods to streamline navigation and access theme properties.
-abstract class Helpers {
+/// 📌 Допоміжний метод для навігації
+class Helpers {
+  static void goToFeature(BuildContext context, AppFeature feature) {
+    switch (feature) {
+      case AppFeature.simpleProvider:
+        context.push('/simple-provider');
+        break;
+      case AppFeature.stateProvider:
+        context.push('/state-provider');
+        break;
+      default:
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Feature not implemented")),
+        );
+    }
+  }
+
   /// 📌 **Pushes a new route** with the provided [child] widget.
   static Future<void> pushTo(BuildContext context, Widget child) {
     return Navigator.of(context).push(
@@ -15,6 +36,11 @@ abstract class Helpers {
   /// 🔄 **Navigates to a named route** specified by [routeName].
   static void pushNamed(BuildContext context, String routeName) {
     Navigator.pushNamed(context, routeName);
+  }
+
+  static bool isDarkMode(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    return isDarkMode;
   }
 
   /// 🎨 **Retrieves the current theme** from the [BuildContext].
@@ -80,5 +106,16 @@ abstract class Helpers {
     final minutes = zeroPaddedTwoDigits((ticks / 60) % 60);
     final seconds = zeroPaddedTwoDigits(ticks % 60);
     return '$minutes:$seconds';
+  }
+
+  /// 🎨 **Перемикає тему та показує повідомлення**
+  static void toggleTheme(BuildContext context, WidgetRef ref) {
+    final isDark = isDarkMode(context);
+    ref.read(themeProvider.notifier).toggleTheme();
+    OverlayNotificationService.showOverlay(
+      context,
+      message: "Theme changed to ${isDark ? 'Light' : 'Dark'}",
+      icon: isDark ? Icons.wb_sunny : Icons.nightlight_round,
+    );
   }
 }

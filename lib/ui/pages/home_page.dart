@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/ui/widgets/custom_button.dart';
+import 'package:riverpod_reminder/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/ui/widgets/text_widget.dart';
 import '../../domain/app_constants/app_strings.dart';
-import '../../domain/utils_and_services/overlay_service.dart';
+import '../../domain/models/enums.dart';
+import '../../domain/state/features_provider.dart';
+import '../../domain/utils_and_services/dialogs_service.dart';
+import '../../domain/utils_and_services/helpers.dart';
 import '../_theming/theme_provider.dart';
 import 'other_page.dart';
 
-/// 🏠 **[MyHomePage] - Home screen with theme toggle button.**
+/// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({super.key});
 
@@ -15,34 +19,48 @@ class MyHomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeProvider);
     final isDarkMode = themeMode == ThemeMode.dark;
+    final selectedFeature = ref.watch(featureProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(AppStrings.appTitle, TextType.titleMedium),
-        actions: [
-          IconButton(
-            icon: Icon(isDarkMode ? Icons.dark_mode : Icons.light_mode),
-            onPressed: () {
-              ref.read(themeProvider.notifier).toggleTheme();
-              OverlayNotificationService.showOverlay(
-                context,
-                message: "Theme changed to ${isDarkMode ? 'Light' : 'Dark'}",
-                icon: isDarkMode ? Icons.wb_sunny : Icons.nightlight_round,
-              );
-            },
-          ),
+      appBar: CustomAppBar(
+        title: AppStrings.appTitle,
+        actionIcons: [
+          isDarkMode ? Icons.dark_mode : Icons.light_mode,
+          Icons.settings,
+        ],
+        actionCallbacks: [
+          () => Helpers.toggleTheme(context, ref),
+          () => DialogService.showFeatureSelectionDialog(context),
         ],
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            TextWidget('Welcome to Riverpod Reminder!', TextType.bodyLarge),
-            CustomButton(title: 'Press Button', child: OtherPage()),
+            const TextWidget(
+                'Welcome to Riverpod Reminder!', TextType.bodyLarge),
+
+            /// 🚀 **Динамічна кнопка переходу до фічі**
+            CustomButton(
+              title: 'Go to ${selectedFeature.label}',
+              child: getFeatureWidget(selectedFeature),
+            ),
           ],
         ),
       ),
     );
+  }
+}
+
+/// 📌 **Отримання віджета для обраної фічі**
+Widget getFeatureWidget(AppFeature feature) {
+  switch (feature) {
+    case AppFeature.simpleProvider:
+      return const OtherPage();
+    case AppFeature.stateProvider:
+      return const Placeholder(); // Тут буде сторінка іншої фічі
+    default:
+      return const Placeholder(); // Тут будуть ще іншої фічі
   }
 }

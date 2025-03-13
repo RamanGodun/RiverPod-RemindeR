@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'domain/app_constants/app_strings.dart';
 import 'domain/config/observer/observer_logger.dart';
@@ -7,11 +8,16 @@ import 'ui/_theming/app_theme.dart';
 import 'ui/_theming/theme_provider.dart';
 import 'ui/pages/home_page.dart';
 
-void main() {
-  runApp(ProviderScope(
-    observers: [Logger()],
-    child: const MainApp(),
-  ));
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+
+  runApp(
+    ProviderScope(
+      observers: [Logger()],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends ConsumerWidget {
