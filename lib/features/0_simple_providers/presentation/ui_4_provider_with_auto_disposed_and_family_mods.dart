@@ -4,9 +4,9 @@ import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
 
 // ✅ Імпортуємо обидва варіанти провайдерів
-import '../plus_family_and_auto_dispose_mod/provider_with_auto_disposed_and_family_mods_manual.dart'
+import '../domain/provider_plus_family_and_auto_dispose_mod/provider_with_auto_disposed_and_family_mods_manual.dart'
     as manual;
-import '../plus_family_and_auto_dispose_mod/provider_with_auto_disposed_and_family_mods_gen.dart'
+import '../domain/provider_plus_family_and_auto_dispose_mod/provider_with_auto_disposed_and_family_mods_gen.dart'
     as generated;
 
 class PageWithAutoDisposedFamilyProvider extends ConsumerWidget {

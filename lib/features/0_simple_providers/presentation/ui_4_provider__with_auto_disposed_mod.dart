@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../plus_auto_dispose_mod/provider_with_auto_dispose_mod_manual.dart'
+import '../domain/provider_plus_auto_dispose_mod/provider_with_auto_dispose_mod_manual.dart'
     as manual_auto;
-import '../../../features/_0_simple_providers/plus_auto_dispose_mod/provider_with_auto_dispose_mod_gen.dart'
+import '../domain/provider_plus_auto_dispose_mod/provider_with_auto_dispose_mod_gen.dart'
     as generated_auto;
 
 class PageWithSimpleAutoDisposedProvider extends StatelessWidget {

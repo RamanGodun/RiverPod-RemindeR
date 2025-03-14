@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter/foundation.dart'; // Для debugPrint
+import 'package:flutter/foundation.dart';
 
 final appBarTextProviderManual = Provider<String>((ref) {
   ref.onDispose(() {

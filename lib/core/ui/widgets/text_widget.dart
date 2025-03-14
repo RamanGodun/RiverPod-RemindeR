@@ -106,6 +106,14 @@ class TextWidget extends StatelessWidget {
         return buildText(
           textTheme.bodyLarge?.copyWith(color: AppConstants.errorColor),
         );
+      case TextType.caption:
+        return buildText(
+          textTheme.bodySmall?.copyWith(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            color: Colors.grey.shade600,
+          ),
+        );
       default:
         return buildText(textTheme.bodyMedium);
     }
@@ -131,4 +139,5 @@ enum TextType {
   labelSmall,
   button,
   error,
+  caption,
 }

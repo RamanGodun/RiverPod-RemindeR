@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 /// 🌈 **[AppConstants]** - Holds static UI-related constants with modern macOS/iOS aesthetics.
 abstract class AppConstants {
   static const double appBarElevation = 0.0;
-  static const BorderRadius commonBorderRadius =
-      BorderRadius.all(Radius.circular(12));
+  static const BorderRadius commonBorderRadius = BorderRadius.all(
+    Radius.circular(12),
+  );
 
   // ────────────────────────────────────────────────────────────────────
   // 🎨 **Colors** (Based on macOS/iOS system)
@@ -38,4 +39,7 @@ abstract class AppConstants {
   static const Color overlayLightTextColor = Colors.black;
   static const Color overlayDarkBorder = Color(0xFF2C2C2E);
   static const Color overlayLightBorder = Color(0xFFD6D6D6);
+
+  ///
+  static const double dialogHeightFactor = 0.1;
 }

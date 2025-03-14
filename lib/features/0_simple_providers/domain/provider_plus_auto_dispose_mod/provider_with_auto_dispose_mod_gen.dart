@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:flutter/foundation.dart'; // Для debugPrint
+import 'package:flutter/foundation.dart';
 
 part 'provider_with_auto_dispose_mod_gen.g.dart';
 

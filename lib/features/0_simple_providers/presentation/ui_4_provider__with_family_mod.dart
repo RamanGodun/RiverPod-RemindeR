@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../plus_family__mod/provider_with_family_mod_manual.dart' as manual;
-import '../plus_family__mod/provider_with_family_mod_gen.dart' as generated;
+import '../domain/provider_plus_family__mod/provider_with_family_mod_manual.dart' as manual;
+import '../domain/provider_plus_family__mod/provider_with_family_mod_gen.dart' as generated;
 
 class PageWithSimpleFamilyProvider extends ConsumerWidget {
   const PageWithSimpleFamilyProvider({super.key});

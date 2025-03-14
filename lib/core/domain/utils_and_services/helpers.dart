@@ -26,11 +26,17 @@ class Helpers {
     }
   }
 
+  static Size getDeviceSize(BuildContext context) {
+    return MediaQuery.of(context).size;
+  }
+
+  static void pop(BuildContext context) {
+    return Navigator.of(context).pop(context);
+  }
+
   /// 📌 **Pushes a new route** with the provided [child] widget.
   static Future<void> pushTo(BuildContext context, Widget child) {
-    return Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => child),
-    );
+    return Navigator.of(context).push(MaterialPageRoute(builder: (_) => child));
   }
 
   /// 🔄 **Navigates to a named route** specified by [routeName].
@@ -63,7 +69,7 @@ class Helpers {
 
   //
 
-/*
+  /*
   static void goTo(
     BuildContext context,
     String routeName, {

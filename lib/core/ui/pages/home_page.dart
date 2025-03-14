@@ -3,7 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../../../features/_0_simple_providers/_presentation/_simple_providers_page.dart';
+import '../../../features/0_simple_providers/presentation/_simple_providers_page.dart';
+import '../../../features/1_state_provider/presentation/_state_providers_page.dart';
 import '../../domain/app_constants/app_strings.dart';
 import '../../domain/models/enums.dart';
 import '../../domain/state/features_provider.dart';
@@ -61,8 +62,11 @@ Widget getFeatureWidget(AppFeature feature) {
     case AppFeature.simpleProvider:
       return const SimpleProvidersPage();
     case AppFeature.stateProvider:
-      return const Placeholder(); // Тут буде сторінка іншої фічі
+      return const StateProvidersPage();
+    /*
+
+    */
     default:
-      return const Placeholder(); // Тут будуть ще іншої фічі
+      return const SimpleProvidersPage();
   }
 }

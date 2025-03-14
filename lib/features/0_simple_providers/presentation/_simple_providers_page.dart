@@ -26,19 +26,19 @@ class SimpleProvidersPage extends StatelessWidget {
           children: [
             /// 🚀 **кнопка переходу до модифікатори**
             CustomButton(
-              title: 'Go to keepAlive provider',
+              title: 'Go to basic provider',
               child: PageWithSimpleKeepAliveProvider(),
             ),
             CustomButton(
-              title: 'Go to autodisposed provider',
+              title: 'Go to autodisposed mod',
               child: PageWithSimpleAutoDisposedProvider(),
             ),
             CustomButton(
-              title: 'Go to family provider',
+              title: 'Go to family mod',
               child: PageWithSimpleFamilyProvider(),
             ),
             CustomButton(
-              title: 'to family autodisposed provider',
+              title: 'Go to family autodisposed mod',
               child: PageWithAutoDisposedFamilyProvider(),
             ),
           ],
