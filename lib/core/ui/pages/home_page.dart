@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
+import '../../../features/_0_simple_providers/_presentation/simple_providers_page.dart';
 import '../../domain/app_constants/app_strings.dart';
 import '../../domain/models/enums.dart';
 import '../../domain/state/features_provider.dart';
 import '../../domain/utils_and_services/dialogs_service.dart';
 import '../../domain/utils_and_services/helpers.dart';
 import '../_theming/theme_provider.dart';
-import 'other_page.dart';
 
 /// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
 class MyHomePage extends ConsumerWidget {
@@ -39,7 +39,9 @@ class MyHomePage extends ConsumerWidget {
           spacing: 30,
           children: [
             const TextWidget(
-                'Welcome to Riverpod Reminder!', TextType.bodyLarge),
+              'Welcome to Riverpod Reminder!',
+              TextType.bodyLarge,
+            ),
 
             /// 🚀 **Динамічна кнопка переходу до фічі**
             CustomButton(
@@ -57,7 +59,7 @@ class MyHomePage extends ConsumerWidget {
 Widget getFeatureWidget(AppFeature feature) {
   switch (feature) {
     case AppFeature.simpleProvider:
-      return const OtherPage();
+      return const SimpleProvidersPage();
     case AppFeature.stateProvider:
       return const Placeholder(); // Тут буде сторінка іншої фічі
     default:

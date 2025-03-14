@@ -1,22 +1,18 @@
-/*
-import 'package:riverpod/riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final helloProvider = Provider<String>((ref) {
+final appBarProvider = Provider<String>((ref) {
+  ref.onDispose(() {
+    print('Simple keep alive Provider [wordsProvider] was disposed');
+  });
+  return 'HI, friend ✋🏻😃';
+});
+
+final bodyTextProvider = Provider<String>((ref) {
   ref.onDispose(() {
     print('[helloProvider] was disposed');
   });
-
-  return 'Hello providers';
+  return 'This text is provided be simple KeepAlive Provider without code generation';
 });
-
-final wordsProvider = Provider<String>((ref) {
-  ref.onDispose(() {
-    print('[wordsProvider] was disposed');
-  });
-
-  return 'Words provider';
-});
- */
 
 /*
  This provider  does not dispose automatically.

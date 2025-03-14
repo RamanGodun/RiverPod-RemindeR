@@ -1,34 +1,26 @@
-// ! imported "flutter_riverpod" after changing "HelloRef" on "Ref" (look option to use just "riverpod" library)
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-//rivp and choose autocompletion
-// dart run build_runner build watch
-part '_0_basic_provider_gen.g.dart';
+part 'basic_provider_gen.g.dart';
 
-// riverpodKeepAlive and choose autocompletion
 @Riverpod(keepAlive: true)
-String hello(Ref ref) {
-  // Заміна HelloRef на Ref
+String appBar(Ref ref) {
   ref.onDispose(() {
-    print('[helloProvider] was disposed');
+    print('Simple keep alive [wordsProviders] was disposed');
   });
-
-  return 'Hello providers';
+  return 'HI, friend ✋🏻😃';
 }
 
 @Riverpod(keepAlive: true)
-String words(Ref ref) {
-  // Заміна WordsRef на Ref
+String bodyText(Ref ref) {
   ref.onDispose(() {
-    print('[wordsProviders] was disposed');
+    print('Simple keep alive [helloProvider] was disposed');
   });
-
-  return 'Words provider';
+  return 'This text is provided be simple KeepAlive Provider with code generation';
 }
 
 /*
- This provider does not dispose automatically.
+ This provider (simple keep alive Provider) does not dispose automatically.
  The `onDispose` callback is never triggered because
  the provider stays in memory throughout the entire app run.
 

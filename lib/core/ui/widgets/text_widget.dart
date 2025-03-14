@@ -14,7 +14,7 @@ class TextWidget extends StatelessWidget {
   final TextOverflow? overflow;
   final int? maxLines;
   final bool enableShadow;
-  final bool? isTextOnFewStrings; 
+  final bool? isTextOnFewStrings;
 
   const TextWidget(
     this.text,
@@ -29,7 +29,7 @@ class TextWidget extends StatelessWidget {
     this.overflow,
     this.maxLines,
     this.enableShadow = false,
-    this.isTextOnFewStrings, // Якщо true, текст переноситься автоматично
+    this.isTextOnFewStrings,
   });
 
   @override
@@ -43,9 +43,10 @@ class TextWidget extends StatelessWidget {
         textAlign: alignment ?? TextAlign.center,
         maxLines: isTextOnFewStrings == true ? null : maxLines,
         softWrap: isTextOnFewStrings == true ? true : null,
-        overflow: isTextOnFewStrings == true
-            ? TextOverflow.visible
-            : (overflow ?? TextOverflow.ellipsis),
+        overflow:
+            isTextOnFewStrings == true
+                ? TextOverflow.visible
+                : (overflow ?? TextOverflow.ellipsis),
         style: baseStyle?.copyWith(
           color: color ?? Theme.of(context).colorScheme.onSurface,
           fontWeight: fontWeight ?? baseStyle.fontWeight,
@@ -53,15 +54,16 @@ class TextWidget extends StatelessWidget {
           letterSpacing: letterSpacing ?? baseStyle.letterSpacing,
           height: height ?? baseStyle.height,
           fontFamily: 'SFProText',
-          shadows: enableShadow
-              ? [
-                  Shadow(
-                    blurRadius: 2.0,
-                    color: Colors.black.withOpacity(0.2),
-                    offset: const Offset(1, 1),
-                  )
-                ]
-              : null,
+          shadows:
+              enableShadow
+                  ? [
+                    Shadow(
+                      blurRadius: 2.0,
+                      color: Colors.black.withOpacity(0.2),
+                      offset: const Offset(1, 1),
+                    ),
+                  ]
+                  : null,
         ),
       );
     }

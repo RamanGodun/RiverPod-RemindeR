@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '_1_plus_auto_dispose_mod_gen.dart';
+part of 'provider_with_auto_dispose_mod_gen.dart';
 
 // **************************************************************************
 // RiverpodGenerator

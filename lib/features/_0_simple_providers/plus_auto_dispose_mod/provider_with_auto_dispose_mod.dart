@@ -1,21 +1,17 @@
-/*
-
-import 'package:riverpod/riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final autoDisposedProvider = Provider.autoDispose<String>((ref) {
-  print('[autoDisposedProvider] was created');
-
+  print('Simple [autoDisposedProvider] was created');
   ref.onDispose(() {
-    print('[autoDisposedProvider] was disposed');
+    print('Simple [autoDisposedProvider] was disposed');
   });
-
-  return 'auto Disposed Provider';
+  return 'Text from Provider with autodisposed modification and without code generation';
 });
- */
 
 /*
- This provider is automatically created when needed
+ This provider (with auto dispose) is automatically created when needed
  and disposed as soon as no widget is using it.
+! AutoDisposed Provider uses when there is no need of data cashing (when content of page doesn't change frequently/often )
 
  Use this provider for temporary data or state that
  does not need to persist throughout the entire app run.
@@ -27,5 +23,3 @@ final autoDisposedProvider = Provider.autoDispose<String>((ref) {
  When all consumers of this provider stop listening to it,
  the provider is disposed of, freeing any associated memory and resources.
  */
-
-// !! AutoDisposed Provider uses when there is no need of data cashing (when content of page doesn't change frequently/often )

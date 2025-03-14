@@ -39,21 +39,13 @@ class FamilyFamily extends Family<String> {
   const FamilyFamily();
 
   /// See also [family].
-  FamilyProvider call({
-    required String customName,
-  }) {
-    return FamilyProvider(
-      customName: customName,
-    );
+  FamilyProvider call({required String customName}) {
+    return FamilyProvider(customName: customName);
   }
 
   @override
-  FamilyProvider getProviderOverride(
-    covariant FamilyProvider provider,
-  ) {
-    return call(
-      customName: provider.customName,
-    );
+  FamilyProvider getProviderOverride(covariant FamilyProvider provider) {
+    return call(customName: provider.customName);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,17 @@ class FamilyFamily extends Family<String> {
 /// See also [family].
 class FamilyProvider extends Provider<String> {
   /// See also [family].
-  FamilyProvider({
-    required String customName,
-  }) : this._internal(
-          (ref) => family(
-            ref as FamilyRef,
-            customName: customName,
-          ),
-          from: familyProvider,
-          name: r'familyProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$familyHash,
-          dependencies: FamilyFamily._dependencies,
-          allTransitiveDependencies: FamilyFamily._allTransitiveDependencies,
-          customName: customName,
-        );
+  FamilyProvider({required String customName})
+    : this._internal(
+        (ref) => family(ref as FamilyRef, customName: customName),
+        from: familyProvider,
+        name: r'familyProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$familyHash,
+        dependencies: FamilyFamily._dependencies,
+        allTransitiveDependencies: FamilyFamily._allTransitiveDependencies,
+        customName: customName,
+      );
 
   FamilyProvider._internal(
     super._createNotifier, {
@@ -105,9 +91,7 @@ class FamilyProvider extends Provider<String> {
   final String customName;
 
   @override
-  Override overrideWith(
-    String Function(FamilyRef provider) create,
-  ) {
+  Override overrideWith(String Function(FamilyRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: FamilyProvider._internal(
@@ -154,5 +138,6 @@ class _FamilyProviderElement extends ProviderElement<String> with FamilyRef {
   @override
   String get customName => (origin as FamilyProvider).customName;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

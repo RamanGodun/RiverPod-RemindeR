@@ -37,3 +37,7 @@ class MainApp extends ConsumerWidget {
     );
   }
 }
+
+/* 
+!       dart run build_runner build watch 
+*/

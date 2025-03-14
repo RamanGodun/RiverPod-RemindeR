@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../../core/domain/utils_and_services/helpers.dart';
-import '../with_code_generation/_3_plus_auto_dispose_family_mod.dart';
+import '_3_plus_auto_dispose_family_mod.dart';
 import '_auto_dispose_family_provider.dart';
 
 class AutoDisposeFamilyPage extends ConsumerWidget {
