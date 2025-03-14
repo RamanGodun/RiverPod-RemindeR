@@ -1,3 +1,3 @@
 class AppConfig {
-  static final bool isUsingCodeGeneration = false;
+  static const bool isUsingCodeGeneration = true;
 }

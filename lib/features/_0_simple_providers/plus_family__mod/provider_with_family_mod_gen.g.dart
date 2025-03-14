@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '_3_plus_auto_dispose_family_mod.dart';
+part of 'provider_with_family_mod_gen.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$autoDisposeFamilyHash() => r'30d741f4dc93c130d1f9ed444b1fec9f1c3f569b';
+String _$simpleProviderWithFamilyModGenHash() =>
+    r'93d54264c9f61af2d7282d4acb89c046dbd8bed6';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,23 +30,24 @@ class _SystemHash {
   }
 }
 
-/// See also [autoDisposeFamily].
-@ProviderFor(autoDisposeFamily)
-const autoDisposeFamilyProvider = AutoDisposeFamilyFamily();
+/// See also [simpleProviderWithFamilyModGen].
+@ProviderFor(simpleProviderWithFamilyModGen)
+const simpleProviderWithFamilyModGenProvider =
+    SimpleProviderWithFamilyModGenFamily();
 
-/// See also [autoDisposeFamily].
-class AutoDisposeFamilyFamily extends Family<String> {
-  /// See also [autoDisposeFamily].
-  const AutoDisposeFamilyFamily();
+/// See also [simpleProviderWithFamilyModGen].
+class SimpleProviderWithFamilyModGenFamily extends Family<String> {
+  /// See also [simpleProviderWithFamilyModGen].
+  const SimpleProviderWithFamilyModGenFamily();
 
-  /// See also [autoDisposeFamily].
-  AutoDisposeFamilyProvider call({required String customName}) {
-    return AutoDisposeFamilyProvider(customName: customName);
+  /// See also [simpleProviderWithFamilyModGen].
+  SimpleProviderWithFamilyModGenProvider call({required String customName}) {
+    return SimpleProviderWithFamilyModGenProvider(customName: customName);
   }
 
   @override
-  AutoDisposeFamilyProvider getProviderOverride(
-    covariant AutoDisposeFamilyProvider provider,
+  SimpleProviderWithFamilyModGenProvider getProviderOverride(
+    covariant SimpleProviderWithFamilyModGenProvider provider,
   ) {
     return call(customName: provider.customName);
   }
@@ -62,31 +64,31 @@ class AutoDisposeFamilyFamily extends Family<String> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'autoDisposeFamilyProvider';
+  String? get name => r'simpleProviderWithFamilyModGenProvider';
 }
 
-/// See also [autoDisposeFamily].
-class AutoDisposeFamilyProvider extends AutoDisposeProvider<String> {
-  /// See also [autoDisposeFamily].
-  AutoDisposeFamilyProvider({required String customName})
+/// See also [simpleProviderWithFamilyModGen].
+class SimpleProviderWithFamilyModGenProvider extends Provider<String> {
+  /// See also [simpleProviderWithFamilyModGen].
+  SimpleProviderWithFamilyModGenProvider({required String customName})
     : this._internal(
-        (ref) => autoDisposeFamily(
-          ref as AutoDisposeFamilyRef,
+        (ref) => simpleProviderWithFamilyModGen(
+          ref as SimpleProviderWithFamilyModGenRef,
           customName: customName,
         ),
-        from: autoDisposeFamilyProvider,
-        name: r'autoDisposeFamilyProvider',
+        from: simpleProviderWithFamilyModGenProvider,
+        name: r'simpleProviderWithFamilyModGenProvider',
         debugGetCreateSourceHash:
             const bool.fromEnvironment('dart.vm.product')
                 ? null
-                : _$autoDisposeFamilyHash,
-        dependencies: AutoDisposeFamilyFamily._dependencies,
+                : _$simpleProviderWithFamilyModGenHash,
+        dependencies: SimpleProviderWithFamilyModGenFamily._dependencies,
         allTransitiveDependencies:
-            AutoDisposeFamilyFamily._allTransitiveDependencies,
+            SimpleProviderWithFamilyModGenFamily._allTransitiveDependencies,
         customName: customName,
       );
 
-  AutoDisposeFamilyProvider._internal(
+  SimpleProviderWithFamilyModGenProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -99,11 +101,13 @@ class AutoDisposeFamilyProvider extends AutoDisposeProvider<String> {
   final String customName;
 
   @override
-  Override overrideWith(String Function(AutoDisposeFamilyRef provider) create) {
+  Override overrideWith(
+    String Function(SimpleProviderWithFamilyModGenRef provider) create,
+  ) {
     return ProviderOverride(
       origin: this,
-      override: AutoDisposeFamilyProvider._internal(
-        (ref) => create(ref as AutoDisposeFamilyRef),
+      override: SimpleProviderWithFamilyModGenProvider._internal(
+        (ref) => create(ref as SimpleProviderWithFamilyModGenRef),
         from: from,
         name: null,
         dependencies: null,
@@ -115,13 +119,14 @@ class AutoDisposeFamilyProvider extends AutoDisposeProvider<String> {
   }
 
   @override
-  AutoDisposeProviderElement<String> createElement() {
-    return _AutoDisposeFamilyProviderElement(this);
+  ProviderElement<String> createElement() {
+    return _SimpleProviderWithFamilyModGenProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is AutoDisposeFamilyProvider && other.customName == customName;
+    return other is SimpleProviderWithFamilyModGenProvider &&
+        other.customName == customName;
   }
 
   @override
@@ -135,18 +140,19 @@ class AutoDisposeFamilyProvider extends AutoDisposeProvider<String> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin AutoDisposeFamilyRef on AutoDisposeProviderRef<String> {
+mixin SimpleProviderWithFamilyModGenRef on ProviderRef<String> {
   /// The parameter `customName` of this provider.
   String get customName;
 }
 
-class _AutoDisposeFamilyProviderElement
-    extends AutoDisposeProviderElement<String>
-    with AutoDisposeFamilyRef {
-  _AutoDisposeFamilyProviderElement(super.provider);
+class _SimpleProviderWithFamilyModGenProviderElement
+    extends ProviderElement<String>
+    with SimpleProviderWithFamilyModGenRef {
+  _SimpleProviderWithFamilyModGenProviderElement(super.provider);
 
   @override
-  String get customName => (origin as AutoDisposeFamilyProvider).customName;
+  String get customName =>
+      (origin as SimpleProviderWithFamilyModGenProvider).customName;
 }
 
 // ignore_for_file: type=lint

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/text_widget.dart';
+import 'ui_4_family_provider.dart';
+import 'ui_4_provider_with_auto_disposed_and_family_mods.dart';
 import 'ui_for_basic_provider.dart';
 import 'ui_4_auto_dispose_mod_provider.dart';
 
@@ -31,10 +33,17 @@ class SimpleProvidersPage extends StatelessWidget {
               title: 'Go to autodisposed provider',
               child: PageWithSimpleAutoDisposedProvider(),
             ),
+            CustomButton(
+              title: 'Go to family provider',
+              child: PageWithSimpleFamilyProvider(),
+            ),
+            CustomButton(
+              title: 'to family autodisposed provider',
+              child: PageWithAutoDisposedFamilyProvider(),
+            ),
           ],
         ),
       ),
     );
   }
 }
-// SimpleAutoDisposeProviderPage
