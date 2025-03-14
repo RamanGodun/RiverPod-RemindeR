@@ -1,12 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter/foundation.dart'; // Для debugPrint
 
 part 'basic_provider_gen.g.dart';
 
 @Riverpod(keepAlive: true)
 String appBarTextWithGen(Ref ref) {
   ref.onDispose(() {
-    print('Simple keep alive [wordsProviders] was disposed');
+    debugPrint('🛑 [appBarTextWithGen] was disposed');
   });
   return 'HI, friend ✋🏻😃';
 }
@@ -14,8 +15,7 @@ String appBarTextWithGen(Ref ref) {
 @Riverpod(keepAlive: true)
 String bodyTextWithGen(Ref ref) {
   ref.onDispose(() {
-    print('Simple keep alive [helloProvider] was disposed');
+    debugPrint('🛑 [bodyTextWithGen] was disposed');
   });
-  return 'This text is provided be simple KeepAlive Provider with code generation';
+  return 'This text is provided by simple KeepAlive Provider with code generation';
 }
-

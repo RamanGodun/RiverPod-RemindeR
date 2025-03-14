@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import 'ui_4_family_provider.dart';
+import 'ui_4_provider__with_family_mod.dart';
 import 'ui_4_provider_with_auto_disposed_and_family_mods.dart';
-import 'ui_for_basic_provider.dart';
-import 'ui_4_auto_dispose_mod_provider.dart';
+import 'ui_4_basic_provider.dart';
+import 'ui_4_provider__with_auto_disposed_mod.dart';
 
 class SimpleProvidersPage extends StatelessWidget {
   const SimpleProvidersPage({super.key});
@@ -16,7 +16,7 @@ class SimpleProvidersPage extends StatelessWidget {
       appBar: AppBar(
         title: const TextWidget(
           'Welcome to Simple Providers!',
-          TextType.bodyLarge,
+          TextType.titleSmall,
         ),
       ),
       body: const Center(

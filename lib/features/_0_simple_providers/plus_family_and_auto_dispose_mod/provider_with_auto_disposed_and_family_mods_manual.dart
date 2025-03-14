@@ -1,12 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/foundation.dart'; // Для debugPrint
 
 final autoDisposeFamilyProvider = Provider.family.autoDispose<String, String>((
   ref,
   customizedText,
 ) {
-  print('[autoDisposeFamilyProvider] was created');
+  debugPrint('✅ [autoDisposeFamilyProvider] Created for "$customizedText"');
+
   ref.onDispose(() {
-    print('[autoDisposeFamilyProvider] was disposed');
+    debugPrint('🛑 [autoDisposeFamilyProvider] Disposed for "$customizedText"');
   });
 
   return '"$customizedText" from same family provider without code generation';

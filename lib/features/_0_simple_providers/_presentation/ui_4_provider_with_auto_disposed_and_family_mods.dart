@@ -4,7 +4,7 @@ import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
 
 // ✅ Імпортуємо обидва варіанти провайдерів
-import '../plus_family_and_auto_dispose_mod/provider_with_auto_disposed_and_family_mods.dart'
+import '../plus_family_and_auto_dispose_mod/provider_with_auto_disposed_and_family_mods_manual.dart'
     as manual;
 import '../plus_family_and_auto_dispose_mod/provider_with_auto_disposed_and_family_mods_gen.dart'
     as generated;
@@ -17,17 +17,13 @@ class PageWithAutoDisposedFamilyProvider extends ConsumerWidget {
     /// 🔥 **Вибираємо провайдер залежно від `AppConfig.isUsingCodeGeneration`**
     final helloRoman =
         AppConfig.isUsingCodeGeneration
-            ? ref.watch(
-              generated.autoDisposeFamilyProvider(customizedText: 'This text'),
-            )
+            ? ref.watch(generated.autoDisposeFamilyProvider('This text'))
             : ref.watch(manual.autoDisposeFamilyProvider('This text'));
 
     final helloGodun =
         AppConfig.isUsingCodeGeneration
             ? ref.watch(
-              generated.autoDisposeFamilyProvider(
-                customizedText: 'As well as this text also',
-              ),
+              generated.autoDisposeFamilyProvider('As well as this text also'),
             )
             : ref.watch(
               manual.autoDisposeFamilyProvider('As well as this text also'),

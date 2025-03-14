@@ -7,7 +7,7 @@ part of 'provider_with_auto_dispose_mod_gen.dart';
 // **************************************************************************
 
 String _$autoDisposedModeWithSimpleGenHash() =>
-    r'b41c28f6275c1a77e092143b6f1c62029f1e71e4';
+    r'395f68c0f4a105b624fc7764a9f2a1b13d5eaf03';
 
 /// See also [autoDisposedModeWithSimpleGen].
 @ProviderFor(autoDisposedModeWithSimpleGen)

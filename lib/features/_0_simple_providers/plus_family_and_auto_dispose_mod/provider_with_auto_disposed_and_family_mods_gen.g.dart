@@ -6,7 +6,7 @@ part of 'provider_with_auto_disposed_and_family_mods_gen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$autoDisposeFamilyHash() => r'9a229f180203b173c9a926ac7a342e7a6235665d';
+String _$autoDisposeFamilyHash() => r'98236e80d3f81c391ba5dc50cd71ff97b0e50aaf';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -39,15 +39,15 @@ class AutoDisposeFamilyFamily extends Family<String> {
   const AutoDisposeFamilyFamily();
 
   /// See also [autoDisposeFamily].
-  AutoDisposeFamilyProvider call({required String customizedText}) {
-    return AutoDisposeFamilyProvider(customizedText: customizedText);
+  AutoDisposeFamilyProvider call(String customizedText) {
+    return AutoDisposeFamilyProvider(customizedText);
   }
 
   @override
   AutoDisposeFamilyProvider getProviderOverride(
     covariant AutoDisposeFamilyProvider provider,
   ) {
-    return call(customizedText: provider.customizedText);
+    return call(provider.customizedText);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -68,12 +68,9 @@ class AutoDisposeFamilyFamily extends Family<String> {
 /// See also [autoDisposeFamily].
 class AutoDisposeFamilyProvider extends AutoDisposeProvider<String> {
   /// See also [autoDisposeFamily].
-  AutoDisposeFamilyProvider({required String customizedText})
+  AutoDisposeFamilyProvider(String customizedText)
     : this._internal(
-        (ref) => autoDisposeFamily(
-          ref as AutoDisposeFamilyRef,
-          customizedText: customizedText,
-        ),
+        (ref) => autoDisposeFamily(ref as AutoDisposeFamilyRef, customizedText),
         from: autoDisposeFamilyProvider,
         name: r'autoDisposeFamilyProvider',
         debugGetCreateSourceHash:

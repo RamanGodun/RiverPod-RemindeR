@@ -6,7 +6,7 @@ part of 'basic_provider_gen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appBarTextWithGenHash() => r'9cbdc86619fa10fec24aedfa692c33fee322eaa4';
+String _$appBarTextWithGenHash() => r'822283981c3993175101e11cb1ec7cc78737ac9d';
 
 /// See also [appBarTextWithGen].
 @ProviderFor(appBarTextWithGen)
@@ -24,7 +24,7 @@ final appBarTextWithGenProvider = Provider<String>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AppBarTextWithGenRef = ProviderRef<String>;
-String _$bodyTextWithGenHash() => r'e033d61d384f6e7605fe041e942cdf2f1b04a342';
+String _$bodyTextWithGenHash() => r'bfcdfc9e79a98e14d88f0d084a54623bbc57484d';
 
 /// See also [bodyTextWithGen].
 @ProviderFor(bodyTextWithGen)

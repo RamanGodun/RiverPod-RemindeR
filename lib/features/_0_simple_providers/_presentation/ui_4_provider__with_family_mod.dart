@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../plus_family__mod/provider_with_family_mod.dart' as manual;
+import '../plus_family__mod/provider_with_family_mod_manual.dart' as manual;
 import '../plus_family__mod/provider_with_family_mod_gen.dart' as generated;
 
 class PageWithSimpleFamilyProvider extends ConsumerWidget {
@@ -10,22 +10,17 @@ class PageWithSimpleFamilyProvider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// 🔥 **Отримуємо значення в залежності від налаштувань**
     final helloFriend =
         AppConfig.isUsingCodeGeneration
             ? ref.watch(
-              generated.simpleProviderWithFamilyModGenProvider(
-                customName: 'Friend',
-              ),
+              generated.simpleProviderWithFamilyModGenProvider('Friend'),
             )
             : ref.watch(manual.simpleProviderWithFamilyModManual('Friend'));
 
     final helloDeveloper =
         AppConfig.isUsingCodeGeneration
             ? ref.watch(
-              generated.simpleProviderWithFamilyModGenProvider(
-                customName: 'Developer',
-              ),
+              generated.simpleProviderWithFamilyModGenProvider('Developer'),
             )
             : ref.watch(manual.simpleProviderWithFamilyModManual('Developer'));
 

@@ -2,31 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../../../features/_0_simple_providers/plus_auto_dispose_mod/provider_with_auto_dispose_mod.dart'
+import '../plus_auto_dispose_mod/provider_with_auto_dispose_mod_manual.dart'
     as manual_auto;
 import '../../../features/_0_simple_providers/plus_auto_dispose_mod/provider_with_auto_dispose_mod_gen.dart'
     as generated_auto;
 
-class PageWithSimpleAutoDisposedProvider extends ConsumerWidget {
+class PageWithSimpleAutoDisposedProvider extends StatelessWidget {
   const PageWithSimpleAutoDisposedProvider({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final autoDisposeVariable =
-        AppConfig.isUsingCodeGeneration
-            ? ref.watch(generated_auto.autoDisposedModeWithSimpleGenProvider)
-            : ref.watch(manual_auto.simpleManualProviderWithAutoDisposedMode);
-
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('AutoDispose Provider Page')),
+      appBar: AppBar(
+        title: const TextWidget(
+          'AutoDispose Provider Page',
+          TextType.titleSmall,
+        ),
+      ),
       body: Center(
         child: ListView(
           shrinkWrap: true,
           children: [
-            TextWidget(
-              autoDisposeVariable,
-              TextType.bodyLarge,
-              isTextOnFewStrings: true,
+            Consumer(
+              builder: (context, ref, child) {
+                final autoDisposeVariable =
+                    AppConfig.isUsingCodeGeneration
+                        ? ref.watch(
+                          generated_auto.autoDisposedModeWithSimpleGenProvider,
+                        )
+                        : ref.watch(
+                          manual_auto.simpleManualProviderWithAutoDisposedMode,
+                        );
+
+                return TextWidget(
+                  autoDisposeVariable,
+                  TextType.bodyLarge,
+                  isTextOnFewStrings: true,
+                );
+              },
             ),
           ],
         ),

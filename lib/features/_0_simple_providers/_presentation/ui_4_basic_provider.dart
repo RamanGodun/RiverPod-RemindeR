@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../../../features/_0_simple_providers/basic_provider/basic_provider.dart'
+import '../basic_provider/basic_provider_manual.dart'
     as manual;
 import '../../../features/_0_simple_providers/basic_provider/basic_provider_gen.dart'
     as generated;

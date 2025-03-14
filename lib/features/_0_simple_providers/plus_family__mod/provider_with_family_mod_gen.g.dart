@@ -7,7 +7,7 @@ part of 'provider_with_family_mod_gen.dart';
 // **************************************************************************
 
 String _$simpleProviderWithFamilyModGenHash() =>
-    r'93d54264c9f61af2d7282d4acb89c046dbd8bed6';
+    r'092eda82a03a5b92d9aff98cbd84d6b60224fc5f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -41,15 +41,15 @@ class SimpleProviderWithFamilyModGenFamily extends Family<String> {
   const SimpleProviderWithFamilyModGenFamily();
 
   /// See also [simpleProviderWithFamilyModGen].
-  SimpleProviderWithFamilyModGenProvider call({required String customName}) {
-    return SimpleProviderWithFamilyModGenProvider(customName: customName);
+  SimpleProviderWithFamilyModGenProvider call(String customName) {
+    return SimpleProviderWithFamilyModGenProvider(customName);
   }
 
   @override
   SimpleProviderWithFamilyModGenProvider getProviderOverride(
     covariant SimpleProviderWithFamilyModGenProvider provider,
   ) {
-    return call(customName: provider.customName);
+    return call(provider.customName);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -70,11 +70,11 @@ class SimpleProviderWithFamilyModGenFamily extends Family<String> {
 /// See also [simpleProviderWithFamilyModGen].
 class SimpleProviderWithFamilyModGenProvider extends Provider<String> {
   /// See also [simpleProviderWithFamilyModGen].
-  SimpleProviderWithFamilyModGenProvider({required String customName})
+  SimpleProviderWithFamilyModGenProvider(String customName)
     : this._internal(
         (ref) => simpleProviderWithFamilyModGen(
           ref as SimpleProviderWithFamilyModGenRef,
-          customName: customName,
+          customName,
         ),
         from: simpleProviderWithFamilyModGenProvider,
         name: r'simpleProviderWithFamilyModGenProvider',
