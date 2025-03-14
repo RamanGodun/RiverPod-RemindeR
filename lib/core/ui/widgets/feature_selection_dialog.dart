@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/models/enums.dart';
 import '../../domain/state/features_provider.dart';
-import '../widgets/text_widget.dart';
+import 'text_widget.dart';
 
 /// 📌 **[FeatureSelectionDialog] - UI для вибору фічі**
 class FeatureSelectionDialog extends ConsumerWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:riverpod_reminder/domain/app_constants/app_constants.dart';
+import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
 import '../../domain/utils_and_services/helpers.dart';
 import 'text_widget.dart';
 

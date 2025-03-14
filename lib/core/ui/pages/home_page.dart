@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/ui/widgets/custom_button.dart';
-import 'package:riverpod_reminder/ui/widgets/custom_app_bar.dart';
-import 'package:riverpod_reminder/ui/widgets/text_widget.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_button.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
 import '../../domain/app_constants/app_strings.dart';
 import '../../domain/models/enums.dart';
 import '../../domain/state/features_provider.dart';

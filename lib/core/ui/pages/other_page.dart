@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_reminder/ui/widgets/text_widget.dart';
+import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
 
 class OtherPage extends StatelessWidget {
   const OtherPage({super.key});
