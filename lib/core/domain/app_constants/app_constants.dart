@@ -27,6 +27,9 @@ abstract class AppConstants {
   static const Color lightOverlay = Color(0xBFFFFFFF); // 75% opacity
   static const Color lightBorder = Color(0xFFD6D6D6);
 
+  // 🔥 Colors for Fatal Game
+  static const Color fatalGameRestartBorder = Colors.greenAccent;
+
   /// 🚨 **Common Colors**
   static const Color errorColor = Colors.redAccent;
   static const Color white = Color.fromARGB(255, 255, 255, 255);
@@ -42,4 +45,9 @@ abstract class AppConstants {
 
   ///
   static const double dialogHeightFactor = 0.1;
+
+  /// 🎯 Game specific constants
+  static const int incrementStep = 5;
+  static const int decrementStep = -5;
+  static const int disableButtonsThreshold = 105;
 }

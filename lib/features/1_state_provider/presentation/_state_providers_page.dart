@@ -23,7 +23,7 @@ class StateProvidersPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            /// 🚀 **кнопка переходу до модифікатори**
+            /// 🚀 **buttons transfer to mods pages
             CustomButton(
               title: 'Go to basic provider',
               child: Page4BasicStateProvider(),

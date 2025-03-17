@@ -1,208 +1,141 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/domain/app_constants/app_strings.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
 import '../../../core/ui/widgets/buttons/outlined.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/state_provider__with_family_mod.dart';
+import 'ui_elements_for_fatal_game.dart';
 
 class Page4StateProviderWithFamilyMod extends ConsumerWidget {
   const Page4StateProviderWithFamilyMod({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// 🚀 **Initializing values for the dramatic conflict**
-    const valueForIncrementing = 5;
-    const valueForDecrementing = -5;
+    /// 🚀 Initializing values for the dramatic conflict
+    const incrementValue = AppConstants.incrementStep;
+    const decrementValue = AppConstants.decrementStep;
 
-    /// 📊 **Tracking two independent states with Family Modifier**
+    /// 📊 Tracking two independent states with Family Modifier
     final valueIncrementation = ref.watch(
-      counterProviderWithFamilyMod(valueForIncrementing),
+      counterProviderWithFamilyMod(incrementValue),
     );
     final valueDecrementation = ref.watch(
-      counterProviderWithFamilyMod(valueForDecrementing),
+      counterProviderWithFamilyMod(decrementValue),
     );
 
-    /// 🔥 **Calculating the difference - Humanity depends on it!**
+    /// 🔥 Calculating the difference - Humanity depends on it!
     final valueDifference = valueIncrementation - valueDecrementation;
 
-    /// 🚨 **Alert the world when the difference reaches catastrophic levels**
+    /// 🚨 Alert the world when the difference reaches catastrophic levels
     _listenForDoomsday(ref, context, valueDifference);
 
-    /// 🎨 **Dynamic background color based on the difference value**
-    final Color backgroundColor =
-        valueDifference >= 100
-            ? Colors.black
-            : valueDifference >= 70
-            ? Colors.redAccent.shade700
-            : valueDifference >= 50
-            ? Colors.deepOrange
-            : valueDifference >= 20
-            ? Colors.yellow.shade700
-            : Colors.blueGrey.shade900;
-
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: _calculateBackgroundColor(valueDifference),
       appBar: AppBar(
-        title: const TextWidget(
-          '🌍 The World Depends on You!',
-          TextType.titleMedium,
-        ),
+        title: const TextWidget(AppStrings.pageTitle, TextType.titleMedium),
       ),
       body: Column(
         spacing: 30,
         mainAxisSize: MainAxisSize.min,
         children: [
-          /// ⚠ **The Difference - A Matter of Life and Death!**
-          _buildDifferenceWidget(valueDifference),
-
+          /// ⚠️ Displays the difference - The life & death margin
+          DifferenceWidget(valueDifference),
           const SizedBox(height: 20),
 
-          /// 🔴 **First Value - The Balance of the Universe**
-          _buildValueRow('💥 First Core Value:', valueIncrementation),
-          _buildButton('🔼 Increase Core Power (+5)', () {
-            ref
-                .read(
-                  counterProviderWithFamilyMod(valueForIncrementing).notifier,
-                )
-                .update((state) => state + valueForIncrementing);
-          }, disabled: valueDifference >= 105),
+          /// 🛑 Game Over? Allow restart
+          if (valueDifference >= AppConstants.disableButtonsThreshold)
+            RestartGameButton(onReset: () => _onReset(ref))
+          else ...[
+            /// 🔴 First Value - The Balance of the Universe
+            ValueRow(
+              label: AppStrings.firstCoreLabel,
+              value: valueIncrementation,
+              difference: valueDifference,
+            ),
+            CustomOutlinedButton(
+              buttonText: AppStrings.incrementButtonText,
+              onPressed: () => _onIncrement(ref),
+              disabled: valueDifference >= AppConstants.disableButtonsThreshold,
+            ),
 
-          const SizedBox(height: 80),
+            const SizedBox(height: 80),
 
-          /// 🔵 **Second Value - The Counterforce**
-          _buildValueRow('🌀 Primary Core Value:', valueDecrementation),
-          _buildButton('🔽 Decrease Counterforce (-5)', () {
-            ref
-                .read(
-                  counterProviderWithFamilyMod(valueForDecrementing).notifier,
-                )
-                .update((state) => state + valueForDecrementing);
-          }, disabled: valueDifference >= 105),
+            /// 🔵 Second Value - The Counterforce
+            ValueRow(
+              label: AppStrings.secondCoreLabel,
+              value: valueDecrementation,
+              difference: valueDifference,
+            ),
+            CustomOutlinedButton(
+              buttonText: AppStrings.decrementButtonText,
+              onPressed: () => _onDecrement(ref),
+              disabled: valueDifference >= AppConstants.disableButtonsThreshold,
+            ),
+          ],
         ],
       ),
     );
   }
 
-  /// 🛑 **DOOMSDAY ALERT: When the difference reaches a critical level!**
+  /// 🛑 DOOMSDAY ALERT: Listening & triggering catastrophic warnings
   void _listenForDoomsday(WidgetRef ref, BuildContext context, int difference) {
-    const apocalypseWarnings = {
-      20:
-          "⚠ The balance is shifting! \nPlease, stay calm before it's too late! 🧘‍♂️😳⏳",
-      35:
-          "🛰️ Google Top Trends: \n‘How to stop global disaster’, \ncoincidence? 🤔📉🔥",
-      50:
-          "🚨 The Earth trembles! \nScientists say: ‘This shouldn’t be happening…’ 🌍🔬",
-      70:
-          "⚡ Government launches  'STOP CLICKING’ Project, \nBut will you listen?  🤨🤞",
-      90:
-          "Humanity's fate hangs by a thread! Not only 'black lives', but also \nEVERY click matters!🫷☠️🫸",
-      95:
-          "🔥 Cities report power outages, Trump becomes normal one, even your Wi-Fi signal is panicking 📶😱",
-      100:
-          "💥 GAME OVER! The timeline collapses into chaos! \nYour fault! \nNice job, genius. 🫵👀",
-    };
+    final warnings = AppStrings.apocalypseWarnings;
+    const List<int> criticalWarningThresholds = [90, 95, 100];
 
-    /// 🔥 **Listen to changes in both providers and track the difference**
-    ref.listen<int>(
-      counterProviderWithFamilyMod(5),
-      (previous, next) =>
-          _checkDifference(context, difference, apocalypseWarnings),
-    );
-
-    ref.listen<int>(
-      counterProviderWithFamilyMod(-5),
-      (previous, next) =>
-          _checkDifference(context, difference, apocalypseWarnings),
-    );
-  }
-
-  /// 📢 **Triggers the warning dialog when a catastrophic difference is reached!**
-  void _checkDifference(
-    BuildContext context,
-    int difference,
-    Map<int, String> warnings,
-  ) {
-    if (warnings.containsKey(difference)) {
-      DialogService.showAlertErrorDialog(
-        context,
-        warnings[difference]!,
-        dialogHeightFactor: 0.17,
-      );
+    /// 💥 Check & Show Dialog when difference hits critical
+    void checkAndShowDialog(int diff) {
+      if (warnings.containsKey(diff)) {
+        DialogService.showAlertErrorDialog(
+          context,
+          warnings[diff]!,
+          dialogHeightFactor:
+              criticalWarningThresholds.contains(diff)
+                  ? 0.2
+                  : AppConstants.dialogHeightFactor,
+        );
+      }
     }
-  }
 
-  /// 🎭 **Builds the UI for the difference display**
-  Widget _buildDifferenceWidget(int valueDifference) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
-      decoration: BoxDecoration(
-        color:
-            valueDifference >= 50
-                ? Colors.black.withOpacity(0.8)
-                : Colors.white.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color:
-                valueDifference >= 50
-                    ? Colors.red.withOpacity(0.5)
-                    : Colors.blueGrey.withOpacity(0.3),
-            blurRadius: 10,
-            spreadRadius: 2,
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          TextWidget(
-            valueDifference < 105 ? '⚠ Critical Difference: ' : '',
-            TextType.titleLarge,
-            isTextOnFewStrings: true,
-            color: Colors.white,
-          ),
-          TextWidget(
-            valueDifference > 100
-                ? "Now is no difference, what the difference..."
-                : '$valueDifference',
-            valueDifference < 105 ? TextType.headlineSmall : TextType.bodySmall,
-            color: Colors.white,
-          ),
-        ],
-      ),
+    /// 📡 Listening both providers
+    ref.listen<int>(
+      counterProviderWithFamilyMod(AppConstants.incrementStep),
+      (previous, next) => checkAndShowDialog(difference),
+    );
+
+    ref.listen<int>(
+      counterProviderWithFamilyMod(AppConstants.decrementStep),
+      (previous, next) => checkAndShowDialog(difference),
     );
   }
 
-  /// 🏆 **Builds a row displaying a value**
-  Widget _buildValueRow(String label, int value) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TextWidget(label, TextType.titleLarge, color: Colors.white),
-        TextWidget(
-          '$value',
-          TextType.headlineSmall,
-          color: AppConstants.errorColor,
-        ),
-      ],
-    );
+  /// 🎨 Dynamic Background Color based on current danger level
+  Color _calculateBackgroundColor(int valueDifference) {
+    if (valueDifference >= 100) return Colors.black;
+    if (valueDifference >= 70) return Colors.redAccent.shade700;
+    if (valueDifference >= 50) return Colors.deepOrange;
+    if (valueDifference >= 20) return Colors.yellow.shade700;
+    return Colors.blueGrey.shade300;
   }
 
-  /// 🖲️ **Creates a styled button with a disable option**
-  Widget _buildButton(
-    String label,
-    VoidCallback onPressed, {
-    bool disabled = false,
-  }) {
-    return CustomOutlinedButton(
-      buttonText: label,
-      onPressed:
-          disabled
-              ? null
-              : () {
-                onPressed();
-              },
-    );
+  /// 🔄 Handles Reset Logic
+  void _onReset(WidgetRef ref) {
+    ref.invalidate(counterProviderWithFamilyMod(AppConstants.incrementStep));
+    ref.invalidate(counterProviderWithFamilyMod(AppConstants.decrementStep));
+  }
+
+  /// 🔼 Handles Increment Logic
+  void _onIncrement(WidgetRef ref) {
+    ref
+        .read(counterProviderWithFamilyMod(AppConstants.incrementStep).notifier)
+        .update((state) => state + AppConstants.incrementStep);
+  }
+
+  /// 🔽 Handles Decrement Logic
+  void _onDecrement(WidgetRef ref) {
+    ref
+        .read(counterProviderWithFamilyMod(AppConstants.decrementStep).notifier)
+        .update((state) => state + AppConstants.decrementStep);
   }
 }

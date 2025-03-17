@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../../core/domain/app_constants/app_constants.dart';
+import '../../../core/domain/app_constants/app_strings.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/state_provider__with_auto_disposed_mod.dart';
@@ -11,16 +11,16 @@ class Page4StateProviderWithAutoDisposedMode extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// 🎯 **Listens for counter changes and shows a warning dialog for specific values**
-    _showDialogWhenCounterIsEqualTo245(ref, context);
+    /// 🎯 Listens for counter changes and shows a warning dialog for specific values
+    _showDialogWhenCounterIsSpecific(ref, context);
 
-    /// 🔄 **Rebuilds UI when the counter changes**
+    /// 🔄 Rebuilds UI when the counter changes
     final value = ref.watch(clickedTimeWithAutoDisposedModeSimpleProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: const TextWidget(
-          'using StateProvider \nwith AutoDisposed mode',
+          AppStrings.counterScreenTitle,
           TextType.titleSmall,
           isTextOnFewStrings: true,
         ),
@@ -31,15 +31,14 @@ class Page4StateProviderWithAutoDisposedMode extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const TextWidget(
-              'Dude, nice 😎, \nyou\'ve already clicked:',
+              AppStrings.counterInstruction,
               TextType.titleLarge,
               isTextOnFewStrings: true,
             ),
-
             Padding(
               padding: const EdgeInsets.only(bottom: 78.0),
               child: TextWidget(
-                '$value time${value == 1 ? '' : 's'}',
+                '$value ${value == 1 ? AppStrings.clickSingular : AppStrings.clickPlural}',
                 TextType.headlineMedium,
                 color: AppConstants.errorColor,
               ),
@@ -49,31 +48,23 @@ class Page4StateProviderWithAutoDisposedMode extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          /// ➕ **Increments the counter using `
+          /// ➕ Increments the counter
           ref
               .read(counterProviderWithAutoDisposedMod.notifier)
               .update((state) => state + 1);
-
-          /* 🛠 ALTERNATIVE SYNTAX: Directly modifying the state (less clean)
-          ref.read(autoDisposedCounterProvider.notifier).state += 1;
-          */
         },
         child: const Icon(Icons.add),
       ),
     );
   }
 
-  /// 🚨 **Listens to `counterProviderWithAutoDisposedMod` and shows an alert dialog at specific thresholds**
-  void _showDialogWhenCounterIsEqualTo245(WidgetRef ref, BuildContext context) {
-    const warningMessages = {
-      2: "Whoa! You've clicked 2 times! Easy there, champ! 🏆",
-      4: "Okay, 4 clicks... are you trying to break something?! 🤨",
-      5: "🚨 ALERT! 5 clicks detected! Authorities have been notified! 🚔😂",
-    };
+  /// 🚨 Listen and show warning dialogs at specific counts
+  void _showDialogWhenCounterIsSpecific(WidgetRef ref, BuildContext context) {
+    final warnings = AppStrings.counterWarningMessages;
 
     ref.listen<int>(counterProviderWithAutoDisposedMod, (previous, next) {
-      if (warningMessages.containsKey(next)) {
-        DialogService.showAlertErrorDialog(context, warningMessages[next]!);
+      if (warnings.containsKey(next)) {
+        DialogService.showAlertErrorDialog(context, warnings[next]!);
       }
     });
   }
