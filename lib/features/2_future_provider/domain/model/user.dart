@@ -26,10 +26,10 @@ flutter: AsyncData<List<User>>(value: [User(id: 1), User(id: 2), User(id: 3), Us
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  // const User._();
+  const User._();
 
-  // @override
-  // String toString() => 'User(id: $id)';
+  @override
+  String toString() => 'User(id: $id)';
 
   //
 }

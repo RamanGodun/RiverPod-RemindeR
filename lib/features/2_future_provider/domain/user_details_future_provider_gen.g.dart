@@ -1,28 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'users_providers_gen.dart';
+part of 'user_details_future_provider_gen.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userListHash() => r'e3f91a8624f8d362e265a00d103edf460f814ddc';
-
-/// See also [userList].
-@ProviderFor(userList)
-final userListProvider = AutoDisposeFutureProvider<List<User>>.internal(
-  userList,
-  name: r'userListProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$userListHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef UserListRef = AutoDisposeFutureProviderRef<List<User>>;
-String _$userDetailHash() => r'6716910e38764a9c82cf880b8fce0782c543b6af';
+String _$withCodeGenerationUserDetailsHash() =>
+    r'4f25bf0b51ba72db53a711d5e780d5eaae351018';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -45,23 +30,24 @@ class _SystemHash {
   }
 }
 
-/// See also [userDetail].
-@ProviderFor(userDetail)
-const userDetailProvider = UserDetailFamily();
+/// See also [withCodeGenerationUserDetails].
+@ProviderFor(withCodeGenerationUserDetails)
+const withCodeGenerationUserDetailsProvider =
+    WithCodeGenerationUserDetailsFamily();
 
-/// See also [userDetail].
-class UserDetailFamily extends Family<AsyncValue<User>> {
-  /// See also [userDetail].
-  const UserDetailFamily();
+/// See also [withCodeGenerationUserDetails].
+class WithCodeGenerationUserDetailsFamily extends Family<AsyncValue<User>> {
+  /// See also [withCodeGenerationUserDetails].
+  const WithCodeGenerationUserDetailsFamily();
 
-  /// See also [userDetail].
-  UserDetailProvider call(int id) {
-    return UserDetailProvider(id);
+  /// See also [withCodeGenerationUserDetails].
+  WithCodeGenerationUserDetailsProvider call(int id) {
+    return WithCodeGenerationUserDetailsProvider(id);
   }
 
   @override
-  UserDetailProvider getProviderOverride(
-    covariant UserDetailProvider provider,
+  WithCodeGenerationUserDetailsProvider getProviderOverride(
+    covariant WithCodeGenerationUserDetailsProvider provider,
   ) {
     return call(provider.id);
   }
@@ -78,27 +64,32 @@ class UserDetailFamily extends Family<AsyncValue<User>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'userDetailProvider';
+  String? get name => r'withCodeGenerationUserDetailsProvider';
 }
 
-/// See also [userDetail].
-class UserDetailProvider extends AutoDisposeFutureProvider<User> {
-  /// See also [userDetail].
-  UserDetailProvider(int id)
+/// See also [withCodeGenerationUserDetails].
+class WithCodeGenerationUserDetailsProvider
+    extends AutoDisposeFutureProvider<User> {
+  /// See also [withCodeGenerationUserDetails].
+  WithCodeGenerationUserDetailsProvider(int id)
     : this._internal(
-        (ref) => userDetail(ref as UserDetailRef, id),
-        from: userDetailProvider,
-        name: r'userDetailProvider',
+        (ref) => withCodeGenerationUserDetails(
+          ref as WithCodeGenerationUserDetailsRef,
+          id,
+        ),
+        from: withCodeGenerationUserDetailsProvider,
+        name: r'withCodeGenerationUserDetailsProvider',
         debugGetCreateSourceHash:
             const bool.fromEnvironment('dart.vm.product')
                 ? null
-                : _$userDetailHash,
-        dependencies: UserDetailFamily._dependencies,
-        allTransitiveDependencies: UserDetailFamily._allTransitiveDependencies,
+                : _$withCodeGenerationUserDetailsHash,
+        dependencies: WithCodeGenerationUserDetailsFamily._dependencies,
+        allTransitiveDependencies:
+            WithCodeGenerationUserDetailsFamily._allTransitiveDependencies,
         id: id,
       );
 
-  UserDetailProvider._internal(
+  WithCodeGenerationUserDetailsProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -112,12 +103,12 @@ class UserDetailProvider extends AutoDisposeFutureProvider<User> {
 
   @override
   Override overrideWith(
-    FutureOr<User> Function(UserDetailRef provider) create,
+    FutureOr<User> Function(WithCodeGenerationUserDetailsRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: UserDetailProvider._internal(
-        (ref) => create(ref as UserDetailRef),
+      override: WithCodeGenerationUserDetailsProvider._internal(
+        (ref) => create(ref as WithCodeGenerationUserDetailsRef),
         from: from,
         name: null,
         dependencies: null,
@@ -130,12 +121,12 @@ class UserDetailProvider extends AutoDisposeFutureProvider<User> {
 
   @override
   AutoDisposeFutureProviderElement<User> createElement() {
-    return _UserDetailProviderElement(this);
+    return _WithCodeGenerationUserDetailsProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is UserDetailProvider && other.id == id;
+    return other is WithCodeGenerationUserDetailsProvider && other.id == id;
   }
 
   @override
@@ -149,17 +140,18 @@ class UserDetailProvider extends AutoDisposeFutureProvider<User> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin UserDetailRef on AutoDisposeFutureProviderRef<User> {
+mixin WithCodeGenerationUserDetailsRef on AutoDisposeFutureProviderRef<User> {
   /// The parameter `id` of this provider.
   int get id;
 }
 
-class _UserDetailProviderElement extends AutoDisposeFutureProviderElement<User>
-    with UserDetailRef {
-  _UserDetailProviderElement(super.provider);
+class _WithCodeGenerationUserDetailsProviderElement
+    extends AutoDisposeFutureProviderElement<User>
+    with WithCodeGenerationUserDetailsRef {
+  _WithCodeGenerationUserDetailsProviderElement(super.provider);
 
   @override
-  int get id => (origin as UserDetailProvider).id;
+  int get id => (origin as WithCodeGenerationUserDetailsProvider).id;
 }
 
 // ignore_for_file: type=lint

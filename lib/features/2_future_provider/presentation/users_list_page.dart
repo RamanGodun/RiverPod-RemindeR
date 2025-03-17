@@ -4,16 +4,16 @@ import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/custom_list_tile.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/users_providers_gen.dart'; // In case of code generation
+import '../domain/users_list_future_provider_gen.dart'; // In case of code generation
 // import '../providers/users_providers.dart'; // In case we don't use code generation
-import 'user_detail_page.dart';
+import 'user_details_page.dart';
 
 class UserListPage extends ConsumerWidget {
   const UserListPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userList = ref.watch(userListProvider);
+    final userList = ref.watch(withCodeGenerationUserListProvider);
 
     /*
         General logging prints to track all states of the provider.
@@ -32,10 +32,10 @@ class UserListPage extends ConsumerWidget {
           IconButton(
             onPressed: () async {
               // Invalidate the provider to trigger a full rebuild and data refetch.
-              ref.invalidate(userListProvider);
+              ref.invalidate(withCodeGenerationUserListProvider);
             },
             icon: const Icon(Icons.refresh),
-          )
+          ),
         ],
       ),
       body: userList.when(
@@ -55,8 +55,11 @@ class UserListPage extends ConsumerWidget {
               final user = users[index];
 
               return GestureDetector(
-                onTap: () =>
-                    Helpers.pushTo(context, UserDetailPage(userId: user.id)),
+                onTap:
+                    () => Helpers.pushTo(
+                      context,
+                      UserDetailPage(userId: user.id),
+                    ),
                 child: AppListTile(
                   leading: CircleAvatar(
                     child: TextWidget(user.id.toString(), TextType.titleSmall),
@@ -70,7 +73,12 @@ class UserListPage extends ConsumerWidget {
         error: (error, stTrace) => AppMiniWidgets(MWType.error, error: error),
         loading: () => const AppMiniWidgets(MWType.loading),
       ),
-      /*
+    );
+  }
+}
+
+
+ /*
         * ALTERNATIVE syntax
         * The following is an example of using `switch` with `AsyncValue`.
         * It demonstrates how to handle the different states of `userList`
@@ -101,6 +109,3 @@ class UserListPage extends ConsumerWidget {
       //   AsyncError(:final error) => AppMiniWidgets.errorWidget(context, error),
       //   _ => AppMiniWidgets.loadingWidget(),
       // },
-    );
-  }
-}

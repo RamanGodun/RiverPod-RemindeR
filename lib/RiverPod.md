@@ -54,3 +54,20 @@ Each time the state of the dependent provider changes, the first provider is dis
 The Family provider allows for more reusable and dynamic code by treating the provider like a function.
 ===============================
 
+
+
+# User Model - Freezed Documentation
+
+## Використання Freezed:
+- **Immutable клас.** Неможливо змінити поля після ініціалізації.
+- **Equality & Hashing.** Порівняння об'єктів відбувається коректно.
+- **CopyWith.** Легко клонувати об'єкт з новими параметрами.
+- **fromJson / toJson.** Автоматична серіалізація/десеріалізація.
+
+## Навіщо `const User._();`?
+Цей приватний unnamed конструктор дозволяє:
+- Створювати кастомні методи.
+- Перевизначати методи (наприклад, `toString()`).
+
+## Навіщо кастомний `toString()`?
+Щоб при друці в консолі не засмічувати лог всіма полями (email, phone, website).

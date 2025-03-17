@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/domain/app_constants/app_constants.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/users_providers_gen.dart'; // In case of code generation
+import '../domain/user_details_future_provider_gen.dart'; // In case of code generation
 // import '../providers/users_providers.dart'; // In case we don't use code generation
 
 class UserDetailPage extends ConsumerWidget {
@@ -12,7 +12,7 @@ class UserDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userDetail = ref.watch(userDetailProvider(userId));
+    final userDetail = ref.watch(withCodeGenerationUserDetailsProvider(userId));
 
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +30,10 @@ class UserDetailPage extends ConsumerWidget {
           return RefreshIndicator(
             // RefreshIndicator triggers a refresh of the userDetailProvider using its future.
             // This ensures the UI will fetch updated data asynchronously.
-            onRefresh: () => ref.refresh(userDetailProvider(userId).future),
+            onRefresh:
+                () => ref.refresh(
+                  withCodeGenerationUserDetailsProvider(userId).future,
+                ),
             color: AppConstants.errorColor,
             child: Center(
               child: ListView.builder(
@@ -84,13 +87,9 @@ class UserInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Row(
-      children: [
-        Icon(iconData),
-        const SizedBox(width: 10),
-        Text(userInfo, style: theme.textTheme.titleMedium),
-      ],
+      spacing: 10,
+      children: [Icon(iconData), TextWidget(userInfo, TextType.titleSmall)],
     );
   }
 }
