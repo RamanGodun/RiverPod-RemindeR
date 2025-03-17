@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/domain/state/dio/dio_provider.dart';
+import '../../../core/domain/state/dio_and_retrofit/dio_provider.dart';
 import 'model/user.dart';
 
 final userListFutureProviderWithoutCodeGen = FutureProvider.autoDispose<

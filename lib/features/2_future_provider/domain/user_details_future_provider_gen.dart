@@ -1,13 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../../core/domain/state/dio/dio_provider.dart';
+import '../../../core/domain/state/dio_and_retrofit/dio_provider.dart';
 import 'model/user.dart';
+
 part 'user_details_future_provider_gen.g.dart';
 
 @riverpod
 FutureOr<User> withCodeGenerationUserDetails(Ref ref, int id) async {
-  // Set up a dispose callback to track when the provider is disposed
   ref.onDispose(() {
     print('[withCodeGenerationUserDetail($id)] disposed');
   });
@@ -37,8 +36,6 @@ FutureOr<User> withCodeGenerationUserDetails(Ref ref, int id) async {
     whereas `ref.keepAlive()` only keeps the data alive until it is next needed and accessed.
   */
 
-  // Parse the response and convert it into a User object
-  final user = User.fromJson(response.data);
-
-  return user; // Return the user details
+  // return parsed and converted response  into a User object
+  return User.fromJson(response.data);
 }

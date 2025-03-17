@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/domain/state/dio/dio_provider.dart';
+import '../../../core/domain/state/dio_and_retrofit/dio_provider.dart';
 import 'model/user.dart';
 
 part 'users_list_future_provider_gen.g.dart';
 
 @riverpod
-FutureOr<List<User>> withCodeGenerationUserList(Ref ref) async {
+Future<List<User>> withCodeGenerationUserList(Ref ref) async {
   ref.onDispose(() {
     print('[withCodeGenerationUserList] disposed');
   });

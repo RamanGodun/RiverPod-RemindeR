@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/app_constants/app_constants.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
@@ -12,63 +13,24 @@ class UserDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userDetail = ref.watch(withCodeGenerationUserDetailsProvider(userId));
+    final userDetails = ref.watch(
+      withCodeGenerationUserDetailsProvider(userId),
+    );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget('User Detail', TextType.titleMedium),
-      ),
-      body: userDetail.when(
+      appBar: const CustomAppBar(title: 'User Detail'),
+      body: userDetails.when(
         data: (user) {
-          final userInfoList = [
-            {'icon': Icons.account_circle, 'info': user.username},
-            {'icon': Icons.email_rounded, 'info': user.email},
-            {'icon': Icons.phone_enabled, 'info': user.phone},
-            {'icon': Icons.web_rounded, 'info': user.website},
+          final List<(IconData, String)> userInfoList = [
+            (Icons.account_circle, user.username),
+            (Icons.email_rounded, user.email),
+            (Icons.phone_enabled, user.phone),
+            (Icons.web_rounded, user.website),
           ];
-
           return RefreshIndicator(
-            // RefreshIndicator triggers a refresh of the userDetailProvider using its future.
-            // This ensures the UI will fetch updated data asynchronously.
-            onRefresh:
-                () => ref.refresh(
-                  withCodeGenerationUserDetailsProvider(userId).future,
-                ),
+            onRefresh: () => _refreshUserDetails(ref),
             color: AppConstants.errorColor,
-            child: Center(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const AlwaysScrollableScrollPhysics(),
-                padding: const EdgeInsets.only(
-                  left: 25,
-                  right: 20,
-                  bottom: 200,
-                  top: 50,
-                ),
-                itemCount: userInfoList.length + 1,
-                itemBuilder: (context, index) {
-                  // First element shows the user's name and a divider
-                  if (index == 0) {
-                    return Column(
-                      children: [
-                        TextWidget(user.name, TextType.headlineSmall),
-                        const Divider(),
-                      ],
-                    );
-                  } else {
-                    // Remaining items display the user details with icons
-                    final userInfo = userInfoList[index - 1];
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: UserInfo(
-                        iconData: userInfo['icon'] as IconData,
-                        userInfo: userInfo['info'] as String,
-                      ),
-                    );
-                  }
-                },
-              ),
-            ),
+            child: _buildUserInfoList(userInfoList, user.name),
           );
         },
         // In case of error, display the error widget
@@ -78,18 +40,44 @@ class UserDetailPage extends ConsumerWidget {
       ),
     );
   }
+
+  Future<void> _refreshUserDetails(WidgetRef ref) {
+    // RefreshIndicator triggers a refresh of the userDetailProvider using its future.
+    // This ensures the UI will fetch updated data asynchronously.
+    return ref.refresh(withCodeGenerationUserDetailsProvider(userId).future);
+  }
 }
 
-class UserInfo extends StatelessWidget {
-  final IconData iconData;
-  final String userInfo;
-  const UserInfo({super.key, required this.iconData, required this.userInfo});
+Widget _buildUserInfoList(List<(IconData, String)> userInfoList, String name) {
+  return Center(
+    child: ListView.builder(
+      shrinkWrap: true,
+      physics: const AlwaysScrollableScrollPhysics(),
+      padding: const EdgeInsets.only(left: 55, right: 20, bottom: 200, top: 50),
+      itemCount: userInfoList.length + 1,
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          return Column(
+            children: [
+              TextWidget(name, TextType.headlineSmall),
+              const Divider(),
+            ],
+          );
+        } else {
+          final (icon, info) = userInfoList[index - 1];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: _buildUserInfo(icon, info),
+          );
+        }
+      },
+    ),
+  );
+}
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 10,
-      children: [Icon(iconData), TextWidget(userInfo, TextType.titleSmall)],
-    );
-  }
+Widget _buildUserInfo(IconData iconData, String userInfo) {
+  return Row(
+    spacing: 10,
+    children: [Icon(iconData), TextWidget(userInfo, TextType.titleSmall)],
+  );
 }

@@ -7,7 +7,7 @@ part of 'user_details_future_provider_gen.dart';
 // **************************************************************************
 
 String _$withCodeGenerationUserDetailsHash() =>
-    r'4f25bf0b51ba72db53a711d5e780d5eaae351018';
+    r'3d677c6fdfe22a8cfa239278de4e7b210d24bd9d';
 
 /// Copied from Dart SDK
 class _SystemHash {
