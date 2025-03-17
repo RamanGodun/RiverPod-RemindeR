@@ -12,12 +12,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
 
-  runApp(
-    ProviderScope(
-      observers: [Logger()],
-      child: const MainApp(),
-    ),
-  );
+  runApp(ProviderScope(observers: [Logger()], child: const MainApp()));
 }
 
 class MainApp extends ConsumerWidget {
@@ -40,4 +35,8 @@ class MainApp extends ConsumerWidget {
 
 /* 
 !   dart run build_runner build watch 
+flutter pub run build_runner build --delete-conflicting-outputs
+flutter pub run build_runner watch --delete-conflicting-outputs
+
+flutter pub run build_runner clean
 */
