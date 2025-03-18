@@ -6,11 +6,9 @@ import 'models/todo_model_mutable.dart';
 ///
 /// This class provides methods for adding, toggling, and removing `Todo` items.
 /// It uses the `ChangeNotifier` mechanism to notify listeners when the state changes.
-class TodosNotifier extends ChangeNotifier {
-  /// Internal list of _todos that the app will manage.
+class TodosOnChangeNotifier extends ChangeNotifier {
   final List<Todo> _todos = [];
-
-  /// Public getter to access the list of todos.
+  // Public getter to access the list of todos.
   List<Todo> get todos => _todos;
 
   /// Adds a new `Todo` to the list and notifies listeners about the change.
@@ -48,6 +46,7 @@ class TodosNotifier extends ChangeNotifier {
 /// This provider allows any part of the application to access the `TodosNotifier`
 /// and listen for changes in the list of _todos. The provider can be further enhanced with
 /// modifiers such as `autoDispose` or `family` depending on the use case.
-final todosProvider = ChangeNotifierProvider<TodosNotifier>((ref) {
-  return TodosNotifier();
-});
+final todosOnChangeNotifierProvider =
+    ChangeNotifierProvider<TodosOnChangeNotifier>((ref) {
+      return TodosOnChangeNotifier();
+    });

@@ -4,9 +4,9 @@ import 'models/todo_model_immutable.dart';
 /// A `StateNotifier` that manages a list of immutable `Todo` objects.
 /// Each state update results in a new immutable list, ensuring that the state
 /// is predictable and easy to manage.
-class TodosNotifier extends StateNotifier<List<Todo>> {
+class TodosOnStateNotifier extends StateNotifier<List<Todo>> {
   /// Initializes the `TodosNotifier` with an empty list of todos.
-  TodosNotifier() : super([]);
+  TodosOnStateNotifier() : super([]);
 
   /// Adds a new `Todo` to the list.
   ///
@@ -49,6 +49,7 @@ class TodosNotifier extends StateNotifier<List<Todo>> {
 /// with the list of todos, leveraging the `StateNotifier`'s methods to manage
 /// state in an immutable way. It can also be extended with `autoDispose`
 /// and `family` modifiers for advanced use cases.
-final todosProvider = StateNotifierProvider<TodosNotifier, List<Todo>>((ref) {
-  return TodosNotifier();
-});
+final todosOnStateNotifierProvider =
+    StateNotifierProvider<TodosOnStateNotifier, List<Todo>>((ref) {
+      return TodosOnStateNotifier();
+    });
