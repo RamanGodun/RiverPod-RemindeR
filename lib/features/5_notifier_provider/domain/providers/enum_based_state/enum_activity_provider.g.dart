@@ -12,13 +12,15 @@ String _$enumActivityHash() => r'c88fb9f8903dfa8fd58dac7ece858414e732c159';
 @ProviderFor(EnumActivity)
 final enumActivityProvider =
     AutoDisposeNotifierProvider<EnumActivity, EnumActivityState>.internal(
-  EnumActivity.new,
-  name: r'enumActivityProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$enumActivityHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      EnumActivity.new,
+      name: r'enumActivityProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$enumActivityHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$EnumActivity = AutoDisposeNotifier<EnumActivityState>;
 String _$myCounterHash() => r'08aa79aa72de3999f55247db1de2cabfa13c9357';

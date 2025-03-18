@@ -12,7 +12,8 @@ part of 'activity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Activity _$ActivityFromJson(Map<String, dynamic> json) {
   return _Activity.fromJson(json);
@@ -46,17 +47,18 @@ abstract class $ActivityCopyWith<$Res> {
   factory $ActivityCopyWith(Activity value, $Res Function(Activity) then) =
       _$ActivityCopyWithImpl<$Res, Activity>;
   @useResult
-  $Res call(
-      {String activity,
-      double availability,
-      String type,
-      int participants,
-      double price,
-      String accessibility,
-      String duration,
-      bool kidFriendly,
-      String link,
-      String key});
+  $Res call({
+    String activity,
+    double availability,
+    String type,
+    int participants,
+    double price,
+    String accessibility,
+    String duration,
+    bool kidFriendly,
+    String link,
+    String key,
+  });
 }
 
 /// @nodoc
@@ -85,48 +87,61 @@ class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
     Object? link = null,
     Object? key = null,
   }) {
-    return _then(_value.copyWith(
-      activity: null == activity
-          ? _value.activity
-          : activity // ignore: cast_nullable_to_non_nullable
-              as String,
-      availability: null == availability
-          ? _value.availability
-          : availability // ignore: cast_nullable_to_non_nullable
-              as double,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      participants: null == participants
-          ? _value.participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      accessibility: null == accessibility
-          ? _value.accessibility
-          : accessibility // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as String,
-      kidFriendly: null == kidFriendly
-          ? _value.kidFriendly
-          : kidFriendly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      link: null == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String,
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            activity:
+                null == activity
+                    ? _value.activity
+                    : activity // ignore: cast_nullable_to_non_nullable
+                        as String,
+            availability:
+                null == availability
+                    ? _value.availability
+                    : availability // ignore: cast_nullable_to_non_nullable
+                        as double,
+            type:
+                null == type
+                    ? _value.type
+                    : type // ignore: cast_nullable_to_non_nullable
+                        as String,
+            participants:
+                null == participants
+                    ? _value.participants
+                    : participants // ignore: cast_nullable_to_non_nullable
+                        as int,
+            price:
+                null == price
+                    ? _value.price
+                    : price // ignore: cast_nullable_to_non_nullable
+                        as double,
+            accessibility:
+                null == accessibility
+                    ? _value.accessibility
+                    : accessibility // ignore: cast_nullable_to_non_nullable
+                        as String,
+            duration:
+                null == duration
+                    ? _value.duration
+                    : duration // ignore: cast_nullable_to_non_nullable
+                        as String,
+            kidFriendly:
+                null == kidFriendly
+                    ? _value.kidFriendly
+                    : kidFriendly // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            link:
+                null == link
+                    ? _value.link
+                    : link // ignore: cast_nullable_to_non_nullable
+                        as String,
+            key:
+                null == key
+                    ? _value.key
+                    : key // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -134,21 +149,23 @@ class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
 abstract class _$$ActivityImplCopyWith<$Res>
     implements $ActivityCopyWith<$Res> {
   factory _$$ActivityImplCopyWith(
-          _$ActivityImpl value, $Res Function(_$ActivityImpl) then) =
-      __$$ActivityImplCopyWithImpl<$Res>;
+    _$ActivityImpl value,
+    $Res Function(_$ActivityImpl) then,
+  ) = __$$ActivityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String activity,
-      double availability,
-      String type,
-      int participants,
-      double price,
-      String accessibility,
-      String duration,
-      bool kidFriendly,
-      String link,
-      String key});
+  $Res call({
+    String activity,
+    double availability,
+    String type,
+    int participants,
+    double price,
+    String accessibility,
+    String duration,
+    bool kidFriendly,
+    String link,
+    String key,
+  });
 }
 
 /// @nodoc
@@ -156,8 +173,9 @@ class __$$ActivityImplCopyWithImpl<$Res>
     extends _$ActivityCopyWithImpl<$Res, _$ActivityImpl>
     implements _$$ActivityImplCopyWith<$Res> {
   __$$ActivityImplCopyWithImpl(
-      _$ActivityImpl _value, $Res Function(_$ActivityImpl) _then)
-      : super(_value, _then);
+    _$ActivityImpl _value,
+    $Res Function(_$ActivityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Activity
   /// with the given fields replaced by the non-null parameter values.
@@ -175,65 +193,78 @@ class __$$ActivityImplCopyWithImpl<$Res>
     Object? link = null,
     Object? key = null,
   }) {
-    return _then(_$ActivityImpl(
-      activity: null == activity
-          ? _value.activity
-          : activity // ignore: cast_nullable_to_non_nullable
-              as String,
-      availability: null == availability
-          ? _value.availability
-          : availability // ignore: cast_nullable_to_non_nullable
-              as double,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      participants: null == participants
-          ? _value.participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      accessibility: null == accessibility
-          ? _value.accessibility
-          : accessibility // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as String,
-      kidFriendly: null == kidFriendly
-          ? _value.kidFriendly
-          : kidFriendly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      link: null == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String,
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ActivityImpl(
+        activity:
+            null == activity
+                ? _value.activity
+                : activity // ignore: cast_nullable_to_non_nullable
+                    as String,
+        availability:
+            null == availability
+                ? _value.availability
+                : availability // ignore: cast_nullable_to_non_nullable
+                    as double,
+        type:
+            null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                    as String,
+        participants:
+            null == participants
+                ? _value.participants
+                : participants // ignore: cast_nullable_to_non_nullable
+                    as int,
+        price:
+            null == price
+                ? _value.price
+                : price // ignore: cast_nullable_to_non_nullable
+                    as double,
+        accessibility:
+            null == accessibility
+                ? _value.accessibility
+                : accessibility // ignore: cast_nullable_to_non_nullable
+                    as String,
+        duration:
+            null == duration
+                ? _value.duration
+                : duration // ignore: cast_nullable_to_non_nullable
+                    as String,
+        kidFriendly:
+            null == kidFriendly
+                ? _value.kidFriendly
+                : kidFriendly // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        link:
+            null == link
+                ? _value.link
+                : link // ignore: cast_nullable_to_non_nullable
+                    as String,
+        key:
+            null == key
+                ? _value.key
+                : key // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ActivityImpl with DiagnosticableTreeMixin implements _Activity {
-  const _$ActivityImpl(
-      {required this.activity,
-      required this.availability,
-      required this.type,
-      required this.participants,
-      required this.price,
-      required this.accessibility,
-      required this.duration,
-      required this.kidFriendly,
-      required this.link,
-      required this.key});
+  const _$ActivityImpl({
+    required this.activity,
+    required this.availability,
+    required this.type,
+    required this.participants,
+    required this.price,
+    required this.accessibility,
+    required this.duration,
+    required this.kidFriendly,
+    required this.link,
+    required this.key,
+  });
 
   factory _$ActivityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ActivityImplFromJson(json);
@@ -306,8 +337,19 @@ class _$ActivityImpl with DiagnosticableTreeMixin implements _Activity {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, activity, availability, type,
-      participants, price, accessibility, duration, kidFriendly, link, key);
+  int get hashCode => Object.hash(
+    runtimeType,
+    activity,
+    availability,
+    type,
+    participants,
+    price,
+    accessibility,
+    duration,
+    kidFriendly,
+    link,
+    key,
+  );
 
   /// Create a copy of Activity
   /// with the given fields replaced by the non-null parameter values.
@@ -319,24 +361,23 @@ class _$ActivityImpl with DiagnosticableTreeMixin implements _Activity {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ActivityImplToJson(
-      this,
-    );
+    return _$$ActivityImplToJson(this);
   }
 }
 
 abstract class _Activity implements Activity {
-  const factory _Activity(
-      {required final String activity,
-      required final double availability,
-      required final String type,
-      required final int participants,
-      required final double price,
-      required final String accessibility,
-      required final String duration,
-      required final bool kidFriendly,
-      required final String link,
-      required final String key}) = _$ActivityImpl;
+  const factory _Activity({
+    required final String activity,
+    required final double availability,
+    required final String type,
+    required final int participants,
+    required final double price,
+    required final String accessibility,
+    required final String duration,
+    required final bool kidFriendly,
+    required final String link,
+    required final String key,
+  }) = _$ActivityImpl;
 
   factory _Activity.fromJson(Map<String, dynamic> json) =
       _$ActivityImpl.fromJson;

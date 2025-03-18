@@ -12,7 +12,8 @@ part of 'enum_activity_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$EnumActivityState {
@@ -32,8 +33,9 @@ mixin _$EnumActivityState {
 /// @nodoc
 abstract class $EnumActivityStateCopyWith<$Res> {
   factory $EnumActivityStateCopyWith(
-          EnumActivityState value, $Res Function(EnumActivityState) then) =
-      _$EnumActivityStateCopyWithImpl<$Res, EnumActivityState>;
+    EnumActivityState value,
+    $Res Function(EnumActivityState) then,
+  ) = _$EnumActivityStateCopyWithImpl<$Res, EnumActivityState>;
   @useResult
   $Res call({ActivityStatus status, List<Activity> activities, String error});
 }
@@ -57,29 +59,36 @@ class _$EnumActivityStateCopyWithImpl<$Res, $Val extends EnumActivityState>
     Object? activities = null,
     Object? error = null,
   }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ActivityStatus,
-      activities: null == activities
-          ? _value.activities
-          : activities // ignore: cast_nullable_to_non_nullable
-              as List<Activity>,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            status:
+                null == status
+                    ? _value.status
+                    : status // ignore: cast_nullable_to_non_nullable
+                        as ActivityStatus,
+            activities:
+                null == activities
+                    ? _value.activities
+                    : activities // ignore: cast_nullable_to_non_nullable
+                        as List<Activity>,
+            error:
+                null == error
+                    ? _value.error
+                    : error // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$EnumActivityStateImplCopyWith<$Res>
     implements $EnumActivityStateCopyWith<$Res> {
-  factory _$$EnumActivityStateImplCopyWith(_$EnumActivityStateImpl value,
-          $Res Function(_$EnumActivityStateImpl) then) =
-      __$$EnumActivityStateImplCopyWithImpl<$Res>;
+  factory _$$EnumActivityStateImplCopyWith(
+    _$EnumActivityStateImpl value,
+    $Res Function(_$EnumActivityStateImpl) then,
+  ) = __$$EnumActivityStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ActivityStatus status, List<Activity> activities, String error});
@@ -89,9 +98,10 @@ abstract class _$$EnumActivityStateImplCopyWith<$Res>
 class __$$EnumActivityStateImplCopyWithImpl<$Res>
     extends _$EnumActivityStateCopyWithImpl<$Res, _$EnumActivityStateImpl>
     implements _$$EnumActivityStateImplCopyWith<$Res> {
-  __$$EnumActivityStateImplCopyWithImpl(_$EnumActivityStateImpl _value,
-      $Res Function(_$EnumActivityStateImpl) _then)
-      : super(_value, _then);
+  __$$EnumActivityStateImplCopyWithImpl(
+    _$EnumActivityStateImpl _value,
+    $Res Function(_$EnumActivityStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumActivityState
   /// with the given fields replaced by the non-null parameter values.
@@ -102,20 +112,25 @@ class __$$EnumActivityStateImplCopyWithImpl<$Res>
     Object? activities = null,
     Object? error = null,
   }) {
-    return _then(_$EnumActivityStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ActivityStatus,
-      activities: null == activities
-          ? _value._activities
-          : activities // ignore: cast_nullable_to_non_nullable
-              as List<Activity>,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$EnumActivityStateImpl(
+        status:
+            null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                    as ActivityStatus,
+        activities:
+            null == activities
+                ? _value._activities
+                : activities // ignore: cast_nullable_to_non_nullable
+                    as List<Activity>,
+        error:
+            null == error
+                ? _value.error
+                : error // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -124,17 +139,17 @@ class __$$EnumActivityStateImplCopyWithImpl<$Res>
 class _$EnumActivityStateImpl
     with DiagnosticableTreeMixin
     implements _EnumActivityState {
-  const _$EnumActivityStateImpl(
-      {required this.status,
-      required final List<Activity> activities,
-      required this.error})
-      : _activities = activities;
+  const _$EnumActivityStateImpl({
+    required this.status,
+    required final List<Activity> activities,
+    required this.error,
+  }) : _activities = activities;
 
   @override
   final ActivityStatus status;
-// Tracks the current status of the data fetching.
+  // Tracks the current status of the data fetching.
   final List<Activity> _activities;
-// Tracks the current status of the data fetching.
+  // Tracks the current status of the data fetching.
   @override
   List<Activity> get activities {
     if (_activities is EqualUnmodifiableListView) return _activities;
@@ -142,7 +157,7 @@ class _$EnumActivityStateImpl
     return EqualUnmodifiableListView(_activities);
   }
 
-// List of fetched activities.
+  // List of fetched activities.
   @override
   final String error;
 
@@ -167,14 +182,20 @@ class _$EnumActivityStateImpl
         (other.runtimeType == runtimeType &&
             other is _$EnumActivityStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality()
-                .equals(other._activities, _activities) &&
+            const DeepCollectionEquality().equals(
+              other._activities,
+              _activities,
+            ) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status,
-      const DeepCollectionEquality().hash(_activities), error);
+  int get hashCode => Object.hash(
+    runtimeType,
+    status,
+    const DeepCollectionEquality().hash(_activities),
+    error,
+  );
 
   /// Create a copy of EnumActivityState
   /// with the given fields replaced by the non-null parameter values.
@@ -183,14 +204,17 @@ class _$EnumActivityStateImpl
   @pragma('vm:prefer-inline')
   _$$EnumActivityStateImplCopyWith<_$EnumActivityStateImpl> get copyWith =>
       __$$EnumActivityStateImplCopyWithImpl<_$EnumActivityStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _EnumActivityState implements EnumActivityState {
-  const factory _EnumActivityState(
-      {required final ActivityStatus status,
-      required final List<Activity> activities,
-      required final String error}) = _$EnumActivityStateImpl;
+  const factory _EnumActivityState({
+    required final ActivityStatus status,
+    required final List<Activity> activities,
+    required final String error,
+  }) = _$EnumActivityStateImpl;
 
   @override
   ActivityStatus get status; // Tracks the current status of the data fetching.

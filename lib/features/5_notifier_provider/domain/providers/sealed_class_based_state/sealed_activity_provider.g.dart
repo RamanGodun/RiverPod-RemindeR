@@ -6,20 +6,21 @@ part of 'sealed_activity_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sealedActivityHash() => r'421b709a18e7e28c101f67e0a422a70b9cc62afc';
+String _$sealedActivityHash() => r'b504bbdb1f3f66721a86c4da397a4ba0ab6aec09';
 
 /// See also [SealedActivity].
 @ProviderFor(SealedActivity)
 final sealedActivityProvider =
     AutoDisposeNotifierProvider<SealedActivity, SealedActivityState>.internal(
-  SealedActivity.new,
-  name: r'sealedActivityProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$sealedActivityHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      SealedActivity.new,
+      name: r'sealedActivityProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$sealedActivityHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$SealedActivity = AutoDisposeNotifier<SealedActivityState>;
 // ignore_for_file: type=lint

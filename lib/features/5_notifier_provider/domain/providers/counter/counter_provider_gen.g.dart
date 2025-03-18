@@ -32,9 +32,7 @@ class _SystemHash {
 abstract class _$CounterOnNotifier extends BuildlessAutoDisposeNotifier<int> {
   late final int initialValue;
 
-  int build(
-    int initialValue,
-  );
+  int build(int initialValue);
 }
 
 /// See also [CounterOnNotifier].
@@ -47,21 +45,15 @@ class CounterOnNotifierFamily extends Family<int> {
   const CounterOnNotifierFamily();
 
   /// See also [CounterOnNotifier].
-  CounterOnNotifierProvider call(
-    int initialValue,
-  ) {
-    return CounterOnNotifierProvider(
-      initialValue,
-    );
+  CounterOnNotifierProvider call(int initialValue) {
+    return CounterOnNotifierProvider(initialValue);
   }
 
   @override
   CounterOnNotifierProvider getProviderOverride(
     covariant CounterOnNotifierProvider provider,
   ) {
-    return call(
-      provider.initialValue,
-    );
+    return call(provider.initialValue);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,21 +75,20 @@ class CounterOnNotifierFamily extends Family<int> {
 class CounterOnNotifierProvider
     extends AutoDisposeNotifierProviderImpl<CounterOnNotifier, int> {
   /// See also [CounterOnNotifier].
-  CounterOnNotifierProvider(
-    int initialValue,
-  ) : this._internal(
-          () => CounterOnNotifier()..initialValue = initialValue,
-          from: counterOnNotifierProvider,
-          name: r'counterOnNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$counterOnNotifierHash,
-          dependencies: CounterOnNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              CounterOnNotifierFamily._allTransitiveDependencies,
-          initialValue: initialValue,
-        );
+  CounterOnNotifierProvider(int initialValue)
+    : this._internal(
+        () => CounterOnNotifier()..initialValue = initialValue,
+        from: counterOnNotifierProvider,
+        name: r'counterOnNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$counterOnNotifierHash,
+        dependencies: CounterOnNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            CounterOnNotifierFamily._allTransitiveDependencies,
+        initialValue: initialValue,
+      );
 
   CounterOnNotifierProvider._internal(
     super._createNotifier, {
@@ -112,12 +103,8 @@ class CounterOnNotifierProvider
   final int initialValue;
 
   @override
-  int runNotifierBuild(
-    covariant CounterOnNotifier notifier,
-  ) {
-    return notifier.build(
-      initialValue,
-    );
+  int runNotifierBuild(covariant CounterOnNotifier notifier) {
+    return notifier.build(initialValue);
   }
 
   @override
@@ -171,5 +158,6 @@ class _CounterOnNotifierProviderElement
   @override
   int get initialValue => (origin as CounterOnNotifierProvider).initialValue;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
