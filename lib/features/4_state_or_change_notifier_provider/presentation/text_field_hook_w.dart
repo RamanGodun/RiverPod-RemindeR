@@ -17,8 +17,9 @@ class CustomTextField extends HookConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
         controller: textController,
-        decoration: InputDecoration(
-          labelText: 'New Todo on ${AppConfig.currentProviderType}',
+        decoration: const InputDecoration(
+          labelText:
+              'New Todos on ${AppConfig.isUsingStateNotifierProvider ? 'State notifier' : 'Change notifier'}',
         ),
 
         onSubmitted: (description) {

@@ -22,7 +22,7 @@ class Page4TickerOnStreamProvider extends ConsumerWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title:
-            'Ticker on ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider',
+            'Ticker  ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider',
       ),
       body: Center(
         child: tickerValue.when(

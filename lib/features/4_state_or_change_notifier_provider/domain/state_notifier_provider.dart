@@ -1,29 +1,21 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'models/todo_model_immutable.dart';
 
-/// A `StateNotifier` that manages a list of immutable `Todo` objects.
-/// Each state update results in a new immutable list, ensuring that the state
-/// is predictable and easy to manage.
+/// `TodosOnStateNotifier` is a `StateNotifier` that manages a list of immutable `Todo` objects.
+///
+/// Each state update produces a new immutable list, ensuring predictable and easily testable state management.
 class TodosOnStateNotifier extends StateNotifier<List<Todo>> {
-  /// Initializes the `TodosNotifier` with an empty list of todos.
+  /// Initializes the `TodosOnStateNotifier` with an empty list of todos.
   TodosOnStateNotifier() : super([]);
 
-  /// Adds a new `Todo` to the list.
-  ///
-  /// The new `Todo` is created using the `Todo.add` factory constructor, which
-  /// generates a unique `id` for each task. The state is then updated with the
-  /// new list of todos, ensuring immutability by creating a new list with the
-  /// added task.
+  /// The new `Todo` is created using the `Todo.add` factory constructor, which generates a unique `id` for each task.
+  /// The state is updated immutably by creating a new list with the added task.
   void addTodo(String description) {
     state = [...state, Todo.add(description: description)];
-    // print('in addTodo: $state');
   }
 
-  /// Toggles the `completed` status of a `Todo` by its `id`.
-  ///
-  /// This method finds the `Todo` with the specified `id` and creates a copy
-  /// with its `completed` field toggled. The state is updated with a new list
-  /// of todos where only the target `Todo` is modified.
+  /// Finds the `Todo` with the specified `id` and creates a copy with the `completed` field toggled.
+  /// Updates the state with a new list where only the target `Todo` is modified.
   void toggleTodo(String id) {
     state = [
       for (final todo in state)
@@ -31,10 +23,7 @@ class TodosOnStateNotifier extends StateNotifier<List<Todo>> {
     ];
   }
 
-  /// Removes a `Todo` from the list by its `id`.
-  ///
-  /// This method filters out the `Todo` with the specified `id` from the list
-  /// and updates the state with a new list that excludes the removed task.
+  /// Filters out the Todo with the specified id and updates the state immutably to exclude the removed Todo.
   void removeTodo(String id) {
     state = [
       for (final todo in state)
@@ -43,12 +32,11 @@ class TodosOnStateNotifier extends StateNotifier<List<Todo>> {
   }
 }
 
-/// A `StateNotifierProvider` that exposes the `TodosNotifier` to the rest of the app.
+/// `todosOnStateNotifierProvider` is a `StateNotifierProvider` that exposes `TodosOnStateNotifier` to the app.
 ///
-/// This provider allows other parts of the application to watch and interact
-/// with the list of todos, leveraging the `StateNotifier`'s methods to manage
-/// state in an immutable way. It can also be extended with `autoDispose`
-/// and `family` modifiers for advanced use cases.
+/// Any widget can watch or interact with the list of todos through this provider,
+/// leveraging `StateNotifier`'s methods to manage state immutably.
+/// This provider can be enhanced with modifiers like `autoDispose` or `family` for advanced use cases.
 final todosOnStateNotifierProvider =
     StateNotifierProvider<TodosOnStateNotifier, List<Todo>>((ref) {
       return TodosOnStateNotifier();

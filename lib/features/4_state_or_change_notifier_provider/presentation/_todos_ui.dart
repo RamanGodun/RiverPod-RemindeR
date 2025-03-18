@@ -18,7 +18,10 @@ class TodosPageOnStateOrChangeNotifierProvider extends ConsumerWidget {
     final isUsingStateNotifier = AppConfig.isUsingStateNotifierProvider;
 
     return Scaffold(
-      appBar: CustomAppBar(title: 'Todos on ${AppConfig.currentProviderType}'),
+      appBar: const CustomAppBar(
+        title:
+            'Todos on ${AppConfig.isUsingStateNotifierProvider ? 'State notifier' : 'Change notifier'}',
+      ),
       body: Column(
         spacing: 20,
         children: [
