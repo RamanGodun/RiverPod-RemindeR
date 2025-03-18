@@ -2,13 +2,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:dio/dio.dart';
 
-import 'dio_interceptor.dart';
+import '../dio_interceptor.dart';
 
 // rivp => Use autocompletion for generating the provider part file
-part 'dio_provider.g.dart';
+part 'users_list_dio_provider.g.dart';
 
 @riverpod
-Dio dio(Ref ref) {
+Dio usersListDio(Ref ref) {
   final dio = Dio(BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'));
 
   // Add the custom interceptor

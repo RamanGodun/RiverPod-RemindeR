@@ -21,5 +21,5 @@ class ManualCounterOnNotifier extends AutoDisposeFamilyNotifier<int, int> {
   }
 }
 
-final counterOnNotifierProvider = NotifierProvider.autoDispose
+final counterOnManualNotifierProvider = NotifierProvider.autoDispose
     .family<ManualCounterOnNotifier, int, int>(ManualCounterOnNotifier.new);

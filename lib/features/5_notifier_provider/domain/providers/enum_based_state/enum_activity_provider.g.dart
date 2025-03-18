@@ -6,7 +6,7 @@ part of 'enum_activity_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$enumActivityHash() => r'801c84648275107e05be5f5b99977e3d5a8b9e83';
+String _$enumActivityHash() => r'43345372bf1f5c0b91c9c1396191a9bb6e5e4087';
 
 /// See also [EnumActivity].
 @ProviderFor(EnumActivity)

@@ -9,12 +9,12 @@ import 'features/2_future_provider/presentation/_future_providers_page.dart';
 import 'features/3_stream_provider/ticker_presentation.dart';
 import 'core/domain/app_constants/app_strings.dart';
 import 'core/domain/models/enums.dart';
-import 'core/domain/state/features_provider.dart';
+import 'core/domain/state/_features_provider.dart';
 import 'core/domain/utils_and_services/dialogs_service.dart';
 import 'core/domain/utils_and_services/helpers.dart';
 import 'core/ui/_theming/theme_provider.dart';
 import 'features/4_state_or_change_notifier_provider/presentation/_todos_ui.dart';
-import 'features/5_notifier_provider/presentation/_0_notifier_providers_page.dart';
+import 'features/5_notifier_provider/presentation/_notifier_providers_page.dart';
 
 /// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
 class MyHomePage extends ConsumerWidget {

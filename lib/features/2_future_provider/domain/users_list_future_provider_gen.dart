@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/domain/state/dio_and_retrofit/dio_provider.dart';
+import '../../../core/domain/state/dio_and_retrofit/user_list_api/users_list_dio_provider.dart';
 import 'model/user.dart';
 
 part 'users_list_future_provider_gen.g.dart';
@@ -12,7 +12,7 @@ Future<List<User>> withCodeGenerationUserList(Ref ref) async {
   });
 
   // Fetch the list of users from the API using the dioProvider
-  final response = await ref.watch(dioProvider).get('/users');
+  final response = await ref.watch(usersListDioProvider).get('/users');
 
   // For testing error handling, you can uncomment the following line:
   // throw 'Failed to fetch user list';

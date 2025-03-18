@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '_counter_presentation.dart';
-import '_enum_activity_presentation.dart';
-import '_sealed_activity_presentation.dart';
+import 'ui_4_counter_on_notifier_provider.dart';
+import 'ui_4_activities_on_enum_based_state_shape_of_notifier_provider.dart';
+import 'ui_4_activities_on_sealed_class_based_state_shape_of_notifier_provider.dart';
 
 class NotifierProvidersPage extends StatelessWidget {
   const NotifierProvidersPage({super.key});

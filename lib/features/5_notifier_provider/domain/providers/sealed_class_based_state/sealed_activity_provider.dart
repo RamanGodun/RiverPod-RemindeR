@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
+import '../../../../../core/domain/state/dio_and_retrofit/activities_api/activities_dio_provider.dart';
 import '../../models/activity.dart';
-import '../dio_provider.dart';
 import 'sealed_activity_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -45,7 +45,7 @@ class SealedActivity extends _$SealedActivity {
       }
 
       // Fetching data from the API using the dioProvider.
-      final response = await ref.read(dioProvider).get('?type=$activityType');
+      final response = await ref.read(activitiesDioProvider).get('?type=$activityType');
 
       debugPrint('Response type: ${response.data.runtimeType}');
       debugPrint('Response body: ${response.data}');

@@ -1,4 +1,3 @@
-// api_client.dart
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import '../../../../features/2_future_provider/domain/model/user.dart';

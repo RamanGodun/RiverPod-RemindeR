@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/domain/state/dio_and_retrofit/dio_provider.dart';
+
+import '../../../core/domain/state/dio_and_retrofit/user_list_api/users_list_dio_provider.dart';
 import 'model/user.dart';
 
 part 'user_details_future_provider_gen.g.dart';
@@ -12,7 +13,7 @@ FutureOr<User> withCodeGenerationUserDetails(Ref ref, int id) async {
   });
 
   // Fetch the details of a specific user by ID
-  final response = await ref.watch(dioProvider).get('/users/$id');
+  final response = await ref.watch(usersListDioProvider).get('/users/$id');
 
   // return parsed and converted response  into a User object
   final user = User.fromJson(response.data);

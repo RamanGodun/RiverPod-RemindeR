@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import '../../../core/domain/utils_and_services/helpers.dart';
+import '../../../core/ui/widgets/buttons/outlined.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/providers/counter/counter_provider.dart';
-import '../domain/providers/counter/counter_provider_gen.dart';
-// import '../providers/counter/counter_provider.dart'; //without code generation use this
+import '../domain/providers/counter/counter_on_manual_notifier_provider.dart';
+import '../domain/providers/counter/counter_on_gen_notifier_provider_gen.dart';
 
 class CounterPageOnNotifier extends ConsumerWidget {
   const CounterPageOnNotifier({super.key});
@@ -14,8 +15,8 @@ class CounterPageOnNotifier extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final counter =
         AppConfig.isUsingCodeGeneration
-            ? ref.watch(GenCounterOnNotifierProvider(10))
-            : ref.watch(ManualCounterOnNotifier(10));
+            ? ref.watch(genCounterOnNotifierProvider(10))
+            : ref.watch(counterOnManualNotifierProvider(10));
 
     return Scaffold(
       appBar: const CustomAppBar(
@@ -23,25 +24,30 @@ class CounterPageOnNotifier extends ConsumerWidget {
             'Counter on ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider',
       ),
       body: Center(
-        child: Column(
-          spacing: 20,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          shrinkWrap: true,
           children: [
-            TextWidget('$counter', TextType.displayMedium),
+            const TextWidget('Current counter value is: ', TextType.titleLarge),
+            TextWidget(
+              '$counter',
+              TextType.displayMedium,
+              color: Helpers.getColorScheme(context).secondary,
+            ),
+            const SizedBox(height: 45),
 
-            OutlinedButton(
+            CustomOutlinedButton(
+              buttonText: 'Increment',
               onPressed:
                   () =>
                       AppConfig.isUsingCodeGeneration
-                          ?
-                          // without code generation use this
-                          ref
+                          ? ref
                               .read(GenCounterOnNotifierProvider(10).notifier)
                               .increment()
                           : ref
-                              .read(ManualCounterOnNotifier(10).notifier)
+                              .read(
+                                counterOnManualNotifierProvider(10).notifier,
+                              )
                               .increment(),
-              child: const TextWidget('Increment', TextType.titleMedium),
             ),
           ],
         ),
