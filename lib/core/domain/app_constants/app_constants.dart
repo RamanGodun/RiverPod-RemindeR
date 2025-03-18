@@ -12,16 +12,16 @@ abstract class AppConstants {
   // ────────────────────────────────────────────────────────────────────
 
   /// 🌙 **Dark Theme Colors**
-  static const Color darkPrimaryColor = Color(0xFF0A84FF); // macOS system blue
-  static const Color darkAccentColor = Color(0xFF5E5CE6); // Secondary accent
+  static const Color darkPrimaryColor = Color.fromARGB(255, 6, 148, 132);
+  static const Color darkAccentColor = Color.fromARGB(255, 122, 143, 116);
   static const Color darkBackgroundColor = Color(0xFF1C1C1E);
   static const Color darkSurface = Color(0xFF2C2C2E);
   static const Color darkOverlay = Color(0xBF1C1C1E); // 75% opacity
   static const Color darkBorder = Color(0xFF3A3A3C);
 
   /// ☀️ **Light Theme Colors**
-  static const Color lightPrimaryColor = Color(0xFF007AFF);
-  static const Color lightAccentColor = Color(0xFF34C759);
+  static const Color lightPrimaryColor = Color.fromARGB(255, 1, 81, 75);
+  static const Color lightAccentColor = Color.fromARGB(255, 162, 196, 171);
   static const Color lightBackgroundColor = Color(0xFFF2F2F7);
   static const Color lightSurface = Color(0xFFFFFFFF);
   static const Color lightOverlay = Color(0xBFFFFFFF); // 75% opacity

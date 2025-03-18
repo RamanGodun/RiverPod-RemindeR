@@ -3,15 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../../../features/0_simple_providers/presentation/_simple_providers_page.dart';
-import '../../../features/1_state_provider/presentation/_state_providers_page.dart';
-import '../../../features/2_future_provider/presentation/_future_providers_page.dart';
-import '../../domain/app_constants/app_strings.dart';
-import '../../domain/models/enums.dart';
-import '../../domain/state/features_provider.dart';
-import '../../domain/utils_and_services/dialogs_service.dart';
-import '../../domain/utils_and_services/helpers.dart';
-import '../_theming/theme_provider.dart';
+import 'features/0_simple_providers/presentation/_simple_providers_page.dart';
+import 'features/1_state_provider/presentation/_state_providers_page.dart';
+import 'features/2_future_provider/presentation/_future_providers_page.dart';
+import 'features/3_stream_provider/ticker_presentation.dart';
+import 'core/domain/app_constants/app_strings.dart';
+import 'core/domain/models/enums.dart';
+import 'core/domain/state/features_provider.dart';
+import 'core/domain/utils_and_services/dialogs_service.dart';
+import 'core/domain/utils_and_services/helpers.dart';
+import 'core/ui/_theming/theme_provider.dart';
 
 /// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
 class MyHomePage extends ConsumerWidget {
@@ -66,6 +67,8 @@ Widget getFeatureWidget(AppFeature feature) {
       return const StateProvidersPage();
     case AppFeature.futureProvider:
       return const FutureProvidersPage();
+    case AppFeature.streamProvider:
+      return const Page4TickerOnStreamProvider();
     /*
 
     */

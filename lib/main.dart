@@ -6,7 +6,7 @@ import 'core/domain/app_constants/app_strings.dart';
 import 'core/domain/config/observer/observer_logger.dart';
 import 'core/ui/_theming/app_theme.dart';
 import 'core/ui/_theming/theme_provider.dart';
-import 'core/ui/pages/home_page.dart';
+import 'home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

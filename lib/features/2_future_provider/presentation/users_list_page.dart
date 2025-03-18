@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/custom_list_tile.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
-import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/users_list_future_provider_gen.dart';
 import '../domain/users_list_future_provider_manual.dart';
 import 'user_details_page.dart';
@@ -20,24 +20,22 @@ class UserListPage extends ConsumerWidget {
             : ref.watch(userListFutureProviderWithoutCodeGen);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'User List ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'}',
-        ),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              // Invalidate the provider to trigger a full rebuild and data refetch.
-              ref.invalidate(
-                AppConfig.isUsingCodeGeneration
-                    ? withCodeGenerationUserListProvider
-                    : userListFutureProviderWithoutCodeGen,
-              );
-            },
-            icon: const Icon(Icons.refresh),
-          ),
+      appBar: CustomAppBar(
+        title:
+            'User List ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'}',
+        actionIcons: const [Icons.refresh],
+        actionCallbacks: [
+          () async {
+            // Invalidate the provider to trigger a full rebuild and data refetch.
+            ref.invalidate(
+              AppConfig.isUsingCodeGeneration
+                  ? withCodeGenerationUserListProvider
+                  : userListFutureProviderWithoutCodeGen,
+            );
+          },
         ],
       ),
+
       body: userList.when(
         // `skipLoadingOnRefresh` set to false to show the loading indicator
         // during the refresh phase. Useful for visible feedback when using
@@ -45,8 +43,10 @@ class UserListPage extends ConsumerWidget {
         skipLoadingOnRefresh: false,
         data: (users) {
           return ListView.separated(
+            key: const PageStorageKey('UsersList'),
             // Always enable scrolling, even when the list is short.
             physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: users.length,
             separatorBuilder: (BuildContext context, int index) {
               return const Divider();
@@ -60,12 +60,7 @@ class UserListPage extends ConsumerWidget {
                       context,
                       UserDetailPage(userId: user.id),
                     ),
-                child: AppListTile(
-                  leading: CircleAvatar(
-                    child: TextWidget(user.id.toString(), TextType.titleSmall),
-                  ),
-                  title: user.name,
-                ),
+                child: AppListTile(id: user.id, title: user.name),
               );
             },
           );

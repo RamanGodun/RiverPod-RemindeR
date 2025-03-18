@@ -29,12 +29,14 @@ abstract class AppThemes {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
+        actionsIconTheme: IconThemeData(color: AppConstants.lightPrimaryColor),
         titleTextStyle: TextStyle(
           fontFamily: 'SFProText',
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
+        centerTitle: false,
       ),
 
       // 🔘 **Elevated Button Theme**
@@ -75,7 +77,7 @@ abstract class AppThemes {
       primaryColor: AppConstants.darkPrimaryColor,
       colorScheme: const ColorScheme.dark(
         primary: AppConstants.darkPrimaryColor,
-        secondary: AppConstants.darkAccentColor,
+        secondary: AppConstants.lightAccentColor,
         background: AppConstants.darkBackgroundColor,
         surface: AppConstants.darkSurface,
         onPrimary: Colors.white,
@@ -90,12 +92,14 @@ abstract class AppThemes {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
+        actionsIconTheme: IconThemeData(color: AppConstants.darkPrimaryColor),
         titleTextStyle: TextStyle(
           fontFamily: 'SFProText',
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
+        centerTitle: false,
       ),
 
       // 🔘 **Elevated Button Theme**

@@ -1,28 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'ticker_provider.dart'; // Use this if you are not using code generation
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import '../../core/domain/config/app_config.dart';
 import '../../core/domain/utils_and_services/helpers.dart';
 import '../../core/ui/widgets/mini_widgets.dart';
 import '../../core/ui/widgets/text_widget.dart';
+import 'ticker_provider_manual.dart';
 import 'ticker_provider_gen.dart'; // Use this in case of code generation
 
-class TickerPage extends ConsumerWidget {
-  const TickerPage({super.key});
+class Page4TickerOnStreamProvider extends ConsumerWidget {
+  const Page4TickerOnStreamProvider({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tickerValue = ref.watch(tickerProvider);
+    final tickerValue =
+        AppConfig.isUsingCodeGeneration
+            ? ref.watch(withGenTickerStreamProvider)
+            : ref.watch(tickerProviderWithoutCodeGen);
     print(tickerValue);
 
     return Scaffold(
-      appBar: AppBar(title: const TextWidget('Ticker', TextType.titleMedium)),
+      appBar: const CustomAppBar(
+        title:
+            'Ticker on ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider',
+      ),
       body: Center(
         child: tickerValue.when(
-          // Handling the state of the Stream with `when` method from AsyncValue
           data:
-              (ticks) => TextWidget(
-                Helpers.formatTimer(ticks),
-                TextType.headlineSmall,
+              (ticks) => ListView(
+                key: const PageStorageKey('tickerListView'),
+                shrinkWrap: true,
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                children: [
+                  const TextWidget(
+                    AppConfig.isUsingCodeGeneration
+                        ? 'The ticker provider will be autoDisposed when you leave this page'
+                        : 'The ticker will continue ticking without resetting even if you leave this page',
+                    TextType.titleMedium,
+                    isTextOnFewStrings: true,
+                  ),
+                  const SizedBox(height: 35),
+                  TextWidget(
+                    Helpers.formatTimer(ticks),
+                    TextType.headlineSmall,
+                  ),
+                ],
               ),
           // Display error widget if the Stream encounters an error
           error: (e, st) => AppMiniWidgets(MWType.error, error: e),
