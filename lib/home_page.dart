@@ -14,6 +14,7 @@ import 'core/domain/utils_and_services/dialogs_service.dart';
 import 'core/domain/utils_and_services/helpers.dart';
 import 'core/ui/_theming/theme_provider.dart';
 import 'features/4_state_or_change_notifier_provider/presentation/_todos_ui.dart';
+import 'features/5_notifier_provider/presentation/_0_notifier_providers_page.dart';
 
 /// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
 class MyHomePage extends ConsumerWidget {
@@ -72,8 +73,10 @@ Widget getFeatureWidget(AppFeature feature) {
       return const Page4TickerOnStreamProvider();
     case AppFeature.stateOrChangeNotifier:
       return const TodosPageOnStateOrChangeNotifierProvider();
+    case AppFeature.notifierProvider:
+      return const NotifierProvidersPage();
     /*
-TodosPageOnStateOrChangeNotifierProvider
+
     */
     default:
       return const SimpleProvidersPage();
