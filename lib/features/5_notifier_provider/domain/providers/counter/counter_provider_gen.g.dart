@@ -6,7 +6,8 @@ part of 'counter_provider_gen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$counterOnNotifierHash() => r'b727f053d021068de674884cb2f601a93a24ef9e';
+String _$genCounterOnNotifierHash() =>
+    r'beb8fb86a71b41be0b8daee48f70b876dcb97733';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,29 +30,29 @@ class _SystemHash {
   }
 }
 
-abstract class _$CounterOnNotifier extends BuildlessAutoDisposeNotifier<int> {
+abstract class _$GenCounterOnNotifier extends BuildlessNotifier<int> {
   late final int initialValue;
 
   int build(int initialValue);
 }
 
-/// See also [CounterOnNotifier].
-@ProviderFor(CounterOnNotifier)
-const counterOnNotifierProvider = CounterOnNotifierFamily();
+/// See also [GenCounterOnNotifier].
+@ProviderFor(GenCounterOnNotifier)
+const genCounterOnNotifierProvider = GenCounterOnNotifierFamily();
 
-/// See also [CounterOnNotifier].
-class CounterOnNotifierFamily extends Family<int> {
-  /// See also [CounterOnNotifier].
-  const CounterOnNotifierFamily();
+/// See also [GenCounterOnNotifier].
+class GenCounterOnNotifierFamily extends Family<int> {
+  /// See also [GenCounterOnNotifier].
+  const GenCounterOnNotifierFamily();
 
-  /// See also [CounterOnNotifier].
-  CounterOnNotifierProvider call(int initialValue) {
-    return CounterOnNotifierProvider(initialValue);
+  /// See also [GenCounterOnNotifier].
+  GenCounterOnNotifierProvider call(int initialValue) {
+    return GenCounterOnNotifierProvider(initialValue);
   }
 
   @override
-  CounterOnNotifierProvider getProviderOverride(
-    covariant CounterOnNotifierProvider provider,
+  GenCounterOnNotifierProvider getProviderOverride(
+    covariant GenCounterOnNotifierProvider provider,
   ) {
     return call(provider.initialValue);
   }
@@ -68,29 +69,29 @@ class CounterOnNotifierFamily extends Family<int> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'counterOnNotifierProvider';
+  String? get name => r'genCounterOnNotifierProvider';
 }
 
-/// See also [CounterOnNotifier].
-class CounterOnNotifierProvider
-    extends AutoDisposeNotifierProviderImpl<CounterOnNotifier, int> {
-  /// See also [CounterOnNotifier].
-  CounterOnNotifierProvider(int initialValue)
+/// See also [GenCounterOnNotifier].
+class GenCounterOnNotifierProvider
+    extends NotifierProviderImpl<GenCounterOnNotifier, int> {
+  /// See also [GenCounterOnNotifier].
+  GenCounterOnNotifierProvider(int initialValue)
     : this._internal(
-        () => CounterOnNotifier()..initialValue = initialValue,
-        from: counterOnNotifierProvider,
-        name: r'counterOnNotifierProvider',
+        () => GenCounterOnNotifier()..initialValue = initialValue,
+        from: genCounterOnNotifierProvider,
+        name: r'genCounterOnNotifierProvider',
         debugGetCreateSourceHash:
             const bool.fromEnvironment('dart.vm.product')
                 ? null
-                : _$counterOnNotifierHash,
-        dependencies: CounterOnNotifierFamily._dependencies,
+                : _$genCounterOnNotifierHash,
+        dependencies: GenCounterOnNotifierFamily._dependencies,
         allTransitiveDependencies:
-            CounterOnNotifierFamily._allTransitiveDependencies,
+            GenCounterOnNotifierFamily._allTransitiveDependencies,
         initialValue: initialValue,
       );
 
-  CounterOnNotifierProvider._internal(
+  GenCounterOnNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -103,15 +104,15 @@ class CounterOnNotifierProvider
   final int initialValue;
 
   @override
-  int runNotifierBuild(covariant CounterOnNotifier notifier) {
+  int runNotifierBuild(covariant GenCounterOnNotifier notifier) {
     return notifier.build(initialValue);
   }
 
   @override
-  Override overrideWith(CounterOnNotifier Function() create) {
+  Override overrideWith(GenCounterOnNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: CounterOnNotifierProvider._internal(
+      override: GenCounterOnNotifierProvider._internal(
         () => create()..initialValue = initialValue,
         from: from,
         name: null,
@@ -124,13 +125,13 @@ class CounterOnNotifierProvider
   }
 
   @override
-  AutoDisposeNotifierProviderElement<CounterOnNotifier, int> createElement() {
-    return _CounterOnNotifierProviderElement(this);
+  NotifierProviderElement<GenCounterOnNotifier, int> createElement() {
+    return _GenCounterOnNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is CounterOnNotifierProvider &&
+    return other is GenCounterOnNotifierProvider &&
         other.initialValue == initialValue;
   }
 
@@ -145,18 +146,18 @@ class CounterOnNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin CounterOnNotifierRef on AutoDisposeNotifierProviderRef<int> {
+mixin GenCounterOnNotifierRef on NotifierProviderRef<int> {
   /// The parameter `initialValue` of this provider.
   int get initialValue;
 }
 
-class _CounterOnNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<CounterOnNotifier, int>
-    with CounterOnNotifierRef {
-  _CounterOnNotifierProviderElement(super.provider);
+class _GenCounterOnNotifierProviderElement
+    extends NotifierProviderElement<GenCounterOnNotifier, int>
+    with GenCounterOnNotifierRef {
+  _GenCounterOnNotifierProviderElement(super.provider);
 
   @override
-  int get initialValue => (origin as CounterOnNotifierProvider).initialValue;
+  int get initialValue => (origin as GenCounterOnNotifierProvider).initialValue;
 }
 
 // ignore_for_file: type=lint

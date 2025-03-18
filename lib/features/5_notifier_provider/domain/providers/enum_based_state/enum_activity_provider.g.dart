@@ -6,7 +6,7 @@ part of 'enum_activity_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$enumActivityHash() => r'c88fb9f8903dfa8fd58dac7ece858414e732c159';
+String _$enumActivityHash() => r'801c84648275107e05be5f5b99977e3d5a8b9e83';
 
 /// See also [EnumActivity].
 @ProviderFor(EnumActivity)
@@ -23,11 +23,11 @@ final enumActivityProvider =
     );
 
 typedef _$EnumActivity = AutoDisposeNotifier<EnumActivityState>;
-String _$myCounterHash() => r'08aa79aa72de3999f55247db1de2cabfa13c9357';
+String _$myCounterHash() => r'8de65673e89870dda1146192c45f766300c8fa41';
 
 /// See also [MyCounter].
 @ProviderFor(MyCounter)
-final myCounterProvider = AutoDisposeNotifierProvider<MyCounter, int>.internal(
+final myCounterProvider = NotifierProvider<MyCounter, int>.internal(
   MyCounter.new,
   name: r'myCounterProvider',
   debugGetCreateSourceHash:
@@ -36,6 +36,6 @@ final myCounterProvider = AutoDisposeNotifierProvider<MyCounter, int>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$MyCounter = AutoDisposeNotifier<int>;
+typedef _$MyCounter = Notifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

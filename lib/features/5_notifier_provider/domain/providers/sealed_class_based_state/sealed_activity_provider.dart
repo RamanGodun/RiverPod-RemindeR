@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-
 import '../../models/activity.dart';
 import '../dio_provider.dart';
 import 'sealed_activity_state.dart';
@@ -8,7 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'sealed_activity_provider.g.dart';
 
 // Riverpod provider that manages the activity fetching logic and state transitions
-@riverpod
+@Riverpod(keepAlive: true)
 class SealedActivity extends _$SealedActivity {
   // Counter to simulate errors every second request. Used for testing failure handling.
   int _errorCounter = 0;
@@ -21,9 +20,7 @@ class SealedActivity extends _$SealedActivity {
     ref.onDispose(() {
       print('[sealedActivityProvider] disposed');
     });
-    print(
-      'hashCode: $hashCode',
-    ); // Used to track the provider's instance lifecycle.
+    print('hashCode: $hashCode');
     return const SealedActivityInitial(); // Initial state is "SealedActivityInitial".
   }
 
@@ -44,22 +41,38 @@ class SealedActivity extends _$SealedActivity {
       // Delays the request for 500ms and throws an error for every odd `_errorCounter`.
       if (_errorCounter++ % 2 != 1) {
         await Future.delayed(const Duration(milliseconds: 500));
-        throw 'Fail to fetch activity';
+        throw 'This is simulation of failure of fetch activity';
       }
 
       // Fetching data from the API using the dioProvider.
       final response = await ref.read(dioProvider).get('?type=$activityType');
-      debugPrint(response.data);
-      final List activityList = response.data;
 
-      // Parsing the response data into a list of `Activity` objects.
-      final activities = [
-        for (final activity in activityList) Activity.fromJson(activity),
-      ];
+      debugPrint('Response type: ${response.data.runtimeType}');
+      debugPrint('Response body: ${response.data}');
+
+      final activities = <Activity>[];
+
+      // Check if API returns List or single object
+      if (response.data is List) {
+        // If the response is a list, parse each item
+        for (final activity in response.data) {
+          activities.add(Activity.fromJson(activity));
+        }
+      } else if (response.data is Map<String, dynamic>) {
+        // If response is single object (e.g., Map), parse as single Activity
+        activities.add(Activity.fromJson(response.data));
+      } else {
+        // Unexpected response format
+        throw 'Unexpected API response format: ${response.data.runtimeType}';
+      }
 
       // Transitioning to the success state with the fetched activities.
       state = SealedActivitySuccess(activities: activities);
-    } catch (e) {
+    } catch (e, stackTrace) {
+      // For debugging purposes, print full stack trace
+      debugPrint('FetchActivity error: $e');
+      debugPrintStack(stackTrace: stackTrace);
+
       // Transitioning to the failure state with the error message in case of an exception.
       state = SealedActivityFailure(error: e.toString());
     }

@@ -51,43 +51,17 @@ class _SealedActivityPageState extends ConsumerState<SealedActivityPage> {
           ),
         ],
       ),
-      // Render the UI based on the current state using the `when` method.
-      //* This ensures that the appropriate widget is shown for each state.
-      body: activityState.when(
-        initial:
-            () => const Center(
-              child: TextWidget('Get some activity', TextType.titleMedium),
-            ),
-        loading: () => const AppMiniWidgets(MWType.loading),
-        failure:
-            (error) =>
-                prevWidget == null
-                    ? const Center(
-                      child: TextWidget('Get some activity', TextType.error),
-                    )
-                    : prevWidget!,
-        //* Cache the success widget so that it can be displayed in case of future failures.
-        success:
-            (List<Activity> activities) =>
-                prevWidget = ActivityWidget(activity: activities.first),
-      ),
-      /*
-        * Alternative syntax: The `switch` statement is another way to handle states.
-        * This syntax works similarly to `when` but might be preferable in certain scenarios
-        * where more flexibility or readability is needed for large blocks of logic.
-       */
-      // body: switch (activityState) {
-      //   SealedActivityInitial() => Center(
-      //       child: TextWidgets.titleMediumText(context, 'Get some activity')),
-      //   SealedActivityLoading() => AppMiniWidgets.loadingWidget(),
-      //   SealedActivityFailure() => prevWidget == null
-      //       ? Center(child: TextWidgets.errorText(context, 'Get some activity'))
-      //       : prevWidget!,
-      //   SealedActivitySuccess(activities: List<Activity> activities) =>
-      //     prevWidget = ActivityWidget(
-      //       activity: activities.first,
-      //     ),
-      // },
+
+      body: switch (activityState) {
+        SealedActivityInitial() => const Center(
+          child: TextWidget('Get some activity', TextType.titleMedium),
+        ),
+        SealedActivityLoading() => const AppMiniWidgets(MWType.loading),
+        SealedActivityFailure(error: String error) =>
+          prevWidget ?? Center(child: TextWidget(error, TextType.error)),
+        SealedActivitySuccess(activities: List<Activity> activities) =>
+          _buildSuccessWidget(activities),
+      },
       floatingActionButton: FloatingActionButton.extended(
         // Fetch a new random activity when the button is pressed.
         onPressed: () {
@@ -103,6 +77,12 @@ class _SealedActivityPageState extends ConsumerState<SealedActivityPage> {
 
   /* Methods
      */
+  Widget _buildSuccessWidget(List<Activity> activities) {
+    final widget = ActivityWidget(activity: activities.first);
+    prevWidget = widget;
+    return widget;
+  }
+
   // This method listens for changes in the SealedActivityState and shows an error dialog
   // if the state transitions to a failure. For other states, no action is taken.
   void showErrorDialog(BuildContext context) {

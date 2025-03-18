@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/text_widget.dart';
+import '_counter_presentation.dart';
 import '_enum_activity_presentation.dart';
 import '_sealed_activity_presentation.dart';
 
@@ -27,9 +28,15 @@ class NotifierProvidersPage extends StatelessWidget {
               title: 'to page on enum state-shape (SS)',
               child: EnumActivityPage(),
             ),
+
             CustomButton(
               title: 'to page  on sealed class SS',
               child: SealedActivityPage(),
+            ),
+
+            CustomButton(
+              title: 'to counter on notifier',
+              child: CounterPageOnNotifier(),
             ),
           ],
         ),

@@ -2,8 +2,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'counter_provider_gen.g.dart';
 
-@riverpod
-class CounterOnNotifier extends _$CounterOnNotifier {
+@Riverpod(keepAlive: true)
+class GenCounterOnNotifier extends _$GenCounterOnNotifier {
   @override
   int build(int initialValue) {
     ref.onDispose(() {

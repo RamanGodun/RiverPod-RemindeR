@@ -15,8 +15,6 @@ class EnumActivity extends _$EnumActivity {
 
   @override
   EnumActivityState build() {
-    // This method is called when the provider is disposed (no longer in use).
-    // Useful for cleaning up resources or performing final logging.
     ref.onDispose(() {
       print('[enumActivityProvider] disposed');
     });
@@ -55,14 +53,24 @@ class EnumActivity extends _$EnumActivity {
       print(
         'Status code: ${response.statusCode}',
       ); // For debugging response status.
+      print('Response type: ${response.data.runtimeType}');
       print('Response body: ${response.data}'); // For debugging response body.
 
-      // Convert the response into a list of Activity objects.
-      final List activityList = response.data;
+      final activities = <Activity>[];
 
-      final activities = [
-        for (final activity in activityList) Activity.fromJson(activity),
-      ];
+      // Check if API returns List or single object
+      if (response.data is List) {
+        // Convert the response into a list of Activity objects.
+        for (final activity in response.data) {
+          activities.add(Activity.fromJson(activity));
+        }
+      } else if (response.data is Map<String, dynamic>) {
+        // Handle case when API returns single object
+        activities.add(Activity.fromJson(response.data));
+      } else {
+        // Unexpected format
+        throw 'Unexpected API response format: ${response.data.runtimeType}';
+      }
 
       // Update the state to success and populate it with fetched activities.
       state = state.copyWith(
@@ -83,14 +91,12 @@ class EnumActivity extends _$EnumActivity {
 MyCounter provider handles a simple integer state.
 It increments a counter which is observed by EnumActivity to trigger side effects.
  */
-@riverpod
+@Riverpod(keepAlive: true)
 class MyCounter extends _$MyCounter {
   @override
   int build() {
-    return 0; // Initializes the counter at 0.
+    return 0;
   }
 
-  // Method to increment the counter.
-  // Whenever this is called, the state changes and any listeners are notified.
   void increment() => state++;
 }
