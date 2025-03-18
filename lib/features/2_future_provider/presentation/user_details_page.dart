@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/app_constants/app_constants.dart';
+import '../../../core/domain/config/app_config.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/user_details_future_provider_gen.dart'; // In case of code generation
-// import '../providers/users_providers.dart'; // In case we don't use code generation
+import '../domain/user_details_future_provider_gen.dart';
+import '../domain/user_details_future_provider_manual.dart';
 
 class UserDetailPage extends ConsumerWidget {
   final int userId;
@@ -13,12 +14,16 @@ class UserDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userDetails = ref.watch(
-      withCodeGenerationUserDetailsProvider(userId),
-    );
+    final userDetails =
+        AppConfig.isUsingCodeGeneration
+            ? ref.watch(withCodeGenerationUserDetailsProvider(userId))
+            : ref.watch(userDetailsFutureProviderWithoutCodeGen(userId));
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'User Detail'),
+      appBar: const CustomAppBar(
+        title:
+            'User Details ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'}',
+      ),
       body: userDetails.when(
         data: (user) {
           final List<(IconData, String)> userInfoList = [
@@ -44,7 +49,9 @@ class UserDetailPage extends ConsumerWidget {
   Future<void> _refreshUserDetails(WidgetRef ref) {
     // RefreshIndicator triggers a refresh of the userDetailProvider using its future.
     // This ensures the UI will fetch updated data asynchronously.
-    return ref.refresh(withCodeGenerationUserDetailsProvider(userId).future);
+    return AppConfig.isUsingCodeGeneration
+        ? ref.refresh(withCodeGenerationUserDetailsProvider(userId).future)
+        : ref.refresh(userDetailsFutureProviderWithoutCodeGen(userId).future);
   }
 }
 

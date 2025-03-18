@@ -14,10 +14,12 @@ FutureOr<User> withCodeGenerationUserDetails(Ref ref, int id) async {
   // Fetch the details of a specific user by ID
   final response = await ref.watch(dioProvider).get('/users/$id');
 
+  // return parsed and converted response  into a User object
+  final user = User.fromJson(response.data);
+
   // ! dioProvider is autoDisposed, so this provider should also be autoDisposed.
   // !!! OR we can use "ref.keepAlive();" to cache the data and avoid disposal.
   ref.keepAlive(); // This keeps the data alive, allowing it to be cached.
-
   /*
   autoDispose + ref.keepAlive() pattern:
   - If the data is successfully fetched, it gets cached.
@@ -36,6 +38,5 @@ FutureOr<User> withCodeGenerationUserDetails(Ref ref, int id) async {
     whereas `ref.keepAlive()` only keeps the data alive until it is next needed and accessed.
   */
 
-  // return parsed and converted response  into a User object
-  return User.fromJson(response.data);
+  return user;
 }

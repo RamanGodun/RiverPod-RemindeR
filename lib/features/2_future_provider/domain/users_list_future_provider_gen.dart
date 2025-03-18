@@ -14,10 +14,6 @@ Future<List<User>> withCodeGenerationUserList(Ref ref) async {
   // Fetch the list of users from the API using the dioProvider
   final response = await ref.watch(dioProvider).get('/users');
 
-  // ! dioProvider is autoDisposed, so this provider must also be autoDisposed
-  // !!! OR we can use "ref.keepAlive();" to cache the data, preventing automatic disposal.
-  // ref.keepAlive(); // Uncomment if you want to keep the data alive for caching purposes.
-
   // For testing error handling, you can uncomment the following line:
   // throw 'Failed to fetch user list';
 
@@ -25,5 +21,9 @@ Future<List<User>> withCodeGenerationUserList(Ref ref) async {
   final List userList = response.data;
   final users = [for (final user in userList) User.fromJson(user)];
 
-  return users; // Return the list of users
+  // ! dioProvider is autoDisposed, so this provider must also be autoDisposed
+  // !!! OR we can use "ref.keepAlive();" to cache the data, preventing automatic disposal.
+  // ref.keepAlive(); // Uncomment if you want to keep the data alive for caching purposes.
+
+  return users;
 }

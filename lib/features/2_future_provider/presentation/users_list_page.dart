@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/domain/config/app_config.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/custom_list_tile.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/users_list_future_provider_gen.dart'; // In case of code generation
-// import '../providers/users_providers.dart'; // In case we don't use code generation
+import '../domain/users_list_future_provider_gen.dart';
+import '../domain/users_list_future_provider_manual.dart';
 import 'user_details_page.dart';
 
 class UserListPage extends ConsumerWidget {
@@ -13,26 +14,25 @@ class UserListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userList = ref.watch(withCodeGenerationUserListProvider);
-
-    /*
-        General logging prints to track all states of the provider.
-        This helps in understanding how states change during different phases (loading, refreshing, etc.).
-        For example, when you refresh the page, you can see that loading state occurs while the data may still be available.
-    */
-    // print(
-    //     'isLoading: ${userList.isLoading},     isRefreshing: ${userList.isRefreshing},     isReloading: ${userList.isReloading}');
-    // print('hasValue: ${userList.hasValue},    hasError: ${userList.hasError}');
-    // print(userList);
+    final userList =
+        AppConfig.isUsingCodeGeneration
+            ? ref.watch(withCodeGenerationUserListProvider)
+            : ref.watch(userListFutureProviderWithoutCodeGen);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User List'),
+        title: const Text(
+          'User List ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'}',
+        ),
         actions: [
           IconButton(
             onPressed: () async {
               // Invalidate the provider to trigger a full rebuild and data refetch.
-              ref.invalidate(withCodeGenerationUserListProvider);
+              ref.invalidate(
+                AppConfig.isUsingCodeGeneration
+                    ? withCodeGenerationUserListProvider
+                    : userListFutureProviderWithoutCodeGen,
+              );
             },
             icon: const Icon(Icons.refresh),
           ),
@@ -40,12 +40,12 @@ class UserListPage extends ConsumerWidget {
       ),
       body: userList.when(
         // `skipLoadingOnRefresh` set to false to show the loading indicator
-        // when refreshing the page. This is an appropriate UX choice when the refresh button
-        // is in the AppBar, but may not be ideal for using with a `RefreshIndicator` widget.
+        // during the refresh phase. Useful for visible feedback when using
+        // AppBar refresh buttons (but not ideal with RefreshIndicator widget).
         skipLoadingOnRefresh: false,
         data: (users) {
           return ListView.separated(
-            // Necessary when using the `RefreshIndicator` widget to ensure scrolling is always available.
+            // Always enable scrolling, even when the list is short.
             physics: const AlwaysScrollableScrollPhysics(),
             itemCount: users.length,
             separatorBuilder: (BuildContext context, int index) {
@@ -77,35 +77,85 @@ class UserListPage extends ConsumerWidget {
   }
 }
 
+/*
+  ALTERNATIVE SYNTAX using Dart 3 pattern matching.
 
- /*
-        * ALTERNATIVE syntax
-        * The following is an example of using `switch` with `AsyncValue`.
-        * It demonstrates how to handle the different states of `userList`
-        * using pattern matching for a more concise and readable approach.
-      */
-      // body: switch (userList) {
-      //   // Accessing the data inside `AsyncData` using `value`
-      //   AsyncData(:final value) => ListView.separated(
-      //       itemCount: value.length,
-      //       separatorBuilder: (BuildContext context, int index) {
-      //         return const Divider();
-      //       },
-      //       itemBuilder: (BuildContext context, int index) {
-      //         final user = value[index];
+  ✅ Fully equivalent to `.when(skipLoadingOnRefresh: false)` functionality.
 
-      //         return GestureDetector(
-      //           onTap: () =>
-      //               Helpers.pushTo(context, UserDetailPage(userId: user.id)),
-      //           child: AppListTile(
-      //             leading: CircleAvatar(
-      //                 child: TextWidgets.headlineText(
-      //                     context, user.id.toString())),
-      //             title: user.name,
-      //           ),
-      //         );
-      //       },
-      //     ),
-      //   AsyncError(:final error) => AppMiniWidgets.errorWidget(context, error),
-      //   _ => AppMiniWidgets.loadingWidget(),
-      // },
+  Main idea:
+  - While refresh is ongoing, display previous data with a loading indicator at the top
+    (exactly like skipLoadingOnRefresh: false behavior).
+  - On initial load (first time), show CircularProgressIndicator or any loading widget.
+  - Errors are handled similarly.
+
+  Advantages:
+  - More concise, modern syntax.
+  - Full control over refresh, loading, error, and success states.
+  - Clean switch-based pattern matching (widely adopted by top Dart/Flutter developers).
+
+  Example:
+*/
+
+// body: switch (userList) {
+//   // Case: Data loaded, currently refreshing
+//   AsyncData(:final value) when userList.isRefreshing => Stack(
+//     children: [
+//       ListView.separated(
+//         physics: const AlwaysScrollableScrollPhysics(),
+//         itemCount: value.length,
+//         separatorBuilder: (_, __) => const Divider(),
+//         itemBuilder: (context, index) {
+//           final user = value[index];
+//           return GestureDetector(
+//             onTap: () => Helpers.pushTo(
+//               context,
+//               UserDetailPage(userId: user.id),
+//             ),
+//             child: AppListTile(
+//               leading: CircleAvatar(
+//                 child: TextWidget(user.id.toString(), TextType.titleSmall),
+//               ),
+//               title: user.name,
+//             ),
+//           );
+//         },
+//       ),
+//       // Show linear progress indicator at top during refresh (skipLoadingOnRefresh behavior)
+//       const Positioned(
+//         top: 0,
+//         left: 0,
+//         right: 0,
+//         child: LinearProgressIndicator(),
+//       ),
+//     ],
+//   ),
+
+//   // Case: Data loaded, not refreshing
+//   AsyncData(:final value) => ListView.separated(
+//     physics: const AlwaysScrollableScrollPhysics(),
+//     itemCount: value.length,
+//     separatorBuilder: (_, __) => const Divider(),
+//     itemBuilder: (context, index) {
+//       final user = value[index];
+//       return GestureDetector(
+//         onTap: () => Helpers.pushTo(
+//           context,
+//           UserDetailPage(userId: user.id),
+//         ),
+//         child: AppListTile(
+//           leading: CircleAvatar(
+//             child: TextWidget(user.id.toString(), TextType.titleSmall),
+//           ),
+//           title: user.name,
+//         ),
+//       );
+//     },
+//   ),
+
+//   // Case: Error
+//   AsyncError(:final error, :final stackTrace) =>
+//       AppMiniWidgets(MWType.error, error: error),
+
+//   // Case: Initial loading
+//   AsyncLoading() => const AppMiniWidgets(MWType.loading),
+// }
