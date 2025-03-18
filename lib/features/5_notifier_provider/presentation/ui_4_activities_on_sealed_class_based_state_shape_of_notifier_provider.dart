@@ -42,7 +42,7 @@ class _SealedActivityPageState extends ConsumerState<SealedActivityPage> {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'SealedActivityNotifier',
+        title: 'on sealed class Notifier',
         actionIcons: const [Icons.refresh],
         // Refresh button that invalidates the current state and forces a reload.
         actionCallbacks: [() => ref.invalidate(sealedActivityProvider)],

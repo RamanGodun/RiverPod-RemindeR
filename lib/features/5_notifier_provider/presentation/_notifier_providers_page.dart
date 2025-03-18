@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 
 import '../../../core/ui/widgets/custom_button.dart';
-import '../../../core/ui/widgets/text_widget.dart';
 import 'ui_4_counter_on_notifier_provider.dart';
 import 'ui_4_activities_on_enum_based_state_shape_of_notifier_provider.dart';
 import 'ui_4_activities_on_sealed_class_based_state_shape_of_notifier_provider.dart';
@@ -11,14 +11,9 @@ class NotifierProvidersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(
-          'Welcome to Simple Providers!',
-          TextType.titleSmall,
-        ),
-      ),
-      body: const Center(
+    return const Scaffold(
+      appBar: CustomAppBar(title: 'Notifier providers'),
+      body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
@@ -30,7 +25,7 @@ class NotifierProvidersPage extends StatelessWidget {
             ),
 
             CustomButton(
-              title: 'to page  on sealed class SS',
+              title: 'to page on sealed class SS',
               child: SealedActivityPage(),
             ),
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 
 import '../../../core/ui/widgets/custom_button.dart';
-import '../../../core/ui/widgets/text_widget.dart';
 import 'ui_4_provider__with_family_mod.dart';
 import 'ui_4_provider_with_auto_disposed_and_family_mods.dart';
 import 'ui_4_basic_provider.dart';
@@ -12,14 +12,9 @@ class SimpleProvidersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(
-          'Welcome to Simple Providers!',
-          TextType.titleSmall,
-        ),
-      ),
-      body: const Center(
+    return const Scaffold(
+      appBar: CustomAppBar(title: 'Welcome to Simple Providers!'),
+      body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           spacing: 30,

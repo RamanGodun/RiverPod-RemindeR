@@ -43,7 +43,7 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'EnumActivityNotifier',
+        title: 'on enum based Notifier',
         actionIcons: const [Icons.add, Icons.refresh],
         actionCallbacks: [
           () => ref.read(myCounterProvider.notifier).increment(),
