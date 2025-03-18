@@ -7,7 +7,7 @@ part of 'ticker_provider_gen.dart';
 // **************************************************************************
 
 String _$withGenTickerStreamHash() =>
-    r'2bc455910da58f96bd2e51c32ad9a055dcf3d8f6';
+    r'a62a574ca1f938326712e376ed9efbdec5198682';
 
 /// See also [withGenTickerStream].
 @ProviderFor(withGenTickerStream)

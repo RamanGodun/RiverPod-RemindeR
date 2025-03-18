@@ -1,10 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uuid/uuid.dart';
+import '../../../../core/domain/utils_and_services/id_generator.dart';
 
 part 'todo_model_immutable.freezed.dart';
-
-Uuid uuid = const Uuid();
 
 @freezed
 class Todo with _$Todo {
@@ -14,9 +12,7 @@ class Todo with _$Todo {
     @Default(false) bool completed,
   }) = _Todo;
 
-  factory Todo.add({
-    required String description,
-  }) {
+  factory Todo.add({required String description}) {
     return Todo(id: uuid.v4(), description: description);
   }
 }
