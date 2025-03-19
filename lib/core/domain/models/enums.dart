@@ -10,12 +10,7 @@ enum ActivityStatus {
   failure, // State when the data fetching fails.
 }
 
-enum Cities {
-  seoul,
-  london,
-  bangkok,
-  tokyo,
-}
+enum Cities { seoul, london, bangkok, tokyo }
 
 enum AppFeature {
   simpleProvider,
@@ -27,6 +22,7 @@ enum AppFeature {
   asyncProvider,
   asyncNotifierProvider,
   asyncStreamProvider,
+  providersLifecycle,
   optimization,
   pagination,
   goRouter;
@@ -52,6 +48,8 @@ enum AppFeature {
         return "Async Notifier Provider";
       case AppFeature.asyncStreamProvider:
         return "Async Stream Provider";
+      case AppFeature.providersLifecycle:
+        return "Providers Lifecycle";
       case AppFeature.optimization:
         return "Optimization";
       case AppFeature.pagination:

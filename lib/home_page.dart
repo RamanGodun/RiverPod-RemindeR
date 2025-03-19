@@ -84,6 +84,8 @@ Widget getFeatureWidget(AppFeature feature) {
       return const Page4AsyncNotifierProviders();
     case AppFeature.asyncStreamProvider:
       return const Page4AsyncStreamProviders();
+    case AppFeature.providersLifecycle:
+      return const Page4AsyncStreamProviders();
     /*
 
     */
