@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_button.dart';
+import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
 import 'features/0_simple_providers/presentation/_simple_providers_page.dart';

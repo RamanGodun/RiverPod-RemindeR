@@ -21,10 +21,6 @@ sealed class SealedAsyncActivityState {
       // Handles the SealedActivityFailure state, passing the error message to the `failure` callback.
       case SealedAsyncActivityFailure(error: String error):
         return failure(error);
-      // The fallback `case _:` has been commented out, as Dart guarantees that all cases are covered with sealed classes.
-      // Uncomment if you want additional safety for potential future extensions.
-      // case _:
-      //   throw Exception('Unknown state: $this');
     }
   }
 }

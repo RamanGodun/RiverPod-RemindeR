@@ -1,8 +1,8 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/models/activity.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
@@ -10,8 +10,8 @@ import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/sealed_async_activity/_sealed_async_activity_provider.dart';
 import '../domain/sealed_async_activity/_sealed_async_activity_state.dart';
 
-
-class Page4SealedClassBasedAsyncActivityProvider extends ConsumerStatefulWidget {
+class Page4SealedClassBasedAsyncActivityProvider
+    extends ConsumerStatefulWidget {
   const Page4SealedClassBasedAsyncActivityProvider({super.key});
 
   @override
@@ -30,23 +30,17 @@ class _SealedAsyncActivityPageState
     final activityState = ref.watch(sealedAsyncActivityProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(
-          'SealedAsyncActivityNotifier',
-          TextType.titleMedium,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () => ref.invalidate(sealedAsyncActivityProvider),
-            icon: const Icon(Icons.refresh),
-          ),
-        ],
+      appBar: CustomAppBar(
+        title: 'SealedAsyncActivityNotifier',
+        actionIcons: const [Icons.refresh],
+        actionCallbacks: [() => ref.invalidate(sealedAsyncActivityProvider)],
       ),
+
       body: activityState.when(
-        // Loading state, displaying a loading widget.
+        ///
         loading: () => const AppMiniWidgets(MWType.loading),
 
-        // Failure state, displaying an error widget or fallback activity.
+        /// Failure state, displaying an error widget or fallback activity.
         failure:
             (error) =>
                 prevWidget == null
@@ -56,7 +50,7 @@ class _SealedAsyncActivityPageState
                     )
                     : prevWidget!,
 
-        // Success state, displaying the fetched activity.
+        ///
         success:
             (activities) =>
                 prevWidget = ActivityWidget(activity: activities.first),
@@ -72,6 +66,8 @@ class _SealedAsyncActivityPageState
       //       activity: activities.first,
       //     ),
       // },
+
+      ///
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           final randomNumber = Random().nextInt(activityTypes.length);
@@ -84,7 +80,7 @@ class _SealedAsyncActivityPageState
     );
   }
 
-  // * METHODS
+  // * Show error alert dialog
   void showDialogWhenErrorsOccurs(BuildContext context) {
     ref.listen<SealedAsyncActivityState>(sealedAsyncActivityProvider, (
       previous,
@@ -92,14 +88,7 @@ class _SealedAsyncActivityPageState
     ) {
       switch (next) {
         case SealedAsyncActivityFailure(error: String error):
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                content: AppMiniWidgets(MWType.error, error: error),
-              );
-            },
-          );
+          DialogService.showAlertErrorDialog(context, error);
         case _:
       }
     });

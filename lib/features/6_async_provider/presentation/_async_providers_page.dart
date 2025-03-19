@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import '../../../../core/ui/widgets/custom_button.dart';
-import 'enum_async_activity_presentation.dart';
-import 'sealed_async_activity_presentation.dart';
+import '../../../core/ui/widgets/buttons/custom_button.dart';
+import 'ui_4_enum_bss_activity_async_provider.dart';
+import 'ui_4_sealed_bss_activity_async_provider.dart';
 
 class AsyncProvidersPage extends StatelessWidget {
   const AsyncProvidersPage({super.key});

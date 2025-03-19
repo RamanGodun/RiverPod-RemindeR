@@ -78,10 +78,8 @@ It increments a counter which is observed by EnumAsyncActivity to trigger side e
 class MyCounter extends _$MyCounter {
   @override
   int build() {
-    return 0; // Initializes the counter at 0.
+    return 0;
   }
 
-  // Method to increment the counter.
-  // Whenever this is called, the state changes and any listeners are notified.
   void increment() => state++;
 }

@@ -16,11 +16,10 @@ class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Listening to changes in the EnumActivityState provider.
-    // If the status transitions to 'failure', an error dialog is displayed.
+    /// If the status transitions to 'failure' in EnumActivityState provider, an error dialog is displayed.
     listenForFailures(context, ref);
 
-    // Watching the current state of the provider.
+    ///
     final asyncActivityState = ref.watch(enumAsyncActivityProvider);
 
     return Scaffold(
@@ -34,14 +33,16 @@ class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
       ),
 
       body: switch (asyncActivityState.status) {
-        // Initial state, encouraging the user to fetch an activity.
+        ///
         ActivityStatus.initial => const Center(
           child: TextWidget('Get some activity', TextType.titleMedium),
         ),
-        // Loading state, displaying a loading widget.
+
+        ///
         ActivityStatus.loading => const AppMiniWidgets(MWType.loading),
-        // Failure state, displaying an error widget or a fallback activity.
-        //  when no available previous data => error widget
+
+        ///
+        // Failure state, displaying an error widget or a fallback activity, when no available previous data => error widget
         // ! when failure happens, then available previous data are shown (good pattern)
         ActivityStatus.failure =>
           asyncActivityState.activities.first == Activity.empty()
@@ -53,11 +54,14 @@ class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
                 ),
               )
               : ActivityWidget(activity: asyncActivityState.activities.first),
-        // Success state, displaying the fetched activity.
+
+        ///
         ActivityStatus.success => ActivityWidget(
           activity: asyncActivityState.activities.first,
         ),
       },
+
+      ///
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           // Randomly selects an activity type and fetches a new activity.
@@ -71,8 +75,8 @@ class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
     );
   }
 
-  /* Methods next
-Method to listen for any failures in the EnumActivityState provider and display an error dialog.
+  /* 
+     * Method to listen for any failures in the EnumActivityState provider and display an error dialog.
  */
   void listenForFailures(BuildContext context, WidgetRef ref) {
     ref.listen<EnumAsyncActivityState>(enumAsyncActivityProvider, (
