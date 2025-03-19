@@ -1,9 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_reminder/core/domain/state/dio_and_retrofit/activities_api/activities_dio_provider.dart';
 import '../../../../../core/domain/models/enums.dart';
-import '../../models/activity.dart';
-import '../../models/enum_activity_state.dart';
-
+import '../../../../../core/domain/models/activity.dart';
+import '../../../../../core/domain/models/enum_activity_state.dart';
 
 part 'enum_activity_provider.g.dart';
 
@@ -50,7 +49,9 @@ class EnumActivity extends _$EnumActivity {
       }
 
       // Perform the API request to fetch activities by type.
-      final response = await ref.read(activitiesDioProvider).get('?type=$activityType');
+      final response = await ref
+          .read(activitiesDioProvider)
+          .get('?type=$activityType');
       print(
         'Status code: ${response.statusCode}',
       ); // For debugging response status.

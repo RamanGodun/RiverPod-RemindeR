@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../models/enum_activity_state.dart';
 import '../models/enums.dart';
 import '../utils_and_services/dialogs_service.dart';
-import '../../../features/5_notifier_provider/domain/models/enum_activity_state.dart';
 import '../../../features/5_notifier_provider/domain/providers/enum_based_state/enum_activity_provider.dart';
 
 final errorsHandlingProvider4EnumActivityState =

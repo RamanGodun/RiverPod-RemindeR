@@ -1,14 +1,16 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+
+import '../../../core/domain/models/activity.dart';
 import '../../../core/domain/models/enums.dart';
+import '../../../core/domain/state/errors_dialog_providers.dart';
+import '../../../core/ui/widgets/activity_widget.dart';
+import '../../../core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/models/activity.dart';
-import '../../../core/domain/state/errors_dialog_providers.dart';
 import '../domain/providers/enum_based_state/enum_activity_provider.dart';
-import '../../../core/ui/widgets/activity_widget.dart';
+
 
 class EnumActivityPage extends ConsumerStatefulWidget {
   const EnumActivityPage({super.key});

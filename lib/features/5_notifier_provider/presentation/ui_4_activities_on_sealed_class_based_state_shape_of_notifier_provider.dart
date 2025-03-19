@@ -5,7 +5,7 @@ import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/models/activity.dart';
+import '../../../core/domain/models/activity.dart';
 import '../domain/providers/sealed_class_based_state/sealed_activity_provider.dart';
 import '../domain/providers/sealed_class_based_state/sealed_activity_state.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
