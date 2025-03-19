@@ -18,7 +18,7 @@ import 'features/5_notifier_provider_bp/presentation/_notifier_providers_page.da
 import 'features/6_async_provider/presentation/_async_providers_page.dart';
 import 'features/7_async_notifier_provider_bp/presentation/_async_notifier_providers_page.dart';
 import 'features/8_stream_provider/presentation/_stream_providers_page.dart';
-import 'features/9_providers_lifecycle/_presentation/providers_lifecycle_page.dart';
+import 'features/9_providers_lifecycle/_presentation/_providers_lifecycle_page.dart';
 
 /// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
 class MyHomePage extends ConsumerWidget {

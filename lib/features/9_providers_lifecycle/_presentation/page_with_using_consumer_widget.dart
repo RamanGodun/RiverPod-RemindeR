@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import 'providers_4_using_consumer_page.dart';
+import '../domain/providers_4_using_consumer_page.dart';
 
 class PageToShowProductivityIncreasingWhenUseConsumerWidget
     extends ConsumerWidget {

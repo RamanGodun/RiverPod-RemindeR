@@ -1,7 +1,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'providers.g.dart';
+part 'cascade_providers.g.dart';
+
+/*
+ ! ⚠️ Changing the provider types (e.g., adding AutoDispose, or switching between NotifierProvider, StateProvider, Provider)
+   can lead to unexpected behavior in cascade providers.
+ 
+ ? Try experimenting with different provider types and observe the behavior 😉
+ 
+ * This happens because the dependent provider (ageProvider) rebuilds when cascadeCounterProvider changes.
+ * Modifying the base provider's type can affect:
+    - Its lifecycle hooks (onDispose/onCancel/onResume)
+    - When and how listeners are triggered
+    - Whether dependent providers are disposed/rebuilt
+ 
+ !!! Always check dependency chains when modifying provider types!
+*/
 
 @riverpod
 class CascadeCounter extends _$CascadeCounter {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import '../../../../core/domain/utils_and_services/helpers.dart';
-import '../../../../core/ui/widgets/mini_widgets.dart';
-import '../../../../core/ui/widgets/text_widget.dart';
-import 'product_page.dart';
-import '../with_dio_async_keep_alive_10_sec_providers.dart';
+import '../../../core/domain/utils_and_services/helpers.dart';
+import '../../../core/ui/widgets/mini_widgets.dart';
+import '../../../core/ui/widgets/text_widget.dart';
+import '../domain/with_dio_async_keep_alive_10_sec_providers.dart';
+import 'page_4_product.dart';
 
 class Page4ProductsThatCashedFor10Sec extends ConsumerWidget {
   const Page4ProductsThatCashedFor10Sec({super.key});

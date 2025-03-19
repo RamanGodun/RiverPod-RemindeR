@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/buttons/custom_button.dart';
-import '../async_keep_alive_10_or_25_sec_with_dio/presentation/_products_page.dart';
-import '../async_keep_alive_10_sec_provider/_page_4_counter_on_sync_keep_alive_for_10_sec_provider.dart';
-import '../auto_dispose/_using_consumer_page.dart';
+import 'page_4_products.dart';
+import 'page_4_counter_on_sync_keep_alive_for_10_sec_provider.dart';
+import 'page_with_using_consumer_widget.dart';
+import 'page_4_cascade_providers.dart';
 
 class Page4ProvidersLifecycle extends StatelessWidget {
   const Page4ProvidersLifecycle({super.key});
@@ -32,8 +33,13 @@ class Page4ProvidersLifecycle extends StatelessWidget {
               title: 'to using Consumer widget page',
               child: PageToShowProductivityIncreasingWhenUseConsumerWidget(),
             ),
-            /* PageToShowProductivityIncreasingWhenUseConsumerWidget
- */
+
+            CustomButton(
+              title: 'to cascade providers',
+              child: CascadeProvidersPage(),
+            ),
+            /* CascadeProvidersPage
+             */
           ],
         ),
       ),
