@@ -2,11 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'dio_provider.g.dart';
+part 'dummy_api_dio_provider.g.dart';
 
 @riverpod
-Dio dio(Ref ref) {
-  return Dio(
-    BaseOptions(baseUrl: 'https://dummyjson.com'),
-  );
+Dio dummyApiDio(Ref ref) {
+  return Dio(BaseOptions(baseUrl: 'https://dummyjson.com'));
 }

@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/domain/utils_and_services/helpers.dart';
-import '../../../core/ui/widgets/mini_widgets.dart';
-import '../../../core/ui/widgets/text_widget.dart';
-import 'product_presentation.dart';
-import 'providers.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import '../../../../core/domain/utils_and_services/helpers.dart';
+import '../../../../core/ui/widgets/mini_widgets.dart';
+import '../../../../core/ui/widgets/text_widget.dart';
+import 'product_page.dart';
+import '../with_dio_async_keep_alive_10_sec_providers.dart';
 
-class ProductsPage extends ConsumerWidget {
-  const ProductsPage({super.key});
+class Page4ProductsThatCashedFor10Sec extends ConsumerWidget {
+  const Page4ProductsThatCashedFor10Sec({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productList = ref.watch(getProductsProvider);
+    final productList = ref.watch(getProductsListThatCashedFor10SecProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const TextWidget('Products', TextType.titleSmall)),
+      appBar: const CustomAppBar(title: 'Products'),
       body: productList.when(
+        ///
         data: (products) {
           return ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 26),
             itemCount: products.length,
             separatorBuilder: (BuildContext context, int index) {
               return const Divider();
@@ -33,15 +36,24 @@ class ProductsPage extends ConsumerWidget {
                     ),
                 child: ListTile(
                   leading: CircleAvatar(
+                    backgroundColor: Helpers.getColorScheme(context).secondary,
                     child: TextWidget('${product.id}', TextType.titleSmall),
                   ),
-                  title: TextWidget(product.title, TextType.titleMedium),
+                  title: TextWidget(
+                    product.title,
+                    TextType.titleMedium,
+                    alignment: TextAlign.start,
+                  ),
                 ),
               );
             },
           );
         },
+
+        ///
         error: (e, st) => AppMiniWidgets(MWType.error, error: e.toString()),
+
+        ///
         loading: () => const AppMiniWidgets(MWType.loading),
       ),
     );

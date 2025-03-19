@@ -1,39 +1,39 @@
 import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'providers.g.dart';
+part 'counter_on_keep_alive_10_sec_provider.g.dart';
 
 @riverpod
-class SyncKeepAliveCounter extends _$SyncKeepAliveCounter {
+class CounterOnKeepAlive10Sec extends _$CounterOnKeepAlive10Sec {
   @override
   int build() {
     // next allows to cash data for some time (for example for 10 sec)
     final keepAliveLink = ref.keepAlive();
     Timer? timer;
 
-    print('[syncKeepAliveCounterProvider] initialized');
+    debugPrint('[counterOnKeepAlive10SecProvider] initialized');
     ref.onDispose(() {
-      print('[syncKeepAliveCounterProvider] disposed, timer cancelled');
+      debugPrint('[syncKeepAliveCounterProvider] disposed, timer cancelled');
       // canceling of timer for it will be available next time
       timer?.cancel();
     });
     ref.onCancel(() {
-      print('[syncKeepAliveCounterProvider] cancelled, timer started');
+      debugPrint('[syncKeepAliveCounterProvider] cancelled, timer started');
       timer = Timer(const Duration(seconds: 10), () {
         keepAliveLink.close();
       });
     });
     ref.onResume(() {
-      print('[syncKeepAliveCounterProvider] resumed, timer cancelled');
+      debugPrint('[syncKeepAliveCounterProvider] resumed, timer cancelled');
       // canceling of timer to avoid executing of "keepAliveLink.close()"
       timer?.cancel();
     });
     ref.onAddListener(() {
-      print('[syncKeepAliveCounterProvider] listener added');
+      debugPrint('[syncKeepAliveCounterProvider] listener added');
     });
     ref.onRemoveListener(() {
-      print('[syncKeepAliveCounterProvider] listener removed');
+      debugPrint('[syncKeepAliveCounterProvider] listener removed');
     });
 
     return 0;

@@ -12,14 +12,15 @@ String _$keepAliveCounterHash() => r'0f8ae044cf50c69824f004a1681f43df754e7977';
 @ProviderFor(KeepAliveCounter)
 final keepAliveCounterProvider =
     NotifierProvider<KeepAliveCounter, int>.internal(
-  KeepAliveCounter.new,
-  name: r'keepAliveCounterProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$keepAliveCounterHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      KeepAliveCounter.new,
+      name: r'keepAliveCounterProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$keepAliveCounterHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$KeepAliveCounter = Notifier<int>;
 // ignore_for_file: type=lint

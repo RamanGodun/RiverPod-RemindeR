@@ -28,14 +28,15 @@ String _$cascadeCounterHash() => r'c7fa00f3a02554b81531eef6331081e3094eeb89';
 @ProviderFor(CascadeCounter)
 final cascadeCounterProvider =
     AutoDisposeNotifierProvider<CascadeCounter, int>.internal(
-  CascadeCounter.new,
-  name: r'cascadeCounterProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$cascadeCounterHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      CascadeCounter.new,
+      name: r'cascadeCounterProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$cascadeCounterHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CascadeCounter = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint

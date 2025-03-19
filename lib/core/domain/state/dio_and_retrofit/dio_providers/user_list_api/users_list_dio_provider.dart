@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:dio/dio.dart';
 
-import '../dio_interceptor.dart';
+import '../../dio_interceptor.dart';
 
 // rivp => Use autocompletion for generating the provider part file
 part 'users_list_dio_provider.g.dart';

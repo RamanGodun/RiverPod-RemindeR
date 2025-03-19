@@ -1,10 +1,11 @@
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/domain/utils_and_services/helpers.dart';
-import '../../../core/ui/widgets/mini_widgets.dart';
-import '../../../core/ui/widgets/text_widget.dart';
-import 'providers.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import '../../../../core/domain/utils_and_services/helpers.dart';
+import '../../../../core/ui/widgets/mini_widgets.dart';
+import '../../../../core/ui/widgets/text_widget.dart';
+import '../with_dio_async_keep_alive_10_sec_providers.dart';
 
 class ProductPage extends ConsumerWidget {
   final int productId;
@@ -12,12 +13,14 @@ class ProductPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final singleProduct = ref.watch(getProductProvider(productId: productId));
+    final singleProduct = ref.watch(
+      getProductDetailsThatCashedFor25SecProvider(productId: productId),
+    );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget('Product Detail', TextType.titleSmall),
-      ),
+      appBar: const CustomAppBar(title: 'Product Details'),
+
+      ///
       body: singleProduct.when(
         data:
             (product) => ListView(
@@ -26,6 +29,8 @@ class ProductPage extends ConsumerWidget {
                 Row(
                   children: [
                     CircleAvatar(
+                      backgroundColor:
+                          Helpers.getColorScheme(context).secondary,
                       child: TextWidget(
                         productId.toString(),
                         TextType.headlineMedium,
@@ -38,6 +43,8 @@ class ProductPage extends ConsumerWidget {
                   ],
                 ),
                 const Divider(),
+
+                ///
                 BulletedList(
                   bullet: const Icon(Icons.check, color: Colors.green),
                   listItems: [
@@ -48,7 +55,7 @@ class ProductPage extends ConsumerWidget {
                     'category: ${product.category}',
                     'description: ${product.description}',
                   ],
-                  style: Helpers.getTextTheme(context).titleLarge,
+                  style: Helpers.getTextTheme(context).titleSmall,
                 ),
                 const Divider(),
                 SizedBox(
@@ -57,7 +64,11 @@ class ProductPage extends ConsumerWidget {
                 ),
               ],
             ),
+
+        ///
         error: (e, st) => AppMiniWidgets(MWType.error, error: e.toString()),
+
+        ///
         loading: () => const AppMiniWidgets(MWType.loading),
       ),
     );

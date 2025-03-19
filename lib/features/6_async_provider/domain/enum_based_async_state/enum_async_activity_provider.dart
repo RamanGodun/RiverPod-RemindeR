@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_reminder/core/domain/state/dio_and_retrofit/activities_api/activities_dio_provider.dart';
+import 'package:riverpod_reminder/core/domain/state/dio_and_retrofit/dio_providers/activities_api/activities_dio_provider.dart';
 import '../../../../core/domain/models/activity.dart';
 import '../../../../core/domain/models/enums.dart';
 import '../../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';

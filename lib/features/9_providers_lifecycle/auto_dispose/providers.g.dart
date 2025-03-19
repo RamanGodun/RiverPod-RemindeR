@@ -13,14 +13,15 @@ String _$autoDisposeCounterHash() =>
 @ProviderFor(AutoDisposeCounter)
 final autoDisposeCounterProvider =
     AutoDisposeNotifierProvider<AutoDisposeCounter, int>.internal(
-  AutoDisposeCounter.new,
-  name: r'autoDisposeCounterProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$autoDisposeCounterHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      AutoDisposeCounter.new,
+      name: r'autoDisposeCounterProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$autoDisposeCounterHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$AutoDisposeCounter = AutoDisposeNotifier<int>;
 String _$anotherCounterHash() => r'5f65254ddba73c01898b6ab7153d9166141464a4';
@@ -29,14 +30,15 @@ String _$anotherCounterHash() => r'5f65254ddba73c01898b6ab7153d9166141464a4';
 @ProviderFor(AnotherCounter)
 final anotherCounterProvider =
     AutoDisposeNotifierProvider<AnotherCounter, int>.internal(
-  AnotherCounter.new,
-  name: r'anotherCounterProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$anotherCounterHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      AnotherCounter.new,
+      name: r'anotherCounterProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$anotherCounterHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$AnotherCounter = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint
