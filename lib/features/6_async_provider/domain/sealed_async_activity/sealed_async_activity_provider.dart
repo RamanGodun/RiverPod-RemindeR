@@ -21,11 +21,10 @@ class SealedAsyncActivity extends _$SealedAsyncActivity {
     });
 
     debugPrint('hashCode: $hashCode');
-    fetchActivity(activityTypes[0]);
+    // fetchActivity(activityTypes[0]);
     //instead EnumAsyncActivityState.initial() (as was in enum based)
-    // ! that's why we need initial state in enum-based state: we use method "copyWith()",
-    // ! which cannot be called on not initialized object
-    return const SealedAsyncActivityLoading();
+    // ! that's why we need initial state in enum-based state: we use method "copyWith()", which cannot be called on not initialized object
+    return const SealedAsyncActivityInitial();
   }
 
   Future<void> fetchActivity(String activityType) async {

@@ -43,6 +43,12 @@ class _SealedAsyncActivityPageState
 
       body: activityState.when(
         ///
+        initial:
+            () => const Center(
+              child: TextWidget('Get some activity', TextType.titleMedium),
+            ),
+
+        ///
         loading: () => const AppMiniWidgets(MWType.loading),
 
         /// Failure state, displaying an error widget or fallback activity.
@@ -60,17 +66,6 @@ class _SealedAsyncActivityPageState
             (activities) =>
                 prevWidget = ActivityWidget(activity: activities.first),
       ),
-      // * Alternative syntax
-      // body: switch (activityState) {
-      //   SealedAsyncActivityLoading() => AppMiniWidgets.loadingWidget(),
-      //   SealedAsyncActivityFailure() => prevWidget == null
-      //       ? AppMiniWidgets.errorWidget(context, 'Get some activity')
-      //       : prevWidget!,
-      //   SealedAsyncActivitySuccess(activities: List<Activity> activities) =>
-      //     prevWidget = ActivityWidget(
-      //       activity: activities.first,
-      //     ),
-      // },
 
       ///
       floatingActionButton: FloatingActionButton.extended(

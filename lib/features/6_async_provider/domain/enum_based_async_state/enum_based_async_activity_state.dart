@@ -21,10 +21,8 @@ class EnumAsyncActivityState with _$EnumAsyncActivityState {
   // and ensures no error is present at the start.
   factory EnumAsyncActivityState.initial() {
     return EnumAsyncActivityState(
-      status:
-          ActivityStatus
-              .loading, // ! Not Initial status, like in case with simple (not async) Notifier Provider
-      activities: [Activity.empty()], // Empty list at the start.
+      status: ActivityStatus.initial,
+      activities: [Activity.empty()],
       error: '', // No error initially.
     );
   }

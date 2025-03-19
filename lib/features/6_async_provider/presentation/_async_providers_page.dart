@@ -10,7 +10,7 @@ class AsyncProvidersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBar(title: 'Notifier providers'),
+      appBar: CustomAppBar(title: 'Async providers'),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
