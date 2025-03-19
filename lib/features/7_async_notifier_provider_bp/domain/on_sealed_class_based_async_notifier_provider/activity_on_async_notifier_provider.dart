@@ -45,7 +45,7 @@ class AsyncActivity extends _$AsyncActivity {
     if (_errorCounter++ % 2 != 1) {
       // Simulate network delay and throw an error for 50% of the requests.
       await Future.delayed(const Duration(seconds: 1));
-      throw 'Fail to fetch activity';
+      throw 'This is simulation of failure of fetch activity';
     }
   }
 }

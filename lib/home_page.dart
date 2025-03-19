@@ -16,6 +16,7 @@ import 'core/ui/_theming/theme_provider.dart';
 import 'features/4_state_or_change_notifier_provider/presentation/_todos_ui.dart';
 import 'features/5_notifier_provider_bp/presentation/_notifier_providers_page.dart';
 import 'features/6_async_provider/presentation/_async_providers_page.dart';
+import 'features/7_async_notifier_provider_bp/presentation/_async_notifier_providers_page.dart';
 
 /// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
 class MyHomePage extends ConsumerWidget {
@@ -78,6 +79,8 @@ Widget getFeatureWidget(AppFeature feature) {
       return const NotifierProvidersPage();
     case AppFeature.asyncProvider:
       return const AsyncProvidersPage();
+    case AppFeature.asyncNotifierProvider:
+      return const Page4AsyncNotifierProviders();
     /*
 
     */

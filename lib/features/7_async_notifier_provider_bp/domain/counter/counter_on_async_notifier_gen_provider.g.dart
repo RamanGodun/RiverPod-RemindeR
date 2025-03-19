@@ -6,7 +6,8 @@ part of 'counter_on_async_notifier_gen_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$counterHash() => r'8a7f5ec19495bdb2b81b99d4bbe9afca0f9407dc';
+String _$genCounterOnAsyncNotifierHash() =>
+    r'823758a62fb70fba5e5e12b381b605a2ec752329';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,28 +30,31 @@ class _SystemHash {
   }
 }
 
-abstract class _$Counter extends BuildlessAutoDisposeAsyncNotifier<int> {
+abstract class _$GenCounterOnAsyncNotifier
+    extends BuildlessAutoDisposeAsyncNotifier<int> {
   late final int arg;
 
   FutureOr<int> build(int arg);
 }
 
-/// See also [Counter].
-@ProviderFor(Counter)
-const counterProvider = CounterFamily();
+/// See also [GenCounterOnAsyncNotifier].
+@ProviderFor(GenCounterOnAsyncNotifier)
+const genCounterOnAsyncNotifierProvider = GenCounterOnAsyncNotifierFamily();
 
-/// See also [Counter].
-class CounterFamily extends Family<AsyncValue<int>> {
-  /// See also [Counter].
-  const CounterFamily();
+/// See also [GenCounterOnAsyncNotifier].
+class GenCounterOnAsyncNotifierFamily extends Family<AsyncValue<int>> {
+  /// See also [GenCounterOnAsyncNotifier].
+  const GenCounterOnAsyncNotifierFamily();
 
-  /// See also [Counter].
-  CounterProvider call(int arg) {
-    return CounterProvider(arg);
+  /// See also [GenCounterOnAsyncNotifier].
+  GenCounterOnAsyncNotifierProvider call(int arg) {
+    return GenCounterOnAsyncNotifierProvider(arg);
   }
 
   @override
-  CounterProvider getProviderOverride(covariant CounterProvider provider) {
+  GenCounterOnAsyncNotifierProvider getProviderOverride(
+    covariant GenCounterOnAsyncNotifierProvider provider,
+  ) {
     return call(provider.arg);
   }
 
@@ -66,28 +70,30 @@ class CounterFamily extends Family<AsyncValue<int>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'counterProvider';
+  String? get name => r'genCounterOnAsyncNotifierProvider';
 }
 
-/// See also [Counter].
-class CounterProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<Counter, int> {
-  /// See also [Counter].
-  CounterProvider(int arg)
+/// See also [GenCounterOnAsyncNotifier].
+class GenCounterOnAsyncNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<GenCounterOnAsyncNotifier, int> {
+  /// See also [GenCounterOnAsyncNotifier].
+  GenCounterOnAsyncNotifierProvider(int arg)
     : this._internal(
-        () => Counter()..arg = arg,
-        from: counterProvider,
-        name: r'counterProvider',
+        () => GenCounterOnAsyncNotifier()..arg = arg,
+        from: genCounterOnAsyncNotifierProvider,
+        name: r'genCounterOnAsyncNotifierProvider',
         debugGetCreateSourceHash:
             const bool.fromEnvironment('dart.vm.product')
                 ? null
-                : _$counterHash,
-        dependencies: CounterFamily._dependencies,
-        allTransitiveDependencies: CounterFamily._allTransitiveDependencies,
+                : _$genCounterOnAsyncNotifierHash,
+        dependencies: GenCounterOnAsyncNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            GenCounterOnAsyncNotifierFamily._allTransitiveDependencies,
         arg: arg,
       );
 
-  CounterProvider._internal(
+  GenCounterOnAsyncNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -100,15 +106,15 @@ class CounterProvider
   final int arg;
 
   @override
-  FutureOr<int> runNotifierBuild(covariant Counter notifier) {
+  FutureOr<int> runNotifierBuild(covariant GenCounterOnAsyncNotifier notifier) {
     return notifier.build(arg);
   }
 
   @override
-  Override overrideWith(Counter Function() create) {
+  Override overrideWith(GenCounterOnAsyncNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: CounterProvider._internal(
+      override: GenCounterOnAsyncNotifierProvider._internal(
         () => create()..arg = arg,
         from: from,
         name: null,
@@ -121,13 +127,14 @@ class CounterProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<Counter, int> createElement() {
-    return _CounterProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<GenCounterOnAsyncNotifier, int>
+  createElement() {
+    return _GenCounterOnAsyncNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is CounterProvider && other.arg == arg;
+    return other is GenCounterOnAsyncNotifierProvider && other.arg == arg;
   }
 
   @override
@@ -141,18 +148,19 @@ class CounterProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin CounterRef on AutoDisposeAsyncNotifierProviderRef<int> {
+mixin GenCounterOnAsyncNotifierRef on AutoDisposeAsyncNotifierProviderRef<int> {
   /// The parameter `arg` of this provider.
   int get arg;
 }
 
-class _CounterProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<Counter, int>
-    with CounterRef {
-  _CounterProviderElement(super.provider);
+class _GenCounterOnAsyncNotifierProviderElement
+    extends
+        AutoDisposeAsyncNotifierProviderElement<GenCounterOnAsyncNotifier, int>
+    with GenCounterOnAsyncNotifierRef {
+  _GenCounterOnAsyncNotifierProviderElement(super.provider);
 
   @override
-  int get arg => (origin as CounterProvider).arg;
+  int get arg => (origin as GenCounterOnAsyncNotifierProvider).arg;
 }
 
 // ignore_for_file: type=lint
