@@ -7,7 +7,7 @@ part of 'sealed_async_activity_provider.dart';
 // **************************************************************************
 
 String _$sealedAsyncActivityHash() =>
-    r'cf96db7f2e853b795746bb845890aaec1e8831bd';
+    r'988692abd4e4e750a6166c87aee30eb5ce845407';
 
 /// See also [SealedAsyncActivity].
 @ProviderFor(SealedAsyncActivity)
