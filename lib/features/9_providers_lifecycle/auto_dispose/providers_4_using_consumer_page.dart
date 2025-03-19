@@ -1,9 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'providers.g.dart';
+part 'providers_4_using_consumer_page.g.dart';
 
 @riverpod
-class AutoDisposeCounter extends _$AutoDisposeCounter {
+class OneCounter extends _$OneCounter {
   @override
   int build() {
     print('[autoDisposeCounterProvider] initialized');

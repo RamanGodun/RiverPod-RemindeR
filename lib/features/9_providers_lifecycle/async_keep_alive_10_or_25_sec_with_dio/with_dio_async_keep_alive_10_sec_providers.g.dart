@@ -7,7 +7,7 @@ part of 'with_dio_async_keep_alive_10_sec_providers.dart';
 // **************************************************************************
 
 String _$getProductsListThatCashedFor10SecHash() =>
-    r'6580ccdc9eb0c47779c9dc02d059fcff57c82913';
+    r'c2997a67c8c6ffea11c13a8883cf523ce3a03756';
 
 /// See also [getProductsListThatCashedFor10Sec].
 @ProviderFor(getProductsListThatCashedFor10Sec)

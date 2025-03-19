@@ -1,29 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'providers.dart';
+part of 'providers_4_using_consumer_page.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$autoDisposeCounterHash() =>
-    r'5e4831a04dbf7dcad613e7ced85f4fe38b3800f4';
+String _$oneCounterHash() => r'ac9e8dc7ce5419d3980d7eb2bd7fb8450e9685a4';
 
-/// See also [AutoDisposeCounter].
-@ProviderFor(AutoDisposeCounter)
-final autoDisposeCounterProvider =
-    AutoDisposeNotifierProvider<AutoDisposeCounter, int>.internal(
-      AutoDisposeCounter.new,
-      name: r'autoDisposeCounterProvider',
+/// See also [OneCounter].
+@ProviderFor(OneCounter)
+final oneCounterProvider =
+    AutoDisposeNotifierProvider<OneCounter, int>.internal(
+      OneCounter.new,
+      name: r'oneCounterProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$autoDisposeCounterHash,
+              : _$oneCounterHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$AutoDisposeCounter = AutoDisposeNotifier<int>;
+typedef _$OneCounter = AutoDisposeNotifier<int>;
 String _$anotherCounterHash() => r'5f65254ddba73c01898b6ab7153d9166141464a4';
 
 /// See also [AnotherCounter].
