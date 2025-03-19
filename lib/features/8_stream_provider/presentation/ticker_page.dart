@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../ticker/ticker_provider.dart';
+import '../domain/ticker/ticker_provider.dart';
 
-class TickerPage extends ConsumerWidget {
-  const TickerPage({super.key});
+class TickerOnStreamProviderPage extends ConsumerWidget {
+  const TickerOnStreamProviderPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,7 +15,7 @@ class TickerPage extends ConsumerWidget {
     print(tickerValue);
 
     return Scaffold(
-      appBar: AppBar(title: const TextWidget('Ticker', TextType.titleMedium)),
+      appBar: const CustomAppBar(title: 'Ticker on async stream '),
       body: Center(
         child: tickerValue.when(
           data:

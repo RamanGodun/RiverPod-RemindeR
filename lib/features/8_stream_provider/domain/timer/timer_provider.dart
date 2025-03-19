@@ -1,16 +1,13 @@
 import 'dart:async';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import 'ticker.dart';
 import 'timer_state.dart';
 
 part 'timer_provider.g.dart';
 
-// riverpodStreamClass or riverpodStreamClassKeeAlive and then => autocompletion and get class
 @riverpod
 class Timer extends _$Timer {
-  final int _duration = 10;
+  final int _duration = 17;
   final Ticker _ticker = const Ticker();
   StreamSubscription<int>? _tickerSubscription;
 
@@ -27,9 +24,10 @@ class Timer extends _$Timer {
     state = AsyncData(TimerRunning(_duration));
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker.tick(ticks: _duration).listen((duration) {
-      state = duration > 0
-          ? AsyncData(TimerRunning(duration))
-          : const AsyncData(TimerFinished());
+      state =
+          duration > 0
+              ? AsyncData(TimerRunning(duration))
+              : const AsyncData(TimerFinished());
     });
   }
 
