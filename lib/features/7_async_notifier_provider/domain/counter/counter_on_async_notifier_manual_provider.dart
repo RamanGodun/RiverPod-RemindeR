@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // AsyncNotifierProvider with family and autoDispose modifiers to manage state for a counter.

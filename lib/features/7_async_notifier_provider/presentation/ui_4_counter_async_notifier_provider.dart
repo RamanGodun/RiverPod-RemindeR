@@ -4,7 +4,7 @@ import 'package:riverpod_reminder/core/domain/config/extensions/async_value_xx.d
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 // import '_counter_provider.dart'; //when not using code generation
-import '../counter/counter_on_async_notifier_gen_provider.dart';
+import '../domain/counter/counter_on_async_notifier_gen_provider.dart';
 
 class CounterPage extends ConsumerWidget {
   const CounterPage({super.key});

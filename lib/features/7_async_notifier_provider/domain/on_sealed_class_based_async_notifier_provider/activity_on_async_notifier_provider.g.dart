@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'async_activity_provider.dart';
+part of 'activity_on_async_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator

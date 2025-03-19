@@ -1,8 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_reminder/core/domain/state/dio_and_retrofit/activities_api/activities_dio_provider.dart';
-import '../../../core/domain/models/activity.dart';
+import '../../../../core/domain/models/activity.dart';
 
-part 'async_activity_provider.g.dart';
+part 'activity_on_async_notifier_provider.g.dart';
 
 @riverpod
 class AsyncActivity extends _$AsyncActivity {

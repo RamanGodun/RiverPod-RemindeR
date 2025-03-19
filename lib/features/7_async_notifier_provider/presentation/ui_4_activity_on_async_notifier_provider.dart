@@ -6,7 +6,7 @@ import '../../../core/domain/models/activity.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../sealed_class_based_async_activity/async_activity_provider.dart';
+import '../domain/on_sealed_class_based_async_notifier_provider/activity_on_async_notifier_provider.dart';
 
 class AsyncActivityPage extends ConsumerWidget {
   const AsyncActivityPage({super.key});
