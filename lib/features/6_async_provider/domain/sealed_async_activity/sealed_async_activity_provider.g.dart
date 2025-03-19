@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '_sealed_async_activity_provider.dart';
+part of 'sealed_async_activity_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$sealedAsyncActivityHash() =>
-    r'7668d938622df0efabc438ec65f156dd71de44e5';
+    r'cf96db7f2e853b795746bb845890aaec1e8831bd';
 
 /// See also [SealedAsyncActivity].
 @ProviderFor(SealedAsyncActivity)

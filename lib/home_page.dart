@@ -14,7 +14,7 @@ import 'core/domain/utils_and_services/dialogs_service.dart';
 import 'core/domain/utils_and_services/helpers.dart';
 import 'core/ui/_theming/theme_provider.dart';
 import 'features/4_state_or_change_notifier_provider/presentation/_todos_ui.dart';
-import 'features/5_notifier_provider/presentation/_notifier_providers_page.dart';
+import 'features/5_notifier_provider_bp/presentation/_notifier_providers_page.dart';
 import 'features/6_async_provider/presentation/_async_providers_page.dart';
 
 /// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**

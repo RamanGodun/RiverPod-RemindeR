@@ -5,8 +5,8 @@ import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/buttons/outlined.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/providers/counter/counter_on_manual_notifier_provider.dart';
-import '../domain/providers/counter/counter_on_gen_notifier_provider_gen.dart';
+import '../domain/counter_notifier_provider/counter_on_manual_notifier_provider.dart';
+import '../domain/counter_notifier_provider/counter_on_gen_notifier_provider_gen.dart';
 
 class CounterPageOnNotifier extends ConsumerWidget {
   const CounterPageOnNotifier({super.key});

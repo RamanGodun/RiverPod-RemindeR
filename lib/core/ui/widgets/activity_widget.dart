@@ -32,7 +32,7 @@ class ActivityWidget extends StatelessWidget {
             'kidFriendly: ${activity.kidFriendly}',
             'key: ${activity.key}',
           ],
-          style: Theme.of(context).textTheme.titleMedium,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
       ],
     );

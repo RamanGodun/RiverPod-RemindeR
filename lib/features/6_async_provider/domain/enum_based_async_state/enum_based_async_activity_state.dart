@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'activity.dart';
-import 'enums.dart';
+import '../../../../core/domain/models/activity.dart';
+import '../../../../core/domain/models/enums.dart';
 
 part 'enum_based_async_activity_state.freezed.dart';
 

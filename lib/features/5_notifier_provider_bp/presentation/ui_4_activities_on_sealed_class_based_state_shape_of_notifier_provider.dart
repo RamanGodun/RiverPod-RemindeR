@@ -2,12 +2,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import '../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../../../core/domain/models/activity.dart';
-import '../domain/providers/sealed_class_based_state/sealed_activity_provider.dart';
-import '../domain/providers/sealed_class_based_state/sealed_activity_state.dart';
+import '../domain/activity_provider_on_sealed_class_based_ss/sealed_activity_provider.dart';
+import '../domain/activity_provider_on_sealed_class_based_ss/sealed_activity_state.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 
 class SealedActivityPage extends ConsumerStatefulWidget {
@@ -43,9 +44,13 @@ class _SealedActivityPageState extends ConsumerState<SealedActivityPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'on sealed class Notifier',
-        actionIcons: const [Icons.refresh],
+        actionIcons: const [Icons.add, Icons.refresh],
         // Refresh button that invalidates the current state and forces a reload.
-        actionCallbacks: [() => ref.invalidate(sealedActivityProvider)],
+        actionCallbacks: [
+          () =>
+              ref.read(forErrorsSimulationCounterProvider.notifier).increment(),
+          () => ref.invalidate(sealedActivityProvider),
+        ],
       ),
 
       body: switch (activityState) {

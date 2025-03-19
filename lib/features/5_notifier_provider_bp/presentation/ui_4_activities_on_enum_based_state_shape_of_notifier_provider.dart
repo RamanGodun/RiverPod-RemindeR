@@ -4,13 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/domain/models/activity.dart';
 import '../../../core/domain/models/enums.dart';
-import '../../../core/domain/state/errors_dialog_providers.dart';
+import '../../../core/domain/state/errors_handling/errors_dialog_providers.dart';
+import '../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 import '../../../core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/providers/enum_based_state/enum_activity_provider.dart';
-
+import '../domain/activity_provider_on_enum_based_ss/enum_activity_provider.dart';
 
 class EnumActivityPage extends ConsumerStatefulWidget {
   const EnumActivityPage({super.key});
@@ -48,7 +48,8 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
         title: 'on enum based Notifier',
         actionIcons: const [Icons.add, Icons.refresh],
         actionCallbacks: [
-          () => ref.read(myCounterProvider.notifier).increment(),
+          () =>
+              ref.read(forErrorsSimulationCounterProvider.notifier).increment(),
           () => Future.delayed(
             Duration.zero,
             () => ref

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
-import '../../../../../core/domain/state/dio_and_retrofit/activities_api/activities_dio_provider.dart';
-import '../../../../../core/domain/models/activity.dart';
+import '../../../../core/domain/state/dio_and_retrofit/activities_api/activities_dio_provider.dart';
+import '../../../../core/domain/models/activity.dart';
+import '../../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
 import 'sealed_activity_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -10,7 +11,7 @@ part 'sealed_activity_provider.g.dart';
 @Riverpod(keepAlive: true)
 class SealedActivity extends _$SealedActivity {
   // Counter to simulate errors every second request. Used for testing failure handling.
-  int _errorCounter = 0;
+  // *** видалили локальний _errorCounter
 
   // The initial state of the provider when it is first created.
   // This method is executed when the provider is initialized or refreshed.
@@ -35,11 +36,13 @@ class SealedActivity extends _$SealedActivity {
     state = const SealedActivityLoading();
 
     try {
-      print('_errorCounter: $_errorCounter');
+      ref.read(forErrorsSimulationCounterProvider.notifier).increment();
+      final counter = ref.read(forErrorsSimulationCounterProvider);
+      print('_errorCounter: $counter');
 
       // Simulating a failure every second request.
-      // Delays the request for 500ms and throws an error for every odd `_errorCounter`.
-      if (_errorCounter++ % 2 != 1) {
+      // Delays the request for 500ms and throws an error for every odd counter.
+      if (counter % 2 != 1) {
         await Future.delayed(const Duration(milliseconds: 500));
         throw 'This is simulation of failure of fetch activity';
       }

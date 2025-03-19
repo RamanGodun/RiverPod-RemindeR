@@ -1,25 +1,26 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/domain/models/activity.dart';
 import '../../../../core/domain/state/dio_and_retrofit/activities_api/activities_dio_provider.dart';
-import '_sealed_async_activity_state.dart';
+import '../../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
+import 'sealed_async_activity_state.dart';
 
-part '_sealed_async_activity_provider.g.dart';
+part 'sealed_async_activity_provider.g.dart';
 
 @riverpod
 class SealedAsyncActivity extends _$SealedAsyncActivity {
-  int _errorCounter = 0;
-
   SealedAsyncActivity() {
-    print('[SealedAsyncActivity] constructor called');
+    debugPrint('[SealedAsyncActivity] constructor called');
   }
 
   @override
   SealedAsyncActivityState build() {
-    print('[sealedAsyncActivityProvider] initialized');
+    debugPrint('[sealedAsyncActivityProvider] initialized');
     ref.onDispose(() {
       print('[sealedAsyncActivityProvider] disposed');
     });
-    print('hashCode: $hashCode');
+
+    debugPrint('hashCode: $hashCode');
     fetchActivity(activityTypes[0]);
     //instead EnumAsyncActivityState.initial() (as was in enum based)
     // ! that's why we need initial state in enum-based state: we use method "copyWith()",
@@ -28,12 +29,16 @@ class SealedAsyncActivity extends _$SealedAsyncActivity {
   }
 
   Future<void> fetchActivity(String activityType) async {
-    print('hashCode in fetchActivity: $hashCode');
+    debugPrint('hashCode in fetchActivity: $hashCode');
     state = const SealedAsyncActivityLoading();
 
     try {
-      print('_errorCounter: $_errorCounter');
-      if (_errorCounter++ % 2 != 1) {
+      ref.read(forErrorsSimulationCounterProvider.notifier).increment();
+      final counter = ref.read(forErrorsSimulationCounterProvider);
+      debugPrint('_errorCounter: $counter');
+
+      /// Simulate an error for 50% of requests (by checking the counter) and network delay (500 ms)
+      if (counter % 2 != 1) {
         await Future.delayed(const Duration(milliseconds: 500));
         throw 'Fail to fetch activity';
       }

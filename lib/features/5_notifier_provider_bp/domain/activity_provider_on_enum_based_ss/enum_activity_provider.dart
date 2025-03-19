@@ -1,62 +1,57 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_reminder/core/domain/state/dio_and_retrofit/activities_api/activities_dio_provider.dart';
-import '../../../../../core/domain/models/enums.dart';
-import '../../../../../core/domain/models/activity.dart';
-import '../../../../../core/domain/models/enum_activity_state.dart';
+import '../../../../core/domain/models/enums.dart';
+import '../../../../core/domain/models/activity.dart';
+import '../../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
+import 'enum_activity_state.dart';
 
 part 'enum_activity_provider.g.dart';
 
 @riverpod
 class EnumActivity extends _$EnumActivity {
-  // Tracks how many times an error has occurred.
-  // Used to simulate a 50% failure rate by incrementing this counter
-  // and checking if the number is even or odd.
-  int _counterForErrorsGenerating = 0;
-
   @override
   EnumActivityState build() {
     ref.onDispose(() {
       print('[enumActivityProvider] disposed');
     });
-
-    // Watching another provider (in this case, MyCounter) inside the state builder.
-    // This triggers a rebuild when the watched provider's state changes.
-    ref.watch(myCounterProvider);
-    //  and for Debugging purposes, to track state changes
-    print('initial hashCode: $hashCode'); // .to check is instance is destroyed?
-    return EnumActivityState.initial(); // Return the initial state of the provider.
+    //  and for Debugging purposes, to track state changes, to check is instance is destroyed?
+    debugPrint('initial hashCode: $hashCode');
+    return EnumActivityState.initial();
   }
 
   // Fetches activities based on the given activity type from the API.
   // It simulates a network call where every second call fails to test error handling.
   Future<void> fetchActivity(String activityType) async {
-    // .to sure that an instance doesn't destroyed (hash codes are the same, so no extra objects)
-    //  after refreshing hash code the same, what this mean?
+    // to sure that an instance doesn't destroyed (hash codes are the same, so after refreshing no extra objects)
     //! (notifier builds method executed again, but Notifier instance itself doesn't re-create?) the same as after state's changing of provider,
     // !from which this Notifier depends (in this case  ref.watch(myCounterProvider);)
     // ! that's why this type of Provider is better then StateProvider or ChangeNotifierProvider (!!)
-    print('hashCode in fetchActivity: $hashCode');
+    debugPrint('hashCode in fetchActivity: $hashCode');
     state = state.copyWith(status: ActivityStatus.loading);
 
     try {
-      print('_errorCounter: $_counterForErrorsGenerating');
+      ref.read(forErrorsSimulationCounterProvider.notifier).increment();
+      final counter = ref.read(forErrorsSimulationCounterProvider);
+      debugPrint('_errorCounter: $counter');
+
       // Simulate an error for 50% of requests by checking the counter.
-      if (_counterForErrorsGenerating++ % 2 != 1) {
+      if (counter % 2 != 1) {
         await Future.delayed(
-          const Duration(milliseconds: 500),
-        ); // Simulate network delay.
-        throw 'Fail to fetch activity'; // Throwing an error to simulate failure.
+          const Duration(milliseconds: 500), // Simulate network delay
+        );
+        throw 'This is simulation of failure of fetch activity';
       }
 
       // Perform the API request to fetch activities by type.
       final response = await ref
           .read(activitiesDioProvider)
           .get('?type=$activityType');
-      print(
-        'Status code: ${response.statusCode}',
-      ); // For debugging response status.
-      print('Response type: ${response.data.runtimeType}');
-      print('Response body: ${response.data}'); // For debugging response body.
+      // For debugging response status.
+      debugPrint('Status code: ${response.statusCode}');
+      debugPrint('Response type: ${response.data.runtimeType}');
+      // For debugging response body
+      debugPrint('Response body: ${response.data}');
 
       final activities = <Activity>[];
 
@@ -87,18 +82,4 @@ class EnumActivity extends _$EnumActivity {
       );
     }
   }
-}
-
-/*
-MyCounter provider handles a simple integer state.
-It increments a counter which is observed by EnumActivity to trigger side effects.
- */
-@Riverpod(keepAlive: true)
-class MyCounter extends _$MyCounter {
-  @override
-  int build() {
-    return 0;
-  }
-
-  void increment() => state++;
 }

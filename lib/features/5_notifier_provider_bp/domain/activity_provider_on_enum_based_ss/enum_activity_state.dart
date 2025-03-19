@@ -1,20 +1,22 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'activity.dart';
-import 'enums.dart';
+import '../../../../core/domain/models/activity.dart';
+import '../../../../core/domain/models/enums.dart';
 
 part 'enum_activity_state.freezed.dart';
 
 @freezed
 class EnumActivityState with _$EnumActivityState {
-  // This factory defines the structure of the activity state.
+  /// This factory defines the structure of the activity state.
   // It holds the current status of the activity (based on ActivityStatus enum),
   // a list of activities (fetched or empty), and a potential error message.
   const factory EnumActivityState({
-    required ActivityStatus
-    status, // Tracks the current status of the data fetching.
-    required List<Activity> activities, // List of fetched activities.
-    required String error, // Stores the error message in case of failure.
+    // Tracks the current status of the data fetching.
+    required ActivityStatus status,
+    // List of fetched activities.
+    required List<Activity> activities,
+    // Stores the error message in case of failure.
+    required String error,
   }) = _EnumActivityState;
 
   // A convenient factory constructor to create the initial state.

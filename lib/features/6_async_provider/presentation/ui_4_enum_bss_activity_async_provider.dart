@@ -4,12 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/models/activity.dart';
-import '../../../core/domain/models/enum_based_async_activity_state.dart';
 import '../../../core/domain/models/enums.dart';
+import '../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/enum_based_async_state/enum_async_activity_provider.dart';
+import '../domain/enum_based_async_state/enum_based_async_activity_state.dart';
 
 class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
   const Page4EnumBasedAsyncActivityProvider({super.key});
@@ -27,7 +28,8 @@ class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
         title: 'Enum BSS Async Provider',
         actionIcons: const [Icons.add, Icons.refresh],
         actionCallbacks: [
-          () => ref.read(myCounterProvider.notifier).increment(),
+          () =>
+              ref.read(forErrorsSimulationCounterProvider.notifier).increment(),
           () => ref.invalidate(enumAsyncActivityProvider),
         ],
       ),

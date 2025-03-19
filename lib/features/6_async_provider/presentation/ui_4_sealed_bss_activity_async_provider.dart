@@ -4,11 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/models/activity.dart';
+import '../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/sealed_async_activity/_sealed_async_activity_provider.dart';
-import '../domain/sealed_async_activity/_sealed_async_activity_state.dart';
+import '../domain/sealed_async_activity/sealed_async_activity_provider.dart';
+import '../domain/sealed_async_activity/sealed_async_activity_state.dart';
 
 class Page4SealedClassBasedAsyncActivityProvider
     extends ConsumerStatefulWidget {
@@ -32,8 +33,12 @@ class _SealedAsyncActivityPageState
     return Scaffold(
       appBar: CustomAppBar(
         title: 'SealedAsyncActivityNotifier',
-        actionIcons: const [Icons.refresh],
-        actionCallbacks: [() => ref.invalidate(sealedAsyncActivityProvider)],
+        actionIcons: const [Icons.refresh, Icons.add],
+        actionCallbacks: [
+          () =>
+              ref.read(forErrorsSimulationCounterProvider.notifier).increment(),
+          () => ref.invalidate(sealedAsyncActivityProvider),
+        ],
       ),
 
       body: activityState.when(
