@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../core/domain/models/product_model/product.dart';
@@ -29,7 +30,7 @@ class ProductRepository {
       if (response.statusCode != 200) {
         throw 'Fail to fetch products';
       }
-      print('response.data: ${response.data}');
+      debugPrint('response.data: ${response.data}');
 
       final List productList = response.data['products'];
 

@@ -27,6 +27,7 @@ class _ProductsPageState
 
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(),
         body: productList.when(
           data: (products) {
             print('from page: products');
