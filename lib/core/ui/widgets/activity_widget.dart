@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bulleted_list/bulleted_list.dart';
+import '../../domain/models/activity_model/activity.dart';
 import 'text_widget.dart';
-import '../../domain/models/activity.dart';
 
 // Widget to display the details of a single activity.
 // This widget formats and presents the activity data in a bulleted list.

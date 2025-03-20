@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import '../../../core/domain/models/activity.dart';
+import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/models/enums.dart';
 import '../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
 import '../../../core/ui/widgets/activity_widget.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 
-import '../../../core/domain/models/activity.dart';
+import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/domain/models/product.dart';
+import '../../../../core/domain/models/product_model/product.dart';
 import '../../../../core/domain/state/dio_and_retrofit/dio_providers/dummy_api/dummy_api_dio_provider.dart';
 
 part 'product_repository.g.dart';

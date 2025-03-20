@@ -1,8 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../core/domain/models/activity.dart';
+import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/models/enums.dart';
 import '../../../core/domain/state/errors_handling/errors_dialog_providers.dart';
 import '../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';

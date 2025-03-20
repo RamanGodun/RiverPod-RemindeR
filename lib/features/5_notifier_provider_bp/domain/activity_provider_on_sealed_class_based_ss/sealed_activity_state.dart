@@ -1,4 +1,4 @@
-import '../../../../core/domain/models/activity.dart';
+import '../../../../core/domain/models/activity_model/activity.dart';
 
 sealed class SealedActivityState {
   const SealedActivityState();
