@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 import '../../ui/_theming/theme_provider.dart';
 import '../models/enums.dart';
@@ -123,5 +124,23 @@ class Helpers {
       message: "Theme changed to ${isDark ? 'Light' : 'Dark'}",
       icon: isDark ? Icons.wb_sunny : Icons.nightlight_round,
     );
+  }
+
+  /// 📅 **Formats [DateTime] object into a readable string for displaying item creation dates.**
+  ///
+  /// - If the date is today, returns 'Today, HH:mm'
+  /// - If the date is yesterday, returns 'Yesterday, HH:mm'
+  /// - Otherwise, returns formatted date as 'dd MMM yyyy, HH:mm'
+  static String formatCreationDate(DateTime date) {
+    final now = DateTime.now();
+    final difference = now.difference(date).inDays;
+
+    if (difference == 0 && now.day == date.day) {
+      return 'Today, ${DateFormat('HH:mm').format(date)}';
+    } else if (difference <= 1 && now.day - date.day == 1) {
+      return 'Yesterday, ${DateFormat('HH:mm').format(date)}';
+    } else {
+      return DateFormat('dd MMM yyyy, HH:mm').format(date);
+    }
   }
 }

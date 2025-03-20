@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/buttons/outlined.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../domain/subtree_optimization/provider_4_provider_scope_overrides_example.dart';
+
+import '../domain/provider_4_provider_scope_overrides_example.dart'
+    show BaseCounterStartingAt100, baseCounterProvider;
 
 /// Demonstrates creating isolated instances of providers using different [ProviderScope] overrides.
 /// ProviderScopes allow creating independent instances of providers,

@@ -3,7 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/buttons/outlined.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../domain/subtree_optimization/provider_4_provider_scope_overrides_example.dart';
+import '../domain/provider_4_provider_scope_overrides_example.dart'
+    show
+        SecondBaseCounterStartingAt10,
+        SecondBaseCounterStartingAt100,
+        doubledSecondBaseCounterProvider,
+        secondBaseCounterProvider;
 
 /// Demonstrates different instances of [SecondBaseCounter] and derived providers using ProviderScope overrides.
 class Page4SecondExampleOfProvidersOverride extends ConsumerWidget {

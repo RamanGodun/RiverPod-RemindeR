@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/buttons/custom_button.dart';
+import 'page_with_using_local_states_for_optimization.dart';
 import 'page_for_provider_scope_override_example_1.dart';
 import 'page_for_provider_scope_override_example_2.dart';
 
@@ -27,17 +28,12 @@ class ProvidersOptimizationPage extends StatelessWidget {
               child: Page4SecondExampleOfProvidersOverride(),
             ),
 
-            // CustomButton(
-            //   title: 'to using Consumer widget page',
-            //   child: PageToShowProductivityIncreasingWhenUseConsumerWidget(),
-            // ),
+            CustomButton(
+              title: 'to using Consumer widget page',
+              child: PageWithOptimizedLocalStatesForItems(),
+            ),
 
-            // CustomButton(
-            //   title: 'to cascade providers',
-            //   child: CascadeProvidersPage(),
-            // ),
-            /* CascadeProvidersPage
-             */
+            ///
           ],
         ),
       ),
