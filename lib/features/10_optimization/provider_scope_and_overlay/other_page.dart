@@ -8,18 +8,16 @@ class OtherPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(autoDisposeCounterProvider);
+
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Other page'),
+      appBar: const CustomAppBar(title: 'Other Page'),
       body: Center(
-        child: Text(
-          '${ref.watch(forOptimizationPageCounterProvider)}',
-          style: const TextStyle(fontSize: 48),
-        ),
+        child: Text('Counter: $counter', style: const TextStyle(fontSize: 36)),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ref.read(forOptimizationPageCounterProvider.notifier).increment();
-        },
+        onPressed:
+            () => ref.read(autoDisposeCounterProvider.notifier).increment(),
         child: const Icon(Icons.add),
       ),
     );

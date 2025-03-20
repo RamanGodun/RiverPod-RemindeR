@@ -11,104 +11,65 @@ class PageToShowDependenceOfLocalAndGlobalContext extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(autoDisposeCounterProvider);
+
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Global and local context'),
-      body: Padding(
-        padding: const EdgeInsets.only(bottom: 85),
-        child: Center(
+      appBar: const CustomAppBar(title: 'Global vs Local ProviderScope'),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            spacing: 15,
             children: [
               const Divider(),
-              const TextWidget(
-                'Unintended ProviderScope',
-                TextType.headlineSmall,
-              ),
-              const SizedBox(
-                width: double.infinity,
-                child: Wrap(
-                  children: [
-                    /*
-                     * Opens a dialog box that uses the global `ProviderScope`.
-                     * Since no custom `ProviderScope` is provided, the dialog
-                     * will display the default value of `counterProvider` (e.g., `0`).
-                     */
-                    CustomButtonForDialog(
-                      title: 'call dialog with gl.ctx',
-                      child: AlertDialog(content: CounterDisplay()),
-                    ),
+              const TextWidget('Global ProviderScope', TextType.headlineSmall),
 
-                    /*
-                     * Navigates to the `OtherPage`. Since no custom `ProviderScope`
-                     * is passed, it will also use the global `ProviderScope`   
-                     */
-                    CustomButton(
-                      title: 'to Other page with gl.ctx',
-                      child: OtherPage(),
-                    ),
-                  ],
+              /// Діалог без локального scope (скидається після закриття)
+              const CustomButtonForDialog(
+                title: 'Dialog (Global Scope)',
+                child: AlertDialog(content: CounterDisplay()),
+              ),
+
+              /// Перехід на сторінку без локального scope (скидається після повернення)
+              const CustomButton(
+                title: 'Go to Other Page (Global Scope)',
+                child: OtherPage(),
+              ),
+
+              const Divider(),
+              const TextWidget('Local ProviderScope', TextType.headlineSmall),
+
+              /// Діалог із локальним ProviderScope (стан зберігається)
+              CustomButtonForDialog(
+                title: 'Dialog (Local Scope)',
+                child: ProviderScope(
+                  parent: ProviderScope.containerOf(context),
+                  child: const AlertDialog(content: CounterDisplay()),
                 ),
               ),
 
-              ///
-              const Divider(),
-              const TextWidget(
-                'Intended ProviderScope',
-                TextType.headlineSmall,
-              ),
-              Wrap(
-                children: [
-                  /*
-                   * Opens a dialog box but provides a custom `ProviderScope` with `parent: ProviderScope.containerOf(context)`
-                   * This ensures the dialog inherits the overridden `counterProvider` value (e.g., `100`) from the parent scope
-                   */
-                  CustomButtonForDialog(
-                    title: 'Call dialog with local ctx',
-                    child: ProviderScope(
-                      parent: ProviderScope.containerOf(context),
-                      child: const AlertDialog(content: CounterDisplay()),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  /*
-                    Navigates to the `OtherPage` but with a custom `ProviderScope`.
-                    The `parent` ensures the `counterProvider` retains its overridden value
-                   */
-                  CustomButton(
-                    title: 'to Other page with loc.ctx',
-                    child: ProviderScope(
-                      parent: ProviderScope.containerOf(context),
-                      child: const OtherPage(),
-                    ),
-                  ),
-                ],
+              /// Перехід на сторінку із локальним ProviderScope (стан зберігається)
+              CustomButton(
+                title: 'Go to Other Page (Local Scope)',
+                child: ProviderScope(
+                  parent: ProviderScope.containerOf(context),
+                  child: const OtherPage(),
+                ),
               ),
 
-              ///
               const Divider(),
-              const TextWidget(
-                'Current counter value is: ',
-                TextType.titleMedium,
-              ),
-              TextWidget(
-                '${ref.watch(forOptimizationPageCounterProvider)}',
-                TextType.headlineLarge,
-              ),
+              const SizedBox(height: 20),
+              const TextWidget('Global Counter Value:', TextType.titleMedium),
+              TextWidget('$counter', TextType.headlineLarge),
             ],
           ),
         ),
       ),
 
-      ///
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 70),
-        child: FloatingActionButton(
-          onPressed: () {
-            ref.read(forOptimizationPageCounterProvider.notifier).increment();
-          },
-          child: const Icon(Icons.add),
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed:
+            () => ref.read(autoDisposeCounterProvider.notifier).increment(),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -119,10 +80,18 @@ class CounterDisplay extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final counter = ref.watch(forOptimizationPageCounterProvider);
-    /*
-     * It rebuilds automatically when the provider's state changes.
-     */
-    return TextWidget('$counter', TextType.titleMedium);
+    final counter = ref.watch(autoDisposeCounterProvider);
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TextWidget('Counter: $counter', TextType.titleMedium),
+        const SizedBox(height: 10),
+        TextWidget(
+          'Widget: ${context.widget.runtimeType}',
+          TextType.bodyMedium,
+        ),
+      ],
+    );
   }
 }
