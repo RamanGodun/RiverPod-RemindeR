@@ -3,19 +3,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/buttons/outlined.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import 'provider_4_provider_scope_overrides_example.dart';
+import '../domain/subtree_optimization/provider_4_provider_scope_overrides_example.dart';
 
 /// Demonstrates creating isolated instances of providers using different [ProviderScope] overrides.
-///
 /// ProviderScopes allow creating independent instances of providers,
 /// enabling custom initialization and isolation of state for specific widgets or widget subtrees.
-class Page4ProvidersOverrideExamples extends ConsumerWidget {
-  const Page4ProvidersOverrideExamples({super.key});
+class Page4FirstExampleOfProvidersOverride extends ConsumerWidget {
+  const Page4FirstExampleOfProvidersOverride({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Providers override page'),
+      appBar: const CustomAppBar(title: 'Providers override example 1'),
       body: Center(
         child: ListView(
           shrinkWrap: true,
@@ -34,8 +33,8 @@ class Page4ProvidersOverrideExamples extends ConsumerWidget {
             const Divider(height: 50),
 
             /// Creates a new isolated provider instance within a [ProviderScope].
-            /// This instance is initialized with the default logic but is isolated
-            /// from the global provider instance.
+            /// This instance is initialized with the default logic but is isolated from the global provider instance.
+            /// without overrides two widgets will change one-the-same provider
             ProviderScope(
               overrides: [baseCounterProvider],
               child: const IncrementCounterSection(
@@ -66,12 +65,12 @@ class Page4ProvidersOverrideExamples extends ConsumerWidget {
   }
 }
 
-/// Reusable widget for incrementing and displaying the counter state.
+/// Widget for incrementing and displaying counter values.
 class IncrementCounterSection extends ConsumerWidget {
-  /// Amount by which the counter will increase when the button is pressed.
+  /// Amount by which the counter will increment.
   final int incrementValue;
 
-  /// Text label displayed on the increment button.
+  /// Label displayed on the increment button.
   final String label;
 
   const IncrementCounterSection({
@@ -82,7 +81,7 @@ class IncrementCounterSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// Reads the current state from the nearest [ProviderScope].
+    /// Watches the counter's current state from the nearest [ProviderScope].
     final counter = ref.watch(baseCounterProvider);
 
     return Column(
@@ -91,7 +90,7 @@ class IncrementCounterSection extends ConsumerWidget {
         /// Displays the current counter value.
         TextWidget('$counter', TextType.headlineSmall),
 
-        /// Button increments the counter by [incrementValue].
+        /// Button to increment the counter by [incrementValue].
         CustomOutlinedButton(
           buttonText: label,
           onPressed:

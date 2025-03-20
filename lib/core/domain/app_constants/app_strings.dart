@@ -1,6 +1,6 @@
 abstract class AppStrings {
   // 🏠 Titles
-  static const String appTitle = 'Riverpod Reminder';
+  static const String appTitle = '      Riverpod Reminder';
   static const String toggleTheme = 'Toggle Theme';
 
   // 🌍 Fatal Game Texts

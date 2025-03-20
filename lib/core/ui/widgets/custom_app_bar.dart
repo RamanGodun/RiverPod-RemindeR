@@ -27,13 +27,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     return AppBar(
-      title: Padding(
-        padding: const EdgeInsets.only(left: 35),
-        child: TextWidget(
-          title,
-          TextType.titleMedium,
-          alignment: TextAlign.start,
-        ),
+      title: TextWidget(
+        title,
+        TextType.titleMedium,
+        alignment: TextAlign.start,
       ),
       leading:
           leadingIcon != null
