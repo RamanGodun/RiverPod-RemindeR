@@ -28,13 +28,13 @@ String _$itemListHash() => r'18f1df1194a95c986d4adbf406f8edb660f99e97';
 @ProviderFor(ItemList)
 final itemListProvider =
     AutoDisposeNotifierProvider<ItemList, List<Item>>.internal(
-  ItemList.new,
-  name: r'itemListProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$itemListHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      ItemList.new,
+      name: r'itemListProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product') ? null : _$itemListHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$ItemList = AutoDisposeNotifier<List<Item>>;
 // ignore_for_file: type=lint

@@ -12,7 +12,8 @@ part of 'item_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Item _$ItemFromJson(Map<String, dynamic> json) {
   return _Item.fromJson(json);
@@ -54,28 +55,31 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = null,
-    Object? createdAt = null,
-  }) {
-    return _then(_value.copyWith(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+  $Res call({Object? text = null, Object? createdAt = null}) {
+    return _then(
+      _value.copyWith(
+            text:
+                null == text
+                    ? _value.text
+                    : text // ignore: cast_nullable_to_non_nullable
+                        as String,
+            createdAt:
+                null == createdAt
+                    ? _value.createdAt
+                    : createdAt // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
   factory _$$ItemImplCopyWith(
-          _$ItemImpl value, $Res Function(_$ItemImpl) then) =
-      __$$ItemImplCopyWithImpl<$Res>;
+    _$ItemImpl value,
+    $Res Function(_$ItemImpl) then,
+  ) = __$$ItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String text, DateTime createdAt});
@@ -86,26 +90,27 @@ class __$$ItemImplCopyWithImpl<$Res>
     extends _$ItemCopyWithImpl<$Res, _$ItemImpl>
     implements _$$ItemImplCopyWith<$Res> {
   __$$ItemImplCopyWithImpl(_$ItemImpl _value, $Res Function(_$ItemImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of Item
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = null,
-    Object? createdAt = null,
-  }) {
-    return _then(_$ItemImpl(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+  $Res call({Object? text = null, Object? createdAt = null}) {
+    return _then(
+      _$ItemImpl(
+        text:
+            null == text
+                ? _value.text
+                : text // ignore: cast_nullable_to_non_nullable
+                    as String,
+        createdAt:
+            null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+      ),
+    );
   }
 }
 
@@ -151,16 +156,15 @@ class _$ItemImpl implements _Item {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ItemImplToJson(
-      this,
-    );
+    return _$$ItemImplToJson(this);
   }
 }
 
 abstract class _Item implements Item {
-  const factory _Item(
-      {required final String text,
-      required final DateTime createdAt}) = _$ItemImpl;
+  const factory _Item({
+    required final String text,
+    required final DateTime createdAt,
+  }) = _$ItemImpl;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$ItemImpl.fromJson;
 

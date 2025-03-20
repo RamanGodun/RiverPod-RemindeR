@@ -4,7 +4,7 @@ import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
 import '../../../domain/utils_and_services/helpers.dart';
 import '../text_widget.dart';
 
-/// 🎨 **CustomButton** - Кнопка у стилі macOS/iOS з гласморфізмом
+/// 🎨 **CustomButton**
 class CustomButton extends StatelessWidget {
   final String title;
   final Widget child;
@@ -39,14 +39,17 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
         borderRadius: BorderRadius.circular(12),
         color: Colors.transparent,
-        child:
-            TextWidget(title, TextType.titleMedium, color: AppConstants.white),
+        child: TextWidget(
+          title,
+          TextType.titleMedium,
+          color: AppConstants.white,
+        ),
       ),
     );
   }
 }
 
-/// 🪟 **CustomButtonForDialog** - Кнопка для відкриття діалогового вікна у стилі macOS
+/// 🪟 **CustomButtonForDialog**
 class CustomButtonForDialog extends StatelessWidget {
   final String title;
   final Widget child;
@@ -59,25 +62,36 @@ class CustomButtonForDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Helpers.getColorScheme(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
-      child: CupertinoButton(
-        onPressed: () => showDialog(
-          context: context,
-          builder: (c) {
-            return child;
-          },
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: CupertinoButton(
+          onPressed:
+              () => showDialog(
+                context: context,
+                builder: (ctx) {
+                  return child;
+                },
+              ),
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          borderRadius: BorderRadius.circular(12),
+          color: colorScheme.primary.withOpacity(0.6),
+          child: TextWidget(
+            title,
+            TextType.titleMedium,
+            color: colorScheme.onPrimary,
+          ),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.white.withOpacity(0.3),
-        child: TextWidget(title, TextType.button, color: Colors.black),
       ),
     );
   }
 }
 
-/// 🌍 **CustomButtonForGoRouter** - Кнопка для навігації через GoRouter
+/// 🌍 **CustomButtonForGoRouter**
 class CustomButtonForGoRouter extends StatelessWidget {
   final String title;
   final String? routeName;

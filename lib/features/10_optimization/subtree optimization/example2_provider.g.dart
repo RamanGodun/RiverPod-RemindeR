@@ -14,13 +14,14 @@ String _$ex2AdjustedCounterHash() =>
 final ex2AdjustedCounterProvider = AutoDisposeProvider<int>.internal(
   ex2AdjustedCounter,
   name: r'ex2AdjustedCounterProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$ex2AdjustedCounterHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$ex2AdjustedCounterHash,
   dependencies: <ProviderOrFamily>[ex2CounterProvider],
   allTransitiveDependencies: <ProviderOrFamily>{
     ex2CounterProvider,
-    ...?ex2CounterProvider.allTransitiveDependencies
+    ...?ex2CounterProvider.allTransitiveDependencies,
   },
 );
 

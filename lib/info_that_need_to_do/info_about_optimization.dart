@@ -56,4 +56,90 @@ When calling showDialog or navigation methods in the HomePage4OverlayOptimizatio
 at first, look opportunity to avoid using it, by using separate provider or family provider(because subtree scoping is difficult)
 
 ===============================
+
+## Local vs Global ProviderScope in Riverpod
+
+### Core Idea
+In Riverpod, **ProviderScope** is responsible for holding the state of all providers. There are two main ways to use it:
+
+1. **Global ProviderScope (Default)**
+2. **Local ProviderScope (Scoped to specific widgets/pages/dialogs)**
+
+### Global ProviderScope
+
+- **Definition:** The ProviderScope initialized at the root of the app (`main.dart`).
+- **Behavior:**
+  - Shared across the entire app.
+  - All widgets access the same provider instances.
+  - Disposing/rebuilding providers depends on widget lifecycle.
+
+**⚠️ Problem:**
+Dialogs, modals, or navigated pages **by default** use the global ProviderScope and won’t inherit any overridden values or custom scopes unless explicitly wrapped.
+
+---
+
+### Local ProviderScope
+
+- **Definition:** A custom ProviderScope created inside widget trees, optionally with a `parent`.
+- **Behavior:**
+  - Allows overriding providers.
+  - Manages its own lifecycle separate from the global scope.
+  - Useful when you want localized state/data.
+
+### Why Use Local ProviderScope?
+
+| **Use Case**                                       | **Advantage**                                                                                               |
+|---------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| Modals/Dialog windows                              | Allows them to inherit overridden provider values, keeping context-specific state.                         |
+| Navigated pages                                   | Keeps separate state for specific navigation flows.                                                       |
+| Testing                                           | Simplifies provider overrides in unit/widget tests.                                                       |
+| Feature isolation (micro-frontends architecture)  | Scoped state management for independent feature modules.                                                  |
+
+---
+
+### Example: Dialog with Local ProviderScope
+
+```dart
+CustomButtonForDialog(
+  title: 'Dialog (local context)',
+  child: ProviderScope(
+    parent: ProviderScope.containerOf(context),
+    child: const AlertDialog(content: CounterDisplay()),
+  ),
+)
+```
+
+### Example: Page with Local ProviderScope
+
+```dart
+CustomButton(
+  title: 'Page (local context)',
+  child: ProviderScope(
+    parent: ProviderScope.containerOf(context),
+    child: const OtherPage(),
+  ),
+)
+```
+
+### Global vs Local Scope Behavior
+
+| **Context**           | **State Sharing**                                | **Lifecycle**                                  |
+|----------------------|--------------------------------------------------|------------------------------------------------|
+| Global ProviderScope  | Shared across all widgets/pages/dialogs          | Managed globally (whole app lifecycle)         |
+| Local ProviderScope   | Isolated within a specific widget tree           | Managed locally (disposed when widget removed) |
+
+---
+
+### Key Takeaways
+
+- **Global ProviderScope**: Default, shared app-wide.
+- **Local ProviderScope**: Scoped, overrides allowed, useful for dialogs, modals, separate pages, and test isolation.
+- **Always wrap context-dependent widgets (dialogs, pages)** in a **local ProviderScope with parent context**, if state isolation or overrides are necessary.
+
+### Common Pitfall
+
+If you don’t use local ProviderScope in modals or navigated pages, they will fallback to the **global context**, potentially causing unintended state behavior or missing overrides.
+
+
+
  */

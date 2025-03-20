@@ -7,9 +7,9 @@ part of 'item_model.dart';
 // **************************************************************************
 
 _$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
-      text: json['text'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-    );
+  text: json['text'] as String,
+  createdAt: DateTime.parse(json['createdAt'] as String),
+);
 
 Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
     <String, dynamic>{

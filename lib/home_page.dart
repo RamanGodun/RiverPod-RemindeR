@@ -4,6 +4,7 @@ import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
 import 'features/0_simple_providers/presentation/_simple_providers_page.dart';
+import 'features/10_optimization/_presentation/_providers_optimization_page.dart';
 import 'features/1_state_provider/presentation/_state_providers_page.dart';
 import 'features/2_future_provider/presentation/_future_providers_page.dart';
 import 'features/3_stream_provider/ticker_presentation.dart';
@@ -87,6 +88,8 @@ Widget getFeatureWidget(AppFeature feature) {
       return const Page4AsyncStreamProviders();
     case AppFeature.providersLifecycle:
       return const Page4ProvidersLifecycle();
+    case AppFeature.optimization:
+      return const ProvidersOptimizationPage();
     /*
 
     */
