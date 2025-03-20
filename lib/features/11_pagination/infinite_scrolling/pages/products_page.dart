@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:riverpod_reminder/features/11_pagination/infinite_scrolling/pages/product_page.dart';
+
 import '../../../../core/domain/utils_and_services/helpers.dart';
 import '../../../../core/ui/widgets/text_widget.dart';
 import '../../domain/models/product.dart';
 import '../repositories/product_repository.dart';
+import 'product_page.dart';
 
 class ProductsPageWithPagination extends ConsumerStatefulWidget {
   const ProductsPageWithPagination({super.key});
@@ -24,8 +25,9 @@ class _ProductsPageWithPaginationState
     super.initState();
     _pagingController = PagingController<int, Product>(
       getNextPageKey: (state) {
-        // Determine the next page key based on the current state
-        return (state.keys!.isEmpty ? 0 : state.keys?.last)! + 1;
+        final keys = state.keys;
+        if (keys == null || keys.isEmpty) return 1;
+        return keys.last + 1;
       },
       fetchPage: (pageKey) async {
         try {
@@ -63,10 +65,11 @@ class _ProductsPageWithPaginationState
               builderDelegate: PagedChildBuilderDelegate<Product>(
                 itemBuilder: (context, product, index) {
                   return GestureDetector(
-                    onTap: () => Helpers.pushTo(
-                      context,
-                      ProductPage4ScrollPagination(id: product.id),
-                    ),
+                    onTap:
+                        () => Helpers.pushTo(
+                          context,
+                          ProductPage4ScrollPagination(id: product.id),
+                        ),
                     child: Row(
                       children: [
                         const SizedBox(width: 20),
@@ -89,12 +92,13 @@ class _ProductsPageWithPaginationState
                     ),
                   );
                 },
-                noMoreItemsIndicatorBuilder: (context) => const Center(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20.0),
-                    child: TextWidget('No more products!', TextType.error),
-                  ),
-                ),
+                noMoreItemsIndicatorBuilder:
+                    (context) => const Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                        child: TextWidget('No more products!', TextType.error),
+                      ),
+                    ),
                 firstPageErrorIndicatorBuilder: (context) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
@@ -112,7 +116,10 @@ class _ProductsPageWithPaginationState
                         const SizedBox(height: 20),
                         OutlinedButton(
                           onPressed: () => _pagingController.refresh(),
-                          child: const TextWidget('Try Again!', TextType.button),
+                          child: const TextWidget(
+                            'Try Again!',
+                            TextType.button,
+                          ),
                         ),
                       ],
                     ),
