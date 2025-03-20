@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/buttons/custom_button.dart';
-import '../provider_scope_and_overlay/page_4_overlay_optimization.dart';
+import '../subtree optimization/example1_page.dart';
+import '../subtree optimization/example2_page.dart';
 
 class ProvidersOptimizationPage extends StatelessWidget {
   const ProvidersOptimizationPage({super.key});
@@ -16,15 +17,9 @@ class ProvidersOptimizationPage extends StatelessWidget {
           spacing: 30,
           children: [
             /// 🚀 **кнопка переходу до модифікатори**
-            CustomButton(
-              title: 'to overlay optimization',
-              child: PageToShowDependenceOfLocalAndGlobalContext(),
-            ),
+            CustomButton(title: 'without optimization', child: Example1Page()),
 
-            // CustomButton(
-            //   title: 'to products, cashed for 10/25 sec',
-            //   child: Page4ProductsThatCashedFor10Sec(),
-            // ),
+            CustomButton(title: 'with optimization', child: Example2Page()),
 
             // CustomButton(
             //   title: 'to using Consumer widget page',
