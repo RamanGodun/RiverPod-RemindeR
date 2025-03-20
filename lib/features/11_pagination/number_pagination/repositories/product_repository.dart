@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../domain/models/product.dart';
-import 'dio_provider.dart';
+import '../../../../core/domain/models/product.dart';
+import '../../../../core/domain/state/dio_and_retrofit/dio_providers/dummy_api/dummy_api_dio_provider.dart';
 
 part 'product_repository.g.dart';
 
@@ -22,10 +22,7 @@ class ProductRepository {
     try {
       final Response response = await dio.get(
         '/products',
-        queryParameters: {
-          'limit': limit,
-          'skip': (page - 1) * limit,
-        },
+        queryParameters: {'limit': limit, 'skip': (page - 1) * limit},
         cancelToken: cancelToken,
       );
 
@@ -41,7 +38,7 @@ class ProductRepository {
       totalPages = totalProducts ~/ limit + (totalProducts % limit > 0 ? 1 : 0);
 
       final products = [
-        for (final product in productList) Product.fromJson(product)
+        for (final product in productList) Product.fromJson(product),
       ];
 
       return products;
@@ -69,5 +66,5 @@ class ProductRepository {
 
 @riverpod
 ProductRepository productRepository(Ref ref) {
-  return ProductRepository(ref.watch(dioProvider));
+  return ProductRepository(ref.watch(dummyApiDioProvider));
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-
+import '../../../../core/domain/models/product.dart';
 import '../../../../core/domain/utils_and_services/helpers.dart';
 import '../../../../core/ui/widgets/text_widget.dart';
-import '../../domain/models/product.dart';
 import '../repositories/product_repository.dart';
 import 'product_page.dart';
 

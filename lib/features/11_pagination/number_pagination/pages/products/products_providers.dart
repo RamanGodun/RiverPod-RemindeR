@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../domain/models/product.dart';
+import '../../../../../core/domain/models/product.dart';
 import '../../repositories/product_repository.dart';
 
 part 'products_providers.g.dart';
