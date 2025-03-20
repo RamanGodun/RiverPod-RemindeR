@@ -17,9 +17,9 @@ class ProvidersOptimizationPage extends StatelessWidget {
           spacing: 30,
           children: [
             /// 🚀 **кнопка переходу до модифікатори**
-            CustomButton(title: 'without optimization', child: Example1Page()),
+            CustomButton(title: 'to example 1 page', child: Example1Page()),
 
-            CustomButton(title: 'with optimization', child: Example2Page()),
+            CustomButton(title: 'to example 2 page', child: Example2Page()),
 
             // CustomButton(
             //   title: 'to using Consumer widget page',

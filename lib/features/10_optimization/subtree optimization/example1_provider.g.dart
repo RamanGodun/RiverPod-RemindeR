@@ -6,19 +6,23 @@ part of 'example1_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ex1CounterHash() => r'78f0a3a563e3229f97cc9884b74245a6357f23e8';
+String _$counterForExample1PageHash() =>
+    r'03618b2217a64cc7597217ac553efbb1b69982e8';
 
-/// See also [Ex1Counter].
-@ProviderFor(Ex1Counter)
-final ex1CounterProvider = NotifierProvider<Ex1Counter, int>.internal(
-  Ex1Counter.new,
-  name: r'ex1CounterProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$ex1CounterHash,
-  dependencies: const <ProviderOrFamily>[],
-  allTransitiveDependencies: const <ProviderOrFamily>{},
-);
+/// See also [CounterForExample1Page].
+@ProviderFor(CounterForExample1Page)
+final counterForExample1PageProvider =
+    NotifierProvider<CounterForExample1Page, int>.internal(
+      CounterForExample1Page.new,
+      name: r'counterForExample1PageProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$counterForExample1PageHash,
+      dependencies: const <ProviderOrFamily>[],
+      allTransitiveDependencies: const <ProviderOrFamily>{},
+    );
 
-typedef _$Ex1Counter = Notifier<int>;
+typedef _$CounterForExample1Page = Notifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
