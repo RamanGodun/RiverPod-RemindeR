@@ -1,6 +1,8 @@
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/number_pagination/product_providers_for_page_with_number_pagination.dart';
@@ -14,27 +16,30 @@ class ProductPageWithNumberPagination extends ConsumerWidget {
     final singleProduct = ref.watch(
       forPageWithNumberPaginationGetProductProvider(id),
     );
+    final colorScheme = Helpers.getColorScheme(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget('Product Detail', TextType.titleMedium),
-      ),
+      appBar: const CustomAppBar(title: 'Product Details'),
       body: singleProduct.when(
         data: (product) {
           return ListView(
             padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             children: [
               Row(
+                spacing: 10,
                 children: [
                   CircleAvatar(
+                    backgroundColor: colorScheme.secondary,
                     child: TextWidget(id.toString(), TextType.titleMedium),
                   ),
-                  const SizedBox(width: 10),
+
                   Expanded(
                     child: TextWidget(product.title, TextType.headlineSmall),
                   ),
                 ],
               ),
+
+              ///
               const Divider(),
               BulletedList(
                 bullet: const Icon(Icons.check, color: Colors.green),
@@ -46,9 +51,11 @@ class ProductPageWithNumberPagination extends ConsumerWidget {
                   'category: ${product.category}',
                   'description: ${product.description}',
                 ],
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               const Divider(),
+
+              ///
               SizedBox(
                 width: double.infinity,
                 child: Image.network(product.thumbnail, fit: BoxFit.cover),
@@ -56,6 +63,8 @@ class ProductPageWithNumberPagination extends ConsumerWidget {
             ],
           );
         },
+
+        ///
         error: (e, st) => AppMiniWidgets(MWType.error, error: e),
         loading: () => const AppMiniWidgets(MWType.loading),
       ),

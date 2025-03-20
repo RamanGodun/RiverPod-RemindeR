@@ -50,7 +50,7 @@ class _ProductsPageWithPaginationState
     final colorScheme = Helpers.getColorScheme(context);
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Product List'),
+      appBar: const CustomAppBar(title: 'Products List'),
 
       body: RefreshIndicator(
         onRefresh: () async => _pagingController.refresh(),

@@ -18,7 +18,7 @@ class ProductPageWithInfiniteScrollPagination extends ConsumerWidget {
     final colorScheme = Helpers.getColorScheme(context);
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Product Detail'),
+      appBar: const CustomAppBar(title: 'Product Details'),
       body: singleProduct.when(
         ///
         data: (product) {

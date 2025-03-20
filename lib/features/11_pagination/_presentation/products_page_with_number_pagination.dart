@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:number_paginator/number_paginator.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
+import '../../../core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/number_pagination/products_providers_for_page_with_number_pagination.dart';
@@ -24,14 +25,17 @@ class _ProductsPageState
     final productList = ref.watch(
       forPageWithNumberPaginationGetProductsProvider(page),
     );
+    final colorScheme = Helpers.getColorScheme(context);
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: const CustomAppBar(title: 'Products List'),
+
         body: productList.when(
           data: (products) {
             print('from page: products');
             return ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               itemCount: products.length,
               separatorBuilder: (BuildContext context, int index) {
                 return const Divider();
@@ -45,17 +49,45 @@ class _ProductsPageState
                         context,
                         ProductPageWithNumberPagination(id: product.id),
                       ),
-                  child: ListTile(
-                    title: TextWidget(product.title, TextType.titleMedium),
-                    subtitle: TextWidget(product.brand, TextType.titleSmall),
+
+                  ///
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: colorScheme.secondary,
+                        child: TextWidget(
+                          product.id.toString(),
+                          TextType.titleLarge,
+                          color: colorScheme.onPrimary,
+                        ),
+                      ),
+                      Expanded(
+                        child: ListTile(
+                          title: TextWidget(
+                            product.title,
+                            TextType.titleMedium,
+                            alignment: TextAlign.start,
+                          ),
+                          subtitle: TextWidget(
+                            product.brand,
+                            TextType.bodyMedium,
+                            alignment: TextAlign.start,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 );
               },
             );
           },
+
+          ///
           error: (e, st) => AppMiniWidgets(MWType.error, error: e),
           loading: () => const AppMiniWidgets(MWType.loading),
         ),
+
+        ///
         bottomNavigationBar:
             totalProducts == 0 && totalPages == 1
                 ? const SizedBox.shrink()
@@ -71,9 +103,6 @@ class _ProductsPageState
                     },
                   ),
                 ),
-        /*
-     
-         */
       ),
     );
   }
