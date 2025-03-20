@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/buttons/custom_button.dart';
 import 'infinite_scrolling/pages/products_page.dart';
+import 'number_pagination/pages/products/products_page.dart';
 
-class ProvidersOptimizationPage extends StatelessWidget {
-  const ProvidersOptimizationPage({super.key});
+class PaginationPage extends StatelessWidget {
+  const PaginationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +18,14 @@ class ProvidersOptimizationPage extends StatelessWidget {
           children: [
             /// 🚀 **кнопка переходу до модифікатори**
             CustomButton(
-              title: 'to providers override ex1',
+              title: 'to ProductsPageWithPagination',
               child: ProductsPageWithPagination(),
             ),
 
-            // CustomButton(
-            //   title: 'to providers override ex2',
-            //   child: Page4SecondExampleOfProvidersOverride(),
-            // ),
+            CustomButton(
+              title: 'to ProductsPageWithNumberPagination',
+              child: ProductsPageWithNumberPagination(),
+            ),
 
             // CustomButton(
             //   title: 'to using Consumer widget page',

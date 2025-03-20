@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../domain/models/product.dart';
@@ -17,24 +18,19 @@ class ProductRepository {
     try {
       final Response response = await dio.get(
         '/products',
-        queryParameters: {
-          'limit': limit,
-          'skip': (page - 1) * limit,
-        },
+        queryParameters: {'limit': limit, 'skip': (page - 1) * limit},
       );
 
-      if (response.statusCode != 200) {
-        throw 'Fail to fetch products';
+      if (response.statusCode == null || response.statusCode! >= 400) {
+        throw Exception('Failed to fetch products: ${response.statusCode}');
       }
 
-      final List productList = response.data['products'];
+      final List productList = response.data['products'] ?? [];
 
-      final products = [
-        for (final product in productList) Product.fromJson(product)
-      ];
-
-      return products;
-    } catch (e) {
+      return productList.map((product) => Product.fromJson(product)).toList();
+    } catch (e, stackTrace) {
+      debugPrint('API error: $e');
+      debugPrint('$stackTrace');
       rethrow;
     }
   }
@@ -43,14 +39,14 @@ class ProductRepository {
     try {
       final Response response = await dio.get('/products/$id');
 
-      if (response.statusCode != 200) {
-        throw 'Fail to fetch product with $id';
+      if (response.statusCode == null || response.statusCode! >= 400) {
+        throw Exception('Failed to fetch product with id $id');
       }
 
-      final product = Product.fromJson(response.data);
-
-      return product;
-    } catch (e) {
+      return Product.fromJson(response.data);
+    } catch (e, stackTrace) {
+      debugPrint('API error: $e');
+      debugPrint('$stackTrace');
       rethrow;
     }
   }

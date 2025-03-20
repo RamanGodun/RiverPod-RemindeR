@@ -8,14 +8,14 @@ import '../../repositories/product_repository.dart';
 import '../product/product_page.dart';
 import 'products_providers.dart';
 
-class ProductsPage extends ConsumerStatefulWidget {
-  const ProductsPage({super.key});
+class ProductsPageWithNumberPagination extends ConsumerStatefulWidget {
+  const ProductsPageWithNumberPagination({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ProductsPageState();
 }
 
-class _ProductsPageState extends ConsumerState<ProductsPage> {
+class _ProductsPageState extends ConsumerState<ProductsPageWithNumberPagination> {
   int page = 1;
 
   @override
