@@ -1,23 +1,23 @@
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/ui/widgets/mini_widgets.dart';
+import '../../../core/ui/widgets/text_widget.dart';
+import '../domain/number_pagination/product_providers_for_page_with_number_pagination.dart';
 
-import 'product_providers.dart';
-
-class ProductPage4ScrollPagination extends ConsumerWidget {
+class ProductPageWithNumberPagination extends ConsumerWidget {
   final int id;
-  const ProductPage4ScrollPagination({
-    super.key,
-    required this.id,
-  });
+  const ProductPageWithNumberPagination({super.key, required this.id});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final singleProduct = ref.watch(getProductProvider(id));
+    final singleProduct = ref.watch(
+      forPageWithNumberPaginationGetProductProvider(id),
+    );
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Product Detail'),
+        title: const TextWidget('Product Detail', TextType.titleMedium),
       ),
       body: singleProduct.when(
         data: (product) {
@@ -27,18 +27,12 @@ class ProductPage4ScrollPagination extends ConsumerWidget {
               Row(
                 children: [
                   CircleAvatar(
-                    child: Text(
-                      id.toString(),
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
+                    child: TextWidget(id.toString(), TextType.titleMedium),
                   ),
                   const SizedBox(width: 10),
                   Expanded(
-                    child: Text(
-                      product.title,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                  )
+                    child: TextWidget(product.title, TextType.headlineSmall),
+                  ),
                 ],
               ),
               const Divider(),
@@ -52,7 +46,7 @@ class ProductPage4ScrollPagination extends ConsumerWidget {
                   'category: ${product.category}',
                   'description: ${product.description}',
                 ],
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               const Divider(),
               SizedBox(
@@ -62,19 +56,8 @@ class ProductPage4ScrollPagination extends ConsumerWidget {
             ],
           );
         },
-        error: (e, st) => Center(
-          child: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Text(
-              e.toString(),
-              style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        error: (e, st) => AppMiniWidgets(MWType.error, error: e),
+        loading: () => const AppMiniWidgets(MWType.loading),
       ),
     );
   }

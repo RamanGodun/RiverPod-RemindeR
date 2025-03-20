@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import '../../../../core/domain/models/product_model/product.dart';
-import '../../../../core/domain/utils_and_services/helpers.dart';
-import '../../../../core/ui/widgets/text_widget.dart';
-import '../repositories/product_repository.dart';
-import 'product_page.dart';
+import '../../../core/domain/models/product_model/product.dart';
+import '../../../core/domain/utils_and_services/helpers.dart';
+import '../../../core/ui/widgets/text_widget.dart';
+import '../domain/infinite_scrolling/for_page_with_infinite_scroll_pagination_products_repository.dart';
+import 'product_page_4_infinite_scroll_pagination.dart';
 
 class ProductsPageWithPagination extends ConsumerStatefulWidget {
   const ProductsPageWithPagination({super.key});
@@ -31,7 +31,9 @@ class _ProductsPageWithPaginationState
       fetchPage: (pageKey) async {
         try {
           final newProducts = await ref
-              .read(productRepositoryProvider)
+              .read(
+                forPageWithInfiniteScrollPaginationProductsRepositoryProvider,
+              )
               .getProducts(pageKey);
           return newProducts;
         } catch (error) {
@@ -67,7 +69,9 @@ class _ProductsPageWithPaginationState
                     onTap:
                         () => Helpers.pushTo(
                           context,
-                          ProductPage4ScrollPagination(id: product.id),
+                          ProductPageWithInfiniteScrollPagination(
+                            id: product.id,
+                          ),
                         ),
                     child: Row(
                       children: [

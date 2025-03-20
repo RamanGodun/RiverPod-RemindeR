@@ -2,13 +2,13 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../../core/domain/models/product_model/product.dart';
-import '../../repositories/product_repository.dart';
+import '../../../../../../core/domain/models/product_model/product.dart';
+import 'repositories/product_repository_for_page_with_number_pagination.dart';
 
-part 'products_providers.g.dart';
+part 'products_providers_for_page_with_number_pagination.g.dart';
 
 @riverpod
-FutureOr<List<Product>> getProducts(Ref ref, int page) async {
+FutureOr<List<Product>> forPageWithNumberPaginationGetProducts(Ref ref, int page) async {
   final cancelToken = CancelToken();
   Timer? timer;
 

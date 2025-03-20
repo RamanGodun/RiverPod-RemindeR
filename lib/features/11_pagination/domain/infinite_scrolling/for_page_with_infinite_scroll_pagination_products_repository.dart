@@ -2,17 +2,17 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/domain/models/product_model/product.dart';
-import '../../../../core/domain/state/dio_and_retrofit/dio_providers/dummy_api/dummy_api_dio_provider.dart';
+import '../../../../../core/domain/models/product_model/product.dart';
+import '../../../../../core/domain/state/dio_and_retrofit/dio_providers/dummy_api/dummy_api_dio_provider.dart';
 
-part 'product_repository.g.dart';
+part 'for_page_with_infinite_scroll_pagination_products_repository.g.dart';
 
 const limit = 20;
 
-class ProductRepository {
+class ForPageWithInfinitePaginationProductsRepository {
   final Dio dio;
 
-  ProductRepository(this.dio);
+  ForPageWithInfinitePaginationProductsRepository(this.dio);
 
   Future<List<Product>> getProducts(int page) async {
     try {
@@ -53,6 +53,9 @@ class ProductRepository {
 }
 
 @riverpod
-ProductRepository productRepository(Ref ref) {
-  return ProductRepository(ref.watch(dummyApiDioProvider));
+ForPageWithInfinitePaginationProductsRepository
+forPageWithInfiniteScrollPaginationProductsRepository(Ref ref) {
+  return ForPageWithInfinitePaginationProductsRepository(
+    ref.watch(dummyApiDioProvider),
+  );
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import '../../../core/ui/widgets/buttons/custom_button.dart';
-import 'infinite_scrolling/pages/products_page.dart';
-import 'number_pagination/pages/products/products_page.dart';
+import '../../../../core/ui/widgets/buttons/custom_button.dart';
+import 'products_page_with_infinite_scroll_pagination.dart';
+import 'products_page_with_number_pagination.dart';
 
 class PaginationPage extends StatelessWidget {
   const PaginationPage({super.key});
