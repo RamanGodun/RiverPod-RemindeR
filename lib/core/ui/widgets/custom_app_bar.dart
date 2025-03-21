@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'text_widget.dart';
 
-/// 🎨 **[CustomAppBar] - Гнучкий AppBar з динамічними кнопками**
+/// 🎨 **[CustomAppBar]
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final IconData? leadingIcon;
   final VoidCallback? onLeadingPressed;
   final List<IconData>? actionIcons;
   final List<VoidCallback>? actionCallbacks;
+  final bool? isCenteredTitle;
 
   const CustomAppBar({
     super.key,
@@ -16,6 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onLeadingPressed,
     this.actionIcons,
     this.actionCallbacks,
+    this.isCenteredTitle,
   });
 
   @override
@@ -27,10 +29,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     return AppBar(
+      centerTitle: isCenteredTitle ?? false,
       title: TextWidget(
         title,
         TextType.titleMedium,
-        alignment: TextAlign.start,
+        alignment:
+            (isCenteredTitle == true) ? TextAlign.center : TextAlign.start,
       ),
       leading:
           leadingIcon != null

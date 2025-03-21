@@ -15,6 +15,7 @@ class TextWidget extends StatelessWidget {
   final int? maxLines;
   final bool enableShadow;
   final bool? isTextOnFewStrings;
+  final bool? isUnderlined;
 
   const TextWidget(
     this.text,
@@ -30,6 +31,7 @@ class TextWidget extends StatelessWidget {
     this.maxLines,
     this.enableShadow = false,
     this.isTextOnFewStrings,
+    this.isUnderlined,
   });
 
   @override
@@ -53,6 +55,7 @@ class TextWidget extends StatelessWidget {
           fontSize: fontSize ?? baseStyle.fontSize,
           letterSpacing: letterSpacing ?? baseStyle.letterSpacing,
           height: height ?? baseStyle.height,
+          decoration: (isUnderlined == true) ? TextDecoration.underline : null,
           fontFamily: 'SFProText',
           shadows:
               enableShadow

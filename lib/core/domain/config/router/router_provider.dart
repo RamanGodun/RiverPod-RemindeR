@@ -6,11 +6,11 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../features/0_go_router/pages/_1_first_details_page.dart';
 import '../../../../features/0_go_router/pages/_1__first_page.dart';
 import '../../../../features/0_go_router/pages/page_not_found.dart';
-import '../../../../features/0_go_router/pages/_0_scaffold_with_nav_bar.dart';
+import '../../../../features/0_go_router/pages/__scaffold_with_nav_bar.dart';
 import '../../../../features/0_go_router/pages/_2_second_details_page.dart';
 import '../../../../features/0_go_router/pages/_2__second_page.dart';
-import '../../../../features/0_go_router/pages/signin_page.dart';
-import '../../../../features/0_go_router/pages/signup_page.dart';
+import '../../../../features/0_go_router/pages/__0_signin_page.dart';
+import '../../../../features/0_go_router/pages/__0_signup_page.dart';
 import '../../../../features/0_go_router/pages/_3_third_details_page.dart';
 import '../../../../features/0_go_router/pages/_3__third_page.dart';
 import 'auth_state_provider.dart';
@@ -141,7 +141,7 @@ GoRouter router(Ref ref) {
         ],
       ),
     ],
-    // Here widget, which will be displayed in case of invalid path §access
+    // Here widget, which will be displayed in case of invalid path access
     errorBuilder: (context, state) => PageNotFound(
       errMsg: state.error.toString(),
     ),

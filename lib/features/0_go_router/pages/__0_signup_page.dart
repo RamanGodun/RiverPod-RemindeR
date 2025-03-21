@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
 import '../../../core/domain/config/router/auth_state_provider.dart';
 import '../../../core/domain/config/router/route_names.dart';
@@ -11,34 +13,48 @@ class SignupPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const TextWidget('Sign UP', TextType.titleSmall)),
+      appBar: const CustomAppBar(title: 'Sign UP page', isCenteredTitle: true),
       body: Center(
         child: Column(
+          spacing: 20,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Custom Button for Sign Up
+            ///
             CustomButtonForGoRouter(
-              title: 'Sign UP',
+              title: '"Sign UP" in one click',
               voidCallBack: () => _handleSignUp(ref),
             ),
-            const SizedBox(height: 20.0),
-            // Custom Button for navigation to Sign In
+
+            ///
             const CustomButtonForGoRouter(
-              title: 'Already a member? Sign IN!',
-              routeName: RouteNames.signIn,
-            ),
-            const SizedBox(height: 20.0),
-            // Custom Button for navigation to Second Page
-            const CustomButtonForGoRouter(
-              title: 'Second',
+              title: 'Go to Second page',
               routeName: RouteNames.second,
             ),
-            const SizedBox(height: 20.0),
-            // Custom Button for navigation to an invalid route
+
+            ///
             const CustomButtonForGoRouter(
-              title: 'No Where',
+              title: 'Go to non-existence route 😁',
               routeName: '/nowhere',
             ),
+
+            ///
+            TextButton(
+              onPressed: () {
+                Helpers.goTo(
+                  context,
+                  RouteNames.signIn,
+                  pathParameters: const {},
+                  queryParameters: const {},
+                );
+              },
+              child: const TextWidget(
+                'Already a member? Sign IN!',
+                TextType.bodyLarge,
+                isUnderlined: true,
+              ),
+            ),
+
+            ///
           ],
         ),
       ),

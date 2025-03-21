@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
+import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
-import '../../../core/ui/widgets/text_widget.dart';
 import '../../../core/domain/config/router/auth_state_provider.dart';
 import '../../../core/domain/config/router/route_names.dart';
 
@@ -11,35 +13,49 @@ class SigninPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const TextWidget('Sign IN', TextType.titleSmall)),
+      appBar: const CustomAppBar(title: 'Sign IN page', isCenteredTitle: true),
       body: Center(
         child: Column(
+          spacing: 20,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Custom Button for Sign In
+            ///
             CustomButtonForGoRouter(
-              title: 'Sign IN',
+              title: '"Sign IN" in one click',
               voidCallBack: () => _handleSignIn(ref),
             ),
-            const SizedBox(height: 20.0),
-            // Custom Button for navigation to Sign Up
+
+            ///
             const CustomButtonForGoRouter(
-              title: 'Not a member? Sign UP!',
-              routeName: RouteNames.signup,
-            ),
-            const SizedBox(height: 20.0),
-            // Custom Button for navigation to First Page
-            const CustomButtonForGoRouter(
-              title: 'First',
+              title: 'Go to First page',
               routeName: RouteNames.first,
             ),
+
+            ///
+            TextButton(
+              onPressed: () {
+                Helpers.goTo(
+                  context,
+                  RouteNames.signup,
+                  pathParameters: const {},
+                  queryParameters: const {},
+                );
+              },
+              child: const TextWidget(
+                'Not a member? Sign UP!',
+                TextType.bodyLarge,
+                isUnderlined: true,
+              ),
+            ),
+
+            ///
           ],
         ),
       ),
     );
   }
 
-  // Method to handle the sign-in logic
+  /// Method to handle the sign-in logic
   Future<void> _handleSignIn(WidgetRef ref) async {
     await ref.read(authStateProvider.notifier).setAuthenticate(true);
   }

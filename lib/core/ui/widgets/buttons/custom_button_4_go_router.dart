@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import '../../../domain/utils_and_services/helpers.dart';
 import '../text_widget.dart';
@@ -23,16 +22,22 @@ class CustomButtonForGoRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Helpers.getColorScheme(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 6.0),
       child: SizedBox(
         width: double.infinity,
         child: CupertinoButton(
           onPressed: () => _buttonOnPressed(context),
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.white.withOpacity(0.3),
-          child: TextWidget(title, TextType.button, color: Colors.black),
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+          borderRadius: BorderRadius.circular(11),
+          color: colorScheme.primary.withOpacity(0.6),
+          child: TextWidget(
+            title,
+            TextType.titleMedium,
+            color: colorScheme.onPrimary,
+          ),
         ),
       ),
     );
