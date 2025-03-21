@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../data/helpers.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/text_widget.dart';
-import '../config/router/auth_state_provider.dart';
-import '../config/router/route_names.dart';
+import '../../../core/domain/utils_and_services/helpers.dart';
+import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
+import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/domain/config/router/auth_state_provider.dart';
+import '../../../core/domain/config/router/route_names.dart';
 
 class ThirdPage extends ConsumerWidget {
   const ThirdPage({super.key});
@@ -12,14 +12,12 @@ class ThirdPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget('Third', TextType.titleSmall),
-      ),
+      appBar: AppBar(title: const TextWidget('Third', TextType.titleSmall)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const TextWidget('Third Page', TextType.smallHeadline),
+            const TextWidget('Third Page', TextType.headlineMedium),
             const SizedBox(height: 10),
             // Custom Button to navigate to Third Details
             CustomButtonForGoRouter(
@@ -44,7 +42,7 @@ class ThirdPage extends ConsumerWidget {
     );
   }
 
-/*
+  /*
 Recommendations:
 1. Use pathParameters:
 • To identify a resource.

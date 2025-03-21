@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../widgets/text_widget.dart';
+import '../../../core/ui/widgets/text_widget.dart';
 
 class SecondDetailsPage extends StatelessWidget {
   const SecondDetailsPage({super.key, required this.id});
@@ -13,7 +12,7 @@ class SecondDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: const TextWidget('Second Details', TextType.titleSmall),
       ),
-      body: Center(child: TextWidget('your id: $id', TextType.headline)),
+      body: Center(child: TextWidget('your id: $id', TextType.headlineMedium)),
     );
   }
 }

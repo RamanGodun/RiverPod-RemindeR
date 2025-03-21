@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/text_widget.dart';
-import '../config/router/route_names.dart';
+import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
+import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/domain/config/router/route_names.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
@@ -9,14 +9,12 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget('Second', TextType.titleSmall),
-      ),
+      appBar: AppBar(title: const TextWidget('Second', TextType.titleSmall)),
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextWidget('Second Page', TextType.smallHeadline),
+            TextWidget('Second Page', TextType.headlineMedium),
             SizedBox(height: 10),
             CustomButtonForGoRouter(
               title: 'View Second Details',
@@ -25,10 +23,7 @@ class SecondPage extends StatelessWidget {
               queryParameters: {'tab': 'info'},
             ),
             SizedBox(height: 10),
-            CustomButtonForGoRouter(
-              title: 'No Where',
-              routeName: '/nowhere',
-            ),
+            CustomButtonForGoRouter(title: 'No Where', routeName: '/nowhere'),
           ],
         ),
       ),

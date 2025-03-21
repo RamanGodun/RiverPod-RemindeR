@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_project/widgets/custom_button.dart';
-import '../../../widgets/text_widget.dart';
-import '../config/router/route_names.dart';
+import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
+import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/domain/config/router/route_names.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -16,12 +16,12 @@ class FirstPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextWidget('First Page', TextType.smallHeadline),
+            TextWidget('First Page', TextType.headlineMedium),
             SizedBox(height: 10),
             CustomButtonForGoRouter(
               title: 'View First Details',
               routeName: RouteNames.firstDetails,
-            )
+            ),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/text_widget.dart';
+import '../../../core/ui/widgets/text_widget.dart';
 
 class ThirdDetailsPage extends StatelessWidget {
   const ThirdDetailsPage({
@@ -24,7 +24,9 @@ class ThirdDetailsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextWidget(
-                'Your ID: $id\n($firstName $lastName)', TextType.headline),
+              'Your ID: $id\n($firstName $lastName)',
+              TextType.headlineMedium,
+            ),
           ],
         ),
       ),

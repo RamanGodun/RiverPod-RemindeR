@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/text_widget.dart';
-import '../config/router/auth_state_provider.dart';
-import '../config/router/route_names.dart';
+import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
+import '../../../core/domain/config/router/auth_state_provider.dart';
+import '../../../core/domain/config/router/route_names.dart';
+import '../../../core/ui/widgets/text_widget.dart';
 
 class SignupPage extends ConsumerWidget {
   const SignupPage({super.key});
@@ -11,9 +11,7 @@ class SignupPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget('Sign UP', TextType.titleSmall),
-      ),
+      appBar: AppBar(title: const TextWidget('Sign UP', TextType.titleSmall)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

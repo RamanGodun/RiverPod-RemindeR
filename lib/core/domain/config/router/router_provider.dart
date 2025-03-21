@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../pages/_1_first_details_page.dart';
-import '../../pages/_1__first_page.dart';
-import '../../pages/page_not_found.dart';
-import '../../pages/_0_scaffold_with_nav_bar.dart';
-import '../../pages/_2_second_details_page.dart';
-import '../../pages/_2__second_page.dart';
-import '../../pages/signin_page.dart';
-import '../../pages/signup_page.dart';
-import '../../pages/_3_third_details_page.dart';
-import '../../pages/_3__third_page.dart';
+import '../../../../features/0_go_router/pages/_1_first_details_page.dart';
+import '../../../../features/0_go_router/pages/_1__first_page.dart';
+import '../../../../features/0_go_router/pages/page_not_found.dart';
+import '../../../../features/0_go_router/pages/_0_scaffold_with_nav_bar.dart';
+import '../../../../features/0_go_router/pages/_2_second_details_page.dart';
+import '../../../../features/0_go_router/pages/_2__second_page.dart';
+import '../../../../features/0_go_router/pages/signin_page.dart';
+import '../../../../features/0_go_router/pages/signup_page.dart';
+import '../../../../features/0_go_router/pages/_3_third_details_page.dart';
+import '../../../../features/0_go_router/pages/_3__third_page.dart';
 import 'auth_state_provider.dart';
 import 'route_names.dart';
 

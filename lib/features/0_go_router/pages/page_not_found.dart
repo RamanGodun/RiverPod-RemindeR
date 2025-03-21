@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/text_widget.dart';
-import '../config/router/route_names.dart';
+import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
+import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/domain/config/router/route_names.dart';
 
 class PageNotFound extends StatelessWidget {
   final String errMsg;
 
-  const PageNotFound({
-    super.key,
-    required this.errMsg,
-  });
+  const PageNotFound({super.key, required this.errMsg});
 
   @override
   Widget build(BuildContext context) {
