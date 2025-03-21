@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import 'features/13_async_values/_async_values_page.dart';
+import 'features/13_async_values/presentation/_async_values_page.dart';
 import 'features/1_simple_providers/presentation/_simple_providers_page.dart';
 import 'features/11_optimization/_presentation/_providers_optimization_page.dart';
 import 'features/12_pagination/_presentation/_pagination_page.dart';

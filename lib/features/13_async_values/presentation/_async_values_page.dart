@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import '../../../core/ui/widgets/buttons/custom_button.dart';
-import 'first_state_shape/ui_4_weather_app_with_first_state_shape.dart';
-import 'second_state_shape/ui_4_weather_app_with_second_state_shape.dart';
+import '../../../../core/ui/widgets/buttons/custom_button.dart';
+import 'ui_4_weather_app_with_first_state_shape.dart';
+import 'ui_4_weather_app_with_second_state_shape.dart';
 
 class AsyncValuesPage extends StatelessWidget {
   const AsyncValuesPage({super.key});
