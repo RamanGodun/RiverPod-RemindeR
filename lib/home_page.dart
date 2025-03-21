@@ -3,24 +3,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import 'features/0_simple_providers/presentation/_simple_providers_page.dart';
-import 'features/10_optimization/_presentation/_providers_optimization_page.dart';
-import 'features/11_pagination/_presentation/_pagination_page.dart';
-import 'features/1_state_provider/presentation/_state_providers_page.dart';
-import 'features/2_future_provider/presentation/_future_providers_page.dart';
-import 'features/3_stream_provider/ticker_presentation.dart';
+import 'features/1_simple_providers/presentation/_simple_providers_page.dart';
+import 'features/11_optimization/_presentation/_providers_optimization_page.dart';
+import 'features/12_pagination/_presentation/_pagination_page.dart';
+import 'features/2_state_provider/presentation/_state_providers_page.dart';
+import 'features/3_future_provider/presentation/_future_providers_page.dart';
+import 'features/4_stream_provider/ticker_presentation.dart';
 import 'core/domain/app_constants/app_strings.dart';
 import 'core/domain/models/enums.dart';
 import 'core/domain/state/_features_provider.dart';
 import 'core/domain/utils_and_services/dialogs_service.dart';
 import 'core/domain/utils_and_services/helpers.dart';
 import 'core/ui/_theming/theme_provider.dart';
-import 'features/4_state_or_change_notifier_provider/presentation/_todos_ui.dart';
-import 'features/5_notifier_provider_bp/presentation/_notifier_providers_page.dart';
-import 'features/6_async_provider/presentation/_async_providers_page.dart';
-import 'features/7_async_notifier_provider_bp/presentation/_async_notifier_providers_page.dart';
-import 'features/8_stream_provider/presentation/_stream_providers_page.dart';
-import 'features/9_providers_lifecycle/_presentation/_providers_lifecycle_page.dart';
+import 'features/5_state_or_change_notifier_provider/presentation/_todos_ui.dart';
+import 'features/6_notifier_provider_bp/presentation/_notifier_providers_page.dart';
+import 'features/7_async_provider/presentation/_async_providers_page.dart';
+import 'features/8_async_notifier_provider_bp/presentation/_async_notifier_providers_page.dart';
+import 'features/9_stream_provider/presentation/_stream_providers_page.dart';
+import 'features/10_providers_lifecycle/_presentation/_providers_lifecycle_page.dart';
 
 /// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
 class MyHomePage extends ConsumerWidget {

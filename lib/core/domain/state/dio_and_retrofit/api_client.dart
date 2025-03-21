@@ -1,6 +1,6 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
-import '../../../../features/2_future_provider/domain/model/user.dart';
+import '../../../../features/3_future_provider/domain/model/user.dart';
 
 part 'api_client.g.dart';
 
