@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<IconData>? actionIcons;
   final List<VoidCallback>? actionCallbacks;
   final bool? isCenteredTitle;
+  final bool? isNeedPaddingAfterActionIcon;
 
   const CustomAppBar({
     super.key,
@@ -18,6 +19,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actionIcons,
     this.actionCallbacks,
     this.isCenteredTitle,
+    this.isNeedPaddingAfterActionIcon,
   });
 
   @override
@@ -47,6 +49,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(actionIcons![i]),
               onPressed: actionCallbacks![i],
             ),
+        if ((actionIcons?.isNotEmpty ?? false) &&
+            isNeedPaddingAfterActionIcon == true)
+          const SizedBox(width: 16),
       ],
     );
   }

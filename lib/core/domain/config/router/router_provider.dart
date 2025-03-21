@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../../features/0_go_router/pages/_1_first_details_page.dart';
-import '../../../../features/0_go_router/pages/_1__first_page.dart';
+import '../../../../features/0_go_router/pages/_1_first_subtree_page.dart';
+import '../../../../features/0_go_router/pages/_1_first_page.dart';
 import '../../../../features/0_go_router/pages/page_not_found.dart';
 import '../../../../features/0_go_router/pages/__scaffold_with_nav_bar.dart';
 import '../../../../features/0_go_router/pages/_2_second_details_page.dart';

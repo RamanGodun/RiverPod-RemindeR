@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 
@@ -15,15 +16,22 @@ class _FirstDetailsPageState extends State<FirstDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget('First Details Page', TextType.titleSmall),
+      appBar: const CustomAppBar(
+        title: 'First subtree page',
+        isCenteredTitle: true,
       ),
       body: Center(
         child: Column(
+          spacing: 20,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const TextWidget(
+              'This page is under the first route branch (first subtree).',
+              isTextOnFewStrings: true,
+              TextType.titleMedium,
+            ),
             TextWidget('$counter', TextType.headlineMedium),
-            const SizedBox(height: 20),
+
             CustomButtonForGoRouter(
               title: 'Increment Counter',
               voidCallBack: () => setState(() => counter++),
