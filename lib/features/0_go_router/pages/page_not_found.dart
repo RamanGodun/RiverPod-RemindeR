@@ -33,7 +33,7 @@ class PageNotFound extends StatelessWidget {
 
               const CustomButtonForGoRouter(
                 title: 'Go to First page',
-                routeName: RouteNames.first,
+                routeName: RouteNames.firstPage,
               ),
             ],
           ),

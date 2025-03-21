@@ -13,9 +13,10 @@ String _$weatherSecondHash() => r'f34eb8b1fb794eb654747a2ab88aeed9f9e116ec';
 final weatherSecondProvider = AutoDisposeFutureProvider<String>.internal(
   weatherSecond,
   name: r'weatherSecondProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$weatherSecondHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$weatherSecondHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

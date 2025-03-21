@@ -28,7 +28,7 @@ class SigninPage extends ConsumerWidget {
             ///
             const CustomButtonForGoRouter(
               title: 'Go to First page',
-              routeName: RouteNames.first,
+              routeName: RouteNames.firstPage,
             ),
 
             ///
@@ -36,7 +36,7 @@ class SigninPage extends ConsumerWidget {
               onPressed: () {
                 Helpers.goTo(
                   context,
-                  RouteNames.signup,
+                  RouteNames.signUpPage,
                   pathParameters: const {},
                   queryParameters: const {},
                 );

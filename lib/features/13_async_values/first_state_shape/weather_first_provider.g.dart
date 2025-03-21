@@ -12,13 +12,15 @@ String _$weatherFirstHash() => r'ac35773d402bee8c29e08b44b1623f06a985125d';
 @ProviderFor(WeatherFirst)
 final weatherFirstProvider =
     AutoDisposeAsyncNotifierProvider<WeatherFirst, String>.internal(
-  WeatherFirst.new,
-  name: r'weatherFirstProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$weatherFirstHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      WeatherFirst.new,
+      name: r'weatherFirstProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$weatherFirstHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$WeatherFirst = AutoDisposeAsyncNotifier<String>;
 // ignore_for_file: type=lint

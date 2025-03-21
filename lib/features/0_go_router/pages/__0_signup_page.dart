@@ -28,7 +28,7 @@ class SignupPage extends ConsumerWidget {
             ///
             const CustomButtonForGoRouter(
               title: 'Go to Second page',
-              routeName: RouteNames.second,
+              routeName: RouteNames.secondPage,
             ),
 
             ///
@@ -42,7 +42,7 @@ class SignupPage extends ConsumerWidget {
               onPressed: () {
                 Helpers.goTo(
                   context,
-                  RouteNames.signIn,
+                  RouteNames.signInPage,
                   pathParameters: const {},
                   queryParameters: const {},
                 );

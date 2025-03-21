@@ -37,7 +37,7 @@ class ThirdPage extends ConsumerWidget {
             ///
             const CustomButtonForGoRouter(
               title: 'Try to "SignIn" one more time',
-              routeName: RouteNames.signIn,
+              routeName: RouteNames.signInPage,
             ),
           ],
         ),
@@ -49,7 +49,7 @@ class ThirdPage extends ConsumerWidget {
   void _handleViewThirdDetails(BuildContext context) {
     Helpers.goTo(
       context,
-      RouteNames.thirdDetails,
+      RouteNames.thirdSubtreePage,
 
       /*
      ! Recommendations:

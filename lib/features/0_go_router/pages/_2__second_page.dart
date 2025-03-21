@@ -19,7 +19,7 @@ class SecondPage extends StatelessWidget {
             SizedBox(height: 10),
             CustomButtonForGoRouter(
               title: 'To second branch subtree page',
-              routeName: RouteNames.secondDetails,
+              routeName: RouteNames.secondSubtreePage,
               pathParameters: {'id': '735'},
               queryParameters: {'tab': 'info'},
             ),

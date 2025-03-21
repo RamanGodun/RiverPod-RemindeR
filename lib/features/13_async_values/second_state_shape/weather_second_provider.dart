@@ -42,5 +42,4 @@ FutureOr<String> weatherSecond(Ref ref) async {
     case Cities.tokyo:
       return '${city.name} - 28';
   }
-  // return null;
 }

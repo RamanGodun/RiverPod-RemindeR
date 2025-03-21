@@ -26,37 +26,39 @@ GoRouter router(Ref ref) {
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/first',
+    initialLocation: '/firstPage',
     // for reactive managing and routing in dependence on authentication we use "redirect"
     redirect: (context, state) {
       final authenticated = authState;
-      final tryingSignin = state.matchedLocation == '/signin';
-      final tryingSignup = state.matchedLocation == '/signup';
+      final tryingSignin = state.matchedLocation == '/signInPage';
+      final tryingSignup = state.matchedLocation == '/signUpPage';
       final authenticating = tryingSignin || tryingSignup;
 
       // checking is user authenticated and further logic
-      if (!authenticated) return authenticating ? null : '/signin';
-      if (authenticating) return '/first';
+      if (!authenticated) return authenticating ? null : '/signInPage';
+      if (authenticating) return '/firstPage';
       return null;
     },
     // ROUTES
     routes: [
       GoRoute(
-        path: '/signin',
-        name: RouteNames.signIn,
+        path: '/signInPage',
+        name: RouteNames.signInPage,
         builder: (context, state) {
           return const SigninPage();
         },
       ),
       GoRoute(
-        path: '/signup',
-        name: RouteNames.signup,
+        path: '/signUpPage',
+        name: RouteNames.signUpPage,
         builder: (context, state) {
           return const SignupPage();
         },
       ),
-      // Indexed routes with SHELL-ROUTE
-      // First branch
+
+      /// ! Indexed routes with SHELL-ROUTE
+
+      /// * First branch
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return ScaffoldWithNavBar(navigationShell: navigationShell);
@@ -65,15 +67,15 @@ GoRouter router(Ref ref) {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/first',
-                name: RouteNames.first,
+                path: '/firstPage',
+                name: RouteNames.firstPage,
                 builder: (context, state) {
                   return const FirstPage();
                 },
                 routes: [
                   GoRoute(
                     path: 'details',
-                    name: RouteNames.firstDetails,
+                    name: RouteNames.firstSubtreePage,
                     builder: (context, state) {
                       return const FirstDetailsPage();
                     },
@@ -82,12 +84,13 @@ GoRouter router(Ref ref) {
               ),
             ],
           ),
-          // Second branch
+
+          /// * Second branch
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: '/second',
-                name: RouteNames.second,
+                name: RouteNames.secondPage,
                 builder: (context, state) {
                   return const SecondPage();
                 },
@@ -97,7 +100,7 @@ GoRouter router(Ref ref) {
                         _rootNavigatorKey, //this is to put page ABOVE NAVIGATION BAR
                     path:
                         'details/:id', //":id" means we give id parameter, when go to this route
-                    name: RouteNames.secondDetails,
+                    name: RouteNames.secondSubtreePage,
                     builder: (context, state) {
                       final id = state.pathParameters['id']!;
                       return SecondDetailsPage(id: id);
@@ -107,19 +110,20 @@ GoRouter router(Ref ref) {
               ),
             ],
           ),
-          // Third branch
+
+          /// * Third branch
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: '/third',
-                name: RouteNames.third,
+                name: RouteNames.thirdPage,
                 builder: (context, state) {
                   return const ThirdPage();
                 },
                 routes: [
                   GoRoute(
                     path: 'details/:id',
-                    name: RouteNames.thirdDetails,
+                    name: RouteNames.thirdSubtreePage,
                     builder: (context, state) {
                       final id = state.pathParameters['id']!;
                       final firstName =
@@ -141,9 +145,9 @@ GoRouter router(Ref ref) {
         ],
       ),
     ],
-    // Here widget, which will be displayed in case of invalid path access
-    errorBuilder: (context, state) => PageNotFound(
-      errMsg: state.error.toString(),
-    ),
+
+    /// Here widget, which will be displayed in case of invalid path access
+    errorBuilder:
+        (context, state) => PageNotFound(errMsg: state.error.toString()),
   );
 }

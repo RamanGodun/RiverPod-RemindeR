@@ -32,7 +32,7 @@ class FirstPage extends ConsumerWidget {
 
             CustomButtonForGoRouter(
               title: 'Go to first page\'s subtree',
-              routeName: RouteNames.firstDetails,
+              routeName: RouteNames.firstSubtreePage,
             ),
           ],
         ),
