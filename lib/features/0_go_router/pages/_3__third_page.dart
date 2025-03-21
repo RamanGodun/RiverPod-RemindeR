@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
 import '../../../core/ui/widgets/text_widget.dart';
@@ -12,29 +13,31 @@ class ThirdPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const TextWidget('Third', TextType.titleSmall)),
+      appBar: CustomAppBar(
+        title: 'Third page',
+        isCenteredTitle: true,
+        isNeedPaddingAfterActionIcon: true,
+        actionIcons: const [Icons.output_outlined],
+        actionCallbacks: [() => _handleSignOut(ref)],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 20,
           children: <Widget>[
-            const TextWidget('Third Page', TextType.headlineMedium),
+            const TextWidget('This is the Third page', TextType.titleMedium),
             const SizedBox(height: 10),
-            // Custom Button to navigate to Third Details
+
+            ///
             CustomButtonForGoRouter(
-              title: 'View Third Details',
+              title: 'To third branch subtree page',
               voidCallBack: () => _handleViewThirdDetails(context),
             ),
-            const SizedBox(height: 10),
-            // Custom Button to navigate to Sign In
+
+            ///
             const CustomButtonForGoRouter(
-              title: 'Sign In',
+              title: 'Try to "SignIn" one more time',
               routeName: RouteNames.signIn,
-            ),
-            const SizedBox(height: 10),
-            // Custom Button to handle Sign Out
-            CustomButtonForGoRouter(
-              title: 'Sign Out',
-              voidCallBack: () => _handleSignOut(ref),
             ),
           ],
         ),
@@ -42,25 +45,26 @@ class ThirdPage extends ConsumerWidget {
     );
   }
 
-  /*
-Recommendations:
-1. Use pathParameters:
-• To identify a resource.
-• When parameters are required for the route.
-2. Use queryParameters:
-• For optional parameters.
-• To filter, sort, and pass additional data.
- */
-
   // Method to handle navigation to third details page
   void _handleViewThirdDetails(BuildContext context) {
     Helpers.goTo(
       context,
       RouteNames.thirdDetails,
-      pathParameters: {'id': '333'},
+
+      /*
+     ! Recommendations:
+   * 1. Use pathParameters:
+      • To identify a resource.
+      • When parameters are required for the route.
+   * 2. Use queryParameters:
+      • For optional parameters.
+      • To filter, sort, and pass additional data.
+   */
+      ///
+      pathParameters: {'id': 'UI375238'},
       queryParameters: {
-        // 'firstName': 'Roman',
-        'lastName': 'Godun',
+        // 'firstName': 'Respectfull', // ? You can uncomment this to check
+        'lastName': 'Developer',
       },
     );
   }
