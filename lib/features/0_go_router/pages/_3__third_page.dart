@@ -63,7 +63,7 @@ class ThirdPage extends ConsumerWidget {
       ///
       pathParameters: {'id': 'UI375238'},
       queryParameters: {
-        // 'firstName': 'Respectfull', // ? You can uncomment this to check
+        // 'firstName': 'Respectful', // ? You can uncomment this to check
         'lastName': 'Developer',
       },
     );
