@@ -1,26 +1,26 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/domain/models/enums.dart';
-part 'weather_first_provider.g.dart';
+part 'provider_4_weather_app_with_first_state_shape.g.dart';
 
 @riverpod
-class WeatherFirst extends _$WeatherFirst {
+class WithFirstStateShapeWeather extends _$WithFirstStateShapeWeather {
   @override
   FutureOr<String> build() {
-    return _getTemp(Cities.seoul);
+    return _getTemp(Cities.kyiv);
   }
 
   Future<String> _getTemp(Cities city) async {
     await Future.delayed(const Duration(seconds: 1));
 
     switch (city) {
-      case Cities.seoul:
-        return '${city.name} - 23';
-      case Cities.london:
+      case Cities.kyiv:
+        return 'Today in ${city.name} -23';
+      case Cities.ternopil:
         throw 'Fail to fetch the temperature of ${city.name}';
-      case Cities.bangkok:
+      case Cities.rivne:
         throw 'Fail to fetch the temperature of ${city.name}';
-      case Cities.tokyo:
-        return '${city.name} - 28';
+      case Cities.lviv:
+        return 'Today in ${city.name} +28';
     }
   }
 

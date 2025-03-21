@@ -10,7 +10,7 @@ enum ActivityStatus {
   failure, // State when the data fetching fails.
 }
 
-enum Cities { seoul, london, bangkok, tokyo }
+enum Cities { kyiv, ternopil, rivne, lviv }
 
 enum AppFeature {
   simpleProvider,
@@ -25,7 +25,7 @@ enum AppFeature {
   providersLifecycle,
   optimization,
   pagination,
-  goRouter;
+  asyncValues;
 
   /// 📌 Конвертація в String (для UI)
   String get label {
@@ -54,8 +54,8 @@ enum AppFeature {
         return "Optimization";
       case AppFeature.pagination:
         return "Pagination";
-      case AppFeature.goRouter:
-        return "Go Router";
+      case AppFeature.asyncValues:
+        return "Async Values";
     }
   }
 

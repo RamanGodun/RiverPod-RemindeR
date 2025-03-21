@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/domain/config/extensions/async_value_xx.dart';
+import 'package:riverpod_reminder/core/domain/config/observer/extensions/async_value_xx.dart';
 import 'package:riverpod_reminder/core/ui/widgets/buttons/outlined.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';

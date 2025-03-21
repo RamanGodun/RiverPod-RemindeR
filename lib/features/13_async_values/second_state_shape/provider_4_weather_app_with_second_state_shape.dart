@@ -2,17 +2,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/domain/models/enums.dart';
 
-part 'weather_second_provider.g.dart';
+part 'provider_4_weather_app_with_second_state_shape.g.dart';
 
 @riverpod
-class City extends _$City {
+class ForSecondStateShapeCity extends _$ForSecondStateShapeCity {
   @override
   Cities build() {
     print('[cityProvider] initialized');
     ref.onDispose(() {
       print('[cityProvider] disposed');
     });
-    return Cities.seoul;
+    return Cities.kyiv;
   }
 
   void changeCity(Cities city) {
@@ -21,25 +21,25 @@ class City extends _$City {
 }
 
 @riverpod
-FutureOr<String> weatherSecond(Ref ref) async {
+FutureOr<String> withSecondStateShapeWeather(Ref ref) async {
   print('[weatherSecondProvider] initialized');
   ref.onDispose(() {
     print('[weatherSecondProvider] disposed');
   });
 
-  final city = ref.watch(cityProvider);
+  final city = ref.watch(forSecondStateShapeCityProvider);
 
   await Future.delayed(const Duration(seconds: 1));
 
   switch (city) {
-    case Cities.seoul:
+    case Cities.kyiv:
       // throw 'Fail to fetch the temperature of ${city.name}';
       return '${city.name} - 23';
-    case Cities.london:
+    case Cities.ternopil:
       throw 'Fail to fetch the temperature of ${city.name}';
-    case Cities.bangkok:
+    case Cities.rivne:
       throw 'Fail to fetch the temperature of ${city.name}';
-    case Cities.tokyo:
+    case Cities.lviv:
       return '${city.name} - 28';
   }
 }
