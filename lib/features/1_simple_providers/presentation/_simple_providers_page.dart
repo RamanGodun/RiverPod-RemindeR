@@ -19,23 +19,28 @@ class SimpleProvidersPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            /// 🚀 **кнопка переходу до модифікатори**
+            ///
             CustomButton(
               title: 'Go to basic provider',
               child: PageWithSimpleKeepAliveProvider(),
             ),
+
             CustomButton(
               title: 'Go to autodisposed mod',
               child: PageWithSimpleAutoDisposedProvider(),
             ),
+
             CustomButton(
               title: 'Go to family mod',
               child: PageWithSimpleFamilyProvider(),
             ),
+
             CustomButton(
               title: 'Go to family autodisposed mod',
               child: PageWithAutoDisposedFamilyProvider(),
             ),
+
+            ///
           ],
         ),
       ),

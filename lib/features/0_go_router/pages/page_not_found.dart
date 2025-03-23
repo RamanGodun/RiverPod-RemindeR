@@ -17,6 +17,7 @@ class PageNotFound extends StatelessWidget {
         title: 'Page not found',
         isCenteredTitle: true,
       ),
+
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Center(

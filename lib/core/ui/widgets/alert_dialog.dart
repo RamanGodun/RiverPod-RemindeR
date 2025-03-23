@@ -21,15 +21,18 @@ class ErrorAlertDialog extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 58.0),
       child: AlertDialog(
+        ///
         title: const TextWidget(
           '⚠ Warning',
           TextType.titleLarge,
           color: AppConstants.errorColor,
         ),
+
         content: SizedBox(
           height: dialogHeight,
           child: Center(child: AppMiniWidgets(MWType.error, error: errorText)),
         ),
+
         actions: [
           TextButton(
             onPressed: () => Helpers.pop(context),

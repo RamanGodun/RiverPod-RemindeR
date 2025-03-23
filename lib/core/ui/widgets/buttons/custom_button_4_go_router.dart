@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
-
 import '../../../domain/utils_and_services/helpers.dart';
 import '../text_widget.dart';
 
-/// 🪟🌍 **CustomButtonForGoRouter**
+/// 🪟🌍 Custom button widget that handles navigation via GoRouter or executes callback.
 class CustomButtonForGoRouter extends StatelessWidget {
   final String title;
   final String? routeName;
   final Map<String, String>? pathParameters;
   final Map<String, dynamic>? queryParameters;
-  final VoidCallback? voidCallBack;
+  final VoidCallback? onPressedCallback;
 
   const CustomButtonForGoRouter({
     super.key,
@@ -17,7 +16,7 @@ class CustomButtonForGoRouter extends StatelessWidget {
     this.routeName,
     this.pathParameters,
     this.queryParameters,
-    this.voidCallBack,
+    this.onPressedCallback,
   });
 
   @override
@@ -25,14 +24,14 @@ class CustomButtonForGoRouter extends StatelessWidget {
     final colorScheme = Helpers.getColorScheme(context);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 6.0),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
       child: SizedBox(
         width: double.infinity,
         child: CupertinoButton(
-          onPressed: () => _buttonOnPressed(context),
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
-          borderRadius: BorderRadius.circular(11),
-          color: colorScheme.primary.withOpacity(0.6),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+          borderRadius: BorderRadius.circular(12),
+          color: colorScheme.primary.withOpacity(0.65),
+          onPressed: () => _handleButtonPress(context),
           child: TextWidget(
             title,
             TextType.titleMedium,
@@ -43,9 +42,10 @@ class CustomButtonForGoRouter extends StatelessWidget {
     );
   }
 
-  void _buttonOnPressed(BuildContext context) {
-    if (voidCallBack != null) {
-      voidCallBack!();
+  /// 🚀 Handles button press: executes callback or navigates to route.
+  void _handleButtonPress(BuildContext context) {
+    if (onPressedCallback != null) {
+      onPressedCallback!();
     } else if (routeName != null && routeName!.isNotEmpty) {
       Helpers.goTo(
         context,
@@ -54,7 +54,7 @@ class CustomButtonForGoRouter extends StatelessWidget {
         queryParameters: queryParameters ?? const {},
       );
     } else {
-      debugPrint('Error: routeName is null or empty.');
+      debugPrint('⚠️ Error: routeName is null or empty.');
     }
   }
 }

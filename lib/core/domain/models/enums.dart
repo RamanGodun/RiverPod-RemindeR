@@ -1,17 +1,15 @@
-/*
-This enum represents the possible states that the Activity fetching process can be in.
-It allows tracking whether the app is idle, loading data, has successfully loaded data,
-or encountered a failure. This pattern provides a clean way to manage state transitions.
- */
+/// 🌐 Represents the status of fetching an Activity
 enum ActivityStatus {
-  initial, // The initial state before any data is fetched.
-  loading, // State when the data is being fetched.
-  success, // State when the data is successfully retrieved.
-  failure, // State when the data fetching fails.
+  initial, // Before fetching
+  loading, // While fetching
+  success, // Fetched successfully
+  failure, // Fetch failed
 }
 
+/// 🏙️ Available city options
 enum Cities { kyiv, ternopil, rivne, lviv }
 
+/// 🚀 All available app features
 enum AppFeature {
   simpleProvider,
   stateProvider,
@@ -27,7 +25,7 @@ enum AppFeature {
   pagination,
   asyncValues;
 
-  /// 📌 Конвертація в String (для UI)
+  /// 📌 Convert enum to readable label
   String get label {
     switch (this) {
       case AppFeature.simpleProvider:
@@ -59,7 +57,7 @@ enum AppFeature {
     }
   }
 
-  /// 📌 Конвертація String -> AppFeature
+  /// 🔁 Convert String to enum safely
   static AppFeature fromString(String value) {
     return AppFeature.values.firstWhere(
       (e) => e.label == value,

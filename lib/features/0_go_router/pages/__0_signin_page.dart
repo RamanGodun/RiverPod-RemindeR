@@ -22,7 +22,7 @@ class SigninPage extends ConsumerWidget {
             ///
             CustomButtonForGoRouter(
               title: '"Sign IN" in one click',
-              voidCallBack: () => _handleSignIn(ref),
+              onPressedCallback: () => _handleSignIn(ref),
             ),
 
             ///

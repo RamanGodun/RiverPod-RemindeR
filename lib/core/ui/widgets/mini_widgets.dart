@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'text_widget.dart';
 
-/// 🎛 **MiniWidgets for different UI elements (Loading, Error, etc.)**
+/// 🎛 Types for MiniWidgets.
 enum MWType { loading, error }
 
-/// 🎨 **Reusable UI Widget for small components like Loading & Error**
+/// 📦 Reusable widget for loading & error states.
 class AppMiniWidgets extends StatelessWidget {
   final MWType type;
   final Object? error;

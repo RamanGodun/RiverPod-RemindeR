@@ -9,18 +9,20 @@ import 'package:riverpod_reminder/core/domain/config/app_config.dart';
 import 'core/domain/app_constants/app_strings.dart';
 import 'core/domain/config/observer/observer_logger.dart';
 import 'core/domain/config/router/router_provider.dart';
-import 'core/domain/state/sh_prefs/shared_pref_provider.dart';
+import 'core/domain/providers/sh_prefs/shared_pref_provider.dart';
 import 'core/ui/_theming/app_theme.dart';
 import 'core/ui/_theming/theme_provider.dart';
 import 'home_page.dart';
 
 Future<void> main() async {
+  ///
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
 
   await GetStorage.init();
   final sharedPrefs = await SharedPreferences.getInstance();
 
+  ///
   runApp(
     ProviderScope(
       observers: [Logger()],
@@ -57,11 +59,3 @@ class MainApp extends ConsumerWidget {
         );
   }
 }
-
-/* 
-!   dart run build_runner build watch 
-flutter pub run build_runner build --delete-conflicting-outputs
-flutter pub run build_runner watch --delete-conflicting-outputs
-
-flutter pub run build_runner clean
-*/

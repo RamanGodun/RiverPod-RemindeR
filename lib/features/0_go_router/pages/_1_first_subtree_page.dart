@@ -34,7 +34,7 @@ class _FirstDetailsPageState extends State<FirstDetailsPage> {
 
             CustomButtonForGoRouter(
               title: 'Increment Counter',
-              voidCallBack: () => setState(() => counter++),
+              onPressedCallback: () => setState(() => counter++),
             ),
           ],
         ),

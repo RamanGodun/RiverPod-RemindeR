@@ -17,6 +17,7 @@ class SecondPage extends StatelessWidget {
           children: <Widget>[
             TextWidget('This is Second page', TextType.titleMedium),
             SizedBox(height: 10),
+
             CustomButtonForGoRouter(
               title: 'To second branch subtree page',
               routeName: RouteNames.secondSubtreePage,
@@ -24,6 +25,7 @@ class SecondPage extends StatelessWidget {
               queryParameters: {'tab': 'info'},
             ),
             SizedBox(height: 10),
+
             CustomButtonForGoRouter(
               title: 'Go to non-existence page',
               routeName: '/nowhere',

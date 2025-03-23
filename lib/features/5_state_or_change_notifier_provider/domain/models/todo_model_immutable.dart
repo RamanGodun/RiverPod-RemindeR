@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../core/domain/utils_and_services/id_generator.dart';
+import '../../../../core/domain/utils_and_services/helpers.dart';
 
 part 'todo_model_immutable.freezed.dart';
 

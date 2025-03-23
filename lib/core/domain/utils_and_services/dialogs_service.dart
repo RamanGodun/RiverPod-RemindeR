@@ -17,17 +17,18 @@ abstract class DialogService {
     );
   }
 
-  /// ⏳ **Displays a loading dialog with a centered `CircularProgressIndicator`.**
-  /// - Prevents unintended dismissals while loading.
+  /// ⏳
   static void showLoadingDialog(BuildContext context) {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const Center(child: CircularProgressIndicator()),
+      builder:
+          (context) =>
+              const Center(child: CircularProgressIndicator.adaptive()),
     );
   }
 
-  /// 🛑 **Displays an error alert dialog with customizable height.**
+  /// 🛑 **Displays an error alert dialog**
   static void showAlertErrorDialog(
     BuildContext context,
     String errorText, {
@@ -35,7 +36,7 @@ abstract class DialogService {
   }) {
     showDialog(
       context: context,
-      barrierDismissible: false, // ❌ Prevents unintended dismissals
+      barrierDismissible: false,
       builder: (context) {
         final deviceHeight = Helpers.getDeviceSize(context).height;
         final heightFactor =
@@ -49,11 +50,12 @@ abstract class DialogService {
     );
   }
 
-  /// ❌ **Closes any currently open dialogs.**
-  /// - Ensures that a dialog is closed only if there is an active one.
+  /// ❌ Closes any currently open dialogs, ensures that a dialog is closed only if there is an active one.
   static void closeDialog(BuildContext context) {
     if (Navigator.of(context, rootNavigator: true).canPop()) {
       Navigator.of(context, rootNavigator: true).pop();
     }
   }
+
+  ///
 }

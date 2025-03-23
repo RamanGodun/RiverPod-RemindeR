@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Logger extends ProviderObserver {
+/// 📝 **[LoggerAlt]** - Custom ProviderObserver for logging provider lifecycle events.
+class LoggerAlt extends ProviderObserver {
   @override
   void didAddProvider(
     ProviderBase<Object?> provider,
@@ -9,8 +10,9 @@ class Logger extends ProviderObserver {
   ) {
     print('''
 {
-  "provider": "${provider.name ?? provider.runtimeType} is initialized",
-  "value exposed": "$value"
+  "event": "Provider Initialized",
+  "provider": "${provider.name ?? provider.runtimeType}",
+  "value": "$value"
 }
 ''');
     super.didAddProvider(provider, value, container);
@@ -23,7 +25,8 @@ class Logger extends ProviderObserver {
   ) {
     print('''
 {
-  "provider": "${provider.name ?? provider.runtimeType} disposed"
+  "event": "Provider Disposed",
+  "provider": "${provider.name ?? provider.runtimeType}"
 }
 ''');
     super.didDisposeProvider(provider, container);
@@ -38,7 +41,8 @@ class Logger extends ProviderObserver {
   ) {
     print('''
 {
-  "provider": "${provider.name ?? provider.runtimeType} updated",
+  "event": "Provider Updated",
+  "provider": "${provider.name ?? provider.runtimeType}",
   "previous value": "$previousValue",
   "new value": "$newValue"
 }

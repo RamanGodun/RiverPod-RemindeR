@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../domain/app_constants/app_constants.dart';
 
-/// 📄 **[TextWidget]** - Гнучкий текстовий віджет з інтеграцією теми та розширеними стилями.
+/// 📄 Flexible text widget with theme integration & extended customization.
 class TextWidget extends StatelessWidget {
   final String? text;
   final TextType? textType;
@@ -38,7 +38,7 @@ class TextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    /// 🛠 **Метод для побудови стилізованого тексту.**
+    /// 🛠 Builds styled Text widget.
     Text buildText(TextStyle? baseStyle) {
       return Text(
         text ?? 'No text provided',
@@ -71,7 +71,7 @@ class TextWidget extends StatelessWidget {
       );
     }
 
-    /// 🎯 **Вибір стилю тексту залежно від [TextType]**
+    /// 🎯 Select style based on [TextType].
     switch (textType) {
       case TextType.displayLarge:
         return buildText(textTheme.displayLarge);
@@ -123,7 +123,7 @@ class TextWidget extends StatelessWidget {
   }
 }
 
-/// 📑 **[TextType]** - перелік стилів для [TextWidget].
+/// 📑 Enum for text styles used in [TextWidget].
 enum TextType {
   displayLarge,
   displayMedium,

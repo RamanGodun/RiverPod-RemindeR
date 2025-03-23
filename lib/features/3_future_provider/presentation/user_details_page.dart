@@ -60,6 +60,7 @@ Widget _buildUserInfoList(List<(IconData, String)> userInfoList, String name) {
     child: ListView.builder(
       shrinkWrap: true,
       physics: const AlwaysScrollableScrollPhysics(),
+      
       padding: const EdgeInsets.only(left: 55, right: 20, bottom: 200, top: 50),
       itemCount: userInfoList.length + 1,
       itemBuilder: (context, index) {

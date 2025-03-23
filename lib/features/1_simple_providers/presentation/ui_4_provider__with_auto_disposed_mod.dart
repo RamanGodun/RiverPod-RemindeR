@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
 import '../domain/provider_plus_auto_dispose_mod/provider_with_auto_dispose_mod_manual.dart'
@@ -7,22 +8,23 @@ import '../domain/provider_plus_auto_dispose_mod/provider_with_auto_dispose_mod_
 import '../domain/provider_plus_auto_dispose_mod/provider_with_auto_dispose_mod_gen.dart'
     as generated_auto;
 
+/// 📄 **[PageWithSimpleAutoDisposedProvider] Dynamically switches between manually written & code-generated provider.
+/// Useful to compare code-generated & manual approaches with AutoDispose behavior.
 class PageWithSimpleAutoDisposedProvider extends StatelessWidget {
   const PageWithSimpleAutoDisposedProvider({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(
-          'AutoDispose Provider Page',
-          TextType.titleSmall,
-        ),
+      appBar: const CustomAppBar(
+        title: 'provider with AutoDispose mod',
+        isCenteredTitle: true,
       ),
       body: Center(
         child: ListView(
           shrinkWrap: true,
           children: [
+            /// 🟢 **Consumer listens to AutoDispose Provider (manual/code-gen based on config)**
             Consumer(
               builder: (context, ref, child) {
                 final autoDisposeVariable =
@@ -34,10 +36,13 @@ class PageWithSimpleAutoDisposedProvider extends StatelessWidget {
                           manual_auto.simpleManualProviderWithAutoDisposedMode,
                         );
 
-                return TextWidget(
-                  autoDisposeVariable,
-                  TextType.bodyLarge,
-                  isTextOnFewStrings: true,
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextWidget(
+                    autoDisposeVariable,
+                    TextType.bodyLarge,
+                    isTextOnFewStrings: true,
+                  ),
                 );
               },
             ),
@@ -47,19 +52,3 @@ class PageWithSimpleAutoDisposedProvider extends StatelessWidget {
     );
   }
 }
-
-/*
- This provider (with auto dispose) mod is automatically created when needed
- and disposed as soon as no widget is using it.
-! AutoDisposed Provider uses when there is no need of data cashing (when content of page doesn't change frequently/often )
-
- Use this provider for temporary data or state that
- does not need to persist throughout the entire app run.
-
- It is ideal for cases where you want to free up resources
- when the data is no longer in use, such as loading states,
- temporary views, or components with short lifecycles.
-
- When all consumers of this provider stop listening to it,
- the provider is disposed of, freeing any associated memory and resources.
- */

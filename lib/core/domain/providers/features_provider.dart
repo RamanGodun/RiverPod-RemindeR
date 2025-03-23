@@ -2,19 +2,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
 import '../models/enums.dart';
 
-/// 📦 Локальне сховище для збереження стану
+/// 📦 Local storage instance
 final _storage = GetStorage();
 
-/// 🏗 Провайдер для збереження та оновлення `AppFeature`
-final featureProvider =
-    StateNotifierProvider<FeatureNotifier, AppFeature>((ref) {
+/// 🚀 Provider for managing and persisting selected `AppFeature`
+final featureProvider = StateNotifierProvider<FeatureNotifier, AppFeature>((
+  ref,
+) {
   return FeatureNotifier();
 });
 
 class FeatureNotifier extends StateNotifier<AppFeature> {
   FeatureNotifier() : super(_loadFeatureFromStorage());
 
-  /// 🚀 **Завантаження вибраної фічі при старті**
+  /// 🔽 Load saved feature from local storage on init
   static AppFeature _loadFeatureFromStorage() {
     final savedFeature = _storage.read<String>('selectedFeature');
     return AppFeature.values.firstWhere(
@@ -23,7 +24,7 @@ class FeatureNotifier extends StateNotifier<AppFeature> {
     );
   }
 
-  /// 🔄 **Оновлення стану та збереження у GetStorage**
+  /// 🔄 Update feature and save to local storage
   void updateFeature(AppFeature newFeature) {
     state = newFeature;
     _storage.write('selectedFeature', newFeature.name);

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/domain/models/activity_model/activity.dart';
-import '../../../../core/domain/state/dio_and_retrofit/dio_providers/activities_api/activities_dio_provider.dart';
-import '../../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
+import '../../../../core/domain/providers/dio_and_retrofit/dio_providers/activities_api/activities_dio_provider.dart';
+import '../../../../core/domain/providers/errors_handling/for_errors_simulation_counter_provider.dart';
 import 'sealed_async_activity_state.dart';
 
 part 'sealed_async_activity_provider.g.dart';

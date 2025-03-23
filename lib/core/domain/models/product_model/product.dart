@@ -13,7 +13,7 @@ class Product with _$Product {
     required double discountPercentage,
     required double rating,
     required int stock,
-    @Default('unknown') String brand,
+    @Default('unknown') String brand, // Default, щоб уникнути null
     required String category,
     required String thumbnail,
   }) = _Product;

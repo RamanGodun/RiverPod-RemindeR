@@ -24,6 +24,8 @@ class ProductPageWithInfiniteScrollPagination extends ConsumerWidget {
         data: (product) {
           return ListView(
             shrinkWrap: true,
+            key: const PageStorageKey('inifinitePagination'),
+            physics: const AlwaysScrollableScrollPhysics(),
             padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             children: [
               Row(

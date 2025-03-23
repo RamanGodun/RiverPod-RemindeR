@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../core/domain/models/product_model/product.dart';
-import '../../../../../core/domain/state/dio_and_retrofit/dio_providers/dummy_api/dummy_api_dio_provider.dart';
+import '../../../../core/domain/providers/dio_and_retrofit/dio_providers/dummy_api/dummy_api_dio_provider.dart';
 
 part 'for_page_with_infinite_scroll_pagination_products_repository.g.dart';
 

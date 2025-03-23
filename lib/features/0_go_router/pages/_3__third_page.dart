@@ -20,6 +20,8 @@ class ThirdPage extends ConsumerWidget {
         actionIcons: const [Icons.output_outlined],
         actionCallbacks: [() => _handleSignOut(ref)],
       ),
+
+      ///
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +33,7 @@ class ThirdPage extends ConsumerWidget {
             ///
             CustomButtonForGoRouter(
               title: 'To third branch subtree page',
-              voidCallBack: () => _handleViewThirdDetails(context),
+              onPressedCallback: () => _handleViewThirdDetails(context),
             ),
 
             ///

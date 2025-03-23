@@ -50,6 +50,9 @@ class _TodoListOnStateNotifierProvider extends ConsumerWidget {
     }
 
     return ListView(
+      shrinkWrap: true,
+      key: const PageStorageKey('todoList'),
+      physics: const AlwaysScrollableScrollPhysics(),
       children: [
         for (final todo in todos)
           TodoItem(

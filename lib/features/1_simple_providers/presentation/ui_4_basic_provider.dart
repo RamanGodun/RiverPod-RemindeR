@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';
-import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../domain/basic_provider/basic_provider_manual.dart'
-    as manual;
-import '../domain/basic_provider/basic_provider_gen.dart'
-    as generated;
+import '../../../core/ui/widgets/text_widget.dart';
+import '../domain/basic_provider/basic_provider_manual.dart' as manual;
+import '../domain/basic_provider/basic_provider_gen.dart' as generated;
 
+/// 📄 **PageWithSimpleKeepAliveProvider**
+/// Displays data from a simple Provider that persists during the app lifecycle.
 class PageWithSimpleKeepAliveProvider extends ConsumerWidget {
   const PageWithSimpleKeepAliveProvider({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// 🔥 **Вибираємо провайдер залежно від `AppConfig.isUsingCodeGeneration`**
+    // 🔄 Choose provider source based on AppConfig
     final appBarText =
         AppConfig.isUsingCodeGeneration
             ? ref.watch(generated.appBarTextWithGenProvider)
@@ -24,29 +25,17 @@ class PageWithSimpleKeepAliveProvider extends ConsumerWidget {
             : ref.watch(manual.bodyTextProviderManual);
 
     return Scaffold(
-      appBar: AppBar(title: TextWidget(appBarText, TextType.bodyLarge)),
+      appBar: CustomAppBar(title: appBarText, isCenteredTitle: true),
       body: Center(
-        child: TextWidget(
-          bodyText,
-          TextType.bodyLarge,
-          isTextOnFewStrings: true,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: TextWidget(
+            bodyText,
+            TextType.bodyLarge,
+            isTextOnFewStrings: true,
+          ),
         ),
       ),
     );
   }
 }
-
-/*
- This provider (simple keep alive Provider) does not dispose automatically.
- The `onDispose` callback is never triggered because
- the provider stays in memory throughout the entire app run.
-
- Use this type of provider when you need to retain the state
- or data for the entire duration of the app lifecycle.
-
- This is suitable for global states or configurations that
- should persist as long as the app is running.
-
- If you want to manually dispose or refresh this provider,
- you can call `invalidate` or `refresh` through the `ref` object.
- */

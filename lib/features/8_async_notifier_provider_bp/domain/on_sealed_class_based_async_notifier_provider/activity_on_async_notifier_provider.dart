@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_reminder/core/domain/state/dio_and_retrofit/dio_providers/activities_api/activities_dio_provider.dart';
+import 'package:riverpod_reminder/core/domain/providers/dio_and_retrofit/dio_providers/activities_api/activities_dio_provider.dart';
 import '../../../../core/domain/models/activity_model/activity.dart';
 
 part 'activity_on_async_notifier_provider.g.dart';

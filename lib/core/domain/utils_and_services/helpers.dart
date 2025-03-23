@@ -2,37 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-
+import 'package:uuid/uuid.dart';
 import '../../ui/_theming/theme_provider.dart';
-import '../models/enums.dart';
 import 'overlay/overlay_service.dart';
 
+/// Global singleton instance of `Uuid` used across the app to generate unique IDs.
+final Uuid uuid = const Uuid();
+
 /// 🛠️ **[Helpers]** - Utility class for common navigation & theme operations.
-
 /// Provides static methods to streamline navigation and access theme properties.
-/// 📌 Допоміжний метод для навігації
 class Helpers {
-  static void goToFeature(BuildContext context, AppFeature feature) {
-    switch (feature) {
-      case AppFeature.simpleProvider:
-        context.push('/simple-provider');
-        break;
-      case AppFeature.stateProvider:
-        context.push('/state-provider');
-        break;
-      default:
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Feature not implemented")),
-        );
-    }
-  }
+  // ================================
+  // 📌 NAVIGATION
+  // ================================
 
-  static Size getDeviceSize(BuildContext context) {
-    return MediaQuery.of(context).size;
-  }
-
+  /// Pops the current route.
   static void pop(BuildContext context) {
-    return Navigator.of(context).pop(context);
+    Navigator.of(context).pop(context);
   }
 
   /// 📌 **Pushes a new route** with the provided [child] widget.
@@ -45,46 +31,7 @@ class Helpers {
     Navigator.pushNamed(context, routeName);
   }
 
-  static bool isDarkMode(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return isDarkMode;
-  }
-
-  /// 🎨 **Retrieves the current theme** from the [BuildContext].
-  /// Useful when accessing theme-based properties like colors or typography.
-  static ThemeData getTheme(BuildContext context) {
-    return Theme.of(context);
-  }
-
-  /// 🔠 **Returns the current text theme** from the app's theme.
-  /// Facilitates consistent text styling throughout the app.
-  static TextTheme getTextTheme(BuildContext context) {
-    return Theme.of(context).textTheme;
-  }
-
-  /// 🎨 **Fetches the color scheme** from the app's theme.
-  /// Enables access to standardized color definitions such as primary, secondary, and error colors.
-  static ColorScheme getColorScheme(BuildContext context) {
-    return Theme.of(context).colorScheme;
-  }
-
-  //
-
-  /*
-  static void goTo(
-    BuildContext context,
-    String routeName, {
-    Map<String, String> pathParameters = const <String, String>{},
-    Map<String, dynamic> queryParameters = const <String, dynamic>{},
-  }) {
-    return context.goNamed(
-      routeName,
-      pathParameters: pathParameters,
-      queryParameters: queryParameters,
-    );
-  }
- */
-
+  /// 🗺️ **Navigates using GoRouter with optional parameters**
   static void goTo(
     BuildContext context,
     String routeName, {
@@ -98,24 +45,36 @@ class Helpers {
         queryParameters: queryParameters,
       );
     } catch (e) {
-      // Якщо маршрут не знайдено, перенаправляємо на сторінку помилки
+      // If route wasn't found - redirect to "Error page"
       GoRouter.of(context).go('/unknown');
     }
   }
 
-  /* For TIMER
-   */
-  static String zeroPaddedTwoDigits(double ticks) {
-    return ticks.floor().toString().padLeft(2, '0');
+  // ================================
+  // 🎨 THEME
+  // ================================
+
+  /// Checks if current theme is dark mode.
+  static bool isDarkMode(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark;
   }
 
-  static String formatTimer(int ticks) {
-    final minutes = zeroPaddedTwoDigits((ticks / 60) % 60);
-    final seconds = zeroPaddedTwoDigits(ticks % 60);
-    return '$minutes:$seconds';
+  /// 🎨 **Retrieves the current theme** from the [BuildContext].
+  static ThemeData getTheme(BuildContext context) {
+    return Theme.of(context);
   }
 
-  /// 🎨 **Перемикає тему та показує повідомлення**
+  /// 🔠 **Returns the current text theme** from the app's theme.
+  static TextTheme getTextTheme(BuildContext context) {
+    return Theme.of(context).textTheme;
+  }
+
+  /// 🎨 **Fetches the color scheme** from the app's theme.
+  static ColorScheme getColorScheme(BuildContext context) {
+    return Theme.of(context).colorScheme;
+  }
+
+  /// 🌗 Toggles between dark & light themes and shows overlay message.
   static void toggleTheme(BuildContext context, WidgetRef ref) {
     final isDark = isDarkMode(context);
     ref.read(themeProvider.notifier).toggleTheme();
@@ -126,11 +85,11 @@ class Helpers {
     );
   }
 
+  // ================================
+  // 📅 DATE & TIME
+  // ================================
+
   /// 📅 **Formats [DateTime] object into a readable string for displaying item creation dates.**
-  ///
-  /// - If the date is today, returns 'Today, HH:mm'
-  /// - If the date is yesterday, returns 'Yesterday, HH:mm'
-  /// - Otherwise, returns formatted date as 'dd MMM yyyy, HH:mm'
   static String formatCreationDate(DateTime date) {
     final now = DateTime.now();
     final difference = now.difference(date).inDays;
@@ -142,5 +101,26 @@ class Helpers {
     } else {
       return DateFormat('dd MMM yyyy, HH:mm').format(date);
     }
+  }
+
+  /// For TIMER: adds leading zeros
+  static String zeroPaddedTwoDigits(double ticks) {
+    return ticks.floor().toString().padLeft(2, '0');
+  }
+
+  /// ⏱️ Formats seconds into mm:ss
+  static String formatTimer(int ticks) {
+    final minutes = zeroPaddedTwoDigits((ticks / 60) % 60);
+    final seconds = zeroPaddedTwoDigits(ticks % 60);
+    return '$minutes:$seconds';
+  }
+
+  // ================================
+  // 📱 DEVICE DATA
+  // ================================
+
+  /// Returns the current device screen size.
+  static Size getDeviceSize(BuildContext context) {
+    return MediaQuery.of(context).size;
   }
 }

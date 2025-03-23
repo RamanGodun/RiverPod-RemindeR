@@ -26,22 +26,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     if ((actionIcons?.length ?? 0) != (actionCallbacks?.length ?? 0)) {
       throw ArgumentError(
-        'Довжина списку іконок і callback-ів має бути однакова.',
+        'The icons length and  callbacks length must be equal !',
       );
     }
 
     return AppBar(
       centerTitle: isCenteredTitle ?? false,
+
       title: TextWidget(
         title,
         TextType.titleMedium,
         alignment:
             (isCenteredTitle == true) ? TextAlign.center : TextAlign.start,
       ),
+
       leading:
           leadingIcon != null
               ? IconButton(icon: Icon(leadingIcon), onPressed: onLeadingPressed)
               : null,
+
       actions: [
         if (actionIcons != null && actionCallbacks != null)
           for (int i = 0; i < actionIcons!.length; i++)

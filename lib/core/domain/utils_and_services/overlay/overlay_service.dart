@@ -5,33 +5,36 @@ import '../../../ui/widgets/text_widget.dart';
 import '../../app_constants/app_constants.dart';
 import '../helpers.dart';
 
-/// 🌟 **[OverlayNotificationService] - A service for displaying animated overlay notifications.**
+/// 🚀 Overlay notification service for showing temporary status messages.
 class OverlayNotificationService {
   static OverlayEntry? _overlayEntry;
 
-  /// 📌 **Displays an overlay notification with an icon and message.**
-  static void showOverlay(BuildContext context,
-      {required String message, required IconData icon}) {
+  /// 📢 Show overlay with message & icon.
+  static void showOverlay(
+    BuildContext context, {
+    required String message,
+    required IconData icon,
+  }) {
     _removeOverlay();
 
     final overlay = Overlay.of(context, rootOverlay: true);
     _overlayEntry = OverlayEntry(
-      builder: (context) =>
-          _AnimatedOverlayWidget(message: message, icon: icon),
+      builder:
+          (context) => _AnimatedOverlayWidget(message: message, icon: icon),
     );
 
     overlay.insert(_overlayEntry!);
     Future.delayed(const Duration(seconds: 2), () => _removeOverlay());
   }
 
-  /// 🛑 **Removes any existing overlay.**
+  /// 🧹 Remove current overlay if exists.
   static void _removeOverlay() {
     _overlayEntry?.remove();
     _overlayEntry = null;
   }
 }
 
-/// 🎭 **[_AnimatedOverlayWidget] - The animated UI widget for overlay notifications.**
+/// 🎯 Animated widget displayed inside overlay.
 class _AnimatedOverlayWidget extends HookWidget {
   final String message;
   final IconData icon;
@@ -49,8 +52,10 @@ class _AnimatedOverlayWidget extends HookWidget {
     );
 
     final scale = animationController.drive(
-      Tween<double>(begin: 0.9, end: 1)
-          .chain(CurveTween(curve: Curves.easeOutBack)),
+      Tween<double>(
+        begin: 0.9,
+        end: 1,
+      ).chain(CurveTween(curve: Curves.easeOutBack)),
     );
 
     final colorScheme = Helpers.getColorScheme(context);
@@ -69,12 +74,15 @@ class _AnimatedOverlayWidget extends HookWidget {
               child: Material(
                 color: Colors.transparent,
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
                   decoration: BoxDecoration(
-                    color: isDarkMode
-                        ? AppConstants.black.withOpacity(0.7)
-                        : AppConstants.white.withOpacity(0.8),
+                    color:
+                        isDarkMode
+                            ? AppConstants.black.withOpacity(0.7)
+                            : AppConstants.white.withOpacity(0.8),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
                       color: isDarkMode ? Colors.white38 : Colors.black26,
@@ -92,19 +100,23 @@ class _AnimatedOverlayWidget extends HookWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(icon,
-                          color: isDarkMode
-                              ? AppConstants.white
-                              : AppConstants.black,
-                          size: 24),
+                      Icon(
+                        icon,
+                        color:
+                            isDarkMode
+                                ? AppConstants.white
+                                : AppConstants.black,
+                        size: 24,
+                      ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: TextWidget(
                           message,
                           TextType.titleSmall,
-                          color: isDarkMode
-                              ? AppConstants.white
-                              : AppConstants.black,
+                          color:
+                              isDarkMode
+                                  ? AppConstants.white
+                                  : AppConstants.black,
                         ),
                       ),
                     ],

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/domain/state/dio_and_retrofit/dio_providers/user_list_api/users_list_dio_provider.dart';
+import '../../../core/domain/providers/dio_and_retrofit/dio_providers/user_list_api/users_list_dio_provider.dart';
 import 'model/user.dart';
 
 part 'user_details_future_provider_gen.g.dart';

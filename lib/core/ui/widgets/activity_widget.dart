@@ -3,8 +3,7 @@ import 'package:bulleted_list/bulleted_list.dart';
 import '../../domain/models/activity_model/activity.dart';
 import 'text_widget.dart';
 
-// Widget to display the details of a single activity.
-// This widget formats and presents the activity data in a bulleted list.
+/// [ActivityWidget] displays the activity data in a bulleted list.
 class ActivityWidget extends StatelessWidget {
   final Activity activity;
 
@@ -18,7 +17,8 @@ class ActivityWidget extends StatelessWidget {
       children: [
         TextWidget(activity.type, TextType.headlineSmall),
         const Divider(),
-        // Display detailed information about the activity using a bulleted list.
+
+        /// Display detailed information about the activity using a bulleted list.
         BulletedList(
           bullet: const Icon(Icons.check, color: Colors.green),
           listItems: [

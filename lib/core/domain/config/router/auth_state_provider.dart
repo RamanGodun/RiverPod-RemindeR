@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../state/sh_prefs/shared_pref_provider.dart';
+import '../../providers/sh_prefs/shared_pref_provider.dart';
 
 part 'auth_state_provider.g.dart';
 

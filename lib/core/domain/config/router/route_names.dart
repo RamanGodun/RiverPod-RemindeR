@@ -1,3 +1,5 @@
+/// 📄 **[RouteNames] — Centralized route name constants**
+/// Keeps all route names in one place for consistency & easier maintenance.
 class RouteNames {
   static const signInPage = 'signInPage';
   static const signUpPage = 'signUpPage';

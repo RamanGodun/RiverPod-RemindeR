@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';
 import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
-import '../domain/provider_plus_family__mod/provider_with_family_mod_manual.dart' as manual;
-import '../domain/provider_plus_family__mod/provider_with_family_mod_gen.dart' as generated;
+import '../domain/provider_plus_family__mod/provider_with_family_mod_manual.dart'
+    as manual;
+import '../domain/provider_plus_family__mod/provider_with_family_mod_gen.dart'
+    as generated;
 
+/// 📄 Page demonstrating usage of Provider with Family modifier.
 class PageWithSimpleFamilyProvider extends ConsumerWidget {
   const PageWithSimpleFamilyProvider({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    /// Dynamically selecting provider based on AppConfig (codegen or manual)
     final helloFriend =
         AppConfig.isUsingCodeGeneration
             ? ref.watch(
@@ -25,36 +30,30 @@ class PageWithSimpleFamilyProvider extends ConsumerWidget {
             : ref.watch(manual.simpleProviderWithFamilyModManual('Developer'));
 
     return Scaffold(
-      appBar: AppBar(
-        title: TextWidget(
-          helloFriend,
-          TextType.titleSmall,
-          isTextOnFewStrings: true,
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'Provider with family mod'),
       body: Center(
-        child: TextWidget(
-          helloDeveloper,
-          TextType.bodyLarge,
-          isTextOnFewStrings: true,
+        child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          children: [
+            // Displays text from provider instance with parameter 'Friend'
+            TextWidget(
+              helloFriend,
+              TextType.titleSmall,
+              isTextOnFewStrings: true,
+            ),
+
+            const SizedBox(height: 50),
+
+            // Displays text from provider instance with parameter 'Developer'
+            TextWidget(
+              helloDeveloper,
+              TextType.bodyLarge,
+              isTextOnFewStrings: true,
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
-/*
- This  provider (with family mod) does not automatically dispose when no widget is using it.
- The `onDispose` callback will never be triggered unless you manually
- invalidate or refresh the provider.
-
- Use this provider when you want to retain the state throughout the entire
- lifecycle of the app or when the state should persist even after the widget
- that consumes it is no longer in use.
-
- However, if you need to refresh or manually dispose of this provider,
- you can call the `invalidate` or `refresh` methods on it through the `ref`.
-
- This is suitable when you need to store data or state that should be kept
- for the duration of the app's run, without being disposed automatically.
- */

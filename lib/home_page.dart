@@ -12,7 +12,7 @@ import 'features/3_future_provider/presentation/_future_providers_page.dart';
 import 'features/4_stream_provider/ticker_presentation.dart';
 import 'core/domain/app_constants/app_strings.dart';
 import 'core/domain/models/enums.dart';
-import 'core/domain/state/_features_provider.dart';
+import 'core/domain/providers/features_provider.dart';
 import 'core/domain/utils_and_services/dialogs_service.dart';
 import 'core/domain/utils_and_services/helpers.dart';
 import 'core/ui/_theming/theme_provider.dart';
@@ -23,7 +23,7 @@ import 'features/8_async_notifier_provider_bp/presentation/_async_notifier_provi
 import 'features/9_stream_provider/presentation/_stream_providers_page.dart';
 import 'features/10_providers_lifecycle/_presentation/_providers_lifecycle_page.dart';
 
-/// 🏠 **[MyHomePage] - Головна сторінка з кастомним AppBar**
+/// 🏠 [MyHomePage]
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({super.key});
 
@@ -33,6 +33,7 @@ class MyHomePage extends ConsumerWidget {
     final isDarkMode = themeMode == ThemeMode.dark;
     final selectedFeature = ref.watch(featureProvider);
 
+    ///
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.appTitle,
@@ -45,6 +46,8 @@ class MyHomePage extends ConsumerWidget {
           () => DialogService.showFeatureSelectionDialog(context),
         ],
       ),
+
+      ///
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -55,7 +58,7 @@ class MyHomePage extends ConsumerWidget {
               TextType.bodyLarge,
             ),
 
-            /// 🚀 **Динамічна кнопка переходу до фічі**
+            ///
             CustomButton(
               title: 'Go to ${selectedFeature.label}',
               child: getFeatureWidget(selectedFeature),
@@ -67,7 +70,7 @@ class MyHomePage extends ConsumerWidget {
   }
 }
 
-/// 📌 **Отримання віджета для обраної фічі**
+/// 📌
 Widget getFeatureWidget(AppFeature feature) {
   switch (feature) {
     case AppFeature.simpleProvider:
@@ -96,10 +99,5 @@ Widget getFeatureWidget(AppFeature feature) {
       return const PaginationPage();
     case AppFeature.asyncValues:
       return const AsyncValuesPage();
-    /*
-
-    */
-    // default:
-    //   return const SimpleProvidersPage();
   }
 }

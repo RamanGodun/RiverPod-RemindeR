@@ -6,6 +6,8 @@ import '../../../../features/13_async_values/domain/selected_city_index_provider
 import '../../../domain/models/enums.dart';
 import '../text_widget.dart';
 
+/// 📍 Reusable button to switch to another city and trigger weather update.
+/// Dynamically adjusts logic based on [isButtonForFirstStateShape].
 class GetAnotherCityWeatherButton extends ConsumerWidget {
   final bool isButtonForFirstStateShape;
   final NotifierProvider<BaseSelectedCityIndexNotifier, int> indexProvider;
@@ -28,10 +30,10 @@ class GetAnotherCityWeatherButton extends ConsumerWidget {
           final cityIndex = selectedCityIndex % Cities.values.length;
           final city = Cities.values[cityIndex];
 
-          /// Increment index
+          // 🔄 Increment index
           ref.read(indexProvider.notifier).increment();
 
-          /// Update weather
+          // 🌤️ Update weather based on state shape
           if (isButtonForFirstStateShape) {
             ref
                 .read(withFirstStateShapeWeatherProvider.notifier)

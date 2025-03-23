@@ -28,7 +28,6 @@ class Page4TickerOnStreamProvider extends ConsumerWidget {
         child: tickerValue.when(
           data:
               (ticks) => ListView(
-                key: const PageStorageKey('tickerListView'),
                 shrinkWrap: true,
                 physics: const AlwaysScrollableScrollPhysics(),
                 padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -27,27 +27,27 @@ class Activity with _$Activity {
 
   // Factory to create an empty Activity object, used for initial or default states.
   factory Activity.empty() => const Activity(
-        activity: '',
-        availability: 0.0,
-        type: '',
-        participants: 0,
-        price: 0.0,
-        accessibility: '',
-        duration: '',
-        kidFriendly: false,
-        link: '',
-        key: '',
-      );
+    activity: '',
+    availability: 0.0,
+    type: '',
+    participants: 0,
+    price: 0.0,
+    accessibility: '',
+    duration: '',
+    kidFriendly: false,
+    link: '',
+    key: '',
+  );
 }
 
 // Predefined list of activity types, used for filtering or selecting activities.
 // These types can be passed as parameters in API requests or used in UI elements.
-final activityTypes = [
+const activityTypes = [
   "education",
   "recreational",
   "social",
   "charity",
   "cooking",
   "relaxation",
-  "busywork"
+  "busywork",
 ];

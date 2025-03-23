@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
+import '../../../domain/app_constants/app_constants.dart';
 import '../../../domain/utils_and_services/helpers.dart';
 import '../text_widget.dart';
 
-/// 🎨 **CustomButton**
+/// 🎨 [CustomButton] – reusable styled button with optional navigation.
 class CustomButton extends StatelessWidget {
   final String title;
   final Widget child;
@@ -20,25 +20,26 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Helpers.getColorScheme(context);
+
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(14),
         color: colorScheme.primary.withOpacity(0.5),
         boxShadow: [
           BoxShadow(
-            color: colorScheme.onSurface.withOpacity(0.15),
-            blurRadius: 3,
-            offset: const Offset(0, 2),
+            color: colorScheme.onSurface.withOpacity(0.1),
+            blurRadius: 5,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: CupertinoButton(
-        onPressed: onPressed ?? () => Helpers.pushTo(context, child),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
-        borderRadius: BorderRadius.circular(12),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        borderRadius: BorderRadius.circular(14),
         color: Colors.transparent,
+        onPressed: onPressed ?? () => Helpers.pushTo(context, child),
         child: TextWidget(
           title,
           TextType.titleMedium,

@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
-/// 📌 **Logger for Riverpod Providers**
-/// - Logs lifecycle events for providers (added, updated, disposed).
-/// - Uses `debugPrint` with `JsonEncoder.withIndent` for formatted output.
+/// 📄 **[Logger] — Custom ProviderObserver for Riverpod Providers**
+/// - Logs provider lifecycle events (add, update, dispose).
+/// - Pretty-prints structured logs in JSON format.
 class Logger extends ProviderObserver {
   @override
   void didAddProvider(
@@ -16,7 +16,6 @@ class Logger extends ProviderObserver {
       "provider": provider.name ?? provider.runtimeType.toString(),
       "value": value?.toString() ?? "null",
     });
-
     super.didAddProvider(provider, value, container);
   }
 
@@ -28,7 +27,6 @@ class Logger extends ProviderObserver {
     _logEvent("Provider Disposed", {
       "provider": provider.name ?? provider.runtimeType.toString(),
     });
-
     super.didDisposeProvider(provider, container);
   }
 
@@ -45,7 +43,7 @@ class Logger extends ProviderObserver {
       "newValue": newValue?.toString() ?? "null",
     });
 
-    /// 📌 **Додано логування помилок**
+    // 🔔 Log error if AsyncError occurred
     if (newValue is AsyncError) {
       _logError(provider, newValue.error, newValue.stackTrace);
     }
@@ -53,35 +51,42 @@ class Logger extends ProviderObserver {
     super.didUpdateProvider(provider, previousValue, newValue, container);
   }
 
-  /// 📌 **Helper method for logging general events**
+  /// 🟢 **General event logger**
   void _logEvent(String eventType, Map<String, String> data) {
-    print(_formatLogOutput({
-      "event": eventType,
-      "timestamp": _formattedTimestamp(),
-      "details": data,
-    }));
+    print(
+      _formatLogOutput({
+        "event": eventType,
+        "timestamp": _formattedTimestamp(),
+        "details": data,
+      }),
+    );
   }
 
-  /// 🚨 **Helper method for logging errors**
+  /// 🔴 **Error logger**
   void _logError(
-      ProviderBase<Object?> provider, Object error, StackTrace? stackTrace) {
-    print(_formatLogOutput({
-      "event": "Provider Error",
-      "timestamp": _formattedTimestamp(),
-      "details": {
-        "provider": provider.name ?? provider.runtimeType.toString(),
-        "error": error.toString(),
-        "stackTrace": stackTrace?.toString() ?? "No StackTrace",
-      },
-    }));
+    ProviderBase<Object?> provider,
+    Object error,
+    StackTrace? stackTrace,
+  ) {
+    print(
+      _formatLogOutput({
+        "event": "Provider Error",
+        "timestamp": _formattedTimestamp(),
+        "details": {
+          "provider": provider.name ?? provider.runtimeType.toString(),
+          "error": error.toString(),
+          "stackTrace": stackTrace?.toString() ?? "No StackTrace",
+        },
+      }),
+    );
   }
 
-  /// 🕒 **Formats timestamp into a human-readable format**
+  /// 🕒 **Formats timestamp into readable format**
   String _formattedTimestamp() {
     return DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
   }
 
-  /// 🖨 **Formats log output for better readability without `flutter:` prefix**
+  /// 🖨 **Formats output as pretty JSON**
   String _formatLogOutput(Map<String, dynamic> logData) {
     return const JsonEncoder.withIndent("  ").convert(logData);
   }

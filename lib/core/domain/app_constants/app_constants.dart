@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-/// 🌈 **[AppConstants]** - Holds static UI-related constants with modern macOS/iOS aesthetics.
+/// 🌈 **[AppConstants]** - Centralized place for static UI-related constants.
 abstract class AppConstants {
+  // ────────────────────────────────────────────────────────────────────
+  // 📏 Common UI Constants
+  // ────────────────────────────────────────────────────────────────────
   static const double appBarElevation = 0.0;
   static const BorderRadius commonBorderRadius = BorderRadius.all(
     Radius.circular(12),
   );
 
   // ────────────────────────────────────────────────────────────────────
-  // 🎨 **Colors** (Based on macOS/iOS system)
+  // 🎨 Colors: macOS/iOS Inspired Palette
   // ────────────────────────────────────────────────────────────────────
 
   /// 🌙 **Dark Theme Colors**
@@ -27,15 +30,21 @@ abstract class AppConstants {
   static const Color lightOverlay = Color(0xBFFFFFFF); // 75% opacity
   static const Color lightBorder = Color(0xFFD6D6D6);
 
-  // 🔥 Colors for Fatal Game
+  // ────────────────────────────────────────────────────────────────────
+  // 🔥 Fatal Game Specific Colors
+  // ────────────────────────────────────────────────────────────────────
   static const Color fatalGameRestartBorder = Colors.greenAccent;
 
-  /// 🚨 **Common Colors**
+  // ────────────────────────────────────────────────────────────────────
+  // 🚨 Common Colors
+  // ────────────────────────────────────────────────────────────────────
   static const Color errorColor = Colors.redAccent;
   static const Color white = Color.fromARGB(255, 255, 255, 255);
   static const Color black = Colors.black;
 
-  /// 🌈 **Overlay & Transparency**
+  // ────────────────────────────────────────────────────────────────────
+  // 🌈 Overlay & Transparency
+  // ────────────────────────────────────────────────────────────────────
   static const Color overlayDarkBackground = darkOverlay;
   static const Color overlayLightBackground = lightOverlay;
   static const Color overlayDarkTextColor = Colors.white;
@@ -43,11 +52,13 @@ abstract class AppConstants {
   static const Color overlayDarkBorder = Color(0xFF2C2C2E);
   static const Color overlayLightBorder = Color(0xFFD6D6D6);
 
-  ///
-  static const double dialogHeightFactor = 0.1;
-
-  /// 🎯 Game specific constants
+  /// 🎯 Game-specific step values
   static const int incrementStep = 5;
   static const int decrementStep = -5;
   static const int disableButtonsThreshold = 105;
+
+  // ────────────────────────────────────────────────────────────────────
+  // 📐 Dialog Constants
+  // ────────────────────────────────────────────────────────────────────
+  static const double dialogHeightFactor = 0.1;
 }

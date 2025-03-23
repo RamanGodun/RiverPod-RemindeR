@@ -3,8 +3,6 @@ import 'package:riverpod_reminder/core/domain/utils_and_services/helpers.dart';
 import '../text_widget.dart';
 
 /// 🔘 **[CustomOutlinedButton]** - A reusable, stylish outlined button.
-/// - Supports disabling, custom text, colors, and padding.
-/// - Uses `OutlinedButton` with smooth rounded borders.
 class CustomOutlinedButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback? onPressed;
@@ -14,7 +12,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final double borderRadius;
   final double? width;
   final double? height;
-  final bool disabled; // 🔥 NEW PARAMETER!
+  final bool disabled;
 
   const CustomOutlinedButton({
     super.key,
@@ -26,30 +24,22 @@ class CustomOutlinedButton extends StatelessWidget {
     this.borderRadius = 12.0,
     this.width,
     this.height,
-    this.disabled = false, // default enabled
+    this.disabled = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Helpers.getColorScheme(context);
     final primaryColor = colorScheme.primary;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       width: width ?? double.infinity,
       height: height,
       child: OutlinedButton(
-        onPressed:
-            disabled
-                ? null // якщо disabled → не натискається
-                : () {
-                  onPressed?.call(); // викликаємо лише якщо не null
-                },
+        onPressed: disabled ? null : onPressed,
         style: OutlinedButton.styleFrom(
-          foregroundColor:
-              disabled
-                  ? Colors
-                      .grey // змінюємо колір, коли disabled
-                  : textColor ?? primaryColor,
+          foregroundColor: disabled ? Colors.grey : textColor ?? primaryColor,
           side: BorderSide(
             color: disabled ? Colors.grey : borderColor ?? primaryColor,
           ),

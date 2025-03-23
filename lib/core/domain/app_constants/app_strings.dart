@@ -1,9 +1,19 @@
+/// 📄 **AppStrings** — Centralized place for all app text constants.
+/// Improves maintainability and localization readiness.
 abstract class AppStrings {
-  // 🏠 Titles
+  ///
+  // ===============================
+  // 🏠 App Titles
+  // ===============================
+
   static const String appTitle = '      Riverpod Reminder';
   static const String toggleTheme = 'Toggle Theme';
 
+  ///
+  // ===============================
   // 🌍 Fatal Game Texts
+  // ===============================
+
   static const String pageTitle = '🌍 The World Depends on You!';
   static const String criticalDifference = '⚠ Critical Difference: ';
   static const String noDifference =
@@ -30,13 +40,21 @@ abstract class AppStrings {
         "💥 GAME OVER! The timeline collapses into chaos! \nYour fault! \nNice job, genius. 🫵👀",
   };
 
-  // 📱 Basic StateProvider Page Texts
+  ///
+  // ===============================
+  // 📱 Basic StateProvider Page
+  // ===============================
+
   static const String basicStatePageTitle =
       'on this page using \n Basic StateProvider';
   static const String basicStateInstruction =
       'You are amazing🤩, \nyou\'ve already clicked:';
 
+  ///
+  // ===============================
   // 🟢 Counter Screen Texts
+  // ===============================
+
   static const String counterScreenTitle =
       'using StateProvider \nwith AutoDisposed mode';
   static const String counterInstruction =

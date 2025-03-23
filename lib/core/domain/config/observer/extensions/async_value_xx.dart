@@ -1,24 +1,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// Extension to provide additional utility methods for AsyncValue.
+/// 🔄 **Extension providing helpful methods for debugging AsyncValue states.**
 extension AsyncValueXX on AsyncValue {
-  /// Returns a string representation of the AsyncValue state, including loading, value, and error states.
+  /// 📌 Returns a readable string representation of the AsyncValue state.
+  /// Includes loading status, value, and error (if any).
   String get toStr {
     final content = [
       if (isLoading && this is! AsyncLoading)
-        'isLoading: $isLoading', // Logs if the state is loading
-      if (hasValue) 'value: $value', // Logs the current value if available
-      if (hasError) ...[
-        'error: $error', // Logs the error message if present
-      ],
+        'isLoading: $isLoading', // Logs loading status (when not a typical loading state)
+      if (hasValue) 'value: $value', // Logs current value
+      if (hasError) 'error: $error', // Logs error message
     ].join(', ');
 
-    // Return the runtime type and formatted content
     return '$runtimeType($content)';
   }
 
-  /// Returns the key properties of AsyncValue in a more structured format.
-  /// Includes details about loading, refreshing, reloading states, as well as value and error presence.
+  /// 📊 Returns key AsyncValue properties in a structured format.
+  /// Shows loading, refreshing, value, and error flags.
   String get props {
     return 'isLoading: $isLoading, isRefreshing: $isRefreshing, isReloading: $isReloading\nhasValue: $hasValue, hasError: $hasError';
   }

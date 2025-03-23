@@ -1,10 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/domain/utils_and_services/helpers.dart';
 import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/models/enums.dart';
-import '../../../core/domain/state/errors_handling/errors_dialog_providers.dart';
-import '../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
+import '../../../core/domain/providers/errors_handling/errors_dialog_providers.dart';
+import '../../../core/domain/providers/errors_handling/for_errors_simulation_counter_provider.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 import '../../../core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
@@ -41,6 +42,8 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
         .listenForFailures(ref, context);
 
     final activityState = ref.watch(enumActivityProvider);
+
+    final colorScheme = Helpers.getColorScheme(context);
 
     return Scaffold(
       appBar: CustomAppBar(
@@ -86,6 +89,7 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
 
       ///
       floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: colorScheme.primary.withOpacity(0.5),
         onPressed: () {
           // Randomly selects an activity type and fetches a new activity.
           final randomNumber = Random().nextInt(activityTypes.length);
@@ -93,7 +97,11 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
               .read(enumActivityProvider.notifier)
               .fetchActivity(activityTypes[randomNumber]);
         },
-        label: const TextWidget('New Activity', TextType.titleMedium),
+        label: TextWidget(
+          'New Activity',
+          TextType.titleMedium,
+          color: colorScheme.onPrimary,
+        ),
       ),
     );
   }

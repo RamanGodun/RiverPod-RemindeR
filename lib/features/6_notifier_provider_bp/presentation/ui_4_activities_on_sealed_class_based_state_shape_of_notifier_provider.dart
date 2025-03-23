@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/models/activity_model/activity.dart';
-import '../../../core/domain/state/errors_handling/for_errors_simulation_counter_provider.dart';
+import '../../../core/domain/providers/errors_handling/for_errors_simulation_counter_provider.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
+import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/activity_provider_on_sealed_class_based_ss/sealed_activity_provider.dart';
@@ -41,6 +42,8 @@ class _SealedActivityPageState extends ConsumerState<SealedActivityPage> {
 
     final activityState = ref.watch(sealedActivityProvider);
 
+    final colorScheme = Helpers.getColorScheme(context);
+
     return Scaffold(
       appBar: CustomAppBar(
         title: 'on sealed class Notifier',
@@ -73,14 +76,18 @@ class _SealedActivityPageState extends ConsumerState<SealedActivityPage> {
 
       ///
       floatingActionButton: FloatingActionButton.extended(
-        // Fetch a new random activity when the button is pressed.
+        backgroundColor: colorScheme.primary.withOpacity(0.6),
         onPressed: () {
           final randomNumber = Random().nextInt(activityTypes.length);
           ref
               .read(sealedActivityProvider.notifier)
               .fetchActivity(activityTypes[randomNumber]);
         },
-        label: const TextWidget('New Activity', TextType.titleMedium),
+        label: TextWidget(
+          'New Activity',
+          TextType.titleMedium,
+          color: colorScheme.onPrimary,
+        ),
       ),
     );
   }
