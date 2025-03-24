@@ -1,10 +1,11 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 /// 📄 **[Logger] — Custom ProviderObserver for Riverpod Providers**
 /// - Logs provider lifecycle events (add, update, dispose).
-/// - Pretty-prints structured logs in JSON format.
+/// - Pretty-debugPrints structured logs in JSON format.
 class Logger extends ProviderObserver {
   @override
   void didAddProvider(
@@ -53,7 +54,7 @@ class Logger extends ProviderObserver {
 
   /// 🟢 **General event logger**
   void _logEvent(String eventType, Map<String, String> data) {
-    print(
+    debugPrint(
       _formatLogOutput({
         "event": eventType,
         "timestamp": _formattedTimestamp(),
@@ -68,7 +69,7 @@ class Logger extends ProviderObserver {
     Object error,
     StackTrace? stackTrace,
   ) {
-    print(
+    debugPrint(
       _formatLogOutput({
         "event": "Provider Error",
         "timestamp": _formattedTimestamp(),

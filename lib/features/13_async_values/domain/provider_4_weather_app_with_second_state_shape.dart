@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/domain/models/enums.dart';
@@ -8,9 +9,9 @@ part 'provider_4_weather_app_with_second_state_shape.g.dart';
 class ForSecondStateShapeCity extends _$ForSecondStateShapeCity {
   @override
   Cities build() {
-    print('[cityProvider] initialized');
+    debugPrint('[cityProvider] initialized');
     ref.onDispose(() {
-      print('[cityProvider] disposed');
+      debugPrint('[cityProvider] disposed');
     });
     return Cities.kyiv;
   }
@@ -22,9 +23,9 @@ class ForSecondStateShapeCity extends _$ForSecondStateShapeCity {
 
 @riverpod
 FutureOr<String> withSecondStateShapeWeather(Ref ref) async {
-  print('[weatherSecondProvider] initialized');
+  debugPrint('[weatherSecondProvider] initialized');
   ref.onDispose(() {
-    print('[weatherSecondProvider] disposed');
+    debugPrint('[weatherSecondProvider] disposed');
   });
 
   final city = ref.watch(forSecondStateShapeCityProvider);

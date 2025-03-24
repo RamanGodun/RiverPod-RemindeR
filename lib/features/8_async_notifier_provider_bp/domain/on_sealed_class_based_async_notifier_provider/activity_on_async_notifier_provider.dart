@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_reminder/core/domain/providers/dio_and_retrofit/dio_providers/activities_api/activities_dio_provider.dart';
 import '../../../../core/domain/models/activity_model/activity.dart';
@@ -12,7 +13,7 @@ class AsyncActivity extends _$AsyncActivity {
   @override
   FutureOr<Activity> build() {
     ref.onDispose(() {
-      print('[asyncActivityProvider] disposed');
+      debugPrint('[asyncActivityProvider] disposed');
     });
     // Initial fetch for the default activity type.
     return getActivity(activityTypes[0]);

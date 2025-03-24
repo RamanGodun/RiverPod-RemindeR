@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /*
@@ -11,7 +12,7 @@ class ManualCounterOnNotifier extends AutoDisposeFamilyNotifier<int, int> {
   @override
   int build(int arg) {
     ref.onDispose(() {
-      print('[counterProviderOnNotifier] was disposed');
+      debugPrint('[counterProviderOnNotifier] was disposed');
     });
     return arg;
   }

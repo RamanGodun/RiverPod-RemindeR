@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../core/domain/models/product_model/product.dart';
@@ -11,7 +12,7 @@ FutureOr<Product> forPageWithInfiniteScrollPaginationGetProduct(
   int id,
 ) {
   ref.onDispose(() {
-    print('product with $id disposed');
+    debugPrint('product with $id disposed');
   });
 
   return ref

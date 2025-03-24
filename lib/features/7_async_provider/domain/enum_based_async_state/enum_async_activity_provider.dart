@@ -17,7 +17,7 @@ class EnumAsyncActivity extends _$EnumAsyncActivity {
   @override
   EnumAsyncActivityState build() {
     debugPrint('[EnumAsyncActivity] was initialized');
-    ref.onDispose(() => print('[EnumAsyncActivity] disposed'));
+    ref.onDispose(() => debugPrint('[EnumAsyncActivity] disposed'));
     state = EnumAsyncActivityState.initial();
     debugPrint('initial hashCode: $hashCode');
     fetchActivity(activityTypes[0]);

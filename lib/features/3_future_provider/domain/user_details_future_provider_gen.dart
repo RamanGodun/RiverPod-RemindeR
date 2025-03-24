@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -9,7 +10,7 @@ part 'user_details_future_provider_gen.g.dart';
 @riverpod
 FutureOr<User> withCodeGenerationUserDetails(Ref ref, int id) async {
   ref.onDispose(() {
-    print('[withCodeGenerationUserDetail($id)] disposed');
+    debugPrint('[withCodeGenerationUserDetail($id)] disposed');
   });
 
   // Fetch the details of a specific user by ID

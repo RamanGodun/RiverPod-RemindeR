@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final counterOnAsyncNotifierManualProvider = AsyncNotifierProvider.family
@@ -7,7 +8,7 @@ final counterOnAsyncNotifierManualProvider = AsyncNotifierProvider.family
 class Counter extends AutoDisposeFamilyAsyncNotifier<int, int> {
   @override
   FutureOr<int> build(int arg) async {
-    ref.onDispose(() => print('[counterProvider] was disposed'));
+    ref.onDispose(() => debugPrint('[counterProvider] was disposed'));
     await _waitASec(); // Simulate a delay.
     return arg;
   }

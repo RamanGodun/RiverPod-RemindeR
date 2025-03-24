@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/domain/providers/dio_and_retrofit/dio_providers/user_list_api/users_list_dio_provider.dart';
@@ -8,7 +9,7 @@ part 'users_list_future_provider_gen.g.dart';
 @riverpod
 Future<List<User>> withCodeGenerationUserList(Ref ref) async {
   ref.onDispose(() {
-    print('[withCodeGenerationUserList] disposed');
+    debugPrint('[withCodeGenerationUserList] disposed');
   });
 
   // Fetch the list of users from the API using the dioProvider

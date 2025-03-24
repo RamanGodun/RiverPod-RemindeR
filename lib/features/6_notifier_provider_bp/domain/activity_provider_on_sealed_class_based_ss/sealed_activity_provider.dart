@@ -19,9 +19,9 @@ class SealedActivity extends _$SealedActivity {
   SealedActivityState build() {
     // Setting up a disposal callback. When the provider is no longer needed, it is disposed of.
     ref.onDispose(() {
-      print('[sealedActivityProvider] disposed');
+      debugPrint('[sealedActivityProvider] disposed');
     });
-    print('hashCode: $hashCode');
+    debugPrint('hashCode: $hashCode');
     return const SealedActivityInitial(); // Initial state is "SealedActivityInitial".
   }
 
@@ -30,7 +30,7 @@ class SealedActivity extends _$SealedActivity {
     // Ensuring the instance remains the same after a refresh. The hash code remains consistent across rebuilds,
     // indicating that the Notifier instance is not recreated but only its internal state changes.
     // This is a key advantage of NotifierProvider over ChangeNotifierProvider or StateProvider.
-    print('hashCode in fetchActivity: $hashCode');
+    debugPrint('hashCode in fetchActivity: $hashCode');
 
     // Transition to the loading state while the API call is in progress.
     state = const SealedActivityLoading();
@@ -38,7 +38,7 @@ class SealedActivity extends _$SealedActivity {
     try {
       ref.read(forErrorsSimulationCounterProvider.notifier).increment();
       final counter = ref.read(forErrorsSimulationCounterProvider);
-      print('_errorCounter: $counter');
+      debugPrint('_errorCounter: $counter');
 
       // Simulating a failure every second request.
       // Delays the request for 500ms and throws an error for every odd counter.
@@ -74,7 +74,7 @@ class SealedActivity extends _$SealedActivity {
       // Transitioning to the success state with the fetched activities.
       state = SealedActivitySuccess(activities: activities);
     } catch (e, stackTrace) {
-      // For debugging purposes, print full stack trace
+      // For debugging purposes, debugPrint full stack trace
       debugPrint('FetchActivity error: $e');
       debugPrintStack(stackTrace: stackTrace);
 

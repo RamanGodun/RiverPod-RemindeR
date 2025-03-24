@@ -33,7 +33,7 @@ class _ProductsPageState
 
         body: productList.when(
           data: (products) {
-            print('from page: products');
+            debugPrint('from page: products');
             return ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               itemCount: products.length,

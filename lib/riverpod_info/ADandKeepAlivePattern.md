@@ -35,7 +35,7 @@ The `autoDispose + ref.keepAlive()` pattern in Riverpod allows fine-grained cont
 @riverpod
 FutureOr<User> withCodeGenerationUserDetails(Ref ref, int id) async {
   ref.onDispose(() {
-    print('[withCodeGenerationUserDetail($id)] disposed');
+    debugPrint('[withCodeGenerationUserDetail($id)] disposed');
   });
 
   final response = await ref.watch(dioProvider).get('/users/$id');
@@ -57,7 +57,7 @@ final userDetailsFutureProviderWithoutCodeGen = FutureProvider.autoDispose.famil
   int
 >((ref, id) async {
   ref.onDispose(() {
-    print('[userDetailsFutureProviderWithoutCodeGen($id)] disposed');
+    debugPrint('[userDetailsFutureProviderWithoutCodeGen($id)] disposed');
   });
 
   final apiClient = ref.watch(apiClientProvider);
@@ -118,7 +118,7 @@ final userDetailsFutureProviderWithoutCodeGen = FutureProvider.autoDispose.famil
 
 The `autoDispose + ref.keepAlive()` pattern gives flexibility:
 
-- Reduces memory footprint.
+- Reduces memory footdebugPrint.
 - Caches already fetched data without keeping the provider logic unnecessarily alive.
 - Smooth UX for data-driven apps, especially when combined with `dio`/`Retrofit`.
 
@@ -138,7 +138,7 @@ part 'user_details_future_provider_gen.g.dart';
 @riverpod
 FutureOr<User> withCodeGenerationUserDetails(Ref ref, int id) async {
   ref.onDispose(() {
-    print('[withCodeGenerationUserDetail($id)] disposed');
+    debugPrint('[withCodeGenerationUserDetail($id)] disposed');
   });
 
   // Fetch the details of a specific user by ID

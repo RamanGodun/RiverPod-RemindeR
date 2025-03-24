@@ -8,7 +8,7 @@ class CustomInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     debugPrint('➡️ Request: ${options.method} ${options.uri}');
     debugPrint('🔑 Headers: ${options.headers}');
-    if (options.data != null) print('📦 Data: ${options.data}');
+    if (options.data != null) debugPrint('📦 Data: ${options.data}');
     super.onRequest(options, handler);
   }
 

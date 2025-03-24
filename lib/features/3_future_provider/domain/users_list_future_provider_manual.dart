@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/domain/providers/dio_and_retrofit/dio_providers/user_list_api/users_list_dio_provider.dart';
 import 'model/user.dart';
@@ -5,7 +6,7 @@ import 'model/user.dart';
 final userListFutureProviderWithoutCodeGen =
     FutureProvider.autoDispose<List<User>>((ref) async {
       ref.onDispose(() {
-        print('[userListFutureProviderWithoutCodeGen] disposed');
+        debugPrint('[userListFutureProviderWithoutCodeGen] disposed');
       });
 
       // Fetch the list of users from the API using dioProvider

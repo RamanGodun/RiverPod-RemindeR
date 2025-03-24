@@ -13,7 +13,7 @@ class EnumActivity extends _$EnumActivity {
   @override
   EnumActivityState build() {
     ref.onDispose(() {
-      print('[enumActivityProvider] disposed');
+      debugPrint('[enumActivityProvider] disposed');
     });
     //  and for Debugging purposes, to track state changes, to check is instance is destroyed?
     debugPrint('initial hashCode: $hashCode');

@@ -17,7 +17,7 @@ class SealedAsyncActivity extends _$SealedAsyncActivity {
   SealedAsyncActivityState build() {
     debugPrint('[sealedAsyncActivityProvider] initialized');
     ref.onDispose(() {
-      print('[sealedAsyncActivityProvider] disposed');
+      debugPrint('[sealedAsyncActivityProvider] disposed');
     });
 
     debugPrint('hashCode: $hashCode');

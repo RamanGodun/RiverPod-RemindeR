@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -22,21 +23,21 @@ part 'cascade_providers.g.dart';
 class CascadeCounter extends _$CascadeCounter {
   @override
   int build() {
-    print('[cascadeCounterProvider] initialized');
+    debugPrint('[cascadeCounterProvider] initialized');
     ref.onDispose(() {
-      print('[cascadeCounterProvider] disposed');
+      debugPrint('[cascadeCounterProvider] disposed');
     });
     ref.onCancel(() {
-      print('[cascadeCounterProvider] cancelled');
+      debugPrint('[cascadeCounterProvider] cancelled');
     });
     ref.onResume(() {
-      print('[cascadeCounterProvider] resumed');
+      debugPrint('[cascadeCounterProvider] resumed');
     });
     ref.onAddListener(() {
-      print('[cascadeCounterProvider] listener added');
+      debugPrint('[cascadeCounterProvider] listener added');
     });
     ref.onRemoveListener(() {
-      print('[cascadeCounterProvider] listener removed');
+      debugPrint('[cascadeCounterProvider] listener removed');
     });
 
     return 0;
@@ -47,21 +48,21 @@ class CascadeCounter extends _$CascadeCounter {
 
 @riverpod
 String age(Ref ref) {
-  print('[ageProvider] initialized');
+  debugPrint('[ageProvider] initialized');
   ref.onDispose(() {
-    print('[ageProvider] disposed');
+    debugPrint('[ageProvider] disposed');
   });
   ref.onCancel(() {
-    print('[ageProvider] cancelled');
+    debugPrint('[ageProvider] cancelled');
   });
   ref.onResume(() {
-    print('[ageProvider] resumed');
+    debugPrint('[ageProvider] resumed');
   });
   ref.onAddListener(() {
-    print('[ageProvider] listener added');
+    debugPrint('[ageProvider] listener added');
   });
   ref.onRemoveListener(() {
-    print('[ageProvider] listener removed');
+    debugPrint('[ageProvider] listener removed');
   });
 
   final age = ref.watch(cascadeCounterProvider);

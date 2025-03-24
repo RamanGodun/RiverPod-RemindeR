@@ -17,12 +17,11 @@ class Page4TickerOnStreamProvider extends ConsumerWidget {
         AppConfig.isUsingCodeGeneration
             ? ref.watch(withGenTickerStreamProvider)
             : ref.watch(tickerProviderWithoutCodeGen);
-    print(tickerValue);
 
     return Scaffold(
       appBar: const CustomAppBar(
         title:
-            'Ticker  ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider',
+            'Ticker (${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider)',
       ),
       body: Center(
         child: tickerValue.when(
@@ -46,9 +45,11 @@ class Page4TickerOnStreamProvider extends ConsumerWidget {
                   ),
                 ],
               ),
-          // Display error widget if the Stream encounters an error
+
+          /// Display error widget if the Stream encounters an error
           error: (e, st) => AppMiniWidgets(MWType.error, error: e),
-          // Display loading widget while the Stream is still loading (initial state)
+
+          /// Display loading widget while the Stream is still loading (initial state)
           loading: () => const AppMiniWidgets(MWType.loading),
         ),
       ),

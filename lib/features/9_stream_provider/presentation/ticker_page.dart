@@ -12,7 +12,7 @@ class TickerOnStreamProviderPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tickerValue = ref.watch(tickerProvider);
-    print(tickerValue);
+    debugPrint(tickerValue.toString());
 
     return Scaffold(
       appBar: const CustomAppBar(title: 'Ticker on async stream '),

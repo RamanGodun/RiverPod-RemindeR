@@ -47,7 +47,7 @@ FutureOr<List<Product>> getProductsListThatCashedFor10Sec(Ref ref) async {
       .get('/products', cancelToken: cancelToken);
 
   ref.onCancel(() {
-    print('[getProductsProvider] cancelled, timer started');
+    debugPrint('[getProductsProvider] cancelled, timer started');
     timer = Timer(const Duration(seconds: 10), () {
       keepAliveLink.close();
     });

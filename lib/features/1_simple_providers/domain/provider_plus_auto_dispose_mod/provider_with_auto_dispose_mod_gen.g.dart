@@ -20,7 +20,7 @@ String _$autoDisposedModeWithSimpleGenHash() =>
 /// - Views with frequently changing data
 /// ⚙️ **Behavior:**
 /// - No caching; resources are freed immediately when not used.
-/// - Reduces memory footprint.
+/// - Reduces memory footdebugPrint.
 ///
 /// Copied from [autoDisposedModeWithSimpleGen].
 @ProviderFor(autoDisposedModeWithSimpleGen)

@@ -98,17 +98,17 @@ FutureOr<List<Product>> getProducts(Ref ref, int page) async {
   Timer? timer;
 
   ref.onDispose(() {
-    print('[getProducts($page)] disposed, timer canceled, token canceled');
+    debugPrint('[getProducts($page)] disposed, timer canceled, token canceled');
     timer?.cancel();
     cancelToken.cancel();
   });
 
   ref.onCancel(() {
-    print('[getProducts($page)] canceled');
+    debugPrint('[getProducts($page)] canceled');
   });
 
   ref.onResume(() {
-    print('[getProducts($page)] resumed, timer canceled');
+    debugPrint('[getProducts($page)] resumed, timer canceled');
     timer?.cancel();
   });
 
@@ -119,13 +119,13 @@ FutureOr<List<Product>> getProducts(Ref ref, int page) async {
   final keepAliveLink = ref.keepAlive();
 
   ref.onCancel(() {
-    print('[getProducts($page)] cancelled, timer started');
+    debugPrint('[getProducts($page)] cancelled, timer started');
     timer = Timer(const Duration(seconds: 10), () {
       keepAliveLink.close();
     });
   });
 
-  print('from products provider: $products');
+  debugPrint('from products provider: $products');
   return products;
 }
 "
@@ -136,7 +136,7 @@ part 'product_providers.g.dart';
 @riverpod
 FutureOr<Product> getProduct(Ref ref, int id) {
   ref.onDispose(() {
-    print('product with $id disposed');
+    debugPrint('product with $id disposed');
   });
 
   return ref.watch(productRepositoryProvider).getProduct(id);

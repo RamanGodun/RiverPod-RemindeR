@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'counter_on_async_notifier_gen_provider.g.dart';
@@ -8,7 +9,7 @@ class GenCounterOnAsyncNotifier extends _$GenCounterOnAsyncNotifier {
   // The `build` method initializes the state with the provided `arg` value.
   Future<int> build(int arg) async {
     ref.onDispose(() {
-      print('[counterProvider] disposed');
+      debugPrint('[counterProvider] disposed');
     });
     await _waitASec(); // Simulate an initial delay.
     return arg; // the initial counter value.

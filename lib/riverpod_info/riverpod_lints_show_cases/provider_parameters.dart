@@ -59,16 +59,24 @@ class ProviderParameters extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print(counterNoEqualProvider(NoEqual(counter: 0)).hashCode);
-    print(counterNoEqualProvider(NoEqual(counter: 0)).hashCode);
-    print(
-      counterNoEqualConstProvider(const NoEqualConst(counter: 10)).hashCode,
+    debugPrint(counterNoEqualProvider(NoEqual(counter: 0)).hashCode.toString());
+    debugPrint(counterNoEqualProvider(NoEqual(counter: 0)).hashCode.toString());
+    debugPrint(
+      counterNoEqualConstProvider(
+        const NoEqualConst(counter: 10),
+      ).hashCode.toString(),
     );
-    print(
-      counterNoEqualConstProvider(const NoEqualConst(counter: 10)).hashCode,
+    debugPrint(
+      counterNoEqualConstProvider(
+        const NoEqualConst(counter: 10),
+      ).hashCode.toString(),
     );
-    print(counterEqualProvider(const Equal(counter: 100)).hashCode);
-    print(counterEqualProvider(const Equal(counter: 100)).hashCode);
+    debugPrint(
+      counterEqualProvider(const Equal(counter: 100)).hashCode.toString(),
+    );
+    debugPrint(
+      counterEqualProvider(const Equal(counter: 100)).hashCode.toString(),
+    );
 
     final counterNoEqual =
     // ignore: provider_parameters

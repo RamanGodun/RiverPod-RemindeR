@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/domain/providers/dio_and_retrofit/api_client_provider.dart';
 import 'model/user.dart';
@@ -7,7 +8,7 @@ final userDetailsFutureProviderWithoutCodeGen = FutureProvider.autoDispose.famil
   int
 >((ref, id) async {
   ref.onDispose(() {
-    print('[userDetailsFutureProviderWithoutCodeGen($id)] disposed');
+    debugPrint('[userDetailsFutureProviderWithoutCodeGen($id)] disposed');
   });
 
   /*

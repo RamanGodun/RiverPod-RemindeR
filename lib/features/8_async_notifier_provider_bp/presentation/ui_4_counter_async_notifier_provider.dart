@@ -20,7 +20,7 @@ class Page4CounterOnAsyncNotifierProvider extends ConsumerWidget {
             ? ref.watch(genCounterOnAsyncNotifierProvider(1))
             : ref.watch(counterOnAsyncNotifierManualProvider(1));
 
-    // Printing the current state of AsyncValue using extension methods
+    // debugPrinting the current state of AsyncValue using extension methods
     debugPrint('Counter state: ${counter.toString}');
     debugPrint('Counter props: ${counter.props}');
 

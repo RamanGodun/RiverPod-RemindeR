@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'providers_4_using_consumer_page.g.dart';
@@ -6,21 +7,21 @@ part 'providers_4_using_consumer_page.g.dart';
 class OneCounter extends _$OneCounter {
   @override
   int build() {
-    print('[autoDisposeCounterProvider] initialized');
+    debugPrint('[autoDisposeCounterProvider] initialized');
     ref.onDispose(() {
-      print('[autoDisposeCounterProvider] disposed');
+      debugPrint('[autoDisposeCounterProvider] disposed');
     });
     ref.onCancel(() {
-      print('[autoDisposeCounterProvider] cancelled');
+      debugPrint('[autoDisposeCounterProvider] cancelled');
     });
     ref.onResume(() {
-      print('[autoDisposeCounterProvider] resumed');
+      debugPrint('[autoDisposeCounterProvider] resumed');
     });
     ref.onAddListener(() {
-      print('[autoDisposeCounterProvider] listener added');
+      debugPrint('[autoDisposeCounterProvider] listener added');
     });
     ref.onRemoveListener(() {
-      print('[autoDisposeCounterProvider] listener removed');
+      debugPrint('[autoDisposeCounterProvider] listener removed');
     });
     return 0;
   }
@@ -32,21 +33,21 @@ class OneCounter extends _$OneCounter {
 class AnotherCounter extends _$AnotherCounter {
   @override
   int build() {
-    print('[anotherCounterProvider] initialized');
+    debugPrint('[anotherCounterProvider] initialized');
     ref.onDispose(() {
-      print('[anotherCounterProvider] disposed');
+      debugPrint('[anotherCounterProvider] disposed');
     });
     ref.onCancel(() {
-      print('[anotherCounterProvider] cancelled');
+      debugPrint('[anotherCounterProvider] cancelled');
     });
     ref.onResume(() {
-      print('[anotherCounterProvider] resumed');
+      debugPrint('[anotherCounterProvider] resumed');
     });
     ref.onAddListener(() {
-      print('[anotherCounterProvider] listener added');
+      debugPrint('[anotherCounterProvider] listener added');
     });
     ref.onRemoveListener(() {
-      print('[anotherCounterProvider] listener removed');
+      debugPrint('[anotherCounterProvider] listener removed');
     });
 
     return 10;

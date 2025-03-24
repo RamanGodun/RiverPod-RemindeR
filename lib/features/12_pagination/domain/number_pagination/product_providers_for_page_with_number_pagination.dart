@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../../core/domain/models/product_model/product.dart';
@@ -8,7 +9,7 @@ part 'product_providers_for_page_with_number_pagination.g.dart';
 @riverpod
 FutureOr<Product> forPageWithNumberPaginationGetProduct(Ref ref, int id) {
   ref.onDispose(() {
-    print('product with $id disposed');
+    debugPrint('product with $id disposed');
   });
 
   return ref.watch(productRepositoryProvider).getProduct(id);

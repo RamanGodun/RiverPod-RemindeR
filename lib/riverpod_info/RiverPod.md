@@ -2,10 +2,10 @@
  **autocompletion with help of 'Flutter Riverpod Snippets' extension in VSCode:** 
 1. to generate "part 'basic_provider_gen.g.dart';" ---  you need to type 'rivp' and choose autocompletion
 2. to create a simple keep alive Provider  --- 'riverpodKeepAlive' and choose autocompletion
-3. to create "part 'user.freezed.dart'"  print 'ptf' => and choose autocompletion
-4. to create "part 'user.g.dart'" print 'pts' => and choose autocompletion
-5. to create  freezed data class print 'fdata' => and choose autocompletion
-6. to create factory fromJson print 'fromJson' => and choose autocompletion
+3. to create "part 'user.freezed.dart'"  debugPrint 'ptf' => and choose autocompletion
+4. to create "part 'user.g.dart'" debugPrint 'pts' => and choose autocompletion
+5. to create  freezed data class debugPrint 'fdata' => and choose autocompletion
+6. to create factory fromJson debugPrint 'fromJson' => and choose autocompletion
 
 
 !! Every time the provider A (from which depends a Provider B) changes, Provider B (even when it is marked as "keepAlive: true") is disposed and recreated. This will cause the provider B to rebuild every time the Provider A changes.
