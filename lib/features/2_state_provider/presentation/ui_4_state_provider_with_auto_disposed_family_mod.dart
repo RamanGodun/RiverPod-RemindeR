@@ -59,7 +59,6 @@ class Page4StateProviderWithAutoDisposedFamilyMod extends ConsumerWidget {
               onPressed: () => _onIncrement(ref),
               disabled: valueDifference >= AppConstants.disableButtonsThreshold,
             ),
-
             const SizedBox(height: 80),
 
             /// 🔵 Second Value - The Counterforce
@@ -112,7 +111,7 @@ class Page4StateProviderWithAutoDisposedFamilyMod extends ConsumerWidget {
     if (valueDifference >= 70) return Colors.redAccent.shade700;
     if (valueDifference >= 50) return Colors.deepOrange;
     if (valueDifference >= 20) return Colors.yellow.shade700;
-    return Colors.blueGrey.shade900;
+    return Colors.blueGrey.shade300;
   }
 
   /// 🔄 Handles Reset Logic

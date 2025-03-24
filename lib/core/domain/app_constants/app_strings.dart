@@ -45,10 +45,10 @@ abstract class AppStrings {
   // 📱 Basic StateProvider Page
   // ===============================
 
-  static const String basicStatePageTitle =
-      'on this page using \n Basic StateProvider';
+  static const String basicStatePage =
+      'On this page using Basic State Provider.';
   static const String basicStateInstruction =
-      'You are amazing🤩, \nyou\'ve already clicked:';
+      'You are just amazing 🤩, you\'ve already clicked:';
 
   ///
   // ===============================
@@ -56,9 +56,9 @@ abstract class AppStrings {
   // ===============================
 
   static const String counterScreenTitle =
-      'using StateProvider \nwith AutoDisposed mode';
+      'This page using State Provider with AutoDisposed mode';
   static const String counterInstruction =
-      'Dude, nice 😎, \nyou\'ve already clicked:';
+      'Dude, nice 😎, you\'ve already clicked:';
   static const String clickSingular = 'time';
   static const String clickPlural = 'times';
 

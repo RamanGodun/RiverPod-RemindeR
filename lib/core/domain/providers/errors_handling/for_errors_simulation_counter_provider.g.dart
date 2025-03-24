@@ -9,8 +9,7 @@ part of 'for_errors_simulation_counter_provider.dart';
 String _$forErrorsSimulationCounterHash() =>
     r'f784b16ecd5455721e6972ed95b7fb098352f985';
 
-/// A shared counter provider used to simulate errors in multiple providers.
-/// Every time [increment] is called, counter increases by 1.
+/// A shared counter provider used to help to simulate errors in multiple providers.
 ///
 /// Copied from [ForErrorsSimulationCounter].
 @ProviderFor(ForErrorsSimulationCounter)

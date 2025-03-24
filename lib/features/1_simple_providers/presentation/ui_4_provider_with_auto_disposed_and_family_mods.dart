@@ -17,12 +17,12 @@ class PageWithAutoDisposedFamilyProvider extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Select provider based on AppConfig
-    final helloRoman =
+    final text1 =
         AppConfig.isUsingCodeGeneration
             ? ref.watch(generated.autoDisposeFamilyProvider('This text'))
             : ref.watch(manual.autoDisposeFamilyProvider('This text'));
 
-    final helloGodun =
+    final text2 =
         AppConfig.isUsingCodeGeneration
             ? ref.watch(
               generated.autoDisposeFamilyProvider('As well as this text also'),
@@ -32,26 +32,18 @@ class PageWithAutoDisposedFamilyProvider extends ConsumerWidget {
             );
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'AutoDispose Family Provider'),
+      appBar: const CustomAppBar(title: 'with AutoDispose Family mod'),
       body: Center(
         child: ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
             ///
-            TextWidget(
-              helloRoman,
-              TextType.titleSmall,
-              isTextOnFewStrings: true,
-            ),
+            TextWidget(text1, TextType.titleSmall, isTextOnFewStrings: true),
 
             const SizedBox(height: 50),
 
-            TextWidget(
-              helloGodun,
-              TextType.bodyLarge,
-              isTextOnFewStrings: true,
-            ),
+            TextWidget(text2, TextType.bodyLarge, isTextOnFewStrings: true),
 
             ///
           ],

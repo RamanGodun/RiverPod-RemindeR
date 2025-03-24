@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/app_constants/app_constants.dart';
 import '../../../core/domain/app_constants/app_strings.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
+import '../../../core/ui/widgets/buttons/custom_floating_button.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/state_provider__with_auto_disposed_mod.dart';
 
@@ -11,49 +13,45 @@ class Page4StateProviderWithAutoDisposedMode extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// 🎯 Listens for counter changes and shows a warning dialog for specific values
     _showDialogWhenCounterIsSpecific(ref, context);
-
-    /// 🔄 Rebuilds UI when the counter changes
     final value = ref.watch(clickedTimeWithAutoDisposedModeSimpleProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(
-          AppStrings.counterScreenTitle,
-          TextType.titleSmall,
-          isTextOnFewStrings: true,
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'State provider with AD mod'),
       body: Center(
-        child: Column(
-          spacing: 35,
-          mainAxisSize: MainAxisSize.min,
+        child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
+            const TextWidget(
+              AppStrings.counterScreenTitle,
+              TextType.titleMedium,
+              isTextOnFewStrings: true,
+            ),
+            const SizedBox(height: 15),
             const TextWidget(
               AppStrings.counterInstruction,
               TextType.titleLarge,
               isTextOnFewStrings: true,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 78.0),
-              child: TextWidget(
-                '$value ${value == 1 ? AppStrings.clickSingular : AppStrings.clickPlural}',
-                TextType.headlineMedium,
-                color: AppConstants.errorColor,
-              ),
+
+            const SizedBox(height: 45),
+            TextWidget(
+              '$value ${value == 1 ? AppStrings.clickSingular : AppStrings.clickPlural}',
+              TextType.headlineMedium,
+              color: AppConstants.errorColor,
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          /// ➕ Increments the counter
-          ref
-              .read(counterProviderWithAutoDisposedMod.notifier)
-              .update((state) => state + 1);
-        },
-        child: const Icon(Icons.add),
+
+      ///
+      floatingActionButton: CustomFloatingButton(
+        onPressed:
+            () =>
+                ref
+                    .read(withAutoDisposedModCounterProvider.notifier)
+                    .increment(),
       ),
     );
   }
@@ -62,7 +60,7 @@ class Page4StateProviderWithAutoDisposedMode extends ConsumerWidget {
   void _showDialogWhenCounterIsSpecific(WidgetRef ref, BuildContext context) {
     final warnings = AppStrings.counterWarningMessages;
 
-    ref.listen<int>(counterProviderWithAutoDisposedMod, (previous, next) {
+    ref.listen<int>(withAutoDisposedModCounterProvider, (previous, next) {
       if (warnings.containsKey(next)) {
         DialogService.showAlertErrorDialog(context, warnings[next]!);
       }

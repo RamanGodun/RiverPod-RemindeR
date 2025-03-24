@@ -8,7 +8,9 @@ part of 'users_list_dio_provider.dart';
 
 String _$usersListDioHash() => r'a9805d3c941544e5f29cc3680ab1be1ed2501d65';
 
-/// See also [usersListDio].
+/// 🌐 **[usersListDioProvider] - Provides configured Dio instance**
+///
+/// Copied from [usersListDio].
 @ProviderFor(usersListDio)
 final usersListDioProvider = AutoDisposeProvider<Dio>.internal(
   usersListDio,

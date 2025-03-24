@@ -24,7 +24,7 @@ final appBarTextWithGenProvider = Provider<String>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AppBarTextWithGenRef = ProviderRef<String>;
-String _$bodyTextWithGenHash() => r'bfcdfc9e79a98e14d88f0d084a54623bbc57484d';
+String _$bodyTextWithGenHash() => r'9212da651a055ddf1712ba8b772f6a84e490d650';
 
 /// See also [bodyTextWithGen].
 @ProviderFor(bodyTextWithGen)

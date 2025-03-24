@@ -13,14 +13,15 @@ String _$counterWithPublicPropertyHash() =>
 @ProviderFor(CounterWithPublicProperty)
 final counterWithPublicPropertyProvider =
     AutoDisposeNotifierProvider<CounterWithPublicProperty, int>.internal(
-  CounterWithPublicProperty.new,
-  name: r'counterWithPublicPropertyProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$counterWithPublicPropertyHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      CounterWithPublicProperty.new,
+      name: r'counterWithPublicPropertyProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$counterWithPublicPropertyHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CounterWithPublicProperty = AutoDisposeNotifier<int>;
 String _$counterWithPrivatePropertyHash() =>
@@ -30,14 +31,15 @@ String _$counterWithPrivatePropertyHash() =>
 @ProviderFor(CounterWithPrivateProperty)
 final counterWithPrivatePropertyProvider =
     AutoDisposeNotifierProvider<CounterWithPrivateProperty, int>.internal(
-  CounterWithPrivateProperty.new,
-  name: r'counterWithPrivatePropertyProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$counterWithPrivatePropertyHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      CounterWithPrivateProperty.new,
+      name: r'counterWithPrivatePropertyProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$counterWithPrivatePropertyHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CounterWithPrivateProperty = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint

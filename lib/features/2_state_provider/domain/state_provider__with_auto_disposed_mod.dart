@@ -4,19 +4,23 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'state_provider__with_auto_disposed_mod.g.dart';
 
-final counterProviderWithAutoDisposedMod = StateProvider.autoDispose<int>((
-  ref,
-) {
-  ref.onDispose(
-    () => debugPrint('🛑 [counterProviderWithAutoDisposedMod] was disposed'),
-  );
-  return 0;
-});
+@Riverpod(keepAlive: false)
+class WithAutoDisposedModCounter extends _$WithAutoDisposedModCounter {
+  @override
+  int build() {
+    ref.onDispose(() {
+      debugPrint('🛑 [WithAutoDisposedModCounter] was disposed');
+    });
+    return 0;
+  }
+
+  void increment() => state++;
+  void reset() => state = 0;
+}
 
 @Riverpod(keepAlive: false)
 int clickedTimeWithAutoDisposedModeSimple(Ref ref) {
-  // ignore: avoid_manual_providers_as_generated_provider_dependency
-  final clickingCount = ref.watch(counterProviderWithAutoDisposedMod);
+  final clickingCount = ref.watch(withAutoDisposedModCounterProvider);
   ref.onDispose(() {
     debugPrint('🛑 [clickedTimeWithAutoDisposedModeSimple] was disposed');
   });

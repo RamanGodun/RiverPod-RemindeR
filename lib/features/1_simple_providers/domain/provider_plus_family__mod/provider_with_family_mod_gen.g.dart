@@ -7,7 +7,7 @@ part of 'provider_with_family_mod_gen.dart';
 // **************************************************************************
 
 String _$simpleProviderWithFamilyModGenHash() =>
-    r'092eda82a03a5b92d9aff98cbd84d6b60224fc5f';
+    r'88b1471767261643811bcbd4ee8983499f53a02f';
 
 /// Copied from Dart SDK
 class _SystemHash {

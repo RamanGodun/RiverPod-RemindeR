@@ -32,9 +32,7 @@ class _SystemHash {
 abstract class _$CounterNoEqual extends BuildlessAutoDisposeNotifier<int> {
   late final NoEqual counter;
 
-  int build(
-    NoEqual counter,
-  );
+  int build(NoEqual counter);
 }
 
 /// See also [CounterNoEqual].
@@ -47,21 +45,15 @@ class CounterNoEqualFamily extends Family<int> {
   const CounterNoEqualFamily();
 
   /// See also [CounterNoEqual].
-  CounterNoEqualProvider call(
-    NoEqual counter,
-  ) {
-    return CounterNoEqualProvider(
-      counter,
-    );
+  CounterNoEqualProvider call(NoEqual counter) {
+    return CounterNoEqualProvider(counter);
   }
 
   @override
   CounterNoEqualProvider getProviderOverride(
     covariant CounterNoEqualProvider provider,
   ) {
-    return call(
-      provider.counter,
-    );
+    return call(provider.counter);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,21 +75,20 @@ class CounterNoEqualFamily extends Family<int> {
 class CounterNoEqualProvider
     extends AutoDisposeNotifierProviderImpl<CounterNoEqual, int> {
   /// See also [CounterNoEqual].
-  CounterNoEqualProvider(
-    NoEqual counter,
-  ) : this._internal(
-          () => CounterNoEqual()..counter = counter,
-          from: counterNoEqualProvider,
-          name: r'counterNoEqualProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$counterNoEqualHash,
-          dependencies: CounterNoEqualFamily._dependencies,
-          allTransitiveDependencies:
-              CounterNoEqualFamily._allTransitiveDependencies,
-          counter: counter,
-        );
+  CounterNoEqualProvider(NoEqual counter)
+    : this._internal(
+        () => CounterNoEqual()..counter = counter,
+        from: counterNoEqualProvider,
+        name: r'counterNoEqualProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$counterNoEqualHash,
+        dependencies: CounterNoEqualFamily._dependencies,
+        allTransitiveDependencies:
+            CounterNoEqualFamily._allTransitiveDependencies,
+        counter: counter,
+      );
 
   CounterNoEqualProvider._internal(
     super._createNotifier, {
@@ -112,12 +103,8 @@ class CounterNoEqualProvider
   final NoEqual counter;
 
   @override
-  int runNotifierBuild(
-    covariant CounterNoEqual notifier,
-  ) {
-    return notifier.build(
-      counter,
-    );
+  int runNotifierBuild(covariant CounterNoEqual notifier) {
+    return notifier.build(counter);
   }
 
   @override
@@ -177,9 +164,7 @@ String _$counterNoEqualConstHash() =>
 abstract class _$CounterNoEqualConst extends BuildlessAutoDisposeNotifier<int> {
   late final NoEqualConst counter;
 
-  int build(
-    NoEqualConst counter,
-  );
+  int build(NoEqualConst counter);
 }
 
 /// See also [CounterNoEqualConst].
@@ -192,21 +177,15 @@ class CounterNoEqualConstFamily extends Family<int> {
   const CounterNoEqualConstFamily();
 
   /// See also [CounterNoEqualConst].
-  CounterNoEqualConstProvider call(
-    NoEqualConst counter,
-  ) {
-    return CounterNoEqualConstProvider(
-      counter,
-    );
+  CounterNoEqualConstProvider call(NoEqualConst counter) {
+    return CounterNoEqualConstProvider(counter);
   }
 
   @override
   CounterNoEqualConstProvider getProviderOverride(
     covariant CounterNoEqualConstProvider provider,
   ) {
-    return call(
-      provider.counter,
-    );
+    return call(provider.counter);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -228,21 +207,20 @@ class CounterNoEqualConstFamily extends Family<int> {
 class CounterNoEqualConstProvider
     extends AutoDisposeNotifierProviderImpl<CounterNoEqualConst, int> {
   /// See also [CounterNoEqualConst].
-  CounterNoEqualConstProvider(
-    NoEqualConst counter,
-  ) : this._internal(
-          () => CounterNoEqualConst()..counter = counter,
-          from: counterNoEqualConstProvider,
-          name: r'counterNoEqualConstProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$counterNoEqualConstHash,
-          dependencies: CounterNoEqualConstFamily._dependencies,
-          allTransitiveDependencies:
-              CounterNoEqualConstFamily._allTransitiveDependencies,
-          counter: counter,
-        );
+  CounterNoEqualConstProvider(NoEqualConst counter)
+    : this._internal(
+        () => CounterNoEqualConst()..counter = counter,
+        from: counterNoEqualConstProvider,
+        name: r'counterNoEqualConstProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$counterNoEqualConstHash,
+        dependencies: CounterNoEqualConstFamily._dependencies,
+        allTransitiveDependencies:
+            CounterNoEqualConstFamily._allTransitiveDependencies,
+        counter: counter,
+      );
 
   CounterNoEqualConstProvider._internal(
     super._createNotifier, {
@@ -257,12 +235,8 @@ class CounterNoEqualConstProvider
   final NoEqualConst counter;
 
   @override
-  int runNotifierBuild(
-    covariant CounterNoEqualConst notifier,
-  ) {
-    return notifier.build(
-      counter,
-    );
+  int runNotifierBuild(covariant CounterNoEqualConst notifier) {
+    return notifier.build(counter);
   }
 
   @override
@@ -321,9 +295,7 @@ String _$counterEqualHash() => r'c0d2e7449c666b38ec22f4a0982058f1ed2a741f';
 abstract class _$CounterEqual extends BuildlessAutoDisposeNotifier<int> {
   late final Equal counter;
 
-  int build(
-    Equal counter,
-  );
+  int build(Equal counter);
 }
 
 /// See also [CounterEqual].
@@ -336,21 +308,15 @@ class CounterEqualFamily extends Family<int> {
   const CounterEqualFamily();
 
   /// See also [CounterEqual].
-  CounterEqualProvider call(
-    Equal counter,
-  ) {
-    return CounterEqualProvider(
-      counter,
-    );
+  CounterEqualProvider call(Equal counter) {
+    return CounterEqualProvider(counter);
   }
 
   @override
   CounterEqualProvider getProviderOverride(
     covariant CounterEqualProvider provider,
   ) {
-    return call(
-      provider.counter,
-    );
+    return call(provider.counter);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -372,21 +338,20 @@ class CounterEqualFamily extends Family<int> {
 class CounterEqualProvider
     extends AutoDisposeNotifierProviderImpl<CounterEqual, int> {
   /// See also [CounterEqual].
-  CounterEqualProvider(
-    Equal counter,
-  ) : this._internal(
-          () => CounterEqual()..counter = counter,
-          from: counterEqualProvider,
-          name: r'counterEqualProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$counterEqualHash,
-          dependencies: CounterEqualFamily._dependencies,
-          allTransitiveDependencies:
-              CounterEqualFamily._allTransitiveDependencies,
-          counter: counter,
-        );
+  CounterEqualProvider(Equal counter)
+    : this._internal(
+        () => CounterEqual()..counter = counter,
+        from: counterEqualProvider,
+        name: r'counterEqualProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$counterEqualHash,
+        dependencies: CounterEqualFamily._dependencies,
+        allTransitiveDependencies:
+            CounterEqualFamily._allTransitiveDependencies,
+        counter: counter,
+      );
 
   CounterEqualProvider._internal(
     super._createNotifier, {
@@ -401,12 +366,8 @@ class CounterEqualProvider
   final Equal counter;
 
   @override
-  int runNotifierBuild(
-    covariant CounterEqual notifier,
-  ) {
-    return notifier.build(
-      counter,
-    );
+  int runNotifierBuild(covariant CounterEqual notifier) {
+    return notifier.build(counter);
   }
 
   @override
@@ -459,5 +420,6 @@ class _CounterEqualProviderElement
   @override
   Equal get counter => (origin as CounterEqualProvider).counter;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

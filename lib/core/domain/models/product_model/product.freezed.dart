@@ -28,7 +28,8 @@ mixin _$Product {
   double get discountPercentage => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
   int get stock => throw _privateConstructorUsedError;
-  String get brand => throw _privateConstructorUsedError;
+  String get brand =>
+      throw _privateConstructorUsedError; // Default, щоб уникнути null
   String get category => throw _privateConstructorUsedError;
   String get thumbnail => throw _privateConstructorUsedError;
 
@@ -284,6 +285,7 @@ class _$ProductImpl implements _Product {
   @override
   @JsonKey()
   final String brand;
+  // Default, щоб уникнути null
   @override
   final String category;
   @override
@@ -376,7 +378,7 @@ abstract class _Product implements Product {
   @override
   int get stock;
   @override
-  String get brand;
+  String get brand; // Default, щоб уникнути null
   @override
   String get category;
   @override

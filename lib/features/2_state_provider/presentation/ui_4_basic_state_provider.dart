@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_strings.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
+import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_floating_button.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/basic_state_provider.dart';
 
@@ -11,52 +13,47 @@ class Page4BasicStateProvider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// 💬 Listen for changes and show dialog when counter reaches specific values
     _showDialogWhenCounterSpecific(ref, context);
-
-    /// Watch state changes for counter
     final value = ref.watch(clickedTimesProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget(
-          AppStrings.basicStatePageTitle,
-          TextType.titleSmall,
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'Basic State provider'),
       body: Center(
-        child: Column(
-          spacing: 30,
-          mainAxisSize: MainAxisSize.min,
+        child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
+            const TextWidget(
+              AppStrings.basicStatePage,
+              TextType.titleMedium,
+              isTextOnFewStrings: true,
+            ),
+
+            const SizedBox(height: 15),
             const TextWidget(
               AppStrings.basicStateInstruction,
               TextType.titleLarge,
               isTextOnFewStrings: true,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 78.0),
-              child: TextWidget(
-                '$value ${value == 1 ? AppStrings.clickSingular : AppStrings.clickPlural}',
-                TextType.headlineMedium,
-                color: AppConstants.errorColor,
-              ),
+
+            const SizedBox(height: 35),
+            TextWidget(
+              '$value ${value == 1 ? AppStrings.clickSingular : AppStrings.clickPlural}',
+              TextType.headlineSmall,
+              color: AppConstants.errorColor,
             ),
           ],
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 100.0),
-        child: FloatingActionButton(
-          /// ➕ Increment counter state
-          onPressed: () => ref.read(counterProvider.notifier).state++,
-          child: const Icon(Icons.add),
-        ),
+
+      ///
+      floatingActionButton: CustomFloatingButton(
+        onPressed: () => ref.read(counterProvider.notifier).increment(),
       ),
     );
   }
 
-  /// 🚨 Listen and show warning dialog at specific counts
+  /// 💬 Listen and show warning dialog at specific counter's values
   void _showDialogWhenCounterSpecific(WidgetRef ref, BuildContext context) {
     final warnings = AppStrings.counterWarningMessages;
 

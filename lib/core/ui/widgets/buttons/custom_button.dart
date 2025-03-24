@@ -20,13 +20,14 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Helpers.getColorScheme(context);
+    final isDarkMode = Helpers.isDarkMode(context);
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
-        color: colorScheme.primary.withOpacity(0.5),
+        color: colorScheme.primary.withOpacity(isDarkMode ? 0.5 : 0.59),
         boxShadow: [
           BoxShadow(
             color: colorScheme.onSurface.withOpacity(0.1),

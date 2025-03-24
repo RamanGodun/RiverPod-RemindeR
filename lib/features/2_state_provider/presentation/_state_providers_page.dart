@@ -18,19 +18,22 @@ class StateProvidersPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            /// 🚀 **buttons transfer to mods pages
+            ///
             CustomButton(
               title: 'Go to basic provider',
               child: Page4BasicStateProvider(),
             ),
+
             CustomButton(
               title: 'Go to autodisposed mod',
               child: Page4StateProviderWithAutoDisposedMode(),
             ),
+
             CustomButton(
               title: 'Go to family mod',
               child: Page4StateProviderWithFamilyMod(),
             ),
+
             CustomButton(
               title: 'Go to family autodisposed mod',
               child: Page4StateProviderWithAutoDisposedFamilyMod(),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_strings.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
+import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
 import '../../../core/ui/widgets/buttons/outlined.dart';
-import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/state_provider__with_family_mod.dart';
 import 'ui_elements_for_fatal_game.dart';
 
@@ -33,9 +33,7 @@ class Page4StateProviderWithFamilyMod extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: _calculateBackgroundColor(valueDifference),
-      appBar: AppBar(
-        title: const TextWidget(AppStrings.pageTitle, TextType.titleMedium),
-      ),
+      appBar: const CustomAppBar(title: AppStrings.pageTitle),
       body: Column(
         spacing: 30,
         mainAxisSize: MainAxisSize.min,
@@ -59,7 +57,6 @@ class Page4StateProviderWithFamilyMod extends ConsumerWidget {
               onPressed: () => _onIncrement(ref),
               disabled: valueDifference >= AppConstants.disableButtonsThreshold,
             ),
-
             const SizedBox(height: 80),
 
             /// 🔵 Second Value - The Counterforce

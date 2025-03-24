@@ -6,7 +6,7 @@ part of 'provider_with_auto_disposed_and_family_mods_gen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$autoDisposeFamilyHash() => r'98236e80d3f81c391ba5dc50cd71ff97b0e50aaf';
+String _$autoDisposeFamilyHash() => r'0eebca537a5233d3bea9e5ef4549536d92a57336';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,16 +29,64 @@ class _SystemHash {
   }
 }
 
-/// See also [autoDisposeFamily].
+/// 🏗️ **AutoDispose Family Provider**
+/// - Creates independent instances based on external parameters.
+/// - Automatically disposed when no widget is using it.
+/// 📌 **Key Points:**
+/// - Each parameter creates a unique instance.
+/// - Ideal for temporary, parameterized state.
+/// - Good for filtering, pagination, user-specific data.
+/// - Automatically frees resources when unused.
+/// ⚠️ **Note:**
+/// - For complex keys, override `==` & `hashCode` to avoid memory leaks.
+/// - Libraries like `freezed`, `equatable` simplify this.
+///
+/// Copied from [autoDisposeFamily].
 @ProviderFor(autoDisposeFamily)
 const autoDisposeFamilyProvider = AutoDisposeFamilyFamily();
 
-/// See also [autoDisposeFamily].
+/// 🏗️ **AutoDispose Family Provider**
+/// - Creates independent instances based on external parameters.
+/// - Automatically disposed when no widget is using it.
+/// 📌 **Key Points:**
+/// - Each parameter creates a unique instance.
+/// - Ideal for temporary, parameterized state.
+/// - Good for filtering, pagination, user-specific data.
+/// - Automatically frees resources when unused.
+/// ⚠️ **Note:**
+/// - For complex keys, override `==` & `hashCode` to avoid memory leaks.
+/// - Libraries like `freezed`, `equatable` simplify this.
+///
+/// Copied from [autoDisposeFamily].
 class AutoDisposeFamilyFamily extends Family<String> {
-  /// See also [autoDisposeFamily].
+  /// 🏗️ **AutoDispose Family Provider**
+  /// - Creates independent instances based on external parameters.
+  /// - Automatically disposed when no widget is using it.
+  /// 📌 **Key Points:**
+  /// - Each parameter creates a unique instance.
+  /// - Ideal for temporary, parameterized state.
+  /// - Good for filtering, pagination, user-specific data.
+  /// - Automatically frees resources when unused.
+  /// ⚠️ **Note:**
+  /// - For complex keys, override `==` & `hashCode` to avoid memory leaks.
+  /// - Libraries like `freezed`, `equatable` simplify this.
+  ///
+  /// Copied from [autoDisposeFamily].
   const AutoDisposeFamilyFamily();
 
-  /// See also [autoDisposeFamily].
+  /// 🏗️ **AutoDispose Family Provider**
+  /// - Creates independent instances based on external parameters.
+  /// - Automatically disposed when no widget is using it.
+  /// 📌 **Key Points:**
+  /// - Each parameter creates a unique instance.
+  /// - Ideal for temporary, parameterized state.
+  /// - Good for filtering, pagination, user-specific data.
+  /// - Automatically frees resources when unused.
+  /// ⚠️ **Note:**
+  /// - For complex keys, override `==` & `hashCode` to avoid memory leaks.
+  /// - Libraries like `freezed`, `equatable` simplify this.
+  ///
+  /// Copied from [autoDisposeFamily].
   AutoDisposeFamilyProvider call(String customizedText) {
     return AutoDisposeFamilyProvider(customizedText);
   }
@@ -65,9 +113,33 @@ class AutoDisposeFamilyFamily extends Family<String> {
   String? get name => r'autoDisposeFamilyProvider';
 }
 
-/// See also [autoDisposeFamily].
+/// 🏗️ **AutoDispose Family Provider**
+/// - Creates independent instances based on external parameters.
+/// - Automatically disposed when no widget is using it.
+/// 📌 **Key Points:**
+/// - Each parameter creates a unique instance.
+/// - Ideal for temporary, parameterized state.
+/// - Good for filtering, pagination, user-specific data.
+/// - Automatically frees resources when unused.
+/// ⚠️ **Note:**
+/// - For complex keys, override `==` & `hashCode` to avoid memory leaks.
+/// - Libraries like `freezed`, `equatable` simplify this.
+///
+/// Copied from [autoDisposeFamily].
 class AutoDisposeFamilyProvider extends AutoDisposeProvider<String> {
-  /// See also [autoDisposeFamily].
+  /// 🏗️ **AutoDispose Family Provider**
+  /// - Creates independent instances based on external parameters.
+  /// - Automatically disposed when no widget is using it.
+  /// 📌 **Key Points:**
+  /// - Each parameter creates a unique instance.
+  /// - Ideal for temporary, parameterized state.
+  /// - Good for filtering, pagination, user-specific data.
+  /// - Automatically frees resources when unused.
+  /// ⚠️ **Note:**
+  /// - For complex keys, override `==` & `hashCode` to avoid memory leaks.
+  /// - Libraries like `freezed`, `equatable` simplify this.
+  ///
+  /// Copied from [autoDisposeFamily].
   AutoDisposeFamilyProvider(String customizedText)
     : this._internal(
         (ref) => autoDisposeFamily(ref as AutoDisposeFamilyRef, customizedText),

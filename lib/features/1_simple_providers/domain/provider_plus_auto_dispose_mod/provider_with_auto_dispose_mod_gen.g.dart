@@ -7,9 +7,22 @@ part of 'provider_with_auto_dispose_mod_gen.dart';
 // **************************************************************************
 
 String _$autoDisposedModeWithSimpleGenHash() =>
-    r'395f68c0f4a105b624fc7764a9f2a1b13d5eaf03';
+    r'86d6dabdc018ad688b75e7caa5b56c1574af574e';
 
-/// See also [autoDisposedModeWithSimpleGen].
+/// 📄 **[autoDisposedModeWithSimpleGen] - AutoDispose Provider with Code Generation**
+/// - This provider is **autoDisposed**:
+///   - It is created when first needed.
+///   - It is disposed immediately after no widgets are listening.
+/// 🟢 **Use Case:**
+/// Ideal for **temporary data/state**, such as:
+/// - Loading indicators
+/// - Short-lived UI components
+/// - Views with frequently changing data
+/// ⚙️ **Behavior:**
+/// - No caching; resources are freed immediately when not used.
+/// - Reduces memory footprint.
+///
+/// Copied from [autoDisposedModeWithSimpleGen].
 @ProviderFor(autoDisposedModeWithSimpleGen)
 final autoDisposedModeWithSimpleGenProvider =
     AutoDisposeProvider<String>.internal(
