@@ -10,6 +10,8 @@ import 'text_field_hook_w.dart';
 
 part '_todos_widgets.dart';
 
+/// 📄 Main Todos Page.
+/// Switches between StateNotifier or ChangeNotifier based on config.
 class TodosPageOnStateOrChangeNotifierProvider extends ConsumerWidget {
   const TodosPageOnStateOrChangeNotifierProvider({super.key});
 
@@ -20,7 +22,7 @@ class TodosPageOnStateOrChangeNotifierProvider extends ConsumerWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title:
-            'Todos on ${AppConfig.isUsingStateNotifierProvider ? 'State notifier' : 'Change notifier'}',
+            'Todos (on ${AppConfig.isUsingStateNotifierProvider ? 'State notifier' : 'Change notifier'})',
       ),
       body: Column(
         spacing: 20,
@@ -38,6 +40,7 @@ class TodosPageOnStateOrChangeNotifierProvider extends ConsumerWidget {
   }
 }
 
+/// 📄 Todo List using StateNotifierProvider.
 class _TodoListOnStateNotifierProvider extends ConsumerWidget {
   const _TodoListOnStateNotifierProvider();
 
@@ -51,7 +54,7 @@ class _TodoListOnStateNotifierProvider extends ConsumerWidget {
 
     return ListView(
       shrinkWrap: true,
-      key: const PageStorageKey('todoList'),
+      key: const PageStorageKey('Todo list (on State Notifier)'),
       physics: const AlwaysScrollableScrollPhysics(),
       children: [
         for (final todo in todos)
@@ -72,6 +75,7 @@ class _TodoListOnStateNotifierProvider extends ConsumerWidget {
   }
 }
 
+/// 📄 Todo List using ChangeNotifierProvider.
 class _TodoListOnChangeNotifierProvider extends ConsumerWidget {
   const _TodoListOnChangeNotifierProvider();
 
@@ -85,6 +89,9 @@ class _TodoListOnChangeNotifierProvider extends ConsumerWidget {
     }
 
     return ListView(
+      shrinkWrap: true,
+      key: const PageStorageKey('Todo list (on Change Notifier)'),
+      physics: const AlwaysScrollableScrollPhysics(),
       children: [
         for (final todo in todos)
           TodoItem(

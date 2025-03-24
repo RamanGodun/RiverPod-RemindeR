@@ -1,6 +1,7 @@
 part of '_todos_ui.dart';
 
-/// 📝 Todo Item widget for both StateNotifier and ChangeNotifier usage
+/// 📝 Single Todo item widget.
+/// Works for both StateNotifier & ChangeNotifier implementations.
 class TodoItem extends StatelessWidget {
   final String description;
   final bool completed;
@@ -35,7 +36,7 @@ class TodoItem extends StatelessWidget {
   }
 }
 
-/// 🟢 Message when todo list is empty
+/// 📭 Message displayed when todo list is empty.
 class EmptyTodoMessage extends StatelessWidget {
   const EmptyTodoMessage({super.key});
 
