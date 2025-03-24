@@ -8,7 +8,7 @@ import 'features/1_simple_providers/presentation/_simple_providers_page.dart';
 import 'features/11_optimization/_presentation/_providers_optimization_page.dart';
 import 'features/12_pagination/_presentation/_pagination_page.dart';
 import 'features/2_state_provider/presentation/_state_providers_page.dart';
-import 'features/3_future_provider/presentation/_future_providers_page.dart';
+import 'features/3_future_provider/presentation/users_list_page.dart';
 import 'features/4_stream_provider/ticker_presentation.dart';
 import 'core/domain/app_constants/app_strings.dart';
 import 'core/domain/models/enums.dart';
@@ -78,7 +78,7 @@ Widget getFeatureWidget(AppFeature feature) {
     case AppFeature.stateProvider:
       return const StateProvidersPage();
     case AppFeature.futureProvider:
-      return const FutureProvidersPage();
+      return const UsersListPage();
     case AppFeature.streamProvider:
       return const Page4TickerOnStreamProvider();
     case AppFeature.stateOrChangeNotifier:

@@ -5,10 +5,10 @@ import '../../../core/domain/config/app_config.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/custom_list_tile.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
-import '../domain/users_list_future_provider_gen.dart';
-import '../domain/users_list_future_provider_manual.dart';
-import 'ui_4_future_provider_with_fam_ad_mod.dart';
-import 'user_details_page.dart';
+import '../features/3_future_provider/domain/users_list_future_provider_gen.dart';
+import '../features/3_future_provider/domain/users_list_future_provider_manual.dart';
+import '../features/3_future_provider/presentation/ui_4_future_provider_with_fam_ad_mod.dart';
+import '../features/3_future_provider/presentation/user_details_page.dart';
 
 class UsersListPage extends ConsumerWidget {
   const UsersListPage({super.key});
@@ -24,7 +24,7 @@ class UsersListPage extends ConsumerWidget {
       appBar: CustomAppBar(
         isNeedPaddingAfterActionIcon: true,
         title:
-            'Users (${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider)',
+            'Users ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider',
         actionIcons: const [Icons.refresh, Icons.settings],
         actionCallbacks: [
           () async {
@@ -47,8 +47,6 @@ class UsersListPage extends ConsumerWidget {
         // during the refresh phase. Useful for visible feedback when using
         // AppBar refresh buttons (but not ideal with RefreshIndicator widget).
         skipLoadingOnRefresh: false,
-
-        ///
         data: (users) {
           return ListView.separated(
             key: const PageStorageKey('UsersList'),

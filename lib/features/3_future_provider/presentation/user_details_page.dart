@@ -22,8 +22,10 @@ class UserDetailPage extends ConsumerWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title:
-            'User Details ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'}',
+            'User\'s details (${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider)',
       ),
+
+      ///
       body: userDetails.when(
         data: (user) {
           final List<(IconData, String)> userInfoList = [
@@ -38,29 +40,31 @@ class UserDetailPage extends ConsumerWidget {
             child: _buildUserInfoList(userInfoList, user.name),
           );
         },
-        // In case of error, display the error widget
+
+        /// In case of error, display the error widget
         error: (e, st) => AppMiniWidgets(MWType.error, error: e),
-        // Show loading indicator while data is being fetched
+
+        /// Show loading indicator while data is being fetched
         loading: () => const AppMiniWidgets(MWType.loading),
       ),
     );
   }
 
+  /// [RefreshIndicator] triggers a refresh of the userDetailProvider using its future.
+  // This ensures the UI will fetch updated data asynchronously.
   Future<void> _refreshUserDetails(WidgetRef ref) {
-    // RefreshIndicator triggers a refresh of the userDetailProvider using its future.
-    // This ensures the UI will fetch updated data asynchronously.
     return AppConfig.isUsingCodeGeneration
         ? ref.refresh(withCodeGenerationUserDetailsProvider(userId).future)
         : ref.refresh(userDetailsFutureProviderWithoutCodeGen(userId).future);
   }
 }
 
+///
 Widget _buildUserInfoList(List<(IconData, String)> userInfoList, String name) {
   return Center(
     child: ListView.builder(
       shrinkWrap: true,
       physics: const AlwaysScrollableScrollPhysics(),
-      
       padding: const EdgeInsets.only(left: 55, right: 20, bottom: 200, top: 50),
       itemCount: userInfoList.length + 1,
       itemBuilder: (context, index) {
@@ -83,6 +87,7 @@ Widget _buildUserInfoList(List<(IconData, String)> userInfoList, String name) {
   );
 }
 
+///
 Widget _buildUserInfo(IconData iconData, String userInfo) {
   return Row(
     spacing: 10,

@@ -11,6 +11,7 @@ final userDetailsFutureProviderWithoutCodeGen = FutureProvider.autoDispose.famil
   });
 
   /*
+? Without using Retrofit methods
   // Fetch details of a specific user by ID using dioProvider
   final response = await ref.watch(dioProvider).get('/users/$id');
   // Parse the response and convert it into a User object
@@ -18,11 +19,11 @@ final userDetailsFutureProviderWithoutCodeGen = FutureProvider.autoDispose.famil
  */
 
   final apiClient = ref.watch(apiClientProvider);
-  // Виклик Retrofit методу
+  // call of Retrofit method
   final user = await apiClient.getUser(id);
 
   // ! dioProvider is autoDisposed, so this provider must also be autoDisposed.
-  // !!! Alternatively, you can use "ref.keepAlive();" to cache the data and avoid disposal.
+  // !!! so, you can use "ref.keepAlive();" to cache the data and avoid disposal.
   ref.keepAlive(); // This will keep the data in memory for future use.
 
   return user;

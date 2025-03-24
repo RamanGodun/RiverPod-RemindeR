@@ -21,14 +21,16 @@ class FutureProviderWithFamilyAutoDisposeMode extends ConsumerWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title:
-            'Family Dispose ${AppConfig.isUsingCodeGeneration ? 'with gen' : 'manual'}',
+            '${AppConfig.isUsingCodeGeneration ? 'Gen' : 'Manual'} future provider with FAD mod',
       ),
+
+      ///
       body: Center(
         child: ListView(
           shrinkWrap: true,
           children: [
             CustomOutlinedButton(
-              buttonText: 'Invalidate all providers',
+              buttonText: 'Invalidate user\'s providers',
               // ❗️ Invalidate ALL instances of family provider
               onPressed:
                   () =>
@@ -38,7 +40,7 @@ class FutureProviderWithFamilyAutoDisposeMode extends ConsumerWidget {
             const SizedBox(height: 20),
 
             CustomOutlinedButton(
-              buttonText: 'Refresh provider 1',
+              buttonText: 'Refresh provider with id=1',
               // 🔄 Refresh specific instance (user id = 1)
               onPressed: () => ref.refresh(userDetailsProvider1),
             ),
