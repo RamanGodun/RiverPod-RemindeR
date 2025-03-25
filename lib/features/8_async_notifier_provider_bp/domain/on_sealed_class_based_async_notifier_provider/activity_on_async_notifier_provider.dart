@@ -41,7 +41,7 @@ class AsyncActivity extends _$AsyncActivity {
     return Activity.fromJson(activityList[0]);
   }
 
-  /// Simulates an error for testing error handling. Every second call throws an error.
+  /// Simulates an error for testing error handling
   Future<void> errorImitationMethod() async {
     if (_errorCounter++ % 2 != 1) {
       // Simulate network delay and throw an error for 50% of the requests.

@@ -13,8 +13,7 @@ class Counter extends AutoDisposeFamilyAsyncNotifier<int, int> {
     return arg;
   }
 
-  /*
-* Utility method to simulate a delay, often used for testing async flows.*/
+  /// Utility method to simulate a delay, often used for testing async flows.
   Future<void> _waitASec() => Future.delayed(const Duration(milliseconds: 250));
 
   /*

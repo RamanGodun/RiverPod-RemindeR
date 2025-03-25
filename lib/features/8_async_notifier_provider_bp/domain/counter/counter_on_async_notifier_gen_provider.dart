@@ -12,12 +12,13 @@ class GenCounterOnAsyncNotifier extends _$GenCounterOnAsyncNotifier {
       debugPrint('[counterProvider] disposed');
     });
     await _waitASec(); // Simulate an initial delay.
-    return arg; // the initial counter value.
+    return arg;
   }
 
   /// Utility method to simulate a delay for async operations.
   Future<void> _waitASec() => Future.delayed(const Duration(milliseconds: 75));
 
+  ///
   Future<void> increment() async {
     state = const AsyncLoading();
     // Use `AsyncValue.guard` to handle potential errors during the state update.

@@ -1,13 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_floating_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 
 import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
 import '../../../core/ui/widgets/activity_widget.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
-import '../../../core/ui/widgets/text_widget.dart';
 import '../domain/on_sealed_class_based_async_notifier_provider/activity_on_async_notifier_provider.dart';
 
 class ActivityPageOnAsyncNotifierProvider extends ConsumerWidget {
@@ -15,10 +15,7 @@ class ActivityPageOnAsyncNotifierProvider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ///
     callDialogWhenErrorOccurs(ref, context);
-
-    ///
     final activityState = ref.watch(asyncActivityProvider);
 
     return Scaffold(
@@ -28,33 +25,26 @@ class ActivityPageOnAsyncNotifierProvider extends ConsumerWidget {
         actionCallbacks: [() => ref.invalidate(asyncActivityProvider)],
       ),
 
+      ///
       body: activityState.when(
-        /// Skip error display in the UI, as we handle it separately in a dialog
+        // Skip error display in the UI, as we handle it separately in a dialog
         skipError: true,
         // Display loading indicator on refresh
         skipLoadingOnRefresh: false,
 
-        ///
         data: (activity) => ActivityWidget(activity: activity),
 
-        ///
         error:
             (e, st) =>
                 const AppMiniWidgets(MWType.error, error: 'Get some activity'),
 
-        ///
         loading: () => const AppMiniWidgets(MWType.loading),
       ),
 
       ///
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          final randomNumber = Random().nextInt(activityTypes.length);
-          ref
-              .read(asyncActivityProvider.notifier)
-              .fetchActivity(activityTypes[randomNumber]);
-        },
-        label: const TextWidget('New Activity', TextType.titleMedium),
+      floatingActionButton: CustomFloatingButton(
+        isExtended: true,
+        onPressed: () => _onPressed(ref),
       ),
     );
   }
@@ -66,5 +56,13 @@ class ActivityPageOnAsyncNotifierProvider extends ConsumerWidget {
         DialogService.showAlertErrorDialog(context, next.error.toString());
       }
     });
+  }
+
+  ///
+  void _onPressed(WidgetRef ref) {
+    final randomNumber = Random().nextInt(activityTypes.length);
+    ref
+        .read(asyncActivityProvider.notifier)
+        .fetchActivity(activityTypes[randomNumber]);
   }
 }

@@ -29,100 +29,89 @@ class Page4CounterOnAsyncNotifierProvider extends ConsumerWidget {
         title:
             'Counter on ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} async notifier',
       ),
+
+      ///
       body: Center(
         child: counter.when(
-          /// When the counter is refreshed, it will not skip the loading state
           skipLoadingOnRefresh: false,
-          data: (countData) {
-            // Logging the current counter value
-            debugPrint('AsyncData count is: $countData');
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const TextWidget('Current count is: ', TextType.titleMedium),
-                const SizedBox(height: 50),
-                TextWidget('$countData', TextType.headlineLarge),
-                const SizedBox(height: 50),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // Button to decrement the counter value
-                    FloatingActionButton(
-                      heroTag: 'decrement',
-                      onPressed:
-                          () =>
-                              AppConfig.isUsingCodeGeneration
-                                  ? ref
-                                      .read(
-                                        genCounterOnAsyncNotifierProvider(
-                                          1,
-                                        ).notifier,
-                                      )
-                                      .decrement()
-                                  : ref
-                                      .read(
-                                        counterOnAsyncNotifierManualProvider(
-                                          1,
-                                        ).notifier,
-                                      )
-                                      .decrement(),
-                      child: const Icon(Icons.remove, size: 40),
-                    ),
-                    const SizedBox(width: 75),
-                    // Button to increment the counter value
-                    FloatingActionButton(
-                      heroTag: 'increment',
-                      onPressed:
-                          () =>
-                              AppConfig.isUsingCodeGeneration
-                                  ? ref
-                                      .read(
-                                        genCounterOnAsyncNotifierProvider(
-                                          1,
-                                        ).notifier,
-                                      )
-                                      .increment()
-                                  : ref
-                                      .read(
-                                        counterOnAsyncNotifierManualProvider(
-                                          1,
-                                        ).notifier,
-                                      )
-                                      .increment(),
-                      child: const Icon(Icons.add, size: 40),
-                    ),
-                  ],
-                ),
-              ],
-            );
-          },
-
-          ///
-          error:
-              (error, stackTrace) => Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextWidget(error.toString(), TextType.error),
-                  const SizedBox(height: 50),
-                  CustomOutlinedButton(
-                    buttonText: 'Refresh',
-                    onPressed:
-                        () =>
-                            AppConfig.isUsingCodeGeneration
-                                ? ref.invalidate(
-                                  genCounterOnAsyncNotifierProvider,
-                                )
-                                : ref.invalidate(
-                                  counterOnAsyncNotifierManualProvider,
-                                ),
-                  ),
-                ],
-              ),
-
-          ///
+          data: (countData) => _buildSuccessUI(ref, countData),
+          error: (error, stackTrace) => _buildErrorUI(ref, error),
           loading: () => const AppMiniWidgets(MWType.loading),
         ),
       ),
     );
+  }
+
+  /// UI displayed when data is successfully fetched
+  Widget _buildSuccessUI(WidgetRef ref, int countData) {
+    debugPrint('AsyncData count is: $countData');
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const TextWidget('Current count is: ', TextType.titleMedium),
+        const SizedBox(height: 35),
+        TextWidget('$countData', TextType.headlineLarge),
+        const SizedBox(height: 50),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FloatingActionButton(
+              heroTag: 'decrement',
+              onPressed: () => _onDecrement(ref),
+              child: const Icon(Icons.remove, size: 40),
+            ),
+            const SizedBox(width: 75),
+            FloatingActionButton(
+              heroTag: 'increment',
+              onPressed: () => _onIncrement(ref),
+              child: const Icon(Icons.add, size: 40),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  /// UI displayed when an error occurs
+  Widget _buildErrorUI(WidgetRef ref, Object error) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TextWidget(error.toString(), TextType.error),
+        const SizedBox(height: 50),
+        CustomOutlinedButton(
+          buttonText: 'Refresh',
+          onPressed: () => _onRefresh(ref),
+        ),
+      ],
+    );
+  }
+
+  /// ! USED METHODS
+
+  /// Handler for increment button
+  void _onIncrement(WidgetRef ref) {
+    AppConfig.isUsingCodeGeneration
+        ? ref.read(genCounterOnAsyncNotifierProvider(1).notifier).increment()
+        : ref
+            .read(counterOnAsyncNotifierManualProvider(1).notifier)
+            .increment();
+  }
+
+  /// Handler for decrement button
+  void _onDecrement(WidgetRef ref) {
+    AppConfig.isUsingCodeGeneration
+        ? ref.read(genCounterOnAsyncNotifierProvider(1).notifier).decrement()
+        : ref
+            .read(counterOnAsyncNotifierManualProvider(1).notifier)
+            .decrement();
+  }
+
+  /// Handler for refresh button
+  void _onRefresh(WidgetRef ref) {
+    AppConfig.isUsingCodeGeneration
+        ? ref.invalidate(genCounterOnAsyncNotifierProvider)
+        : ref.invalidate(counterOnAsyncNotifierManualProvider);
   }
 }
