@@ -7,26 +7,19 @@ part 'enum_activity_state.freezed.dart';
 
 @freezed
 class EnumActivityState with _$EnumActivityState {
-  /// This factory defines the structure of the activity state.
-  // It holds the current status of the activity (based on ActivityStatus enum),
-  // a list of activities (fetched or empty), and a potential error message.
+  /// Represents the state of activity fetching using enum-based status.
   const factory EnumActivityState({
-    // Tracks the current status of the data fetching.
-    required ActivityStatus status,
-    // List of fetched activities.
-    required List<Activity> activities,
-    // Stores the error message in case of failure.
-    required String error,
+    required ActivityStatus status, // Current fetching status
+    required List<Activity> activities, // Fetched activities
+    required String error, // Error message (if any)
   }) = _EnumActivityState;
 
-  // A convenient factory constructor to create the initial state.
-  // It sets the status to 'initial', provides an empty list of activities,
-  // and ensures no error is present at the start.
+  /// Returns the initial/default state.
   factory EnumActivityState.initial() {
     return EnumActivityState(
-      status: ActivityStatus.initial, // Initial status.
-      activities: [Activity.empty()], // Empty list at the start.
-      error: '', // No error initially.
+      status: ActivityStatus.initial,
+      activities: [Activity.empty()],
+      error: '',
     );
   }
 }

@@ -21,13 +21,14 @@ class CounterPageOnNotifier extends ConsumerWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title:
-            'Counter on ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider',
+            'Counter (on ${AppConfig.isUsingCodeGeneration ? 'gen' : 'manual'} provider)',
       ),
       body: Center(
         child: ListView(
           shrinkWrap: true,
           children: [
             const TextWidget('Current counter value is: ', TextType.titleLarge),
+            const SizedBox(height: 15),
             TextWidget(
               '$counter',
               TextType.displayMedium,

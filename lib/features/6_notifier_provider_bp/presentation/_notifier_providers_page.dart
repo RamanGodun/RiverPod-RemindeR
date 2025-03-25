@@ -12,13 +12,13 @@ class NotifierProvidersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBar(title: 'Notifier providers'),
+      appBar: CustomAppBar(title: 'Notifier providers', isCenteredTitle: true),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            /// 🚀 **кнопка переходу до модифікатори**
+            ///
             CustomButton(
               title: 'to page on enum state-shape (SS)',
               child: EnumActivityPage(),

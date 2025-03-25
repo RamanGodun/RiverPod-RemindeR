@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/domain/utils_and_services/helpers.dart';
+import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_floating_button.dart';
 import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/models/enums.dart';
 import '../../../core/domain/providers/errors_handling/errors_dialog_providers.dart';
@@ -43,11 +43,9 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
 
     final activityState = ref.watch(enumActivityProvider);
 
-    final colorScheme = Helpers.getColorScheme(context);
-
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'on enum based Notifier',
+        title: 'Notifier (enum based SS)',
         actionIcons: const [Icons.add, Icons.refresh],
         actionCallbacks: [
           () =>
@@ -62,6 +60,7 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
         ],
       ),
 
+      ///
       body: switch (activityState.status) {
         ///
         ActivityStatus.initial => const Center(
@@ -88,8 +87,7 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
       },
 
       ///
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: colorScheme.primary.withOpacity(0.5),
+      floatingActionButton: CustomFloatingButton(
         onPressed: () {
           // Randomly selects an activity type and fetches a new activity.
           final randomNumber = Random().nextInt(activityTypes.length);
@@ -97,11 +95,7 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
               .read(enumActivityProvider.notifier)
               .fetchActivity(activityTypes[randomNumber]);
         },
-        label: TextWidget(
-          'New Activity',
-          TextType.titleMedium,
-          color: colorScheme.onPrimary,
-        ),
+        isExtended: true,
       ),
     );
   }

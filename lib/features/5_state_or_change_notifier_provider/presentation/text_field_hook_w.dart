@@ -20,7 +20,7 @@ class CustomTextField extends HookConsumerWidget {
         controller: textController,
         decoration: const InputDecoration(
           labelText:
-              'New Todos on ${AppConfig.isUsingStateNotifierProvider ? 'StateNotifier' : 'ChangeNotifier'}',
+              'New Todo on ${AppConfig.isUsingStateNotifierProvider ? 'StateNotifier' : 'ChangeNotifier'}',
         ),
         onSubmitted: (description) {
           if (description.isNotEmpty) {

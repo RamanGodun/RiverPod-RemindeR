@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/*
-The state of AutoDisposeFamilyNotifier have to be initialized SYNCHRONOUSLY
-(if it's initialized ASYNCHRONOUSLY -- then use ASYNC NOTIFIER)
- */
+/// 🏗️ AutoDispose Family Notifier — manages integer counter state.
+/// Suitable for cases requiring unique instances based on parameters.
 
-// the name of extended class must correspond to mods
-// NotifierProvider.autoDispose.family =>  AutoDisposeFamilyNotifier<int, int>
+/// ⚠️ Important:
+/// - **Synchronous state initialization** is mandatory.
+/// - For async state, use `AsyncNotifier`.
+
 class ManualCounterOnNotifier extends AutoDisposeFamilyNotifier<int, int> {
   @override
   int build(int arg) {
@@ -17,10 +17,10 @@ class ManualCounterOnNotifier extends AutoDisposeFamilyNotifier<int, int> {
     return arg;
   }
 
-  void increment() {
-    state++;
-  }
+  void increment() => state++;
 }
 
+/// 📦 Exposes [ManualCounterOnNotifier] with `autoDispose` & `family` modifiers.
+/// Provides unique instances per argument & auto-disposes when unreferenced.
 final counterOnManualNotifierProvider = NotifierProvider.autoDispose
     .family<ManualCounterOnNotifier, int, int>(ManualCounterOnNotifier.new);
