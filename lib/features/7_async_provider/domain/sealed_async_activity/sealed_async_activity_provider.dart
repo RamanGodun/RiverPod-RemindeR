@@ -19,9 +19,9 @@ class SealedAsyncActivity extends _$SealedAsyncActivity {
     ref.onDispose(() {
       debugPrint('[sealedAsyncActivityProvider] disposed');
     });
-
     debugPrint('hashCode: $hashCode');
-    // fetchActivity(activityTypes[0]);
+
+    fetchActivity(activityTypes[0]);
     //instead EnumAsyncActivityState.initial() (as was in enum based)
     // ! that's why we need initial state in enum-based state: we use method "copyWith()", which cannot be called on not initialized object
     return const SealedAsyncActivityInitial();

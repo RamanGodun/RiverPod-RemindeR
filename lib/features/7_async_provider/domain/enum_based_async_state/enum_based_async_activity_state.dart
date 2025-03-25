@@ -5,25 +5,22 @@ import '../../../../core/domain/models/enums.dart';
 
 part 'enum_based_async_activity_state.freezed.dart';
 
+/// Represents async state for activity fetching using [ActivityStatus] enum.
 @freezed
 class EnumAsyncActivityState with _$EnumAsyncActivityState {
-  // This factory defines the structure of the async activity state.
-  // It holds the current status of the activity, a list of activities, and a potential error message.
+  /// Main state constructor holding status, list of activities, and optional error.
   const factory EnumAsyncActivityState({
-    required ActivityStatus
-    status, // Tracks the current status of the data fetching.
-    required List<Activity> activities, // List of fetched activities.
-    required String error, // Stores the error message in case of failure.
+    required ActivityStatus status,
+    required List<Activity> activities,
+    required String error,
   }) = _EnumAsyncActivityState;
 
-  // A convenient factory constructor to create the initial state.
-  // It sets the status to 'initial', provides an empty list of activities,
-  // and ensures no error is present at the start.
+  /// Initial state with default values.
   factory EnumAsyncActivityState.initial() {
     return EnumAsyncActivityState(
       status: ActivityStatus.initial,
       activities: [Activity.empty()],
-      error: '', // No error initially.
+      error: '',
     );
   }
 }

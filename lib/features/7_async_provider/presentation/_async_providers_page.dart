@@ -16,7 +16,7 @@ class AsyncProvidersPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            /// 🚀 **кнопка переходу до модифікатори**
+            ///
             CustomButton(
               title: 'to page on enum state-shape (SS)',
               child: Page4EnumBasedAsyncActivityProvider(),

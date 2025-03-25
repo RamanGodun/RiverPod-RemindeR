@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
+import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_floating_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/models/enums.dart';
@@ -17,10 +18,7 @@ class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    /// If the status transitions to 'failure' in EnumActivityState provider, an error dialog is displayed.
     listenForFailures(context, ref);
-
-    ///
     final asyncActivityState = ref.watch(enumAsyncActivityProvider);
 
     return Scaffold(
@@ -64,7 +62,8 @@ class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
       },
 
       ///
-      floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: CustomFloatingButton(
+        isExtended: true,
         onPressed: () {
           // Randomly selects an activity type and fetches a new activity.
           final randomNumber = Random().nextInt(activityTypes.length);
@@ -72,14 +71,13 @@ class Page4EnumBasedAsyncActivityProvider extends ConsumerWidget {
               .read(enumAsyncActivityProvider.notifier)
               .fetchActivity(activityTypes[randomNumber]);
         },
-        label: const TextWidget('New Activity', TextType.titleMedium),
       ),
     );
   }
 
   /* 
-     * Method to listen for any failures in the EnumActivityState provider and display an error dialog.
- */
+   * Method to listen for any failures in the EnumActivityState provider and display an error dialog.
+   */
   void listenForFailures(BuildContext context, WidgetRef ref) {
     ref.listen<EnumAsyncActivityState>(enumAsyncActivityProvider, (
       previous,

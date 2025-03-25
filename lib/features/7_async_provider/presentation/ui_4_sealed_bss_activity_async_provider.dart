@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
+import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_floating_button.dart';
 import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/providers/errors_handling/for_errors_simulation_counter_provider.dart';
@@ -27,12 +28,11 @@ class _SealedAsyncActivityPageState
   @override
   Widget build(BuildContext context) {
     showDialogWhenErrorsOccurs(context);
-
     final activityState = ref.watch(sealedAsyncActivityProvider);
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'SealedAsyncActivityNotifier',
+        title: 'Sealed class BSS Async Provider',
         actionIcons: const [Icons.refresh, Icons.add],
         actionCallbacks: [
           () =>
@@ -41,6 +41,7 @@ class _SealedAsyncActivityPageState
         ],
       ),
 
+      ///
       body: activityState.when(
         ///
         initial:
@@ -68,14 +69,14 @@ class _SealedAsyncActivityPageState
       ),
 
       ///
-      floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: CustomFloatingButton(
+        isExtended: true,
         onPressed: () {
           final randomNumber = Random().nextInt(activityTypes.length);
           ref
               .read(sealedAsyncActivityProvider.notifier)
               .fetchActivity(activityTypes[randomNumber]);
         },
-        label: const TextWidget('New Activity', TextType.titleMedium),
       ),
     );
   }

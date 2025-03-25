@@ -1,12 +1,10 @@
 import '../../../../core/domain/models/activity_model/activity.dart';
 
+/// Sealed state for async activity operations.
 sealed class SealedAsyncActivityState {
   const SealedAsyncActivityState();
 
-  // The `when` method provides a structured way to handle all possible states of SealedAsyncActivityState.
-  // It ensures that each state is processed by the caller, based on the provided callbacks.
-  // This pattern is similar to what we see in functional programming, allowing for clear state management.
-  // `switch-case` is used here to guarantee that all subclasses are handled.
+  /// Exhaustive pattern matching for all state variants.
   T when<T>({
     required T Function() initial,
     required T Function() loading,
@@ -14,23 +12,19 @@ sealed class SealedAsyncActivityState {
     required T Function(String error) failure,
   }) {
     switch (this) {
-      // Handles the SealedAsyncActivityInitial state.
       case SealedAsyncActivityInitial():
         return initial();
-      // Handles the SealedAsyncActivityLoading state.
       case SealedAsyncActivityLoading():
         return loading();
-      // Handles the SealedAsyncActivitySuccess state, providing the activities list to the `success` callback.
-      case SealedAsyncActivitySuccess(activities: List<Activity> activities):
+      case SealedAsyncActivitySuccess(:final activities):
         return success(activities);
-      // Handles the SealedAsyncActivityFailure state, passing the error message to the `failure` callback.
-      case SealedAsyncActivityFailure(error: String error):
+      case SealedAsyncActivityFailure(:final error):
         return failure(error);
     }
   }
 }
 
-// Represents the initial state before any action has been taken.
+/// Initial state (no action triggered yet).
 final class SealedAsyncActivityInitial extends SealedAsyncActivityState {
   const SealedAsyncActivityInitial();
 
@@ -38,7 +32,7 @@ final class SealedAsyncActivityInitial extends SealedAsyncActivityState {
   String toString() => 'SealedAsyncActivityInitial()';
 }
 
-// Represents the state when the data is being fetched.
+/// Loading state while fetching data.
 final class SealedAsyncActivityLoading extends SealedAsyncActivityState {
   const SealedAsyncActivityLoading();
 
@@ -46,18 +40,20 @@ final class SealedAsyncActivityLoading extends SealedAsyncActivityState {
   String toString() => 'SealedAsyncActivityLoading()';
 }
 
-// Represents the state when the data fetching succeeds.
+/// Success state with fetched activities.
 final class SealedAsyncActivitySuccess extends SealedAsyncActivityState {
   final List<Activity> activities;
+
   const SealedAsyncActivitySuccess({required this.activities});
 
   @override
   String toString() => 'SealedAsyncActivitySuccess(activities: $activities)';
 }
 
-// Represents the state when the data fetching fails.
+/// Failure state with error message.
 final class SealedAsyncActivityFailure extends SealedAsyncActivityState {
   final String error;
+
   const SealedAsyncActivityFailure({required this.error});
 
   @override
