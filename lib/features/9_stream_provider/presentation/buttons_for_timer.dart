@@ -1,5 +1,6 @@
 part of 'timer_page.dart';
 
+/// 🎛 Displays control buttons based on current [TimerState]
 class ActionButtons extends ConsumerWidget {
   const ActionButtons({super.key});
 
@@ -7,6 +8,7 @@ class ActionButtons extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(timerProvider);
 
+    // Don't render anything while loading or error
     if (state is! AsyncData) {
       return const SizedBox.shrink();
     }
@@ -14,8 +16,9 @@ class ActionButtons extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+        // Dynamically render buttons based on current timer state
         ...switch (state.value!) {
-          ///
+          /// ▶ Show "Start" when in initial state
           TimerInitial() => [
             FloatingActionButton(
               heroTag: 'start timer',
@@ -24,7 +27,7 @@ class ActionButtons extends ConsumerWidget {
             ),
           ],
 
-          ///
+          /// ⏸ + 🔁 Show "Pause" and "Reset" during running
           TimerRunning() => [
             FloatingActionButton(
               heroTag: 'pause timer',
@@ -38,7 +41,7 @@ class ActionButtons extends ConsumerWidget {
             ),
           ],
 
-          ///
+          /// ▶ + 🔁 Show "Resume" and "Reset" when paused
           TimerPaused() => [
             FloatingActionButton(
               heroTag: 'resume timer',
@@ -52,7 +55,7 @@ class ActionButtons extends ConsumerWidget {
             ),
           ],
 
-          ///
+          /// 🔁 Show only "Reset" when finished
           TimerFinished() => [
             FloatingActionButton(
               heroTag: 'reset timer',

@@ -16,7 +16,7 @@ class Page4AsyncStreamProviders extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            /// 🚀 **кнопка переходу до модифікатори**
+            ///
             CustomButton(
               title: 'to ticker page',
               child: TickerOnStreamProviderPage(),

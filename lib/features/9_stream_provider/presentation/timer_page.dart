@@ -8,6 +8,7 @@ import '../domain/timer/timer_state.dart';
 
 part 'buttons_for_timer.dart';
 
+/// 🕒 Page displaying a timer powered by `Stream` + `AsyncNotifier`
 class Page4TimerOnStreamProvider extends StatelessWidget {
   const Page4TimerOnStreamProvider({super.key});
 
@@ -19,13 +20,17 @@ class Page4TimerOnStreamProvider extends StatelessWidget {
         child: Column(
           spacing: 20,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [TimerValue(), ActionButtons()],
+          children: [
+            TimerValue(), // Timer display
+            ActionButtons(), // Start, Pause, Resume, Reset
+          ],
         ),
       ),
     );
   }
 }
 
+/// ⏱ Widget to display the formatted timer value
 class TimerValue extends ConsumerWidget {
   const TimerValue({super.key});
 

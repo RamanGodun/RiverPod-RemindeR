@@ -1,26 +1,33 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'ticker.dart';
+import 'ticker_for_timer.dart';
 import 'timer_state.dart';
 
 part 'timer_provider.g.dart';
 
+/// ⏱️ Timer provider using [AsyncNotifier] and [Stream]-based ticking.
 @riverpod
 class Timer extends _$Timer {
-  final int _duration = 17;
-  final Ticker _ticker = const Ticker();
-  StreamSubscription<int>? _tickerSubscription;
+  final int _duration = 35; // Initial countdown duration in seconds.
+  final TickerForTimer _ticker =
+      const TickerForTimer(); // Emits ticks per second.
+  StreamSubscription<int>?
+  _tickerSubscription; // Stream subscription for managing tick updates.
 
   @override
   Stream<TimerState> build() {
     ref.onDispose(() {
       debugPrint('[timerProvider] disposed');
+      // Clean up the stream subscription on disposal.
       _tickerSubscription?.cancel();
     });
+
+    // Emits the initial timer state.
     return Stream.value(TimerInitial(_duration));
   }
 
+  /// ▶️ Starts the countdown timer from the initial duration.
   void startTimer() {
     state = AsyncData(TimerRunning(_duration));
     _tickerSubscription?.cancel();
@@ -32,6 +39,7 @@ class Timer extends _$Timer {
     });
   }
 
+  /// ⏸ Pauses the active timer and updates the state to [TimerPaused].
   void pauseTimer() {
     switch (state.value!) {
       case TimerRunning(:int duration):
@@ -41,6 +49,7 @@ class Timer extends _$Timer {
     }
   }
 
+  /// 🔄 Resumes a paused timer and updates the state to [TimerRunning].
   void resumeTimer() {
     switch (state.value!) {
       case TimerPaused(:int duration):
@@ -50,6 +59,7 @@ class Timer extends _$Timer {
     }
   }
 
+  /// ❌ Cancels the active timer and resets the state to [TimerInitial].
   void resetTimer() {
     _tickerSubscription?.cancel();
     state = AsyncData(TimerInitial(_duration));

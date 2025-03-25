@@ -19,10 +19,26 @@ class TickerOnStreamProviderPage extends ConsumerWidget {
       body: Center(
         child: tickerValue.when(
           data:
-              (ticks) => TextWidget(
-                Helpers.formatTimer(ticks),
-                TextType.headlineMedium,
+              (ticks) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 25,
+                  children: [
+                    const TextWidget(
+                      'Here is ticker (from 1 to 100 seconds), provided by Async Stream Provider with autoDispose modification.',
+                      TextType.bodyLarge,
+                      isTextOnFewStrings: true,
+                    ),
+                    TextWidget(
+                      Helpers.formatTimer(ticks),
+                      TextType.headlineMedium,
+                    ),
+                  ],
+                ),
               ),
+
+          ///
           error: (e, st) => AppMiniWidgets(MWType.error, error: e.toString()),
           loading: () => const AppMiniWidgets(MWType.loading),
         ),
