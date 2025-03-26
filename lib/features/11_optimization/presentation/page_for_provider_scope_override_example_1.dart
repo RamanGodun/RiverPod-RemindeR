@@ -29,14 +29,15 @@ class Page4FirstExampleOfProvidersOverride extends ConsumerWidget {
             ),
             const Divider(height: 50),
 
-            /// Default global instance of [BaseCounter] provider (initial value: 0).
+            /// * Default global instance of [BaseCounter] provider (initial value: 0).
             /// This counter state is shared across the entire app.
             const IncrementCounterSection(incrementValue: 1, label: 'Add 1'),
             const Divider(height: 50),
 
-            /// Creates a new isolated provider instance within a [ProviderScope].
+            /// * Creates a new isolated provider instance within a [ProviderScope].
             /// This instance is initialized with the default logic but is isolated from the global provider instance.
             /// without overrides two widgets will change one-the-same provider
+            /// Different scope = different memory = no shared state.
             ProviderScope(
               overrides: [baseCounterProvider],
               child: const IncrementCounterSection(
@@ -46,7 +47,7 @@ class Page4FirstExampleOfProvidersOverride extends ConsumerWidget {
             ),
             const Divider(height: 50),
 
-            /// Creates another isolated provider instance with customized initialization.
+            /// * Creates another isolated provider instance with customized initialization.
             /// The initial state is set to 100 using class inheritance.
             ProviderScope(
               overrides: [
@@ -69,10 +70,7 @@ class Page4FirstExampleOfProvidersOverride extends ConsumerWidget {
 
 /// Widget for incrementing and displaying counter values.
 class IncrementCounterSection extends ConsumerWidget {
-  /// Amount by which the counter will increment.
   final int incrementValue;
-
-  /// Label displayed on the increment button.
   final String label;
 
   const IncrementCounterSection({
@@ -89,10 +87,7 @@ class IncrementCounterSection extends ConsumerWidget {
     return Column(
       spacing: 10,
       children: [
-        /// Displays the current counter value.
         TextWidget('$counter', TextType.headlineSmall),
-
-        /// Button to increment the counter by [incrementValue].
         CustomOutlinedButton(
           buttonText: label,
           onPressed:

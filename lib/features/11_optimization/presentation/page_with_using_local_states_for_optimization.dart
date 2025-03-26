@@ -23,6 +23,8 @@ class PageWithOptimizedLocalStatesForItems extends ConsumerWidget {
   }
 }
 
+/// Displays a list of items where each [ItemTile] is isolated via ProviderScope.
+/// This minimizes rebuilds and improves performance on large lists.
 class ItemListView extends ConsumerWidget {
   const ItemListView({super.key});
 
@@ -45,6 +47,8 @@ class ItemListView extends ConsumerWidget {
   }
 }
 
+/// A single item widget that rebuilds only when its scoped [Item] changes.
+/// Isolated via [currentItemLocalStateProvider] override.
 class ItemTile extends ConsumerWidget {
   const ItemTile({super.key});
 

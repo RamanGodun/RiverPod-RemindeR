@@ -17,7 +17,7 @@ class ProvidersOptimizationPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            /// 🚀 **кнопка переходу до модифікатори**
+            ///
             CustomButton(
               title: 'to providers override ex1',
               child: Page4FirstExampleOfProvidersOverride(),

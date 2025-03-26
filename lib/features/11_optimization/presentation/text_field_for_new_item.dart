@@ -3,6 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../domain/provider_with_using_local_states_for_each_item.dart';
 
+/// A text field for adding new items to the global [itemsListProvider].
+/// Uses hook-based [TextEditingController] for managing input.
 class NewItemTextField extends HookConsumerWidget {
   const NewItemTextField({super.key});
 
