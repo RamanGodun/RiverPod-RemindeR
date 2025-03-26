@@ -1,121 +1,174 @@
-# 📝 ToDo App - **BLoC Playground with Two State Shapes**
+# Riverpod Reminder
 
-## 📌 Overview
+## ✨ Project Overview
 
-The **ToDo App** is an **educational Flutter project** that focuses on **BLoC-based state management**. The goal of this app is to explore different **state propagation techniques** and demonstrate their impact on architecture and code clarity.
+**Riverpod Reminder** is a structured and maintainable Flutter application designed as a personal **reference tool** and **interactive sandbox** for mastering **Riverpod**.
+ It documents essential provider types, state modifiers, lifecycle behaviors, navigation patterns, and performance optimizations through **real-world mini-apps** and **hands-on examples**.
 
-This project compares two approaches:
+This app acts as a **developer utility** — especially useful for **intermediate to advanced Flutter developers** — helping to **recall**, **revisit**, 
+or **solidify** knowledge of Riverpod’s core functionality.
 
-✔ **Listener-based state propagation (ListenerStateShape)**  
-✔ **Stream subscription-based state propagation (StreamSubscriptionStateShape)**
+   The app operates in two distinct modes configured via `AppConfig`:
+> - **Standard Mode (`isUsingGoRouter = false`)**  
+Displays a **dynamic homepage** with a dropdown list of 12 Riverpod topics. Upon selection, a single button navigates to the respective mini-app. 
+This is powered by an enhanced enum-based navigation system.
 
-By analyzing these techniques, the app illustrates how shifting UI-related logic to the state layer ensures **cleaner and more maintainable** code.
+> - **GoRouter Mode (`isUsingGoRouter = true`)**  
+Launches a complete app that showcases **GoRouter + Riverpod** integration with: Auth guards, Named routes, Public/private route patterns
 
----
 
-## 🎯 Goals
+## 🏐 Purpose
 
-- ✅ **Showcase BLoC-based state propagation techniques**.
-- ✅ **Compare UI-driven state updates (Listener) vs. State-driven updates (Stream Subscription)**.
-- ✅ **Apply the Single Responsibility Principle (SRP)** to maintain strict separation between UI and business logic.
-- ✅ **Demonstrate a scalable, maintainable architecture** with explicit state transitions.
+This project serves as:
 
----
+- A **quick-access reference** for revisiting Riverpod providers, patterns, and modifiers
+- A **learning sandbox** to experiment with provider lifecycles and scoped overrides
+- A **mini-app launcher** for testing isolated Riverpod features without clutter
+- A **tool for onboarding or reviewing** Riverpod’s core concepts in a maintainable way
 
-## 🏗️ Architecture & Structure
-
-The app follows a **Domain-UI structure**, eliminating unnecessary complexity while keeping logic and UI separate.
-
-### 🌐 **Domain Layer**
-
-- `domain/app_constants/` – **Global app constants** (`AppConstants`, `AppStrings`).
-- `domain/config/` – **Global app observer**
-- `domain/models/` – **Core data models and enums** (`Todo`, `Filter`).
-- `domain/state/` – **State management BLoCs** (e.g., `AppSettingsBloc`, `TodoListBloc`).
-- `domain/utils_and_services/` – **Helper functions, debounce logic, overlay and dialogs services**.
-
-### 🎨 **UI Layer**
-
-- `ui/pages/` – **Home screen**.
-- `ui/widgets/` – **Reusable UI components**.
-- `ui/_theming/` – **App-wide styling & theming**.
-
-Each feature is represented by its corresponding **BLoC** inside the `domain/state/features/` directory, ensuring a modular and clean architecture.
+Whether preparing for a job interview, building internal tools, or conducting team onboarding — this app serves as a robust, hands-on **Riverpod knowledge base**.
 
 ---
 
-## 🚀 Features & Highlights
+## 🏠 Project Structure
 
-✔ **Dynamic State Shape Switching** – Toggle between **ListenerStateShape** and **StreamSubscriptionStateShape** in real-time.  
-✔ **Optimized UI performance** – Uses `context.select` to minimize rebuilds.  
-✔ **Strict separation of concerns** – UI remains **pure**, and state logic is encapsulated in BLoCs.  
-✔ **Hydrated State Persistence** – Ensures state is preserved across app restarts.  
-✔ **React Hooks (`flutter_hooks`)** – Enhances functional programming approach for UI state management.  
-✔ **SRP Compliance** – Business logic is fully decoupled from UI.
+### 🏢 `core/`
+
+> Shared infrastructure, constants, configs, and UI utilities used across all features.
+
+#### `core/domain/`
+
+- **app_constants/**
+  - `app_constants.dart`: Generic constants
+  - `app_strings.dart`: Static UI strings
+
+- **config/**
+  - **observer/**: Custom logging observers for AsyncValues
+  - **router/**: GoRouter config, route names/paths, auth provider
+  - `app_config.dart`: Global switches for router mode, codegen, state approach
+
+- **models/**
+  - `activity_model/`, `product_model/`: Freezed models with serialization
+  - `enums.dart`: App-wide enums (Cities, Features, etc.)
+
+- **providers/**
+  - **dio_and_retrofit/dio_providers/**: API clients per domain
+  - **errors_handling/**: Error dialog simulation
+  - **sh_prefs/**: SharedPreferences layer
+  - `features_provider.dart`: Tracks current feature selection
+
+- **utils_and_services/**
+  - `helpers.dart`: Formatters, navigation helpers
+  - `dialogs_service.dart`: Alert logic
+  - **overlay/**: Custom UI overlays and notifications
+
+#### `core/ui/`
+
+> Centralized UI layer: theming, widgets, layout components
+
+- **_theming/**
+  - `app_theme.dart`: Light/Dark theme setup
+  - `text_styles.dart`: Central typography
+  - `theme_provider.dart`: Riverpod state manager for themes
+
+- **pages/**
+  - `home_page.dart`: Homepage with dynamic feature-based routing
+  - `other_page.dart`: Placeholder/testing UI
+
+- **widgets/**
+  - **buttons/**
+    - `custom_button.dart`, `custom_floating_button.dart`
+    - `outlined.dart`: For standard secondary actions
+    - `custom_button_4_go_router.dart`: Special button for GoRouter testing
+    - `get_weather_button.dart`: Feature-specific action button
+  - `custom_app_bar.dart`, `activity_widget.dart`, `custom_list_tile.dart`
+  - `feature_selection_dialog.dart`: Dropdown feature picker dialog
+  - `alert_dialog.dart`, `mini_widgets.dart`, `text_widget.dart`
 
 ---
 
-## 📌 Tech Stack
+### 🧰 Features
 
-- **Flutter** (Material Design 3)
-- **Dart**
-- **flutter_bloc** (BLoC for state management)
-- **hydrated_bloc** (State persistence)
-- **flutter_hooks** (State management enhancements)
-- **rxdart** (Reactive programming)
-- **equatable** (Value equality for states)
-- **google_fonts** (Custom fonts)
-- **path_provider** (File system storage)
-- **uuid** (Unique ID generation)
-- **flutter_slidable** (Interactive list items)
+Each feature is located in `features/<index>_<feature_name>/`, fully modular and almost each one with separation into `domain/` and `presentation/`.
+
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+| # | Feature              | Description                                                                                                                            |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 0 | **GoRouter**         | GoRouter navigation with guards, scoped auth, and stateful routing                                                                     |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | **Simple Providers** | Demonstrates Provider, Provider.autoDispose, Provider.family, and Provider.autoDispose.family  using both manual and                   |
+|   |                      | generated styles. Lifecycle behavior is observable   through logger integration and switching is handled via AppConfig.                | 
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 2 | **State Provider**   | Showcases `StateProvider`, `StateProvider.autoDispose`, `StateProvider.family`, and `StateProvider.autoDispose.family`.                |
+|   |                      | Each modifier demonstrates different lifecycle and caching behavior. Includes dynamic reset, manual invalidation,                      |
+|   |                      | critical state listening (with dialog alerts), and UI-driven background changes. Contains a creative mini-game to explore state logic. |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 3 | **Future Provider**  | Demonstrates `FutureProvider`, `FutureProvider.autoDispose`, `FutureProvider.family`, and `FutureProvider.autoDispose.family`.         |
+|   |                      | Features list fetching, user details navigation, refresh indicators, caching via `ref.keepAlive()`, and selective invalidation.        |
+|   |                      | Codegen/manual switching is handled via `AppConfig`, with lifecycle logging and UI-based loading/error states fully integrated.        |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 4 | **Stream Provider**  | Showcases `StreamProvider` with both `autoDispose` and `keepAlive` behavior depending on mode.                                         |
+|   |                      | Ticker emits values every second using `Stream.periodic` with `.take(n)` logic. Includes lifecycle logging, UI formatting,             |
+|   |                      | and disposal behavior comparison between manual and generated providers. Switching handled via `AppConfig`.                            |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 5 | **StateNotifier      | Compares mutable vs immutable state approaches using `ChangeNotifierProvider` and `StateNotifierProvider`.                             |
+|   |         /            | Features a shared Todos UI, with dynamic switching via `AppConfig`.                                                                    |
+|   |  ChangeNotifier**    | - `ChangeNotifier`: mutable list with direct mutation and `notifyListeners()`                                                          |
+|   |                      | - `StateNotifier`: immutable list with `copyWith()` and explicit state replacement                                                     |
+|   |                      | Demonstrates shared widgets, dynamic builder logic, and integration with hooks for input.                                              |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 6 | **Notifier Provider (Riverpod v2)** | Modern `Notifier` with enhanced syntax |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 7 | **Async Provider** | Async loading via `AsyncValue` and internal guards |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 8 | **AsyncNotifier Provider** | Refined logic separation with `AsyncNotifier` |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 9 | **AsyncStream Provider** | Async streams with buffering and UI binding |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|10 | **Provider Lifecycle** | Cached data, scoped providers, keepAlive usage |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|11 | **Performance Optimization** | ConsumerWidget usage, scoped rebuilds, and overrides |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|12 | **Pagination** | Infinite and number-based pagination with Dio |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|13 | **AsyncValues Handling** | Rich `AsyncValue` mapping with reusable builders |
+|---|----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 
 ---
 
-## 🛠️ Getting Started
+## 📦 Tech Stack
 
-### 1⃣ Clone the Repository
+- **Flutter** (Material 3)
+- **Riverpod v2** (Codegen & Manual)
+- **GoRouter** (optional via `AppConfig`)
+- **Freezed** & **JsonSerializable**
+- **Dio** (REST client)
+- **Hooks**, **GetStorage**, **SharedPreferences**
+- **Clean Architecture + Modularity**
 
-```bash
-git clone https://github.com/RamanGodun/TODO-APP-BLOC.git
+---
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+git clone https://github.com/<your-username>/riverpod_reminder.git
 ```
 
-### 2⃣ Install Dependencies
-
-```bash
+2. Install dependencies:
 flutter pub get
 ```
 
-### 3⃣ Run the App
+3. Run in GoRouter mode or Standard mode:
+// In lib/core/domain/config/app_config.dart
+static const bool isUsingGoRouter = true; // or false
+```
 
-```bash
+4. Run the app:
 flutter run
 ```
 
----
 
-## 📚 Learning Outcomes
-
-- ✅ Understand **BLoC-based state management** and **UI propagation techniques**.
-- ✅ Learn how to **minimize unnecessary UI rebuilds**.
-- ✅ Explore **state-driven updates vs. UI-driven updates**.
-- ✅ Follow **best practices for clean architecture in Flutter**.
-
----
 
 ## 🔍 License
 
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🚀 Future Enhancements
-
-📌 **Styling** – Change styling to follow common UI/UX patterns.
-📌 **Persistent Data Storage** – Consider integrating **Hive/Isar** for local database support.  
-📌 **Advanced Loading Indicators** – Implement better state-based loaders.  
-📌 **Error Handling Improvements** – Introduce robust error dialogs.  
-📌 **Pagination Support** – Optimize large ToDo lists with infinite scrolling.  
-📌 **Navigation Refactor** – Migrate to **onGenerateRoutes** for scalability.
-
----
-# RiverPod-RemindeR
+This project is licensed under the [MIT License](LICENSE).

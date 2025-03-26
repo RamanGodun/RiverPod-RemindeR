@@ -9,7 +9,9 @@ part of 'provider_4_weather_app_with_first_state_shape.dart';
 String _$withFirstStateShapeWeatherHash() =>
     r'44bffd0cf98b09f4049af8aee7ecdd0ff0d326b4';
 
-/// See also [WithFirstStateShapeWeather].
+/// A simple [AsyncNotifier] that fetches weather temperature based on a selected [Cities] enum.
+///
+/// Copied from [WithFirstStateShapeWeather].
 @ProviderFor(WithFirstStateShapeWeather)
 final withFirstStateShapeWeatherProvider = AutoDisposeAsyncNotifierProvider<
     WithFirstStateShapeWeather, String>.internal(

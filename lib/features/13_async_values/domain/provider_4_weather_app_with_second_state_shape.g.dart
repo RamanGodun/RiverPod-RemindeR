@@ -9,7 +9,10 @@ part of 'provider_4_weather_app_with_second_state_shape.dart';
 String _$withSecondStateShapeWeatherHash() =>
     r'd4e4d612064a574847d3bd3e78287931f70ce6b9';
 
-/// See also [withSecondStateShapeWeather].
+/// ☁️ Fetches the weather data for the selected city with 1-second delay.
+/// Automatically rebuilds when the city changes.
+///
+/// Copied from [withSecondStateShapeWeather].
 @ProviderFor(withSecondStateShapeWeather)
 final withSecondStateShapeWeatherProvider =
     AutoDisposeFutureProvider<String>.internal(
@@ -28,7 +31,10 @@ typedef WithSecondStateShapeWeatherRef = AutoDisposeFutureProviderRef<String>;
 String _$forSecondStateShapeCityHash() =>
     r'2f47f4f99fc367f4cba8716007e5e7e3fac9ba6e';
 
-/// See also [ForSecondStateShapeCity].
+/// 🌤️ Holds the currently selected city.
+/// State is managed synchronously and updated manually.
+///
+/// Copied from [ForSecondStateShapeCity].
 @ProviderFor(ForSecondStateShapeCity)
 final forSecondStateShapeCityProvider =
     AutoDisposeNotifierProvider<ForSecondStateShapeCity, Cities>.internal(

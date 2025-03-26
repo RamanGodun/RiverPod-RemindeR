@@ -9,7 +9,10 @@ part of 'for_page_with_infinite_scroll_pagination_products_repository.dart';
 String _$forPageWithInfiniteScrollPaginationProductsRepositoryHash() =>
     r'4ae9e9f43277d8b08d735ff65f4ef55b826d62f4';
 
-/// See also [forPageWithInfiniteScrollPaginationProductsRepository].
+/// Riverpod provider that exposes [ForPageWithInfinitePaginationProductsRepository].
+/// It injects the Dio instance from [dummyApiDioProvider].
+///
+/// Copied from [forPageWithInfiniteScrollPaginationProductsRepository].
 @ProviderFor(forPageWithInfiniteScrollPaginationProductsRepository)
 final forPageWithInfiniteScrollPaginationProductsRepositoryProvider =
     AutoDisposeProvider<

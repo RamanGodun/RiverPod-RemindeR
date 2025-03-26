@@ -20,7 +20,7 @@ import '../../../features/5_state_or_change_notifier_provider/presentation/_todo
 import '../../../features/6_notifier_provider_bp/presentation/_notifier_providers_page.dart';
 import '../../../features/7_async_provider/presentation/_async_providers_page.dart';
 import '../../../features/8_async_notifier_provider_bp/presentation/_async_notifier_providers_page.dart';
-import '../../../features/9_stream_provider/presentation/_stream_providers_page.dart';
+import '../../../features/9_async_stream_provider/presentation/_stream_providers_page.dart';
 import '../../../features/10_providers_lifecycle/presentation/_providers_lifecycle_page.dart';
 
 /// 🏠 [MyHomePage]

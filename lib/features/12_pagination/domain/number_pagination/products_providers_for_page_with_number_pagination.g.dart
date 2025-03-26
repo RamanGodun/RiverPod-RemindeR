@@ -7,7 +7,7 @@ part of 'products_providers_for_page_with_number_pagination.dart';
 // **************************************************************************
 
 String _$forPageWithNumberPaginationGetProductsHash() =>
-    r'b7c12359ea660204c53b0f95aaa00979a5763d74';
+    r'd9141a322de35289aef2713cfe3f43c5f4eed6e5';
 
 /// Copied from Dart SDK
 class _SystemHash {

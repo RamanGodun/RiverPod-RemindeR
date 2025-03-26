@@ -15,36 +15,38 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$Todo {
+mixin _$ImmutableTodoModel {
   String get id => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get completed => throw _privateConstructorUsedError;
 
-  /// Create a copy of Todo
+  /// Create a copy of ImmutableTodoModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TodoCopyWith<Todo> get copyWith => throw _privateConstructorUsedError;
+  $ImmutableTodoModelCopyWith<ImmutableTodoModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TodoCopyWith<$Res> {
-  factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
-      _$TodoCopyWithImpl<$Res, Todo>;
+abstract class $ImmutableTodoModelCopyWith<$Res> {
+  factory $ImmutableTodoModelCopyWith(
+          ImmutableTodoModel value, $Res Function(ImmutableTodoModel) then) =
+      _$ImmutableTodoModelCopyWithImpl<$Res, ImmutableTodoModel>;
   @useResult
   $Res call({String id, String description, bool completed});
 }
 
 /// @nodoc
-class _$TodoCopyWithImpl<$Res, $Val extends Todo>
-    implements $TodoCopyWith<$Res> {
-  _$TodoCopyWithImpl(this._value, this._then);
+class _$ImmutableTodoModelCopyWithImpl<$Res, $Val extends ImmutableTodoModel>
+    implements $ImmutableTodoModelCopyWith<$Res> {
+  _$ImmutableTodoModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Todo
+  /// Create a copy of ImmutableTodoModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -71,23 +73,25 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
 }
 
 /// @nodoc
-abstract class _$$TodoImplCopyWith<$Res> implements $TodoCopyWith<$Res> {
-  factory _$$TodoImplCopyWith(
-          _$TodoImpl value, $Res Function(_$TodoImpl) then) =
-      __$$TodoImplCopyWithImpl<$Res>;
+abstract class _$$ImmutableTodoModelImplCopyWith<$Res>
+    implements $ImmutableTodoModelCopyWith<$Res> {
+  factory _$$ImmutableTodoModelImplCopyWith(_$ImmutableTodoModelImpl value,
+          $Res Function(_$ImmutableTodoModelImpl) then) =
+      __$$ImmutableTodoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String description, bool completed});
 }
 
 /// @nodoc
-class __$$TodoImplCopyWithImpl<$Res>
-    extends _$TodoCopyWithImpl<$Res, _$TodoImpl>
-    implements _$$TodoImplCopyWith<$Res> {
-  __$$TodoImplCopyWithImpl(_$TodoImpl _value, $Res Function(_$TodoImpl) _then)
+class __$$ImmutableTodoModelImplCopyWithImpl<$Res>
+    extends _$ImmutableTodoModelCopyWithImpl<$Res, _$ImmutableTodoModelImpl>
+    implements _$$ImmutableTodoModelImplCopyWith<$Res> {
+  __$$ImmutableTodoModelImplCopyWithImpl(_$ImmutableTodoModelImpl _value,
+      $Res Function(_$ImmutableTodoModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Todo
+  /// Create a copy of ImmutableTodoModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -96,7 +100,7 @@ class __$$TodoImplCopyWithImpl<$Res>
     Object? description = null,
     Object? completed = null,
   }) {
-    return _then(_$TodoImpl(
+    return _then(_$ImmutableTodoModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -115,8 +119,10 @@ class __$$TodoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TodoImpl with DiagnosticableTreeMixin implements _Todo {
-  const _$TodoImpl(
+class _$ImmutableTodoModelImpl
+    with DiagnosticableTreeMixin
+    implements _ImmutableTodoModel {
+  const _$ImmutableTodoModelImpl(
       {required this.id, required this.description, this.completed = false});
 
   @override
@@ -129,14 +135,14 @@ class _$TodoImpl with DiagnosticableTreeMixin implements _Todo {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Todo(id: $id, description: $description, completed: $completed)';
+    return 'ImmutableTodoModel(id: $id, description: $description, completed: $completed)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Todo'))
+      ..add(DiagnosticsProperty('type', 'ImmutableTodoModel'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('completed', completed));
@@ -146,7 +152,7 @@ class _$TodoImpl with DiagnosticableTreeMixin implements _Todo {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TodoImpl &&
+            other is _$ImmutableTodoModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -157,20 +163,21 @@ class _$TodoImpl with DiagnosticableTreeMixin implements _Todo {
   @override
   int get hashCode => Object.hash(runtimeType, id, description, completed);
 
-  /// Create a copy of Todo
+  /// Create a copy of ImmutableTodoModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TodoImplCopyWith<_$TodoImpl> get copyWith =>
-      __$$TodoImplCopyWithImpl<_$TodoImpl>(this, _$identity);
+  _$$ImmutableTodoModelImplCopyWith<_$ImmutableTodoModelImpl> get copyWith =>
+      __$$ImmutableTodoModelImplCopyWithImpl<_$ImmutableTodoModelImpl>(
+          this, _$identity);
 }
 
-abstract class _Todo implements Todo {
-  const factory _Todo(
+abstract class _ImmutableTodoModel implements ImmutableTodoModel {
+  const factory _ImmutableTodoModel(
       {required final String id,
       required final String description,
-      final bool completed}) = _$TodoImpl;
+      final bool completed}) = _$ImmutableTodoModelImpl;
 
   @override
   String get id;
@@ -179,10 +186,10 @@ abstract class _Todo implements Todo {
   @override
   bool get completed;
 
-  /// Create a copy of Todo
+  /// Create a copy of ImmutableTodoModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TodoImplCopyWith<_$TodoImpl> get copyWith =>
+  _$$ImmutableTodoModelImplCopyWith<_$ImmutableTodoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

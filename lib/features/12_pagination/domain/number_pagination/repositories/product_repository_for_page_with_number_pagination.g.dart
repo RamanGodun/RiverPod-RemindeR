@@ -8,7 +8,9 @@ part of 'product_repository_for_page_with_number_pagination.dart';
 
 String _$productRepositoryHash() => r'72cea216e8d958b4fb4c2c0e43b3c540c0d184d1';
 
-/// See also [productRepository].
+/// Provides an instance of [ProductRepository] with injected Dio client.
+///
+/// Copied from [productRepository].
 @ProviderFor(productRepository)
 final productRepositoryProvider =
     AutoDisposeProvider<ProductRepository>.internal(
