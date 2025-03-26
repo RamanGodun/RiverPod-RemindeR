@@ -9,11 +9,15 @@ part 'for_page_with_infinite_scroll_pagination_products_repository.g.dart';
 
 const limit = 20;
 
+/// Repository responsible for fetching paginated products data from the API.
+/// Utilizes Dio for making HTTP requests.
 class ForPageWithInfinitePaginationProductsRepository {
   final Dio dio;
 
   ForPageWithInfinitePaginationProductsRepository(this.dio);
 
+  /// Fetches a list of products for the given page.
+  /// Applies pagination using `limit` and `skip`.
   Future<List<Product>> getProducts(int page) async {
     try {
       final Response response = await dio.get(
@@ -35,6 +39,7 @@ class ForPageWithInfinitePaginationProductsRepository {
     }
   }
 
+  /// Fetches detailed information about a single product by [id].
   Future<Product> getProduct(int id) async {
     try {
       final Response response = await dio.get('/products/$id');
@@ -52,6 +57,8 @@ class ForPageWithInfinitePaginationProductsRepository {
   }
 }
 
+/// Riverpod provider that exposes [ForPageWithInfinitePaginationProductsRepository].
+/// It injects the Dio instance from [dummyApiDioProvider].
 @riverpod
 ForPageWithInfinitePaginationProductsRepository
 forPageWithInfiniteScrollPaginationProductsRepository(Ref ref) {

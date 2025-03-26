@@ -16,7 +16,7 @@ class PaginationPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 30,
           children: [
-            /// 🚀 **кнопка переходу до модифікатори**
+            ///
             CustomButton(
               title: 'to ProductsPageWithPagination',
               child: ProductsPageWithPagination(),
@@ -26,11 +26,6 @@ class PaginationPage extends StatelessWidget {
               title: 'to ProductsPageWithNumberPagination',
               child: ProductsPageWithNumberPagination(),
             ),
-
-            // CustomButton(
-            //   title: 'to using Consumer widget page',
-            //   child: PageWithOptimizedLocalStatesForItems(),
-            // ),
 
             ///
           ],

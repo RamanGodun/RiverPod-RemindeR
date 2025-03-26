@@ -41,9 +41,9 @@ class ProductPageWithNumberPagination extends ConsumerWidget {
                   ),
                 ],
               ),
-
-              ///
               const Divider(),
+
+              /// Product details in bullets
               BulletedList(
                 bullet: const Icon(Icons.check, color: Colors.green),
                 listItems: [
@@ -58,7 +58,7 @@ class ProductPageWithNumberPagination extends ConsumerWidget {
               ),
               const Divider(),
 
-              ///
+              /// Product image
               SizedBox(
                 width: double.infinity,
                 child: Image.network(product.thumbnail, fit: BoxFit.cover),
@@ -67,7 +67,7 @@ class ProductPageWithNumberPagination extends ConsumerWidget {
           );
         },
 
-        ///
+        /// Error and loading states
         error: (e, st) => AppMiniWidgets(MWType.error, error: e),
         loading: () => const AppMiniWidgets(MWType.loading),
       ),

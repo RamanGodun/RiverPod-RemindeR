@@ -6,7 +6,7 @@ import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
 import 'features/13_async_values/presentation/_async_values_page.dart';
 import 'features/1_simple_providers/presentation/_simple_providers_page.dart';
 import 'features/11_optimization/presentation/_providers_optimization_page.dart';
-import 'features/12_pagination/_presentation/_pagination_page.dart';
+import 'features/12_pagination/presentation/_pagination_page.dart';
 import 'features/2_state_provider/presentation/_state_providers_page.dart';
 import 'features/3_future_provider/presentation/users_list_page.dart';
 import 'features/4_stream_provider/ticker_presentation.dart';

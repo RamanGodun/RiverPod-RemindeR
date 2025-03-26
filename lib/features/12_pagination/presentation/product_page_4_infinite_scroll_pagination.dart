@@ -24,7 +24,7 @@ class ProductPageWithInfiniteScrollPagination extends ConsumerWidget {
         data: (product) {
           return ListView(
             shrinkWrap: true,
-            key: const PageStorageKey('inifinitePagination'),
+            key: const PageStorageKey('Infinite Pagination'),
             physics: const AlwaysScrollableScrollPhysics(),
             padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             children: [
@@ -49,9 +49,9 @@ class ProductPageWithInfiniteScrollPagination extends ConsumerWidget {
                   ),
                 ],
               ),
-
-              ///
               const Divider(),
+
+              /// Product details in bullet format
               BulletedList(
                 bullet: const Icon(Icons.check, color: Colors.green),
                 listItems: [
@@ -66,7 +66,7 @@ class ProductPageWithInfiniteScrollPagination extends ConsumerWidget {
               ),
               const Divider(),
 
-              ///
+              /// Product image
               SizedBox(
                 width: double.infinity,
                 child: Image.network(product.thumbnail, fit: BoxFit.cover),
@@ -75,7 +75,7 @@ class ProductPageWithInfiniteScrollPagination extends ConsumerWidget {
           );
         },
 
-        ///
+        /// Error state
         error:
             (e, st) => Center(
               child: Padding(
@@ -84,7 +84,7 @@ class ProductPageWithInfiniteScrollPagination extends ConsumerWidget {
               ),
             ),
 
-        ///
+        /// Loading state
         loading:
             () => const Center(child: CircularProgressIndicator.adaptive()),
       ),

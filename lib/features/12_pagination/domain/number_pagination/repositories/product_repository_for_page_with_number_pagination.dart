@@ -11,11 +11,14 @@ const limit = 10;
 int totalProducts = 0;
 int totalPages = 1;
 
+/// Repository responsible for fetching products from the API.
 class ProductRepository {
   final Dio dio;
 
   ProductRepository(this.dio);
 
+  /// Fetches a paginated list of products from the API.
+  /// Updates [totalProducts] and [totalPages] based on response metadata.
   Future<List<Product>> getProducts(
     int page, {
     CancelToken? cancelToken,
@@ -33,9 +36,7 @@ class ProductRepository {
       debugPrint('response.data: ${response.data}');
 
       final List productList = response.data['products'];
-
       totalProducts = response.data['total'];
-
       totalPages = totalProducts ~/ limit + (totalProducts % limit > 0 ? 1 : 0);
 
       final products = [
@@ -48,6 +49,7 @@ class ProductRepository {
     }
   }
 
+  /// Fetches a single product by its [id].
   Future<Product> getProduct(int id) async {
     try {
       final Response response = await dio.get('/products/$id');
@@ -65,6 +67,7 @@ class ProductRepository {
   }
 }
 
+/// Provides an instance of [ProductRepository] with injected Dio client.
 @riverpod
 ProductRepository productRepository(Ref ref) {
   return ProductRepository(ref.watch(dummyApiDioProvider));

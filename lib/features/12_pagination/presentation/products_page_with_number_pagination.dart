@@ -31,7 +31,9 @@ class _ProductsPageState
       child: Scaffold(
         appBar: const CustomAppBar(title: 'Products List'),
 
+        /// Build content based on async state
         body: productList.when(
+          // Render product list when data is loaded
           data: (products) {
             debugPrint('from page: products');
             return ListView.separated(
@@ -82,12 +84,12 @@ class _ProductsPageState
             );
           },
 
-          ///
+          /// Handle loading and error states
           error: (e, st) => AppMiniWidgets(MWType.error, error: e),
           loading: () => const AppMiniWidgets(MWType.loading),
         ),
 
-        ///
+        /// Bottom paginator to change pages
         bottomNavigationBar:
             totalProducts == 0 && totalPages == 1
                 ? const SizedBox.shrink()

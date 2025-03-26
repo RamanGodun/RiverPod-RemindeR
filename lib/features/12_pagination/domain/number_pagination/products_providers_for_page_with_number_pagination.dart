@@ -16,27 +16,28 @@ FutureOr<List<Product>> forPageWithNumberPaginationGetProducts(
   final cancelToken = CancelToken();
   Timer? timer;
 
-  ref.onDispose(() {
-    debugPrint('[getProducts($page)] disposed, timer canceled, token canceled');
-    timer?.cancel();
-    cancelToken.cancel();
-  });
-
-  ref.onCancel(() {
-    debugPrint('[getProducts($page)] canceled');
-  });
-
-  ref.onResume(() {
-    debugPrint('[getProducts($page)] resumed, timer canceled');
-    timer?.cancel();
-  });
+  // Setup lifecycle hooks
+  ref
+    ..onDispose(() {
+      debugPrint(
+        '[getProducts($page)] disposed, timer canceled, token canceled',
+      );
+      timer?.cancel();
+      cancelToken.cancel();
+    })
+    ..onResume(() {
+      debugPrint('[getProducts($page)] resumed, timer canceled');
+      timer?.cancel();
+    });
 
   final products = await ref
       .watch(productRepositoryProvider)
       .getProducts(page, cancelToken: cancelToken);
 
+  // Enable keep-alive for cache retention
   final keepAliveLink = ref.keepAlive();
 
+  // Cancel keep-alive after delay if no listener remains
   ref.onCancel(() {
     debugPrint('[getProducts($page)] cancelled, timer started');
     timer = Timer(const Duration(seconds: 10), () {

@@ -24,12 +24,14 @@ class _ProductsPageWithPaginationState
   @override
   void initState() {
     super.initState();
+    // Initializes the paging controller with logic for page key extraction and data fetching.
     _pagingController = PagingController<int, Product>(
       getNextPageKey: (state) {
         final keys = state.keys;
         if (keys == null || keys.isEmpty) return 1;
         return keys.last + 1;
       },
+      // Fetches the next page of products using repository injected via Riverpod.
       fetchPage: (pageKey) async {
         try {
           final newProducts = await ref
@@ -52,8 +54,10 @@ class _ProductsPageWithPaginationState
     return Scaffold(
       appBar: const CustomAppBar(title: 'Products List'),
 
+      /// Pull-to-refresh behavior triggers pagination reset
       body: RefreshIndicator(
         onRefresh: () async => _pagingController.refresh(),
+        // Listens to pagination state and builds UI accordingly
         child: PagingListener<int, Product>(
           controller: _pagingController,
           builder: (context, state, fetchNextPage) {
@@ -63,6 +67,7 @@ class _ProductsPageWithPaginationState
                 state: state,
                 fetchNextPage: fetchNextPage,
                 builderDelegate: PagedChildBuilderDelegate<Product>(
+                  // Builds each product item tile
                   itemBuilder: (context, product, index) {
                     return GestureDetector(
                       onTap:
@@ -104,7 +109,7 @@ class _ProductsPageWithPaginationState
                     );
                   },
 
-                  ///
+                  /// Shown when no more pages to load
                   noMoreItemsIndicatorBuilder:
                       (context) => const Center(
                         child: Padding(
@@ -116,7 +121,7 @@ class _ProductsPageWithPaginationState
                         ),
                       ),
 
-                  ///
+                  /// Shown when error occurs on the first page
                   firstPageErrorIndicatorBuilder: (context) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
