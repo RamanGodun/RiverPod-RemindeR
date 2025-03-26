@@ -12,7 +12,7 @@ import 'core/domain/config/router/router_provider.dart';
 import 'core/domain/providers/sh_prefs/shared_pref_provider.dart';
 import 'core/ui/_theming/app_theme.dart';
 import 'core/ui/_theming/theme_provider.dart';
-import 'home_page.dart';
+import 'core/ui/pages/home_page.dart';
 
 Future<void> main() async {
   ///
