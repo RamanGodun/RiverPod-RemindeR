@@ -5,6 +5,8 @@ import '../../../core/domain/models/enums.dart';
 
 part 'provider_4_weather_app_with_second_state_shape.g.dart';
 
+/// 🌤️ Holds the currently selected city.
+/// State is managed synchronously and updated manually.
 @riverpod
 class ForSecondStateShapeCity extends _$ForSecondStateShapeCity {
   @override
@@ -21,6 +23,8 @@ class ForSecondStateShapeCity extends _$ForSecondStateShapeCity {
   }
 }
 
+/// ☁️ Fetches the weather data for the selected city with 1-second delay.
+/// Automatically rebuilds when the city changes.
 @riverpod
 FutureOr<String> withSecondStateShapeWeather(Ref ref) async {
   debugPrint('[weatherSecondProvider] initialized');

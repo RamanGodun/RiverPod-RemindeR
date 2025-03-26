@@ -34,11 +34,11 @@ class PageWeatherAppWithSecondStateShape extends ConsumerWidget {
           // skipLoadingOnReload: true,
 
           ///
-          data: (temp) {
+          data: (temperature) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextWidget(temp, TextType.headlineSmall),
+                TextWidget(temperature, TextType.headlineSmall),
                 const SizedBox(height: 20),
                 GetAnotherCityWeatherButton(
                   isButtonForFirstStateShape: false,
