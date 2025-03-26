@@ -12,15 +12,12 @@ String _$withFirstStateShapeWeatherHash() =>
 /// See also [WithFirstStateShapeWeather].
 @ProviderFor(WithFirstStateShapeWeather)
 final withFirstStateShapeWeatherProvider = AutoDisposeAsyncNotifierProvider<
-  WithFirstStateShapeWeather,
-  String
->.internal(
+    WithFirstStateShapeWeather, String>.internal(
   WithFirstStateShapeWeather.new,
   name: r'withFirstStateShapeWeatherProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$withFirstStateShapeWeatherHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$withFirstStateShapeWeatherHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

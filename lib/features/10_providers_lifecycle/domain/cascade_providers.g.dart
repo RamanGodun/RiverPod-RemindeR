@@ -6,7 +6,7 @@ part of 'cascade_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ageHash() => r'81fc74edf087d92238eec5dfcf0e044aa12953f5';
+String _$ageHash() => r'c979b064af8a7115fb7618982575d9162d0d7d4d';
 
 /// See also [age].
 @ProviderFor(age)
@@ -22,21 +22,20 @@ final ageProvider = AutoDisposeProvider<String>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AgeRef = AutoDisposeProviderRef<String>;
-String _$cascadeCounterHash() => r'c7fa00f3a02554b81531eef6331081e3094eeb89';
+String _$cascadeCounterHash() => r'40c19433313e99689f18fb1afe30234d99d72e46';
 
 /// See also [CascadeCounter].
 @ProviderFor(CascadeCounter)
 final cascadeCounterProvider =
     AutoDisposeNotifierProvider<CascadeCounter, int>.internal(
-      CascadeCounter.new,
-      name: r'cascadeCounterProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$cascadeCounterHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  CascadeCounter.new,
+  name: r'cascadeCounterProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$cascadeCounterHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$CascadeCounter = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint

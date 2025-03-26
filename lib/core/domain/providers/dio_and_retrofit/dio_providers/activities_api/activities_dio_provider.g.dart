@@ -13,10 +13,9 @@ String _$activitiesDioHash() => r'532a68d67e4b79a091d5f45c70005bf58746f641';
 final activitiesDioProvider = AutoDisposeProvider<Dio>.internal(
   activitiesDio,
   name: r'activitiesDioProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$activitiesDioHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$activitiesDioHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

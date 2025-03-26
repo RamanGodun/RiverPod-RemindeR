@@ -16,14 +16,13 @@ String _$doubledSecondBaseCounterHash() =>
 final doubledSecondBaseCounterProvider = AutoDisposeProvider<int>.internal(
   doubledSecondBaseCounter,
   name: r'doubledSecondBaseCounterProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$doubledSecondBaseCounterHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$doubledSecondBaseCounterHash,
   dependencies: <ProviderOrFamily>[secondBaseCounterProvider],
   allTransitiveDependencies: <ProviderOrFamily>{
     secondBaseCounterProvider,
-    ...?secondBaseCounterProvider.allTransitiveDependencies,
+    ...?secondBaseCounterProvider.allTransitiveDependencies
   },
 );
 
@@ -54,15 +53,14 @@ String _$secondBaseCounterHash() => r'9d1b9a007cbb6db6fe5602e9a07e0284c40ce645';
 @ProviderFor(SecondBaseCounter)
 final secondBaseCounterProvider =
     NotifierProvider<SecondBaseCounter, int>.internal(
-      SecondBaseCounter.new,
-      name: r'secondBaseCounterProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$secondBaseCounterHash,
-      dependencies: const <ProviderOrFamily>[],
-      allTransitiveDependencies: const <ProviderOrFamily>{},
-    );
+  SecondBaseCounter.new,
+  name: r'secondBaseCounterProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$secondBaseCounterHash,
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>{},
+);
 
 typedef _$SecondBaseCounter = Notifier<int>;
 // ignore_for_file: type=lint

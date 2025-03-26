@@ -4,8 +4,8 @@ import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/with_dio_async_keep_alive_10_sec_providers.dart';
-import 'page_4_product.dart';
+import '../domain/providers_cashed_for_10_or_25_sec.dart';
+import 'page_4_product_cashed_for_25_sec.dart';
 
 class Page4ProductsThatCashedFor10Sec extends ConsumerWidget {
   const Page4ProductsThatCashedFor10Sec({super.key});
@@ -15,12 +15,13 @@ class Page4ProductsThatCashedFor10Sec extends ConsumerWidget {
     final productList = ref.watch(getProductsListThatCashedFor10SecProvider);
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Products'),
+      appBar: const CustomAppBar(title: 'Products, cashed for 10 sec'),
       body: productList.when(
         ///
         data: (products) {
           return ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: 26),
+            physics: const AlwaysScrollableScrollPhysics(),
             itemCount: products.length,
             separatorBuilder: (BuildContext context, int index) {
               return const Divider();
@@ -28,6 +29,7 @@ class Page4ProductsThatCashedFor10Sec extends ConsumerWidget {
             itemBuilder: (BuildContext context, int index) {
               final product = products[index];
 
+              ///
               return GestureDetector(
                 onTap:
                     () => Helpers.pushTo(

@@ -6,21 +6,20 @@ part of 'activity_on_async_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$asyncActivityHash() => r'ebb6348a56d0b86c21b5f8138ca2dbffed17901c';
+String _$asyncActivityHash() => r'd9ea43eebd027d2262c6b4fc73eb19c0c5de3884';
 
 /// See also [AsyncActivity].
 @ProviderFor(AsyncActivity)
 final asyncActivityProvider =
     AutoDisposeAsyncNotifierProvider<AsyncActivity, Activity>.internal(
-      AsyncActivity.new,
-      name: r'asyncActivityProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$asyncActivityHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  AsyncActivity.new,
+  name: r'asyncActivityProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$asyncActivityHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$AsyncActivity = AutoDisposeAsyncNotifier<Activity>;
 // ignore_for_file: type=lint

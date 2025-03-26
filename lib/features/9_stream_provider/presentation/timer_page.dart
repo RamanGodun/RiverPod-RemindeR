@@ -15,7 +15,7 @@ class Page4TimerOnStreamProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBar(title: 'Timer on async stream'),
+      appBar: CustomAppBar(title: 'Timer on async stream provider'),
       body: Center(
         child: Column(
           spacing: 20,

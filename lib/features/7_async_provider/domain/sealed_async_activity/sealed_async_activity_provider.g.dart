@@ -7,20 +7,17 @@ part of 'sealed_async_activity_provider.dart';
 // **************************************************************************
 
 String _$sealedAsyncActivityHash() =>
-    r'988692abd4e4e750a6166c87aee30eb5ce845407';
+    r'3dc9430077a29755d5dee27a26b428333bbd3531';
 
 /// See also [SealedAsyncActivity].
 @ProviderFor(SealedAsyncActivity)
 final sealedAsyncActivityProvider = AutoDisposeNotifierProvider<
-  SealedAsyncActivity,
-  SealedAsyncActivityState
->.internal(
+    SealedAsyncActivity, SealedAsyncActivityState>.internal(
   SealedAsyncActivity.new,
   name: r'sealedAsyncActivityProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$sealedAsyncActivityHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$sealedAsyncActivityHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

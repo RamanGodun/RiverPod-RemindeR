@@ -7,21 +7,20 @@ part of 'counter_on_keep_alive_10_sec_provider.dart';
 // **************************************************************************
 
 String _$counterOnKeepAlive10SecHash() =>
-    r'30b46e651ef1f9666f1f0078e22b327469ecde88';
+    r'4b237cedb6725cd2841367e9602284902ccd1500';
 
 /// See also [CounterOnKeepAlive10Sec].
 @ProviderFor(CounterOnKeepAlive10Sec)
 final counterOnKeepAlive10SecProvider =
     AutoDisposeNotifierProvider<CounterOnKeepAlive10Sec, int>.internal(
-      CounterOnKeepAlive10Sec.new,
-      name: r'counterOnKeepAlive10SecProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$counterOnKeepAlive10SecHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  CounterOnKeepAlive10Sec.new,
+  name: r'counterOnKeepAlive10SecProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$counterOnKeepAlive10SecHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$CounterOnKeepAlive10Sec = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint

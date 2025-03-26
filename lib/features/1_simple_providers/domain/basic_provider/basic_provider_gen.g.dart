@@ -13,10 +13,9 @@ String _$appBarTextWithGenHash() => r'822283981c3993175101e11cb1ec7cc78737ac9d';
 final appBarTextWithGenProvider = Provider<String>.internal(
   appBarTextWithGen,
   name: r'appBarTextWithGenProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$appBarTextWithGenHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$appBarTextWithGenHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -31,10 +30,9 @@ String _$bodyTextWithGenHash() => r'9212da651a055ddf1712ba8b772f6a84e490d650';
 final bodyTextWithGenProvider = Provider<String>.internal(
   bodyTextWithGen,
   name: r'bodyTextWithGenProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$bodyTextWithGenHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$bodyTextWithGenHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

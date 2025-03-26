@@ -6,20 +6,17 @@ part of 'enum_async_activity_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$enumAsyncActivityHash() => r'3d07706b7238ef22b7d258df1561155ac57288f5';
+String _$enumAsyncActivityHash() => r'462d51977efdfb76111b8f8a1aa65b0d6b069c18';
 
 /// See also [EnumAsyncActivity].
 @ProviderFor(EnumAsyncActivity)
-final enumAsyncActivityProvider = AutoDisposeNotifierProvider<
-  EnumAsyncActivity,
-  EnumAsyncActivityState
->.internal(
+final enumAsyncActivityProvider = AutoDisposeNotifierProvider<EnumAsyncActivity,
+    EnumAsyncActivityState>.internal(
   EnumAsyncActivity.new,
   name: r'enumAsyncActivityProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$enumAsyncActivityHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$enumAsyncActivityHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

@@ -26,15 +26,14 @@ String _$autoDisposedModeWithSimpleGenHash() =>
 @ProviderFor(autoDisposedModeWithSimpleGen)
 final autoDisposedModeWithSimpleGenProvider =
     AutoDisposeProvider<String>.internal(
-      autoDisposedModeWithSimpleGen,
-      name: r'autoDisposedModeWithSimpleGenProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$autoDisposedModeWithSimpleGenHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  autoDisposedModeWithSimpleGen,
+  name: r'autoDisposedModeWithSimpleGenProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$autoDisposedModeWithSimpleGenHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element

@@ -7,7 +7,7 @@ part of 'counter_on_async_notifier_gen_provider.dart';
 // **************************************************************************
 
 String _$genCounterOnAsyncNotifierHash() =>
-    r'823758a62fb70fba5e5e12b381b605a2ec752329';
+    r'7d8c4a1029719a1339e790610b3ec2f3c2f339de';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,7 +34,9 @@ abstract class _$GenCounterOnAsyncNotifier
     extends BuildlessAutoDisposeAsyncNotifier<int> {
   late final int arg;
 
-  FutureOr<int> build(int arg);
+  FutureOr<int> build(
+    int arg,
+  );
 }
 
 /// See also [GenCounterOnAsyncNotifier].
@@ -47,15 +49,21 @@ class GenCounterOnAsyncNotifierFamily extends Family<AsyncValue<int>> {
   const GenCounterOnAsyncNotifierFamily();
 
   /// See also [GenCounterOnAsyncNotifier].
-  GenCounterOnAsyncNotifierProvider call(int arg) {
-    return GenCounterOnAsyncNotifierProvider(arg);
+  GenCounterOnAsyncNotifierProvider call(
+    int arg,
+  ) {
+    return GenCounterOnAsyncNotifierProvider(
+      arg,
+    );
   }
 
   @override
   GenCounterOnAsyncNotifierProvider getProviderOverride(
     covariant GenCounterOnAsyncNotifierProvider provider,
   ) {
-    return call(provider.arg);
+    return call(
+      provider.arg,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -75,23 +83,24 @@ class GenCounterOnAsyncNotifierFamily extends Family<AsyncValue<int>> {
 
 /// See also [GenCounterOnAsyncNotifier].
 class GenCounterOnAsyncNotifierProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<GenCounterOnAsyncNotifier, int> {
+    extends AutoDisposeAsyncNotifierProviderImpl<GenCounterOnAsyncNotifier,
+        int> {
   /// See also [GenCounterOnAsyncNotifier].
-  GenCounterOnAsyncNotifierProvider(int arg)
-    : this._internal(
-        () => GenCounterOnAsyncNotifier()..arg = arg,
-        from: genCounterOnAsyncNotifierProvider,
-        name: r'genCounterOnAsyncNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$genCounterOnAsyncNotifierHash,
-        dependencies: GenCounterOnAsyncNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            GenCounterOnAsyncNotifierFamily._allTransitiveDependencies,
-        arg: arg,
-      );
+  GenCounterOnAsyncNotifierProvider(
+    int arg,
+  ) : this._internal(
+          () => GenCounterOnAsyncNotifier()..arg = arg,
+          from: genCounterOnAsyncNotifierProvider,
+          name: r'genCounterOnAsyncNotifierProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$genCounterOnAsyncNotifierHash,
+          dependencies: GenCounterOnAsyncNotifierFamily._dependencies,
+          allTransitiveDependencies:
+              GenCounterOnAsyncNotifierFamily._allTransitiveDependencies,
+          arg: arg,
+        );
 
   GenCounterOnAsyncNotifierProvider._internal(
     super._createNotifier, {
@@ -106,8 +115,12 @@ class GenCounterOnAsyncNotifierProvider
   final int arg;
 
   @override
-  FutureOr<int> runNotifierBuild(covariant GenCounterOnAsyncNotifier notifier) {
-    return notifier.build(arg);
+  FutureOr<int> runNotifierBuild(
+    covariant GenCounterOnAsyncNotifier notifier,
+  ) {
+    return notifier.build(
+      arg,
+    );
   }
 
   @override
@@ -128,7 +141,7 @@ class GenCounterOnAsyncNotifierProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<GenCounterOnAsyncNotifier, int>
-  createElement() {
+      createElement() {
     return _GenCounterOnAsyncNotifierProviderElement(this);
   }
 
@@ -154,14 +167,12 @@ mixin GenCounterOnAsyncNotifierRef on AutoDisposeAsyncNotifierProviderRef<int> {
 }
 
 class _GenCounterOnAsyncNotifierProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<GenCounterOnAsyncNotifier, int>
-    with GenCounterOnAsyncNotifierRef {
+    extends AutoDisposeAsyncNotifierProviderElement<GenCounterOnAsyncNotifier,
+        int> with GenCounterOnAsyncNotifierRef {
   _GenCounterOnAsyncNotifierProviderElement(super.provider);
 
   @override
   int get arg => (origin as GenCounterOnAsyncNotifierProvider).arg;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

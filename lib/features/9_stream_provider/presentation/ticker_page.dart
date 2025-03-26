@@ -15,7 +15,7 @@ class TickerOnStreamProviderPage extends ConsumerWidget {
     debugPrint(tickerValue.toString());
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Ticker on async stream '),
+      appBar: const CustomAppBar(title: 'Ticker on async stream provider'),
       body: Center(
         child: tickerValue.when(
           data:

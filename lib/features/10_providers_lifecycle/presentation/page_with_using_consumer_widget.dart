@@ -11,23 +11,17 @@ class PageToShowProductivityIncreasingWhenUseConsumerWidget
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ///
-    ref.listen<int>(oneCounterProvider, (previous, next) {
-      if (next % 3 == 0) {
-        DialogService.showAlertErrorDialog(context, 'counter: $next');
-      }
-    });
+    _showDialogWhenCounterIsEqual3(ref, context);
 
     return Scaffold(
       appBar: const CustomAppBar(title: 'Using Consumer widget'),
+
       body: Center(
         /*
-         * consumer widget is a cause, that provider doesn't rebuild every time => productivity growth
-         * in case when used ConsumerWidget, provider rebuilds (initialized and cancelled/disposed) every time
-          
-          final counter = ref.watch(autoDisposeCounterProvider);
-          final anotherCounter = ref.watch(anotherCounterProvider);
-         */
+         ✅ Wrapping with [Consumer] improves performance:
+         prevents full widget rebuild, only watches are reevaluated.
+         Without it, providers may be unnecessarily disposed/re-initialized.
+        */
         child: Consumer(
           builder: (context, ref, child) {
             final counter = ref.watch(oneCounterProvider);
@@ -44,22 +38,23 @@ class PageToShowProductivityIncreasingWhenUseConsumerWidget
         ),
       ),
 
-      ///
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 100),
         child: Row(
           spacing: 15,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            // ➕ Increment OneCounter (0 → 1 → ...)
             FloatingActionButton(
-              heroTag: 'autoDisposeCounterProvider',
+              heroTag: 'oneCounter',
               onPressed:
                   () => ref.read(oneCounterProvider.notifier).increment(),
               child: const Icon(Icons.add),
             ),
 
+            // ➕ Increment AnotherCounter (10 → 20 → ...)
             FloatingActionButton(
-              heroTag: 'anotherCounterProvider',
+              heroTag: 'anotherCounter',
               onPressed:
                   () => ref.read(anotherCounterProvider.notifier).increment(),
               child: const Icon(Icons.add),
@@ -68,5 +63,14 @@ class PageToShowProductivityIncreasingWhenUseConsumerWidget
         ),
       ),
     );
+  }
+
+  /// 🎯 Show alert every time counter reaches a multiple of 3
+  void _showDialogWhenCounterIsEqual3(WidgetRef ref, BuildContext context) {
+    ref.listen<int>(oneCounterProvider, (previous, next) {
+      if (next % 3 == 0) {
+        DialogService.showAlertErrorDialog(context, 'counter: $next');
+      }
+    });
   }
 }

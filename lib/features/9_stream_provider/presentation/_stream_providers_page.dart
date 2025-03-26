@@ -10,7 +10,7 @@ class Page4AsyncStreamProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBar(title: 'Stream providers'),
+      appBar: CustomAppBar(title: 'Async Stream providers'),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

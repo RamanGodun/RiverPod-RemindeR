@@ -7,7 +7,7 @@ part of 'products_providers_for_page_with_number_pagination.dart';
 // **************************************************************************
 
 String _$forPageWithNumberPaginationGetProductsHash() =>
-    r'd81d2bb7c2fe35b16d88f542a8f4233109b3abfd';
+    r'b7c12359ea660204c53b0f95aaa00979a5763d74';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -42,15 +42,21 @@ class ForPageWithNumberPaginationGetProductsFamily
   const ForPageWithNumberPaginationGetProductsFamily();
 
   /// See also [forPageWithNumberPaginationGetProducts].
-  ForPageWithNumberPaginationGetProductsProvider call(int page) {
-    return ForPageWithNumberPaginationGetProductsProvider(page);
+  ForPageWithNumberPaginationGetProductsProvider call(
+    int page,
+  ) {
+    return ForPageWithNumberPaginationGetProductsProvider(
+      page,
+    );
   }
 
   @override
   ForPageWithNumberPaginationGetProductsProvider getProviderOverride(
     covariant ForPageWithNumberPaginationGetProductsProvider provider,
   ) {
-    return call(provider.page);
+    return call(
+      provider.page,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -72,25 +78,26 @@ class ForPageWithNumberPaginationGetProductsFamily
 class ForPageWithNumberPaginationGetProductsProvider
     extends AutoDisposeFutureProvider<List<Product>> {
   /// See also [forPageWithNumberPaginationGetProducts].
-  ForPageWithNumberPaginationGetProductsProvider(int page)
-    : this._internal(
-        (ref) => forPageWithNumberPaginationGetProducts(
-          ref as ForPageWithNumberPaginationGetProductsRef,
-          page,
-        ),
-        from: forPageWithNumberPaginationGetProductsProvider,
-        name: r'forPageWithNumberPaginationGetProductsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$forPageWithNumberPaginationGetProductsHash,
-        dependencies:
-            ForPageWithNumberPaginationGetProductsFamily._dependencies,
-        allTransitiveDependencies:
-            ForPageWithNumberPaginationGetProductsFamily
-                ._allTransitiveDependencies,
-        page: page,
-      );
+  ForPageWithNumberPaginationGetProductsProvider(
+    int page,
+  ) : this._internal(
+          (ref) => forPageWithNumberPaginationGetProducts(
+            ref as ForPageWithNumberPaginationGetProductsRef,
+            page,
+          ),
+          from: forPageWithNumberPaginationGetProductsProvider,
+          name: r'forPageWithNumberPaginationGetProductsProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$forPageWithNumberPaginationGetProductsHash,
+          dependencies:
+              ForPageWithNumberPaginationGetProductsFamily._dependencies,
+          allTransitiveDependencies:
+              ForPageWithNumberPaginationGetProductsFamily
+                  ._allTransitiveDependencies,
+          page: page,
+        );
 
   ForPageWithNumberPaginationGetProductsProvider._internal(
     super._createNotifier, {
@@ -107,9 +114,8 @@ class ForPageWithNumberPaginationGetProductsProvider
   @override
   Override overrideWith(
     FutureOr<List<Product>> Function(
-      ForPageWithNumberPaginationGetProductsRef provider,
-    )
-    create,
+            ForPageWithNumberPaginationGetProductsRef provider)
+        create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -162,6 +168,5 @@ class _ForPageWithNumberPaginationGetProductsProviderElement
   int get page =>
       (origin as ForPageWithNumberPaginationGetProductsProvider).page;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

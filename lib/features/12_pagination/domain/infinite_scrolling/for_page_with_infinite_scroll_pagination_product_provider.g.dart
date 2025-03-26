@@ -7,7 +7,7 @@ part of 'for_page_with_infinite_scroll_pagination_product_provider.dart';
 // **************************************************************************
 
 String _$forPageWithInfiniteScrollPaginationGetProductHash() =>
-    r'5cafb9e801a8222ade4f0d0d48fb8f1a06a69e22';
+    r'e679a1197e8bbb254326d709bed077f6b914694a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -42,15 +42,21 @@ class ForPageWithInfiniteScrollPaginationGetProductFamily
   const ForPageWithInfiniteScrollPaginationGetProductFamily();
 
   /// See also [forPageWithInfiniteScrollPaginationGetProduct].
-  ForPageWithInfiniteScrollPaginationGetProductProvider call(int id) {
-    return ForPageWithInfiniteScrollPaginationGetProductProvider(id);
+  ForPageWithInfiniteScrollPaginationGetProductProvider call(
+    int id,
+  ) {
+    return ForPageWithInfiniteScrollPaginationGetProductProvider(
+      id,
+    );
   }
 
   @override
   ForPageWithInfiniteScrollPaginationGetProductProvider getProviderOverride(
     covariant ForPageWithInfiniteScrollPaginationGetProductProvider provider,
   ) {
-    return call(provider.id);
+    return call(
+      provider.id,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -72,25 +78,26 @@ class ForPageWithInfiniteScrollPaginationGetProductFamily
 class ForPageWithInfiniteScrollPaginationGetProductProvider
     extends AutoDisposeFutureProvider<Product> {
   /// See also [forPageWithInfiniteScrollPaginationGetProduct].
-  ForPageWithInfiniteScrollPaginationGetProductProvider(int id)
-    : this._internal(
-        (ref) => forPageWithInfiniteScrollPaginationGetProduct(
-          ref as ForPageWithInfiniteScrollPaginationGetProductRef,
-          id,
-        ),
-        from: forPageWithInfiniteScrollPaginationGetProductProvider,
-        name: r'forPageWithInfiniteScrollPaginationGetProductProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$forPageWithInfiniteScrollPaginationGetProductHash,
-        dependencies:
-            ForPageWithInfiniteScrollPaginationGetProductFamily._dependencies,
-        allTransitiveDependencies:
-            ForPageWithInfiniteScrollPaginationGetProductFamily
-                ._allTransitiveDependencies,
-        id: id,
-      );
+  ForPageWithInfiniteScrollPaginationGetProductProvider(
+    int id,
+  ) : this._internal(
+          (ref) => forPageWithInfiniteScrollPaginationGetProduct(
+            ref as ForPageWithInfiniteScrollPaginationGetProductRef,
+            id,
+          ),
+          from: forPageWithInfiniteScrollPaginationGetProductProvider,
+          name: r'forPageWithInfiniteScrollPaginationGetProductProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$forPageWithInfiniteScrollPaginationGetProductHash,
+          dependencies:
+              ForPageWithInfiniteScrollPaginationGetProductFamily._dependencies,
+          allTransitiveDependencies:
+              ForPageWithInfiniteScrollPaginationGetProductFamily
+                  ._allTransitiveDependencies,
+          id: id,
+        );
 
   ForPageWithInfiniteScrollPaginationGetProductProvider._internal(
     super._createNotifier, {
@@ -107,9 +114,8 @@ class ForPageWithInfiniteScrollPaginationGetProductProvider
   @override
   Override overrideWith(
     FutureOr<Product> Function(
-      ForPageWithInfiniteScrollPaginationGetProductRef provider,
-    )
-    create,
+            ForPageWithInfiniteScrollPaginationGetProductRef provider)
+        create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -163,6 +169,5 @@ class _ForPageWithInfiniteScrollPaginationGetProductProviderElement
   int get id =>
       (origin as ForPageWithInfiniteScrollPaginationGetProductProvider).id;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

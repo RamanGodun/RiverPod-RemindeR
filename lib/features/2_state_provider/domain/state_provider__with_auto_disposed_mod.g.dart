@@ -13,15 +13,14 @@ String _$clickedTimeWithAutoDisposedModeSimpleHash() =>
 @ProviderFor(clickedTimeWithAutoDisposedModeSimple)
 final clickedTimeWithAutoDisposedModeSimpleProvider =
     AutoDisposeProvider<int>.internal(
-      clickedTimeWithAutoDisposedModeSimple,
-      name: r'clickedTimeWithAutoDisposedModeSimpleProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$clickedTimeWithAutoDisposedModeSimpleHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  clickedTimeWithAutoDisposedModeSimple,
+  name: r'clickedTimeWithAutoDisposedModeSimpleProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$clickedTimeWithAutoDisposedModeSimpleHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
@@ -33,15 +32,14 @@ String _$withAutoDisposedModCounterHash() =>
 @ProviderFor(WithAutoDisposedModCounter)
 final withAutoDisposedModCounterProvider =
     AutoDisposeNotifierProvider<WithAutoDisposedModCounter, int>.internal(
-      WithAutoDisposedModCounter.new,
-      name: r'withAutoDisposedModCounterProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$withAutoDisposedModCounterHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  WithAutoDisposedModCounter.new,
+  name: r'withAutoDisposedModCounterProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$withAutoDisposedModCounterHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$WithAutoDisposedModCounter = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint

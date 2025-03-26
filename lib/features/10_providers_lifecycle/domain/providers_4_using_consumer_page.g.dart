@@ -6,38 +6,39 @@ part of 'providers_4_using_consumer_page.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$oneCounterHash() => r'ac9e8dc7ce5419d3980d7eb2bd7fb8450e9685a4';
+String _$oneCounterHash() => r'fa29f03a4a29b189307d308f27c808f51f629d39';
 
-/// See also [OneCounter].
+/// 🧮 Counter with autoDispose lifecycle hooks
+///
+/// Copied from [OneCounter].
 @ProviderFor(OneCounter)
 final oneCounterProvider =
     AutoDisposeNotifierProvider<OneCounter, int>.internal(
-      OneCounter.new,
-      name: r'oneCounterProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$oneCounterHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  OneCounter.new,
+  name: r'oneCounterProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$oneCounterHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$OneCounter = AutoDisposeNotifier<int>;
-String _$anotherCounterHash() => r'5f65254ddba73c01898b6ab7153d9166141464a4';
+String _$anotherCounterHash() => r'2bea0e75d239a973c27003b71a9a146b35e89a27';
 
-/// See also [AnotherCounter].
+/// 🔟 Counter with base value and lifecycle logging
+///
+/// Copied from [AnotherCounter].
 @ProviderFor(AnotherCounter)
 final anotherCounterProvider =
     AutoDisposeNotifierProvider<AnotherCounter, int>.internal(
-      AnotherCounter.new,
-      name: r'anotherCounterProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$anotherCounterHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  AnotherCounter.new,
+  name: r'anotherCounterProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$anotherCounterHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$AnotherCounter = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint

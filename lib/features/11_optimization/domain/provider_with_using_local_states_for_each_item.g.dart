@@ -19,10 +19,9 @@ String _$currentItemLocalStateHash() =>
 final currentItemLocalStateProvider = AutoDisposeProvider<Item>.internal(
   currentItemLocalState,
   name: r'currentItemLocalStateProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$currentItemLocalStateHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$currentItemLocalStateHash,
   dependencies: const <ProviderOrFamily>[],
   allTransitiveDependencies: const <ProviderOrFamily>{},
 );
@@ -36,15 +35,13 @@ String _$itemsListHash() => r'2c4f412459b0f7ab914827e276fdb44addb90199';
 @ProviderFor(ItemsList)
 final itemsListProvider =
     AutoDisposeNotifierProvider<ItemsList, List<Item>>.internal(
-      ItemsList.new,
-      name: r'itemsListProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$itemsListHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  ItemsList.new,
+  name: r'itemsListProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$itemsListHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$ItemsList = AutoDisposeNotifier<List<Item>>;
 // ignore_for_file: type=lint

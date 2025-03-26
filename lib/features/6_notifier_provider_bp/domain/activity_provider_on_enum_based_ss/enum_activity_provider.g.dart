@@ -6,21 +6,19 @@ part of 'enum_activity_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$enumActivityHash() => r'86cd6c822030a9daa30fe8a09b23d90516bbc908';
+String _$enumActivityHash() => r'c8e454da79c62354a7338fd70da46e6df2059832';
 
 /// See also [EnumActivity].
 @ProviderFor(EnumActivity)
 final enumActivityProvider =
     AutoDisposeNotifierProvider<EnumActivity, EnumActivityState>.internal(
-      EnumActivity.new,
-      name: r'enumActivityProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$enumActivityHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  EnumActivity.new,
+  name: r'enumActivityProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$enumActivityHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$EnumActivity = AutoDisposeNotifier<EnumActivityState>;
 // ignore_for_file: type=lint

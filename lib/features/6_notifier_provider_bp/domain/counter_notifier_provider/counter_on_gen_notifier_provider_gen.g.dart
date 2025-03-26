@@ -7,7 +7,7 @@ part of 'counter_on_gen_notifier_provider_gen.dart';
 // **************************************************************************
 
 String _$genCounterOnNotifierHash() =>
-    r'beb8fb86a71b41be0b8daee48f70b876dcb97733';
+    r'161b57a01771f8726762d4da25fa5c53839f09ea';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -33,7 +33,9 @@ class _SystemHash {
 abstract class _$GenCounterOnNotifier extends BuildlessNotifier<int> {
   late final int initialValue;
 
-  int build(int initialValue);
+  int build(
+    int initialValue,
+  );
 }
 
 /// See also [GenCounterOnNotifier].
@@ -46,15 +48,21 @@ class GenCounterOnNotifierFamily extends Family<int> {
   const GenCounterOnNotifierFamily();
 
   /// See also [GenCounterOnNotifier].
-  GenCounterOnNotifierProvider call(int initialValue) {
-    return GenCounterOnNotifierProvider(initialValue);
+  GenCounterOnNotifierProvider call(
+    int initialValue,
+  ) {
+    return GenCounterOnNotifierProvider(
+      initialValue,
+    );
   }
 
   @override
   GenCounterOnNotifierProvider getProviderOverride(
     covariant GenCounterOnNotifierProvider provider,
   ) {
-    return call(provider.initialValue);
+    return call(
+      provider.initialValue,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,20 +84,21 @@ class GenCounterOnNotifierFamily extends Family<int> {
 class GenCounterOnNotifierProvider
     extends NotifierProviderImpl<GenCounterOnNotifier, int> {
   /// See also [GenCounterOnNotifier].
-  GenCounterOnNotifierProvider(int initialValue)
-    : this._internal(
-        () => GenCounterOnNotifier()..initialValue = initialValue,
-        from: genCounterOnNotifierProvider,
-        name: r'genCounterOnNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$genCounterOnNotifierHash,
-        dependencies: GenCounterOnNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            GenCounterOnNotifierFamily._allTransitiveDependencies,
-        initialValue: initialValue,
-      );
+  GenCounterOnNotifierProvider(
+    int initialValue,
+  ) : this._internal(
+          () => GenCounterOnNotifier()..initialValue = initialValue,
+          from: genCounterOnNotifierProvider,
+          name: r'genCounterOnNotifierProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$genCounterOnNotifierHash,
+          dependencies: GenCounterOnNotifierFamily._dependencies,
+          allTransitiveDependencies:
+              GenCounterOnNotifierFamily._allTransitiveDependencies,
+          initialValue: initialValue,
+        );
 
   GenCounterOnNotifierProvider._internal(
     super._createNotifier, {
@@ -104,8 +113,12 @@ class GenCounterOnNotifierProvider
   final int initialValue;
 
   @override
-  int runNotifierBuild(covariant GenCounterOnNotifier notifier) {
-    return notifier.build(initialValue);
+  int runNotifierBuild(
+    covariant GenCounterOnNotifier notifier,
+  ) {
+    return notifier.build(
+      initialValue,
+    );
   }
 
   @override
@@ -159,6 +172,5 @@ class _GenCounterOnNotifierProviderElement
   @override
   int get initialValue => (origin as GenCounterOnNotifierProvider).initialValue;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -5,7 +5,7 @@ import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../../../core/ui/widgets/mini_widgets.dart';
 import '../../../core/ui/widgets/text_widget.dart';
-import '../domain/with_dio_async_keep_alive_10_sec_providers.dart';
+import '../domain/providers_cashed_for_10_or_25_sec.dart';
 
 class ProductPage extends ConsumerWidget {
   final int productId;
@@ -18,7 +18,7 @@ class ProductPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Product Details'),
+      appBar: const CustomAppBar(title: 'Product, cashed for 25 sec'),
 
       ///
       body: singleProduct.when(

@@ -12,15 +12,14 @@ String _$productRepositoryHash() => r'72cea216e8d958b4fb4c2c0e43b3c540c0d184d1';
 @ProviderFor(productRepository)
 final productRepositoryProvider =
     AutoDisposeProvider<ProductRepository>.internal(
-      productRepository,
-      name: r'productRepositoryProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$productRepositoryHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  productRepository,
+  name: r'productRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$productRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element

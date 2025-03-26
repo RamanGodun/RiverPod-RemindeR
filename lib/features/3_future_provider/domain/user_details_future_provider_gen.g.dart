@@ -7,7 +7,7 @@ part of 'user_details_future_provider_gen.dart';
 // **************************************************************************
 
 String _$withCodeGenerationUserDetailsHash() =>
-    r'68a214827a8e5361797b9415a9fdd856e2eb2346';
+    r'885648b7f1c060fbe7a4bdeebfc5d973c6e37ca8';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -41,15 +41,21 @@ class WithCodeGenerationUserDetailsFamily extends Family<AsyncValue<User>> {
   const WithCodeGenerationUserDetailsFamily();
 
   /// See also [withCodeGenerationUserDetails].
-  WithCodeGenerationUserDetailsProvider call(int id) {
-    return WithCodeGenerationUserDetailsProvider(id);
+  WithCodeGenerationUserDetailsProvider call(
+    int id,
+  ) {
+    return WithCodeGenerationUserDetailsProvider(
+      id,
+    );
   }
 
   @override
   WithCodeGenerationUserDetailsProvider getProviderOverride(
     covariant WithCodeGenerationUserDetailsProvider provider,
   ) {
-    return call(provider.id);
+    return call(
+      provider.id,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -71,23 +77,24 @@ class WithCodeGenerationUserDetailsFamily extends Family<AsyncValue<User>> {
 class WithCodeGenerationUserDetailsProvider
     extends AutoDisposeFutureProvider<User> {
   /// See also [withCodeGenerationUserDetails].
-  WithCodeGenerationUserDetailsProvider(int id)
-    : this._internal(
-        (ref) => withCodeGenerationUserDetails(
-          ref as WithCodeGenerationUserDetailsRef,
-          id,
-        ),
-        from: withCodeGenerationUserDetailsProvider,
-        name: r'withCodeGenerationUserDetailsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$withCodeGenerationUserDetailsHash,
-        dependencies: WithCodeGenerationUserDetailsFamily._dependencies,
-        allTransitiveDependencies:
-            WithCodeGenerationUserDetailsFamily._allTransitiveDependencies,
-        id: id,
-      );
+  WithCodeGenerationUserDetailsProvider(
+    int id,
+  ) : this._internal(
+          (ref) => withCodeGenerationUserDetails(
+            ref as WithCodeGenerationUserDetailsRef,
+            id,
+          ),
+          from: withCodeGenerationUserDetailsProvider,
+          name: r'withCodeGenerationUserDetailsProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$withCodeGenerationUserDetailsHash,
+          dependencies: WithCodeGenerationUserDetailsFamily._dependencies,
+          allTransitiveDependencies:
+              WithCodeGenerationUserDetailsFamily._allTransitiveDependencies,
+          id: id,
+        );
 
   WithCodeGenerationUserDetailsProvider._internal(
     super._createNotifier, {
@@ -153,6 +160,5 @@ class _WithCodeGenerationUserDetailsProviderElement
   @override
   int get id => (origin as WithCodeGenerationUserDetailsProvider).id;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

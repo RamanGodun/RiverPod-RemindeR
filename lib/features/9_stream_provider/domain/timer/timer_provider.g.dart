@@ -6,19 +6,21 @@ part of 'timer_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$timerHash() => r'af48097b0971b6c14d777b0fc3750c0a1b640022';
+String _$timerHash() => r'd43a17e5e9b8fb5290df065476d028576a8f2c6d';
 
-/// See also [Timer].
+/// ⏱️ Timer provider using [AsyncNotifier] and [Stream]-based ticking.
+///
+/// Copied from [Timer].
 @ProviderFor(Timer)
 final timerProvider =
     AutoDisposeStreamNotifierProvider<Timer, TimerState>.internal(
-      Timer.new,
-      name: r'timerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product') ? null : _$timerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  Timer.new,
+  name: r'timerProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$timerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$Timer = AutoDisposeStreamNotifier<TimerState>;
 // ignore_for_file: type=lint

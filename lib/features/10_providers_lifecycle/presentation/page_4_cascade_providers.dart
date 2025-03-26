@@ -12,8 +12,14 @@ class CascadeProvidersPage extends ConsumerWidget {
     final myAge = ref.watch(ageProvider);
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Provider Cascade'),
-      body: Center(child: TextWidget(myAge, TextType.titleMedium)),
+      appBar: const CustomAppBar(title: 'Cascade Provider'),
+      body: Center(
+        child: TextWidget(
+          myAge,
+          TextType.titleMedium,
+          isTextOnFewStrings: true,
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => ref.read(cascadeCounterProvider.notifier).increment(),
         child: const Icon(Icons.add),

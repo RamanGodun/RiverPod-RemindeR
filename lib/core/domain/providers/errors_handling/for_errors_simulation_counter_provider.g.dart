@@ -15,15 +15,14 @@ String _$forErrorsSimulationCounterHash() =>
 @ProviderFor(ForErrorsSimulationCounter)
 final forErrorsSimulationCounterProvider =
     NotifierProvider<ForErrorsSimulationCounter, int>.internal(
-      ForErrorsSimulationCounter.new,
-      name: r'forErrorsSimulationCounterProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$forErrorsSimulationCounterHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  ForErrorsSimulationCounter.new,
+  name: r'forErrorsSimulationCounterProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$forErrorsSimulationCounterHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$ForErrorsSimulationCounter = Notifier<int>;
 // ignore_for_file: type=lint

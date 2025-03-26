@@ -41,15 +41,21 @@ class SimpleProviderWithFamilyModGenFamily extends Family<String> {
   const SimpleProviderWithFamilyModGenFamily();
 
   /// See also [simpleProviderWithFamilyModGen].
-  SimpleProviderWithFamilyModGenProvider call(String customName) {
-    return SimpleProviderWithFamilyModGenProvider(customName);
+  SimpleProviderWithFamilyModGenProvider call(
+    String customName,
+  ) {
+    return SimpleProviderWithFamilyModGenProvider(
+      customName,
+    );
   }
 
   @override
   SimpleProviderWithFamilyModGenProvider getProviderOverride(
     covariant SimpleProviderWithFamilyModGenProvider provider,
   ) {
-    return call(provider.customName);
+    return call(
+      provider.customName,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -70,23 +76,24 @@ class SimpleProviderWithFamilyModGenFamily extends Family<String> {
 /// See also [simpleProviderWithFamilyModGen].
 class SimpleProviderWithFamilyModGenProvider extends Provider<String> {
   /// See also [simpleProviderWithFamilyModGen].
-  SimpleProviderWithFamilyModGenProvider(String customName)
-    : this._internal(
-        (ref) => simpleProviderWithFamilyModGen(
-          ref as SimpleProviderWithFamilyModGenRef,
-          customName,
-        ),
-        from: simpleProviderWithFamilyModGenProvider,
-        name: r'simpleProviderWithFamilyModGenProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$simpleProviderWithFamilyModGenHash,
-        dependencies: SimpleProviderWithFamilyModGenFamily._dependencies,
-        allTransitiveDependencies:
-            SimpleProviderWithFamilyModGenFamily._allTransitiveDependencies,
-        customName: customName,
-      );
+  SimpleProviderWithFamilyModGenProvider(
+    String customName,
+  ) : this._internal(
+          (ref) => simpleProviderWithFamilyModGen(
+            ref as SimpleProviderWithFamilyModGenRef,
+            customName,
+          ),
+          from: simpleProviderWithFamilyModGenProvider,
+          name: r'simpleProviderWithFamilyModGenProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$simpleProviderWithFamilyModGenHash,
+          dependencies: SimpleProviderWithFamilyModGenFamily._dependencies,
+          allTransitiveDependencies:
+              SimpleProviderWithFamilyModGenFamily._allTransitiveDependencies,
+          customName: customName,
+        );
 
   SimpleProviderWithFamilyModGenProvider._internal(
     super._createNotifier, {
@@ -146,14 +153,12 @@ mixin SimpleProviderWithFamilyModGenRef on ProviderRef<String> {
 }
 
 class _SimpleProviderWithFamilyModGenProviderElement
-    extends ProviderElement<String>
-    with SimpleProviderWithFamilyModGenRef {
+    extends ProviderElement<String> with SimpleProviderWithFamilyModGenRef {
   _SimpleProviderWithFamilyModGenProviderElement(super.provider);
 
   @override
   String get customName =>
       (origin as SimpleProviderWithFamilyModGenProvider).customName;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

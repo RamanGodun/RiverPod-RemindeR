@@ -14,10 +14,9 @@ String _$withGenTickerStreamHash() =>
 final withGenTickerStreamProvider = AutoDisposeStreamProvider<int>.internal(
   withGenTickerStream,
   name: r'withGenTickerStreamProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$withGenTickerStreamHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$withGenTickerStreamHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
