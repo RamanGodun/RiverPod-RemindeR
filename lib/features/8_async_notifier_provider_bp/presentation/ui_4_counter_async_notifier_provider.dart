@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/config/observer/extensions/async_value_xx.dart';
-import 'package:riverpod_reminder/core/ui/widgets/buttons/outlined.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/buttons/outlined.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';
-import '../../../core/ui/widgets/mini_widgets.dart';
-import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/presentation/widgets/mini_widgets.dart';
+import '../../../core/presentation/widgets/text_widget.dart';
 import '../domain/counter/counter_on_async_notifier_gen_provider.dart';
 import '../domain/counter/counter_on_async_notifier_manual_provider.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/dialogs_service.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/observer/async_value_logger.dart';
-import '../../../core/ui/widgets/buttons/get_weather_button.dart';
-import '../../../core/ui/widgets/mini_widgets.dart';
-import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/presentation/widgets/buttons/get_weather_button.dart';
+import '../../../core/presentation/widgets/mini_widgets.dart';
+import '../../../core/presentation/widgets/text_widget.dart';
 import '../domain/provider_4_weather_app_with_first_state_shape.dart';
 import '../domain/selected_city_index_provider.dart';
 

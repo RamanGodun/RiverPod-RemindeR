@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_strings.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
-import '../../../core/ui/widgets/buttons/outlined.dart';
-import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/presentation/widgets/buttons/outlined.dart';
+import '../../../core/presentation/widgets/text_widget.dart';
 import '../domain/state_provider_with_auto_disposed_family_mod.dart';
 import 'ui_elements_for_fatal_game.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
-import '../../ui/_theming/theme_provider.dart';
+import '../../presentation/theming/theme_provider.dart';
 import 'overlay/overlay_service.dart';
 
 /// Global singleton instance of `Uuid` used across the app to generate unique IDs.

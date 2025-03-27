@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/text_widget.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
-import '../../../core/ui/widgets/buttons/custom_button_4_go_router.dart';
+import '../../../core/presentation/widgets/buttons/custom_button_4_go_router.dart';
 import '../../../core/domain/config/router/auth_state_provider.dart';
 import '../../../core/domain/config/router/route_names.dart';
 

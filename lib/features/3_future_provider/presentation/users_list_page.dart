@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
-import '../../../core/ui/widgets/custom_list_tile.dart';
-import '../../../core/ui/widgets/mini_widgets.dart';
+import '../../../core/presentation/widgets/custom_list_tile.dart';
+import '../../../core/presentation/widgets/mini_widgets.dart';
 import '../domain/users_list_future_provider_gen.dart';
 import '../domain/users_list_future_provider_manual.dart';
 import 'ui_4_future_provider_with_fam_ad_mod.dart';

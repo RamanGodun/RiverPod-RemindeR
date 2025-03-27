@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:riverpod_reminder/core/ui/widgets/buttons/outlined.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/buttons/outlined.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 import '../../../core/domain/models/product_model/product.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
-import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/presentation/widgets/text_widget.dart';
 import '../domain/infinite_scrolling/for_page_with_infinite_scroll_pagination_products_repository.dart';
 import 'product_page_4_infinite_scroll_pagination.dart';
 

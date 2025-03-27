@@ -2,8 +2,8 @@ import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/helpers.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/text_widget.dart';
 import '../domain/infinite_scrolling/for_page_with_infinite_scroll_pagination_product_provider.dart';
 
 class ProductPageWithInfiniteScrollPagination extends ConsumerWidget {

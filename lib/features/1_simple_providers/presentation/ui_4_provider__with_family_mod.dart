@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';
-import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/text_widget.dart';
 import '../domain/provider_plus_family__mod/provider_with_family_mod_manual.dart'
     as manual;
 import '../domain/provider_plus_family__mod/provider_with_family_mod_gen.dart'

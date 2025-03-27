@@ -1,13 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_floating_button.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/buttons/custom_floating_button.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 
 import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
-import '../../../core/ui/widgets/activity_widget.dart';
-import '../../../core/ui/widgets/mini_widgets.dart';
+import '../../../core/presentation/widgets/activity_widget.dart';
+import '../../../core/presentation/widgets/mini_widgets.dart';
 import '../domain/on_sealed_class_based_async_notifier_provider/activity_on_async_notifier_provider.dart';
 
 class ActivityPageOnAsyncNotifierProvider extends ConsumerWidget {

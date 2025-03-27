@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/text_widget.dart';
 import '../../../core/domain/utils_and_services/helpers.dart';
 import '../domain/provider_with_using_local_states_for_each_item.dart';
 import 'text_field_for_new_item.dart';

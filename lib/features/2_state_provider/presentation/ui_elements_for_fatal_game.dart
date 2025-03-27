@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_strings.dart';
-import '../../../core/ui/widgets/buttons/outlined.dart';
-import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/presentation/widgets/buttons/outlined.dart';
+import '../../../core/presentation/widgets/text_widget.dart';
 
 /// 🎭 **Displays the difference value with a dramatic effect**
 class DifferenceWidget extends StatelessWidget {

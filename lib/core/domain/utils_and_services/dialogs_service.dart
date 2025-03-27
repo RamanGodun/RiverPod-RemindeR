@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_reminder/core/domain/utils_and_services/helpers.dart';
-import '../../ui/widgets/alert_dialog.dart';
-import '../../ui/widgets/feature_selection_dialog.dart';
+import '../../presentation/widgets/alert_dialog.dart';
+import '../../presentation/widgets/feature_selection_dialog.dart';
 import '../app_constants/app_constants.dart';
 
 /// 💬 **[DialogService] - A centralized service for managing app dialogs.**

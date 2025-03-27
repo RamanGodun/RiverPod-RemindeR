@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_strings.dart';
 import 'package:riverpod_reminder/core/domain/app_constants/app_constants.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
-import '../../../core/ui/widgets/buttons/outlined.dart';
+import '../../../core/presentation/widgets/buttons/outlined.dart';
 import '../domain/state_provider__with_family_mod.dart';
 import 'ui_elements_for_fatal_game.dart';
 

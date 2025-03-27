@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 
-import '../../../core/ui/widgets/buttons/custom_button.dart';
+import '../../../core/presentation/widgets/buttons/custom_button.dart';
 import 'ui_4_provider__with_family_mod.dart';
 import 'ui_4_provider_with_auto_disposed_and_family_mods.dart';
 import 'ui_4_basic_provider.dart';

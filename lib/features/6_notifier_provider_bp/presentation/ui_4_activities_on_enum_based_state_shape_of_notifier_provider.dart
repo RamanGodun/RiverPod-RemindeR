@@ -1,15 +1,15 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/buttons/custom_floating_button.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/buttons/custom_floating_button.dart';
 import '../../../core/domain/models/activity_model/activity.dart';
 import '../../../core/domain/models/enums.dart';
 import '../../../core/domain/providers/errors_handling/errors_dialog_providers.dart';
 import '../../../core/domain/providers/errors_handling/for_errors_simulation_counter_provider.dart';
-import '../../../core/ui/widgets/activity_widget.dart';
-import '../../../core/ui/widgets/custom_app_bar.dart';
-import '../../../core/ui/widgets/mini_widgets.dart';
-import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/presentation/widgets/activity_widget.dart';
+import '../../../core/presentation/widgets/custom_app_bar.dart';
+import '../../../core/presentation/widgets/mini_widgets.dart';
+import '../../../core/presentation/widgets/text_widget.dart';
 import '../domain/activity_provider_on_enum_based_ss/enum_activity_provider.dart';
 
 class EnumActivityPage extends ConsumerStatefulWidget {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 import '../../../core/domain/app_constants/app_constants.dart';
 import '../../../core/domain/app_constants/app_strings.dart';
 import '../../../core/domain/utils_and_services/dialogs_service.dart';
-import '../../../core/ui/widgets/buttons/custom_floating_button.dart';
-import '../../../core/ui/widgets/text_widget.dart';
+import '../../../core/presentation/widgets/buttons/custom_floating_button.dart';
+import '../../../core/presentation/widgets/text_widget.dart';
 import '../domain/state_provider__with_auto_disposed_mod.dart';
 
 class Page4StateProviderWithAutoDisposedMode extends ConsumerWidget {

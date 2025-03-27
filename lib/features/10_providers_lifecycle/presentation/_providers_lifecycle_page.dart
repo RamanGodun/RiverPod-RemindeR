@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
-import '../../../core/ui/widgets/buttons/custom_button.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
+import '../../../core/presentation/widgets/buttons/custom_button.dart';
 import 'page_4_products_cashed_for_10_sec.dart';
 import 'page_4_counter_cashed_for_10_sec_provider.dart';
 import 'page_with_using_consumer_widget.dart';

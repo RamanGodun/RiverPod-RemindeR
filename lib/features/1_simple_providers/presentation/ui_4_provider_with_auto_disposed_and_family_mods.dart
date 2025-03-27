@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_reminder/core/ui/widgets/custom_app_bar.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/custom_app_bar.dart';
 import '../../../core/domain/config/app_config.dart';
-import 'package:riverpod_reminder/core/ui/widgets/text_widget.dart';
+import 'package:riverpod_reminder/core/presentation/widgets/text_widget.dart';
 
 // ✅ Import both manual & generated providers
 import '../domain/provider_plus_family_and_auto_dispose_mod/provider_with_auto_disposed_and_family_mods_manual.dart'
