@@ -54,33 +54,33 @@ flutter:
   fonts:
     - family: SFProText
       fonts:
-        - asset: assets/San_Francisco_Pro_Text/SFProText-Regular.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-Regular.ttf
           weight: 400
-        - asset: assets/San_Francisco_Pro_Text/SFProText-RegularItalic.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-RegularItalic.ttf
           weight: 400
           style: italic
-        - asset: assets/San_Francisco_Pro_Text/SFProText-Medium.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-Medium.ttf
           weight: 500
-        - asset: assets/San_Francisco_Pro_Text/SFProText-MediumItalic.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-MediumItalic.ttf
           weight: 500
           style: italic
-        - asset: assets/San_Francisco_Pro_Text/SFProText-Semibold.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-Semibold.ttf
           weight: 600
-        - asset: assets/San_Francisco_Pro_Text/SFProText-SemiboldItalic.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-SemiboldItalic.ttf
           weight: 600
           style: italic
-        - asset: assets/San_Francisco_Pro_Text/SFProText-Bold.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-Bold.ttf
           weight: 700
-        - asset: assets/San_Francisco_Pro_Text/SFProText-BoldItalic.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-BoldItalic.ttf
           weight: 700
           style: italic
-        - asset: assets/San_Francisco_Pro_Text/SFProText-Heavy.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-Heavy.ttf
           weight: 800
-        - asset: assets/San_Francisco_Pro_Text/SFProText-HeavyItalic.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-HeavyItalic.ttf
           weight: 800
           style: italic
-        - asset: assets/San_Francisco_Pro_Text/SFProText-Light.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-Light.ttf
           weight: 300
-        - asset: assets/San_Francisco_Pro_Text/SFProText-LightItalic.ttf
+        - asset: assets/san_francisco_pro_text/SFProText-LightItalic.ttf
           weight: 300
           style: italic
