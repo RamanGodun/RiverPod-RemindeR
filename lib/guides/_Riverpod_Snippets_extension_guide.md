@@ -8,21 +8,21 @@ This guide documents all available **VSCode snippets** used in the Riverpod Remi
 
 ### 🧠 Provider Generation
 
-| Shortcut          | Description                                                    |
-|------------------|----------------------------------------------------------------|
-| `rivp`           | Generates `part 'xyz.g.dart';` for Riverpod codegen files       |
-| `riverpodKeepAlive` | Creates a `Provider` with `ref.keepAlive()`                    |
+| Shortcut           | Description                                                    |
+|--------------------|----------------------------------------------------------------|
+| `rivp`             | Generates `part 'xyz.g.dart';` for Riverpod codegen files      |
+| `riverpodKeepAlive`| Creates a `Provider` with `ref.keepAlive()`                    |
 
 ---
 
 ### 🧊 Freezed + JsonSerializable
 
-| Shortcut          | Description                                                    |
+| Shortcut         | Description                                                    |
 |------------------|----------------------------------------------------------------|
-| `ptf`            | Inserts `part 'xyz.freezed.dart';`                               |
-| `pts`            | Inserts `part 'xyz.g.dart';`                                     |
-| `fdata`          | Generates full Freezed data class                               |
-| `fromJson`       | Inserts factory constructor `factory XYZ.fromJson(...)`         |
+| `ptf`            | Inserts `part 'xyz.freezed.dart';`                             |
+| `pts`            | Inserts `part 'xyz.g.dart';`                                   |
+| `fdata`          | Generates full Freezed data class                              |
+| `fromJson`       | Inserts factory constructor `factory XYZ.fromJson(...)`        |
 
 ---
 
@@ -31,14 +31,14 @@ This guide documents all available **VSCode snippets** used in the Riverpod Remi
 _You can extend the snippet set with:_
 
 | Shortcut          | Description                                                    |
-|------------------|----------------------------------------------------------------|
-| `riva`            | `AsyncNotifier` + `@riverpod` + build() pattern                 |
+|-------------------|----------------------------------------------------------------|
+| `riva`            | `AsyncNotifier` + `@riverpod` + build() pattern                |
 | `rivf`            | `FutureProvider` base structure                                |
 | `rivs`            | `StateNotifier` base structure                                 |
-| `watchRef`        | Common `ref.watch(...)` snippet                                 |
+| `watchRef`        | Common `ref.watch(...)` snippet                                |
 | `listenRef`       | Common `ref.listen(...)` with `hasError` and `state != null`   |
-| `disposeRef`      | Adds `ref.onDispose(...)`                                       |
-| `cancelRef`       | Adds `ref.onCancel(...)`                                        |
+| `disposeRef`      | Adds `ref.onDispose(...)`                                      |
+| `cancelRef`       | Adds `ref.onCancel(...)`                                       |
 
 ---
 
