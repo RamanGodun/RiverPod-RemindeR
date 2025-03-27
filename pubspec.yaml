@@ -54,33 +54,33 @@ flutter:
   fonts:
     - family: SFProText
       fonts:
-        - asset: assets/san_francisco_pro_text/SFProText-Regular.ttf
+        - asset: assets/sf_fonts/SFProText-Regular.ttf
           weight: 400
-        - asset: assets/san_francisco_pro_text/SFProText-RegularItalic.ttf
+        - asset: assets/sf_fonts/SFProText-RegularItalic.ttf
           weight: 400
           style: italic
-        - asset: assets/san_francisco_pro_text/SFProText-Medium.ttf
+        - asset: assets/sf_fonts/SFProText-Medium.ttf
           weight: 500
-        - asset: assets/san_francisco_pro_text/SFProText-MediumItalic.ttf
+        - asset: assets/sf_fonts/SFProText-MediumItalic.ttf
           weight: 500
           style: italic
-        - asset: assets/san_francisco_pro_text/SFProText-Semibold.ttf
+        - asset: assets/sf_fonts/SFProText-Semibold.ttf
           weight: 600
-        - asset: assets/san_francisco_pro_text/SFProText-SemiboldItalic.ttf
+        - asset: assets/sf_fonts/SFProText-SemiboldItalic.ttf
           weight: 600
           style: italic
-        - asset: assets/san_francisco_pro_text/SFProText-Bold.ttf
+        - asset: assets/sf_fonts/SFProText-Bold.ttf
           weight: 700
-        - asset: assets/san_francisco_pro_text/SFProText-BoldItalic.ttf
+        - asset: assets/sf_fonts/SFProText-BoldItalic.ttf
           weight: 700
           style: italic
-        - asset: assets/san_francisco_pro_text/SFProText-Heavy.ttf
+        - asset: assets/sf_fonts/SFProText-Heavy.ttf
           weight: 800
-        - asset: assets/san_francisco_pro_text/SFProText-HeavyItalic.ttf
+        - asset: assets/sf_fonts/SFProText-HeavyItalic.ttf
           weight: 800
           style: italic
-        - asset: assets/san_francisco_pro_text/SFProText-Light.ttf
+        - asset: assets/sf_fonts/SFProText-Light.ttf
           weight: 300
-        - asset: assets/san_francisco_pro_text/SFProText-LightItalic.ttf
+        - asset: assets/sf_fonts/SFProText-LightItalic.ttf
           weight: 300
           style: italic
