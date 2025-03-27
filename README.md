@@ -131,6 +131,20 @@ This app is more than a showcase — it’s a hands-on **knowledge base**, **exp
   - `feature_selection_dialog.dart`: Dropdown feature picker dialog
   - `alert_dialog.dart`, `mini_widgets.dart`, `text_widget.dart`
 
+
+### 📚 `core/docs/`
+
+> ✅ Centralized, markdown-based **Riverpod knowledge base**
+
+Each file is a self-contained **guide**, **cheat sheet**, or **concept explanation** covering specific Riverpod topics.
+
+📌 Use this folder as the **source of truth** when:
+- Onboarding new developers
+- Debugging provider behavior
+- Comparing architectural approaches or patterns
+
+> Organized for clarity, consistency, and long-term maintainability.
+
 ---------------------------------------------------------------------------------------------------------------
 
 
@@ -309,6 +323,7 @@ This makes it an invaluable tool not only for development but also for **learnin
 
 
 
+---------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------
 
 

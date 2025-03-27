@@ -1,6 +1,8 @@
 # 📋 Riverpod Snippets Guide for VSCode
 
-This guide documents all available **VSCode snippets** used in the Riverpod Reminder project via the **Flutter Riverpod Snippets** extension. These shortcuts significantly speed up development by auto-generating boilerplate for providers, Freezed classes, part files, and more.
+This guide documents all available **VSCode snippets** used in the Riverpod Reminder project via 
+the **Flutter Riverpod Snippets** extension. These shortcuts significantly speed up development 
+by auto-generating boilerplate for providers, Freezed classes, part files, and more.
 
 ---
 
@@ -43,6 +45,7 @@ _You can extend the snippet set with:_
 ---
 
 ## 🧩 Tip:
-To explore all available Riverpod or Freezed snippets in VSCode, open the **Command Palette** → `Insert Snippet` → search by prefix (e.g., `riv`, `pt`, `fdata`).
+To explore all available Riverpod or Freezed snippets in VSCode, 
+open the **Command Palette** → `Insert Snippet` → search by prefix (e.g., `riv`, `pt`, `fdata`).
 
 You can also customize or extend them in your VSCode via `Preferences → User Snippets`.

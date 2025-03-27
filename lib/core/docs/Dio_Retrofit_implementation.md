@@ -2,7 +2,8 @@
 
 ## 🎯 Goal
 
-This guide provides a clean and scalable approach for integrating **Dio**, **Interceptors**, and **Retrofit** in a **Flutter + Riverpod** application. It follows best practices for modularity, debuggability, and testability.
+This guide provides a clean and scalable approach for integrating **Dio**, **Interceptors**, and **Retrofit** 
+in a **Flutter + Riverpod** application. It follows best practices for modularity, debuggability, and testability.
 
 ------------------------------------------------------------------------------------------------------------------------
 

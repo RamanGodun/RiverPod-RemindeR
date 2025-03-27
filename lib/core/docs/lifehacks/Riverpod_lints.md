@@ -1,6 +1,7 @@
 # ✅ Riverpod Lint & Best Practices Guide
 
-This guide summarizes common Riverpod-specific lint warnings, explains why they appear, and offers **best practices** to ensure clean, scalable, and maintainable code when working with Riverpod v2 (manual + codegen).
+This guide summarizes common Riverpod-specific lint warnings, explains why they appear, and offers **best practices** 
+to ensure clean, scalable, and maintainable code when working with Riverpod v2 (manual + codegen).
 
 ---
 
@@ -14,7 +15,8 @@ final value = ref.watch(manualProvider);
 
 ### 🔹 Why It Matters:
 - Mixing manual and generated providers **breaks type-safety** and can cause **circular dependencies**.
-- Generated providers (via `@riverpod`) are resolved at compile time — referencing runtime-declared manual providers can lead to unintended rebuilds.
+- Generated providers (via `@riverpod`) are resolved at compile time — referencing runtime-declared manual 
+providers can lead to unintended rebuilds.
 
 ### ✅ Recommendation:
 - Always use **generated providers** as dependencies inside other generated providers.
@@ -107,6 +109,28 @@ class Params extends Equatable {
 | `avoid_manual_providers_as_generated_provider_dependency` | avoid_man_as_gen_dependency.dart      | Convert `depProvider` to `@riverpod`     |
 | `avoid_public_notifier_properties`                        | avoid_public_notifier_properties.dart | Make fields private (`_internalVar`)     |
 | `provider_parameters`                                     | provider_parameters.dart              | Use const/Equatable params in providers  |
+
+---
+
+## 🧱 Subtree Scoping
+
+### ⚠️ When to Avoid
+- Subtree scoping introduces complexity and potential lifecycle bugs.
+- Prefer **family providers** or separate named providers instead.
+
+### ✅ Use Subtree `ProviderScope` only when:
+- You need to override a provider **for a specific widget subtree**.
+- You need **local state isolation** (e.g., multiple items in a list with their own state).
+
+---
+
+## 🚨 Remember These Lint Rules
+
+1. Generated providers should **only depend on other generated providers**.
+2. Notifiers should **not expose public fields** — everything should go through `state`.
+3. Provider parameters must support equality:
+   - Use `const` classes or
+   - Implement `==` and `hashCode` (e.g., via `Equatable`).
 
 ---
 
